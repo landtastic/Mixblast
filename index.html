@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+  <meta id="viewport" name='viewport'>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Mixblast - Share Playlists, iTunes to YouTube converter, YouTube batch search</title>
+  </head>
+  <body>
+  <div id="body-container">
+  <ol>
+  <img id="logo" src="img/mixblast-logo3.png">
+    <div id="login-container" class="pre-auth"><br>Have you ever wanted to "blast a mix" over to a friend? No? Well now you can! <br>
+	Mixblast is the easy way to create a playlist. Trust me, <a href="javascript:void(0)" class="yoyull" id="haveablast">yoyu'll have a blast</a>.<br><br>
+	Please <a href="javascript:void(0)" id="login-link"><b>sign in to YouTube</b></a> to continue. <br><br><hr>
+    </div>
+	<div id="videoprofessor" style="display:none;"><img src="img/videoprofessor.jpg" class="videoprofessor" id="videoprofessor"></div>
+	<div id="instructions">
+		<li>Put some songs into the text box below. <br>
+	</div>
+	<div id="filee">Or import an m3u <!--<sup id="what"><a href="javascript:void(0)"><span style="cursor:help">?</span></a></sup>--> from iTunes: <input type="file" id="fileinput" accept=".m3u,.txt,.xml,.pls,.asx,.xspf" /></div>
+	</li>
+	<div id="subtext">The sample text will go away when you click it. Copy & paste a tracklist in there or something. YouTube playlist limit is 200 videos.<br>
+	<br></div>
+	<div id="buttons">
+		<label> 
+		<textarea name="query" id="query" rows="12" cols="60"/>Led Zeppelin - The Ocean
+the weeknd - the morning
+Ty$ - The Man
+little black egg the nightcrawlers
+Dr. Dre - The Next Episode
+Love - The Red Telephone
+Bangladesh - 100
+the velvet underground & nico full album
+Guns N' Roses - Use Your Illusion II Full Album
+cool reggae chameleon (extended mix)</textarea>
+		<br>
+		<div id="instructions">
+			<li>Click Search and Mixblast will attempt to find the songs on YouTube. </li>
+		</div>
+		<div id="subtext">Click the song swap icon if it's the wrong version.<br><br></div>
+		<button id="search-button" disabled onclick="multiSearch(); return false;">Search (Sign in to YouTube)</button></label>
+	</div>
+	<br>
+	<div id="search-container">
+	<div id="flame"></div>
+	</div>
+
+	<hr>
+	<div id="instructions">
+		<li>Make sure everything looks cool, then click Create a New Playlist.</li>
+	</div>
+	<div id="subtext"> Youtube is ubiquitous, so play your mix anywhere. You can share it to your Facebook wall once it's created.</div>
+	<br><b>Playlist title:</b> <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/>
+    <div id="buttons2"><br>
+      <button id="playlist-button" disabled onclick="createPlaylist()">Create a New Playlist (Sign in to YouTube)</button>
+	  <p id="playlist-status"></p>
+	  
+	  <span id="playlist-url">
+	  <b>Playlist url (copy and paste): <input id="playlist-url-copy" type="text" onClick="this.select();"/></b>
+	  <br><br>
+	  </span>
+    </div>
+	<br>
+	<hr>
+	<br>
+	<span id='emailme'></span>
+	<br>
+	<br>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="auth.js"></script>
+	<script src="playlist_updates.js"></script>
+    <script src="search.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+  </ol>
+  </div>
+  </body>
+</html>
