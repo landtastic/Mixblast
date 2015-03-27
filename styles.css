@@ -1,26 +1,98 @@
-
-	@media screen and (max-device-width: 480px){
-	  body{
-		-webkit-text-size-adjust: none;
-	  }
-	}
 	body {
-		background-color:#fff;
-		font-family: "Open Sans", Helvetica, Arial, sans-serif;
+		font-family: 'Roboto', sans-serif;
 		font-size: 18px;
+		color:#fff;
 		
 		margin:0;
-		padding:0;
+		padding:10px;
 		height:100%;
 	}
-	textarea,input {
-		font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	#body-container {
+		width: 600px;
+		margin: 0 auto;
+		
+		min-height:100%;
+		
+	}
+	textarea#query,input,button {
+		font-family: 'Roboto', sans-serif;
 		font-size: 18px;
+		/*border: 1px solid #fff;*/
+    	border-radius: 5px;
+    	padding:10px;
+	}
+	#query {
+		width: 575px;
+		color: #000;
+	    text-align: left;
+	    background-color: rgba(255,255,255,0.7);
+	}
+	input[type='checkbox'] {vertical-align: sub;}
+	a:link,a:visited,a:hover,a:active { text-decoration: none; }
+	a:link { color: #FFF; }
+	a:visited { color: #FFF;}
+	a:hover { color: #000;}
+	a:active { color: #000;}
+
+	ul{
+	    list-style-type: none;
+	}
+	h1 {
+		font-size: 27px;
+		font-weight: 900; 
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+	h3 {
+		margin-top:70px;
+		margin-bottom:0px;
+	}
+		.font-effect-3d { font-weight: 900; }
+	hr {
+	  border: 0px;
+      border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+      clear: both;
 	}
 	#logo {
 		max-width:100%;
 		display: block; 
-		margin: 0 auto;
+		margin-bottom:5px;
+	}
+	#ytPlayer {
+	  	max-width: 100%;
+	  	display: block;
+	  	margin: 0 auto;
+	}
+
+	#buttons {
+	    text-align: center;
+	}
+	#buttons div.queryarea{
+	    position: relative;
+	    color: #EEE;
+	    font-size: 15px;
+	    display: inline-block;
+	    border: 2px solid #324566;
+	    border-radius: 4px;
+	    -webkit-border-radius: 4px;
+	    -moz-border-radius: 4px;
+	    background-color: #283957;
+	    padding: 8px;
+	    margin: 5px;
+	}
+	.closebutton{
+	    display:block;
+	    position:relative;
+  		top: -420px;
+	  	left: 540px;
+	    width:27px;
+	    height:27px;
+	    background:url('img/close-button.png') no-repeat center center;
+	    cursor:pointer;
+	}
+	.closebutton:hover {
+		-webkit-filter: invert(100%);
+		filter:invert(100%); 
 	}
 	.swapzone {
 		cursor:pointer;
@@ -30,15 +102,19 @@
 		width: 29px;
 		height: 47px;
 	}
-	#thumbzone {
+	a#link  {cursor:pointer;}
+	.searchresult {
+    	white-space: nowrap;
+		width:600px;
 		position: relative;
 		left: 0;
 		text-align: left;
-		margin-left: 29px;
-		height: 47px;
 		display:block;
 		overflow:hidden;
 		text-overflow:ellipsis;
+		border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+		padding-top:5px;
+		padding-bottom:5px;
 	}
 	#thumb {
 		vertical-align:middle;
@@ -46,30 +122,115 @@
 		width:60px;
 		height:45px;
 	} 
-	#refreshb {
+	.refreshb {
 		margin-top:10px;
+    	margin-right: 5px;
+		float:left;
 		vertical-align: bottom; 
 		padding:1px;
 		width:27px;
 		height:27px;
-		opacity:0.1;
-		filter:alpha(opacity=10); 
-	}
-	#refreshb:hover {
-		opacity:0.5;
+		opacity:0.4;
+		cursor:pointer;
 		filter:alpha(opacity=50); 
 	}
-	#subtext {font-size:16px; font-weight:normal;}
+	.refreshb:hover {
+		opacity:1.0;
+		filter:alpha(opacity=100); 
+	}
+	#refreshc {
+		vertical-align: middle; 
+		padding: 5px 2px 7px 0;
+		width:25px;
+		height:25px;
+	}
+	#prevb, #nextb, #playpb { height:50px;margin-top:10px;}
+	#shuffb { height: 70px;}
+	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover {
+		opacity:1.0;
+		color:white;
+		-webkit-filter: invert(100%);
+		filter:invert(100%); 
+	}
+	.buttonwrapper {   
+		width:600px;
+		font-size:19px;
+	    margin-top:10px;
+	    margin-left: auto; 
+	    margin-right: auto;
+	    vertical-align: top;
+	    text-align: top;
+	    text-align: justify;
+	    -ms-text-justify: distribute-all-lines;
+	    text-justify: distribute-all-lines;
+  	}
+  	.playerbutton {
+	    vertical-align: top;
+	    text-align: top;
+	    display: inline-block;
+	    *display: inline;
+	    zoom: 1;
+    	white-space: nowrap;
+  	}
+  	.stretch {
+	    width: 100%;
+	    display: inline-block;
+	    font-size: 0;
+	    line-height: 0
+	}
+	#editplaylist,#wrongsong {
+		font-size:23px; 
+		text-rendering: geometricPrecision;
+		margin-bottom: 5px;
+	}
+	.subtext {
+		font-size:16px; 
+		font-weight:normal; 
+		margin-bottom: 22px;
+  		margin-top: 10px;
+		width:600px;
+	}
+	.subsubtext {
+		float: right;
+		font-size:smaller;  
+		margin-top:auto;
+	    margin-left: auto; 
+	    margin-right: 2px;
+	    width:600px;
+	}
+	
+	.advancedFloater {
+		text-align: right;
+		margin: 0px 0px 10px 0px;
+	}
+
 	#what {cursor:help; font-size:12px;}
-	#body-container {
-		width: 650px;
-		margin: 0 auto;
-		
-		min-height:100%;
-		position:relative;
+	.infolink::before
+	{
+	    content: '?';
+	    font-size: 90%;
+	    font-family: sans-serif;
+	    vertical-align: middle;
+	    font-weight: bold;
+	    text-align: center;
+	    line-height:1;
+	    display: inline-block;
+	    width: 1.8ex;
+	    height: 1.8ex;
+	    border-radius: 1ex;
+	    color: white;
+	    border: thin solid white;
+	    cursor:help;
+	}
+
+	.infolink:hover::before
+	{
+	    color: white;
+	    background: black;
+	    border-color: black;
 	}
 	#login-container {
-		text-align:center;
+		text-align:default;
 		font-size: 17px;
 	}
 	#instructions {
@@ -79,26 +240,45 @@
 		padding-top:15px;
 		padding-bottom:15px;
 	}
-	#query {
-		width: 99%;
-	}
 	#search-button,#playlist-button {
-		height: 40px;
-		width: 100%;
-		font-size:20px;
-		font-weight:normal;
+		height: 52px;
+		width: 595px;
+		margin-top: 15px;
+		font-size:22px;
+		background-color: rgb(179, 170, 180);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+		          0 2px 8px -1px rgba(0, 0, 0, .5),
+		          0 1px 0 rgba(255, 255, 255, .3) inset;
+		text-shadow: 0 1px 0 rgba(255,255,255, .8);  
+		padding     : 0;
+		border      : 0;
+	    cursor:pointer;
+	    font-weight: bold;
+       	border-radius: 15px;
+
 	}
+
 	#playlist-title,#playlist-url-copy {
-		width: 100%;
+		width: 575px;
+		background-color: rgba(255,255,255,0.7);  
 	}
 	#filee {
-		font-size:15px;
+		font-size:11px;
 		font-weight:normal;
+		margin-left: 3px;
 		a:link,a:visited {color:#000000;}  
 	}
 	#fileinput {
-		font-size:13px;
-		padding-bottom:15px;
+		font-size:12px;
+		padding-top:0px;
+		width: 180px!important;
+	}
+	#addartist,#find,#replace,#frbutton {
+	  font-size: 12px;
+	  padding:1px;
+	}
+	#find,#replace {
+		width: 60px;
 	}
 	#videoprofessor {
 		border: solid 1px black;
@@ -117,12 +297,101 @@
 		cursor:help;
 	}
 	#flame {
-		position:absolute;
+		display: none;
+		bottom: 100px;
 		z-index: 100;
-		bottom:60;
-		width:95%;
+		width:595px;
 		height:272px;   
-		background-image:url('img/flame.gif');
-		display:none;
+		/*background-image:url('img/flame.gif');*/
 	}
+
+
+ /* iPhone 6*/
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+
+
+	#body-container { 
+		padding-left:10px!important; 
+		padding-right: 20px!important;
+
+	}
+	textarea#query,input,button {
+		font-size: 160%!important;
+	}
+	#search-button, #playlist-button{
+		font-size: 140%;
+		height: 80px;
+	}
+	.subtext {font-size: 22px;}
+	.subsubtext {font-size: 18px;}
+	.infolink::before {
+	    font-size: 120%;
+	    width: 2ex;
+	    height: 2ex;
+	}
+		.closebutton{
+  		top: -645px;
+	}
+
+}
+
+
+/* iPhone 5*/
+@media only screen and (width:320px) and (device-width:320px) and (device-height:480px) {
+	body {
+		font-size: 170%;
+		initial-scale:0.667;
+		maximum-scale:0.667;
+		-webkit-transform: scale(0.667);
+		padding: 5px 5px;
+		/*
+		-webkit-transform-origin: top right;
+		position: absolute;
+		right: 0;
+		top: 0; */
+		width: 100%;
+		/*
+		text-size-adjust: 150%;      
+		-webkit-text-size-adjust: 150%;
+		font-size:150%!important;
+		*/
+	}
+}
+
+/* iPad */
+@media only screen and (width:768px) and (device-width:768px) and (device-height:1024px) {
+	body {
+		initial-scale:1.0;
+		maximum-scale:1.0;
+		-webkit-transform: scale(1.0);
+
+		-webkit-transform-origin: top right;
+		position: absolute;
+		right: 0;
+		top: 0; 
+		width: 100%;
+	}
+}
+
+
 	
+	/*========== GRADIENT BACKGROUND ==========*/
+	.gradient-background {
+	  position: fixed;
+	  top:0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  z-index: -10;
+	  -webkit-transition: background .3s;
+	  -moz-transition: background .3s;
+	  -ms-transition: background .3s;
+	  -o-transition: background .3s;
+	  transition: background .3s;
+	  background-color: #7fc5c9;
+	  /*top colour*/
+	  background-image: linear-gradient(#7fc5c9, #deabbe);
+	  background-image: -webkit-linear-gradient(top, #7fc5c9, #deabbe);
+	  background-image: -moz-linear-gradient(top, #7fc5c9, #deabbe);
+	  background-image: -o-linear-gradient(top, #7fc5c9, #deabbe); 
+	}

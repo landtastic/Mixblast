@@ -8,7 +8,7 @@ function createPlaylist() {
     resource: {
       snippet: {
         title: $('#playlist-title').val(),
-        description: 'Playlist created with Mixblast - http://mixbla.st'
+        description: 'Playlist created with Mixblast - http://l4nd.com/mixblast'
       },
       status: {
         privacyStatus: 'public'
@@ -22,9 +22,9 @@ function createPlaylist() {
       playlistId = result.id;
       $('#playlist-id').val(playlistId);
       $('#playlist-url-copy').val('http://youtube.com/playlist?list='+playlistId);
-      $('#playlist-url').append('<iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list='+playlistId+'" frameborder="0" allowfullscreen></iframe><br>');
+      //$('#playlist-url').append('<iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list='+playlistId+'" frameborder="0" allowfullscreen></iframe><br>');
       $('#playlist-url').append('<a href="http://youtube.com/playlist?list='+playlistId+'" target="_blank">Click here to to view your playlist</a><br><br>');
-      $('#playlist-url').append('<a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://youtube.com/playlist?list='+playlistId)+'&p[images][0]=http://mixbla.st/img/mixblast-logo3.png" target="_blank">Blast your mix to Facebook</a><br><br>');
+      $('#playlist-url').append('<a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://youtube.com/playlist?list='+playlistId)+'&p[images][0]=http://l4nd.com/mixblast/img/mixblast-logo4.png" target="_blank">Blast your mix to Facebook</a><br><br>');
 
       $('#playlist-title').val(result.snippet.title);
 
@@ -32,7 +32,7 @@ function createPlaylist() {
   		multiAddVideosToPlaylist();
 		
     } else {
-      alert("Uh oh. Could not create playlist. \n\nMake sure your youtube account has a \"youtube channel.\" You can do this by creating at least one playlist on youtube.com. \n\nOr try logging out of youtube and logging in again, then refresh mixbla.st. Sorry 'bout that.");
+      alert("Uh oh. Could not create playlist. \n\nMake sure your youtube account has a \"youtube channel.\" You can do this by creating at least one playlist on youtube.com. \n\nOr try logging out of youtube and logging in again, then refresh mixblast. Sorry 'bout that.");
     }
   });
   
