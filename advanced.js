@@ -190,7 +190,6 @@ function findReplace() {
     var find = new RegExp(find, "gi");
     var replace = $("#replace").val();   
     var arrayOfLines = query2.val().split("\n");
-    var newquery = '';
     var newquery_arr = [];
     $.each(arrayOfLines, function(i, item) {
        newquery_arr.push(item.replace(find, replace));

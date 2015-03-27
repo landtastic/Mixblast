@@ -184,7 +184,7 @@ function multiSearch() {
 function renderPlaylist(c,vThumb,vId,vTitle) {
 
 	//var vclick = 'ytPlayer.loadVideoById('+vId+'\');vidcount='+c+';renderEntirePlaylistFromIndex('+c+',\''+vThumb+'\',\''+vId+'\',\''+vTitle+'\');'
-	var vclick = "ytPlayer.loadVideoById(\""+vId+"\"); vidcount="+c+";"
+	var vclick = "loadVid(\""+vId+"\"); vidcount="+c+";"
 	//console.log(vclick);
 	if (vId == "Not Found") var vclick = "editSearchTerm(0);";
 	//vidcount = c;
@@ -256,7 +256,11 @@ function nextVideo(next) {
 	}
 	swapper = 1;
 	var thevideoid = topvIdArray[vidcount];
-	ytPlayer.loadVideoById(thevideoid);
+	loadVid(thevideoid);
+}
+
+function loadVid(vidId) {
+	ytPlayer.loadVideoById(vidId);
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
 
@@ -308,7 +312,7 @@ function shuffle(o){
 var swapper = 1; //next song
 $("#wrongsong").click(function(){
 	if (swapper > 19) swapper = 0;
-	ytPlayer.loadVideoById(vidObjArray[vidcount].vid[swapper]);
+	loadVid(vidObjArray[vidcount].vid[swapper]);
 	swapper++;
 });
 
@@ -323,7 +327,7 @@ $('#search-container').on('contextmenu click', '.refreshb', function(event) {
     if (swapcount > swaplen-1) swapcount = 0;
 
 	var top5id = vidObjArray[thisid].vid[swapcount];
-	var top5click = "ytPlayer.loadVideoById('"+top5id+"');vidcount="+thisid;
+	var top5click = "loadVid('"+top5id+"');vidcount="+thisid;
 
 	if ((top5id == "Not Found") || (top5id == undefined)) var top5click = "editSearchTerm("+thisid+");";
 	var top5thumb = vidObjArray[thisid].thumb[swapcount];
