@@ -1,28 +1,21 @@
 var demoOn = false;
 $("#demolink").click(function(){
-    showDemo(); //in advanced.js
+    showDemo(); 
 });
 $("#advanced").click(function(){
-    $('#filee').slideToggle();
+    $('#advanced-container').slideToggle();
     //hidden query textarea, fill with data to manipulate
     $("#query2").val($("#query").val());
 });
 
+$('#addartist').focusout(function() {
+    $("#query2").val($("#query").val());
+});
 var query2 = $("#query2"); 
 var newartist = $("#addartist");   
 $('#addartist').keyup(function() {
-    var arrayOfLines = query2.val().split("\n");
-    //var newquery = '';
-    var newquery_arr = [];
-    $.each(arrayOfLines, function(i, item) {
-        //newquery += newartist.val()+" "+item+"\n";
-        newquery_arr.push(newartist.val() + $.trim(item));
-    });
-    var newqt = newquery_arr.join("\n");
-    $("#query").val(newqt);
+    addArtist();
 });
-
-
 $("#addartist_button").click(function(){
     var arrayOfLines = result.val().split("\n");
     var newquery = '';
@@ -32,9 +25,11 @@ $("#addartist_button").click(function(){
         //newquery_arr.push(newartist + $.trim(item));
     });
 });
+
 $("#frbutton").click(function(){
-        findReplace();
-    });
+    findReplace();
+});
+
 $("#removenums").click(function(){
     removeNumbas();
 });
@@ -47,13 +42,58 @@ $("#magic").click(function(){
     magicSongExtractor();
 });
 
-function removeNumbas() {
-    var query = $("#query").val();
-    query = query.replace(/\d+\./g, ""); 
-    query = query.replace(/\d+\s/g, ""); 
-    $("#query").val(query);
+$("#query").bind("paste", function(){
+    var elem = $(this);
+
+    setTimeout(function() {
+        // gets the copied text after a specified time (100 milliseconds)
+        $('input#removenums').attr('checked', 'checked');
+        removeNumbas();
+        var text = elem.val(); 
+        console.log(text);
+    }, 100);
+});
+
+function addArtist() {
+    var arrayOfLines = query2.val().split("\n");
+    //var newquery = '';
+    var newquery_arr = [];
+    $.each(arrayOfLines, function(i, item) {
+        //newquery += newartist.val()+" "+item+"\n";
+        newquery_arr.push(newartist.val() + $.trim(item));
+    });
+    var newqt = newquery_arr.join("\n");
+    $("#query").val(newqt);
+    /*
+    delay(function(){
+        //$("#query2").val($("#query").val());
+        alert('delay!');
+    }, 1000 );
+    */
 }
 
+function removeNumbas() {
+    var query = $("#query").val();
+    var prev_query = query;
+    if ($('input#removenums').is(':checked')) {
+ //       $('input#removenums').attr('checked', false);
+ //       $("#query").val(prev_query);
+        console.log($('input#removenums').is(':checked'));
+    }
+//    } else {
+        query = query.replace(/\d+\./g, ""); 
+        query = query.replace(/\d+\s/g, ""); 
+        query = query.replace(/\d+#/g, ""); 
+        //only get non-whitespace lines
+        var lines = query.split(/\n/);
+        for (var i=0; i < lines.length; i++) {
+          if (/\S/.test(lines[i])) {
+            $("#query").val(query);
+          }
+        }
+        $('input#removenums').attr('checked', 'checked');
+  //  }
+}
 
 function magicSongExtractor() {
     /*
@@ -138,18 +178,6 @@ function editSearchTerm(lineNumber) {
     window.scrollTo(0, 0);
 }
 
-$("#query").bind("paste", function(){
-    var elem = $(this);
-
-    setTimeout(function() {
-        // gets the copied text after a specified time (100 milliseconds)
-        $('input#removenums').attr('checked', 'checked');
-        removeNumbas();
-        var text = elem.val(); 
-        console.log(text);
-    }, 100);
-});
-
 function getParameterByName(name) {
 	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -198,3 +226,15 @@ function findReplace() {
     $("#query").val(newqt);
     $("#query2").val($("#query").val());
 }
+var add = (function () {
+    var counter = 0;
+    return function () {return counter += 1;}
+})();
+
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();

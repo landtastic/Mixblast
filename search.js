@@ -110,7 +110,7 @@ function search(query,c) {
 }
 
 function cuePlayer() {
-	var i = add();
+	var i = add(); //(in advanced.js)
 	//check if the ytPlayer object is loaded
 	//if ($("#ytPlayer").is("iframe")) {
 	if (ytPlayer.cueVideoById) {
@@ -131,11 +131,6 @@ function cuePlayer() {
     	}
 	}
 }
-
-var add = (function () {
-    var counter = 0;
-    return function () {return counter += 1;}
-})();
 
 var searchnum;
 function multiSearch() {
@@ -359,9 +354,14 @@ $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle();
 	$('#player-container').slideToggle();
 });
+$("#closeAdvanced").click(function(){
+	$('#advanced-container').slideToggle();
+});
 
 $(document).keydown(function(e) {
+	//allow arrow keys if an input is focused
 	if($("input,textarea").is(":focus")) return; 
+
     switch(e.which) {
         case 37: nextVideo(false);// left
         break;
