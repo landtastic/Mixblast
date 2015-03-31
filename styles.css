@@ -226,7 +226,7 @@
 		padding-top:15px;
 		padding-bottom:15px;
 	}
-	#rss-button,#advanced,.infolink{
+	#advanced,.infolink,#frbutton{
 		height: 20px;
 		vertical-align: middle;
 		margin-top: 0px;
@@ -241,7 +241,7 @@
 	    cursor:pointer;
        	border-radius: 15px;
 	}
-	#rss-button:hover,#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover { 
+	#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover,#frbutton:hover { 
 		background-color: rgb(159, 150, 160);
 	}
 	#rss-dropdown{
@@ -249,12 +249,15 @@
     	border-radius: 5px;
 		background-color: rgba(255,255,255,0.7); 
 		font-size: 14px;
-		width:130px;
+		width:150px;
 	}
-	#rss-icon{
+	.rss-icon{
 		height: 16px;
 		width: 16px;
 		vertical-align: sub; 
+	}
+	#rss-button{
+		cursor:pointer;
 	}
 	#what {cursor:help; font-size:12px;}
 	.infolink {	    

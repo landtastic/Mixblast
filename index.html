@@ -34,7 +34,6 @@
 		<div class="subtext">Put a list of songs into the textbox below. </div>
 		
 			<div class='subsubtext'>
-				<img src="img/rss-icon.png" id="rss-icon" alt="rss">
 				<select id="rss-dropdown">
 				    <option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100</option>
 				    <option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/explicit=true/rss.xml">iTunes Top 100 New Releases</option>
@@ -44,24 +43,23 @@
 				    <option value="http://feeds.feedburner.com/realhotnewhiphop?format=xml">Hot New Hip Hop</option>
 				    <option value="http://feeds.feedburner.com/nah_right?format=xml">Nah Right</option>
 				    <option value="http://feeds.feedburner.com/SouthernSweetTea?format=xml">A Girl And Her Hip Hop</option>
-				    <option value="http://www.worldstarhiphop.com/videos/rss.php">World Star</option>
+				    <option value="http://www.worldstarhiphop.com/videos/rss.php">World Star Hip Hop</option>
 				    <option value="http://digitaldripped.com/rss">Digital Dripped</option>
 				    <option value="http://www.newjamz.net/rss/home">New Jamz.net</option>
-				    <option value="http://feeds.feedburner.com/nappyafro-feed">Nappy Afro</option>
 				    <option value="http://www.ihiphopmusic.com/feed">iHipHopMusic</option>
 				    <option value="http://feeds.feedburner.com/ughhblog">Underground Hip Hop Blog</option>
-				    <option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>
-				    <option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>
+				    <!--<option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>-->
+				    <!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
 				    <option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
 				    <option value="PUT_RSS_FEED_URL_HERE">Custom RSS</option>
-				</select> <button id="rss-button">Load</button> 
+				</select> <img src="img/rss-icon.png" class="rss-icon" id="rss-button" alt="rss" title="Load RSS">
 				<div class='advancedFloater'>
 				<div><button id="advanced">Advanced Options</button> <button class="infolink"></button></div>
 				</div>
 			</div>
 
 		<div id="advanced-container" style="display:none;">
-		<span style="font-size:130%" class="advanced-tips">Each line should be as simple as possible, e.g. "Artist - Song Title" or "Song Title Artist"</span><a id="closeAdvanced">x&nbsp;</a><hr>
+		<span style="font-size:130%" class="advanced-tips">Each line should be as simple as possible, e.g. <i>Artist - Song Title</i> or <i>Song Title Artist</i></span><a id="closeAdvanced">x&nbsp;</a><hr>
 		<input id="addartist"> Add artist name to each line <span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
 		Replace <input id="find"> with <input id="replace"> &nbsp;<input id="frbutton" type="button" value="GO"> <span class="advanced-tips">Tip: to remove a word, replace it with nothing</span><hr>
 		<input type="checkbox" id="removenums"> Remove numbers from list <span class="advanced-tips">(Numbered lists aren't good for searching)</span><hr>

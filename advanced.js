@@ -206,10 +206,21 @@ function parseXml(data) {
 			var searchTerm = e.link.substr(e.link.lastIndexOf("/") + 1);
 			searchTerm = searchTerm.replace(/[-]/g," ");
 			searchTerm = searchTerm.substring(0, searchTerm.indexOf('.'));
-		} else {
+        } else if (rssfeed.indexOf('hotnewhiphop') >= 0) {
+            if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerm = e.title; searchTerm = searchTerm.replace('Video',''); }
+        } else if (rssfeed.indexOf('nah_right') >= 0) {
+            searchTerm = e.title.replace(/Video: |Audio:/g,'');
+        } else if (rssfeed.indexOf('SouthernSweetTea') >= 0) {
+            searchTerm = e.title.replace(/Video: |Audio: |Mixtape: |EP: /g,''); searchTerm = $.trim(searchTerm);
+        } else if (rssfeed.indexOf('worldstar') >= 0) {
+            if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerm = e.title; searchTerm = searchTerm.replace('Video',''); }
+        } else {
 			var searchTerm = e.title;
 		}
-		$("#query").val($("#query").val()+searchTerm+'\r');
+
+        if (searchTerm) {
+            $("#query").val($("#query").val()+searchTerm+'\r');
+        }
 	});
 }
 function loadRSS(rssfeedurl) {
@@ -230,6 +241,7 @@ function loadRSS(rssfeedurl) {
         var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?rss="+rssfeed;
         window.history.pushState({path:newurl},'',newurl);
     }
+    $('#rss-dropdown').val(rssfeed);
 }
 function findReplace() {
     var find = $("#find").val();
