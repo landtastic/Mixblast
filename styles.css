@@ -192,15 +192,12 @@
 		margin-bottom: 5px;
 	}
 	.subtext {
-		font-size:16px; 
 		font-weight:normal; 
-		margin-bottom: 22px;
   		margin-top: 10px;
 		width:600px;
 	}
 	.subsubtext {
-		float: right;
-		font-size:smaller;  
+		/*font-size:smaller;  */
 		margin-top:auto;
 	    margin-left: auto; 
 	    margin-right: 2px;
@@ -208,26 +205,28 @@
 	}
 	
 	.advancedFloater {
-		text-align: right;
+	    text-align: justify;
+	    -ms-text-justify: distribute-all-lines;
+	    text-justify: distribute-all-lines;
 		margin: 0px 0px 10px 0px;
+		width:100%;
 	}
-
 	#what {cursor:help; font-size:12px;}
 	.infolink::before
 	{
 	    content: '?';
 	    font-size: 90%;
 	    font-family: sans-serif;
-	    vertical-align: middle;
+	    vertical-align: top;
 	    font-weight: bold;
 	    text-align: center;
 	    line-height:1;
 	    display: inline-block;
-	    width: 1.8ex;
-	    height: 1.8ex;
+	    width: 1.9ex;
+	    height: 1.9ex;
 	    border-radius: 1ex;
-	    color: white;
-	    border: thin solid white;
+	    color: black;
+	    border: thin solid black;
 	    cursor:help;
 	}
 
@@ -247,6 +246,29 @@
 		
 		padding-top:15px;
 		padding-bottom:15px;
+	}
+	#rss-button,#advanced,.infolink{
+		height: 20px;
+		vertical-align: middle;
+		margin-top: 0px;
+		font-size:13px;
+		background-color: rgb(179, 170, 180);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+		          0 2px 8px -1px rgba(0, 0, 0, .5),
+		          0 1px 0 rgba(255, 255, 255, .3) inset;
+		text-shadow: 0 1px 0 rgba(255,255,255, .5);  
+		padding     : 0px 10px 0px 10px;
+		border      : 0;
+	    cursor:pointer;
+       	border-radius: 15px;
+	}
+	#rss-button:hover,#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover { 
+		background-color: rgb(159, 150, 160);
+	}
+	#rss-icon{
+		height: 16px;
+		width: 16px;
+		vertical-align: bottom; 
 	}
 	#search-button,#playlist-button {
 		height: 52px;

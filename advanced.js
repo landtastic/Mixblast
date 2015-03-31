@@ -1,13 +1,17 @@
-var demoOn = false;
-$("#demolink").click(function(){
-    showDemo(); 
-});
 $("#advanced").click(function(){
     $('#advanced-container').slideToggle();
     //hidden query textarea, fill with data to manipulate
     $("#query2").val($("#query").val());
 });
-
+$(".infolink").click(function(){
+    what();
+});
+$("#rss-dropdown").change(function() {
+    loadRSS($(this).val());
+});
+$("#rss-button").click(function() {
+    loadRSS($('#rss-dropdown').find(":selected").val());
+});
 $('#addartist').focusout(function() {
     $("#query2").val($("#query").val());
 });
@@ -25,7 +29,6 @@ $("#addartist_button").click(function(){
         //newquery_arr.push(newartist + $.trim(item));
     });
 });
-
 $("#frbutton").click(function(){
     findReplace();
 });
@@ -104,6 +107,11 @@ function magicSongExtractor() {
     */
 }
 
+function what() {
+    alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist.\n\nCopy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nWelp, see ya later.')
+}
+
+var demoOn = false;
 function showDemo(){
     var demoarray = ["Booty work - t-pain", "Legowelt Memphis Rap Mix II The Legend Continues", "Led Zeppelin - The Ocean", "Ty$ - The Man", "little black egg the nightcrawlers", "Dr. Dre - The Next Episode", "Love - The Red Telephone", 
     "Bangladesh - 100", "the velvet underground & nico full album", "cool reggae chameleon (extended mix)", "Wamp Wamp ft Slim Thug    Clipse", "Feelies - Crazy Rhythms -album", "hologram - the urinals", "Blow the Whistle  Too Short", 
@@ -185,21 +193,13 @@ function getParameterByName(name) {
 	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+//load rss from querystring on load
 $(document).ready(function () {
-	var rssfeed = getParameterByName('rss');
-	if (rssfeed != '') {
-		$.ajax({
-			type: 'GET',
-			url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&output=json&q='+rssfeed,
-			crossDomain: true,
-			dataType: 'jsonp',
-			success: parseXml
-		});
-	}
+    rssfeed = getParameterByName('rss');
+    if (rssfeed) loadRSS(rssfeed);
 });
 
 function parseXml(data) {
-	var rssfeed = getParameterByName('rss');
 	$("#query").val("");
 	$.each(data.responseData.feed.entries, function (i, e) {
 		if (rssfeed == 'http://digitaldripped.com/rss') {
@@ -212,7 +212,24 @@ function parseXml(data) {
 		$("#query").val($("#query").val()+searchTerm+'\r');
 	});
 }
+function loadRSS(rssfeed) {
+    //rssfeed = rssurl || rssfeed;
+    console.log(rssfeed);
+    if (rssfeed==''||rssfeed==undefined||!rssfeed) return;
 
+    $.ajax({
+        type: 'GET',
+        url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&output=json&q='+rssfeed,
+        crossDomain: true,
+        dataType: 'jsonp',
+        success: parseXml
+    });
+
+    if (history.pushState) {
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?rss="+rssfeed;
+        window.history.pushState({path:newurl},'',newurl);
+    }
+}
 function findReplace() {
     var find = $("#find").val();
     var find = new RegExp(find, "gi");

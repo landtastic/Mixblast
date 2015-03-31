@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Mixblast - Text Lists To Playlists, Right In Your Browser "You'll Have a Blast!"</title>
+    <title>Mixblast - Text Lists To Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
   </head>
   <body>
   	<span class="gradient-background"></span>
@@ -31,10 +31,19 @@
 	  </div>
 	  <div id="text-container">
 	   <div><h1>Make a playlist fast with Mixblast</h1></div>
-		<div class="subtext">Put a list of songs into the textbox below. 
-			<div class='advancedFloater'>
-				<div class='subsubtext'><a href="javascript:void(0);" id="demolink">Demo</a> | <a href="javascript:void(0);" id="advanced">Advanced Options</a> | <a class="infolink" href="javascript:alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist.\n\nTry copy and pasting a plain list of text, like someone\'s top 100 songs list. Now we\'re talkin\'. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it.\n\nThe demo link will give you some random songs to try.\n\nWelp, see ya later.')"></a>
-				</div>
+		<div class="subtext">Put a list of songs into the textbox below. </div>
+		<div class='advancedFloater'>
+			<div class='subsubtext'>
+				<img src="img/rss-icon.png" id="rss-icon" alt="rss">
+				<select id="rss-dropdown">
+				    <option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
+				    <option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/explicit=true/rss.xml">iTunes Top 100 New Releases</option>
+				    <option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
+				    <option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
+				    <option value="http://feeds.feedburner.com/hiphopearly">Hip Hop Early</option>
+				</select> <button id="rss-button">Load Songs</button> 
+				<!--<a href="javascript:void(0);" id="demolink">Demo</a> | -->
+				<button id="advanced">Advanced Options</button> <button class="infolink"></button>
 			</div>
 		</div>
 		<div id="advanced-container" style="display:none;">
@@ -100,6 +109,7 @@
 
 		ga('create', 'UA-45908619-1', 'auto');
 		ga('send', 'pageview');
+		setTimeout("ga('send','event','Profitable Engagement','time on page more than 20 seconds')",20000);
 		</script>
 	    </div>
 	</div>
