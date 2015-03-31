@@ -202,7 +202,7 @@ $(document).ready(function () {
 function parseXml(data) {
 	$("#query").val("");
 	$.each(data.responseData.feed.entries, function (i, e) {
-		if (rssfeed == 'http://digitaldripped.com/rss') {
+		if (rssfeed.indexOf('digitaldripped') >= 0) {
 			var searchTerm = e.link.substr(e.link.lastIndexOf("/") + 1);
 			searchTerm = searchTerm.replace(/[-]/g," ");
 			searchTerm = searchTerm.substring(0, searchTerm.indexOf('.'));
@@ -215,6 +215,7 @@ function parseXml(data) {
 function loadRSS(rssfeed) {
     //rssfeed = rssurl || rssfeed;
     console.log(rssfeed);
+    rssfeed = rssfeed;
     if (rssfeed==''||rssfeed==undefined||!rssfeed) return;
 
     $.ajax({
