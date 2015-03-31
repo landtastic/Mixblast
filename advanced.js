@@ -1,3 +1,9 @@
+//load rss from querystring on load
+$(document).ready(function () {
+    rssfeed = getParameterByName('rss');
+    if (rssfeed) loadRSS(rssfeed);
+});
+
 $("#advanced").click(function(){
     $('#advanced-container').slideToggle();
     //hidden query textarea, fill with data to manipulate
@@ -193,12 +199,6 @@ function getParameterByName(name) {
 	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-//load rss from querystring on load
-$(document).ready(function () {
-    rssfeed = getParameterByName('rss');
-    if (rssfeed) loadRSS(rssfeed);
-});
-
 function parseXml(data) {
 	$("#query").val("");
 	$.each(data.responseData.feed.entries, function (i, e) {
@@ -212,10 +212,10 @@ function parseXml(data) {
 		$("#query").val($("#query").val()+searchTerm+'\r');
 	});
 }
-function loadRSS(rssfeed) {
+function loadRSS(rssfeedurl) {
     //rssfeed = rssurl || rssfeed;
+    rssfeed = rssfeedurl;
     console.log(rssfeed);
-    rssfeed = rssfeed;
     if (rssfeed==''||rssfeed==undefined||!rssfeed) return;
 
     $.ajax({
