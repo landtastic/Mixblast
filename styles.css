@@ -80,11 +80,14 @@
 	    padding: 8px;
 	    margin: 5px;
 	}
+	#queryarea {
+		position:relative;
+	}
 	.closebutton{
 	    display:block;
-	    position:relative;
-  		top: -420px;
-	  	left: 540px;
+	    position:absolute;
+		top: 0px;
+    	right: 22px;
 	    width:27px;
 	    height:27px;
 	    background:url('img/close-button.png') no-repeat center center;
@@ -160,6 +163,7 @@
 		-webkit-filter: invert(100%);
 		filter:invert(100%); 
 	}
+	#shufflebutton { opacity: 0.2; }
 	.buttonwrapper {   
 		width:600px;
 		font-size:19px;
@@ -249,7 +253,7 @@
     	border-radius: 5px;
 		background-color: rgba(255,255,255,0.7); 
 		font-size: 14px;
-		width:150px;
+		width:165px;
 	}
 	.rss-icon{
 		height: 16px;
@@ -259,30 +263,31 @@
 	#rss-button{
 		cursor:pointer;
 	}
-	#what {cursor:help; font-size:12px;}
 	.infolink {	    
 		padding-left:5px;
 	    padding-right:5px;
+	    cursor:help;
 	}
 	.infolink::before
 	{
 	    content: '?';
-	    font-size: 85%;
+	    font-size: 90%;
 	    font-family: sans-serif;
-	    vertical-align: top;
 	    font-weight: bold;
 	    text-align: center;
 	    line-height:1;
 	    display: inline-block;
 	    width: 1.9ex;
 	    height: 1.9ex;
+	    /*
+   	    vertical-align: initial;
 	    border-radius: 1ex;
 	    color: black;
 	    border: thin solid black;
-	    cursor:help;
+	    */
 	}
 
-	.infolink:hover::before
+	.infolink_removed:hover::before
 	{
 	    color: white;
 	    background: black;
@@ -306,6 +311,7 @@
        	border-radius: 15px;
 
 	}
+	#search-button { margin-top:10px;}
 
 	#playlist-title,#playlist-url-copy {
 		width: 575px;
@@ -319,6 +325,9 @@
 	}
 	.advanced-tips {
 		color: #000;
+	}
+	.row-bg {
+		background-color: rgba(255,255,255,0.2);
 	}
 	#fileinput {
 		color: black;
@@ -381,9 +390,6 @@
 	    font-size: 120%;
 	    width: 2ex;
 	    height: 2ex;
-	}
-		.closebutton{
-  		top: -645px;
 	}
 
 }

@@ -170,6 +170,7 @@ function multiSearch() {
 		if(x==searchnum) {
 			//ready the playlist button
 			$('#playlist-button').attr('disabled', false);
+			$("#shufflebutton").removeClass("disabled");
 			clearTimeout(timerId);
 		}
 	})();
@@ -261,6 +262,15 @@ function loadVid(vidId) {
 
 $("#shufflebutton").click(function(){
 
+	if ($('#shufflebutton').hasClass('disabled')) {
+		console.log("hascllass");
+		e.preventDefault();
+		return false;
+	} else {
+		shuffleIt();
+	}
+});
+function shuffleIt() {
 	$("#search-container").empty();
 	if (searchcount>1) vidcount = 0;
 
@@ -296,8 +306,8 @@ $("#shufflebutton").click(function(){
 			};
 		}
 	}
+}
 
-});
 function shuffle(o){ 
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
@@ -388,6 +398,7 @@ $(document).ready(function() {
 	//hide playlist url until button is clicked
 	$("#playlist-url").hide();
 	$(".closebutton").hide();
+	$("#shufflebutton").addClass("disabled");
 
 	//load query 2 for manipulating text
 	$("#query2").val($("#query").val());
