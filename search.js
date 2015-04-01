@@ -263,8 +263,7 @@ function loadVid(vidId) {
 $("#shufflebutton").click(function(){
 
 	if ($('#shufflebutton').hasClass('disabled')) {
-		console.log("hascllass");
-		e.preventDefault();
+		//e.preventDefault();
 		return false;
 	} else {
 		shuffleIt();

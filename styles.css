@@ -86,7 +86,7 @@
 	.closebutton{
 	    display:block;
 	    position:absolute;
-		top: 0px;
+		top: 3px;
     	right: 22px;
 	    width:27px;
 	    height:27px;
@@ -163,7 +163,14 @@
 		-webkit-filter: invert(100%);
 		filter:invert(100%); 
 	}
-	#shufflebutton { opacity: 0.2; }
+	#shufflebutton {  }
+	.disabled { opacity: 0.2; }
+	.disabled:hover { 
+		cursor:not-allowed;  
+		opacity:0.2!important;
+		-webkit-filter: invert(0%)!important;
+		filter:invert(0%)!important; 
+	}
 	.buttonwrapper {   
 		width:600px;
 		font-size:19px;
@@ -371,26 +378,28 @@
  /* iPhone 6*/
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
 
-
 	#body-container { 
 		padding-left:10px!important; 
 		padding-right: 20px!important;
 
 	}
-	textarea#query,input,button {
+	textarea#query,#playlist-title {
 		font-size: 160%!important;
 	}
-	#search-button, #playlist-button{
-		font-size: 140%;
+	textarea#query:focus { font-size: 160%!important}
+
+	#search-button, #playlist-button {
+		font-size: 160%;
 		height: 80px;
 	}
+	#rss-dropdown, #advanced, .infolink{ 
+		font-size: 160%!important; 
+		height: 40px;
+	}
+	#rss-dropdown { width:240px;}
+	.rss-icon { height: 30px; width: 30px; vertical-align: middle;}
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
-	.infolink::before {
-	    font-size: 120%;
-	    width: 2ex;
-	    height: 2ex;
-	}
 
 }
 
