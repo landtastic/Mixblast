@@ -277,12 +277,11 @@ $("#shufflebutton").click(function(){
 		prev_vidObjArray = jQuery.extend(true, {}, vidObjArray);
 		//console.log('new prev obj:'+prev_vidObjArray);
 	}
-	
-	topvIdArray.length = 0;
-
+	//clear out top arrays
+	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	for (var c = 0; c < shuffleindex; c++) {
 		var randumb_num = shuffled_idArr[c];
-
+		//push new top arrays
 		topvIdArray.push(prev_vidObjArray[randumb_num].vid[0]);
 		topvTitleArray.push(prev_vidObjArray[randumb_num].title[0]);
 		topvThumbArray.push(prev_vidObjArray[randumb_num].thumb[0]);
