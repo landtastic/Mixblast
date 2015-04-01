@@ -181,12 +181,11 @@ document.getElementById('fileinput').addEventListener('change', readMultipleFile
 
 
 function editSearchTerm(lineNumber) {
-	$("#text-container" ).slideToggle();
-	$('#player-container').slideToggle();
+	$("#text-container" ).slideToggle("fast");
+	$('#player-container').slideToggle("fast");
 	$(".closebutton").show();
 	
     var input = $("#query");
-    //var lineHeight = parseInt($textarea.css('line-height'));
     var lineHeight = 1.14;
     input.scrollTop(lineNumber * lineHeight);
     window.scrollTo(0, 0);
@@ -224,9 +223,7 @@ function parseXml(data) {
 	});
 }
 function loadRSS(rssfeedurl) {
-    //rssfeed = rssurl || rssfeed;
     rssfeed = rssfeedurl;
-    console.log(rssfeed);
     if (rssfeed==''||rssfeed==undefined||!rssfeed) return;
 
     $.ajax({

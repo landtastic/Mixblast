@@ -136,9 +136,9 @@ var searchnum;
 function multiSearch() {
 
 	//hide text form
-	$("#text-container" ).toggle();
+	$("#text-container" ).slideToggle("fast");
 	//show video player
-	$('#player-container').toggle();
+	$('#player-container').slideToggle("fast");
 	//erase previous search
 	$( "#search-container" ).empty();
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
@@ -359,8 +359,8 @@ $("#editplaylist").click(function(){
 	editSearchTerm(0);
 });
 $(".closebutton").click(function(){
-	$("#text-container" ).slideToggle();
-	$('#player-container').slideToggle();
+	$("#text-container" ).slideToggle("fast");
+	$('#player-container').slideToggle("fast");
 });
 $("#closeAdvanced").click(function(){
 	$('#advanced-container').slideToggle();
