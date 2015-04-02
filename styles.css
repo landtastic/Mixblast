@@ -318,7 +318,7 @@
        	border-radius: 15px;
 
 	}
-	#search-button { margin-top:10px;}
+	#search-button { margin-top:10px; margin-bottom: 30px;}
 
 	#playlist-title,#playlist-url-copy {
 		width: 575px;

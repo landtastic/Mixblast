@@ -363,7 +363,7 @@ $(".closebutton").click(function(){
 	$('#player-container').slideToggle("fast");
 });
 $("#closeAdvanced").click(function(){
-	$('#advanced-container').slideToggle();
+	$('#advanced-container').slideToggle("fast");
 });
 
 $(document).keydown(function(e) {

@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 $("#advanced").click(function(){
-    $('#advanced-container').slideToggle();
+    $('#advanced-container').slideToggle("fast");
     //hidden query textarea, fill with data to manipulate
     $("#query2").val($("#query").val());
 });
@@ -45,6 +45,7 @@ $("#removenums").click(function(){
 $("#removeparenths").click(function(){
     var query = $("#query").val();
     query = query.replace(/ *\([^)]*\) */g, "");
+    query = query.replace(/\[.*\] /g, "");
     $("#query").val(query);
 });
 $("#magic").click(function(){
