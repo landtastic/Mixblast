@@ -399,9 +399,6 @@ $(document).ready(function() {
 	$(".closebutton").hide();
 	$("#shufflebutton").addClass("disabled");
 
-	//load query 2 for manipulating text
-	$("#query2").val($("#query").val());
-
  	//autosave
 	// Retrieve the object from storage onReady
 	var autosave = localStorage.getItem('mixfile');

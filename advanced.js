@@ -2,12 +2,17 @@
 $(document).ready(function () {
     rssfeed = getParameterByName('rss');
     if (rssfeed) loadRSS(rssfeed);
-});
 
+    //load hidden query 2 textarea for manipulating text
+    $("#query2").val($("#query").val());
+    prevtext_removenum = $("#query").val();
+    prevtext_removepar = $("#query").val();
+});
 $("#advanced").click(function(){
     $('#advanced-container').slideToggle("fast");
-    //hidden query textarea, fill with data to manipulate
     $("#query2").val($("#query").val());
+    prevtext_removenum = $("#query").val();
+    prevtext_removepar = $("#query").val();
 });
 $(".infolink").click(function(){
     what();
@@ -21,7 +26,7 @@ $("#rss-button").click(function() {
 $('#addartist').focusout(function() {
     $("#query2").val($("#query").val());
 });
-var query2 = $("#query2"); 
+
 var newartist = $("#addartist");   
 $('#addartist').keyup(function() {
     addArtist();
@@ -38,33 +43,36 @@ $("#addartist_button").click(function(){
 $("#frbutton").click(function(){
     findReplace();
 });
-
 $("#removenums").click(function(){
     removeNumbas();
 });
 $("#removeparenths").click(function(){
-    var query = $("#query").val();
-    query = query.replace(/ *\([^)]*\) */g, "");
-    query = query.replace(/\[.*\] /g, "");
-    $("#query").val(query);
+    removeParentheticals();
 });
 $("#magic").click(function(){
     magicSongExtractor();
 });
 
+//do stuff on paste
 $("#query").bind("paste", function(){
     var elem = $(this);
-
     setTimeout(function() {
-        // gets the copied text after a specified time (100 milliseconds)
-        $('input#removenums').attr('checked', 'checked');
+        //populate query2
+        $("#query2").val(text);
+        prevtext_removenum = text;
+        prevtext_removepar = text;
+        $('input#removenums').prop('checked', true);
         removeNumbas();
+        $('input#removeparenths').prop('checked', true);
+        removeParentheticals();
+
         var text = elem.val(); 
         console.log(text);
     }, 100);
 });
 
 function addArtist() {
+    var query2 = $("#query2"); 
     var arrayOfLines = query2.val().split("\n");
     //var newquery = '';
     var newquery_arr = [];
@@ -84,13 +92,7 @@ function addArtist() {
 
 function removeNumbas() {
     var query = $("#query").val();
-    var prev_query = query;
     if ($('input#removenums').is(':checked')) {
- //       $('input#removenums').attr('checked', false);
- //       $("#query").val(prev_query);
-        console.log($('input#removenums').is(':checked'));
-    }
-//    } else {
         query = query.replace(/\d+\./g, ""); 
         query = query.replace(/\d+\s/g, ""); 
         query = query.replace(/\d+#/g, ""); 
@@ -101,8 +103,26 @@ function removeNumbas() {
             $("#query").val(query);
           }
         }
-        $('input#removenums').attr('checked', 'checked');
-  //  }
+    } else {
+        $("#query").val(prevtext_removenum);
+    }
+}
+
+function removeParentheticals() {
+    var query = $("#query").val();
+    if ($('input#removeparenths').is(':checked')) {
+        query = query.replace(/ *\([^)]*\) */g, " ");
+        query = query.replace(/\[.*?\]/g, "");
+        //only get non-whitespace lines
+        var lines = query.split(/\n/);
+        for (var i=0; i < lines.length; i++) {
+          if (/\S/.test(lines[i])) {
+            $("#query").val(query);
+          }
+        }
+    } else {
+        $("#query").val(prevtext_removepar);
+    }
 }
 
 function magicSongExtractor() {
@@ -201,6 +221,8 @@ function getParameterByName(name) {
 
 function parseXml(data) {
 	$("#query").val("");
+    var stripNums = false;
+    var stripParen = false;
 	$.each(data.responseData.feed.entries, function (i, e) {
 		if (rssfeed.indexOf('digitaldripped') >= 0) {
 			var searchTerm = e.link.substr(e.link.lastIndexOf("/") + 1);
@@ -214,14 +236,29 @@ function parseXml(data) {
             searchTerm = e.title.replace(/Video: |Audio: |Mixtape: |EP: /g,''); searchTerm = $.trim(searchTerm);
         } else if (rssfeed.indexOf('worldstar') >= 0) {
             if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerm = e.title; searchTerm = searchTerm.replace('Video',''); }
+        } else if (rssfeed.indexOf('tinymixtapes') >= 0) {
+            stripNums = true; stripParen = true;
+            searchTerm = e.content;
+            var lines = searchTerm.split('\n');
+            var cleanlines = [];
+            console.log(lines);
+            //lines.splice(0,3);
+            $.each(lines, function(i, item) {
+               if (item.indexOf('- ') >= 0) {
+                cleanlines.push(item.replace(/<br>/g,'').replace(/<p>/g,'').replace(/<\/p>/g,'\n'));
+               }
+            });
+            searchTerm = cleanlines.join('\n');
         } else {
-			var searchTerm = e.title;
+			searchTerm = e.title;
 		}
 
         if (searchTerm) {
             $("#query").val($("#query").val()+searchTerm+'\r');
         }
 	});
+    if (stripNums) { $('input#removenums').prop('checked', true); removeNumbas(); }
+    if (stripParen) { $('input#removeparenths').prop('checked', true); removeParentheticals(); }
 }
 function loadRSS(rssfeedurl) {
     rssfeed = rssfeedurl;
