@@ -241,7 +241,6 @@ function parseXml(data) {
             searchTerm = e.content;
             var lines = searchTerm.split('\n');
             var cleanlines = [];
-            console.log(lines);
             //lines.splice(0,3);
             $.each(lines, function(i, item) {
                if (item.indexOf('- ') >= 0) {
