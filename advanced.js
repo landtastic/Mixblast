@@ -93,8 +93,8 @@ function addArtist() {
 function removeNumbas() {
     var query = $("#query").val();
     if ($('input#removenums').is(':checked')) {
-        //query = query.replace(/\d+\./g, ""); 
-        query = query.replace(/^[\d+\.]/g, ""); 
+        query = query.replace(/\d+\./g, ""); 
+        //query = query.replace(/^[\d+\.]/g, ""); 
         query = query.replace(/\d+\s/g, ""); 
         query = query.replace(/\d+#/g, ""); 
         //only get non-whitespace lines
