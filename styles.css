@@ -101,7 +101,6 @@
 		color:#000;
 		font-size:16px;
 		float:right;
-		text-align: top;
 		cursor:pointer;
 		text-decoration: none;
 	}
@@ -339,7 +338,6 @@
 	.advanced-tips-title {
 		color: #000;
 		font-size:130%;
-		vertical-align: sub;
 	}
 	.row-bg {
 		background-color: rgba(255,255,255,0.3);
@@ -348,6 +346,7 @@
 		color: black;
 		font-size:12px;
 		padding-top:0px;
+		padding-bottom:0px;
 		width: 180px!important;
 	}
 	#addartist,#find,#replace,#frbutton {
