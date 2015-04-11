@@ -157,13 +157,12 @@
 	}
 	#prevb, #nextb, #playpb { height:50px;margin-top:10px;}
 	#shuffb { height: 70px;}
-	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover {
+	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover {
 		opacity:1.0;
 		color:white;
 		-webkit-filter: invert(100%);
 		filter:invert(100%); 
 	}
-	#shufflebutton {  }
 	.disabled { opacity: 0.2; }
 	.disabled:hover { 
 		cursor:not-allowed;  
@@ -262,14 +261,18 @@
 		font-size: 14px;
 		width:165px;
 	}
-	.rss-icon{
-		height: 16px;
-		width: 16px;
-		vertical-align: middle; 
-	}
 	#rss-button{
+		height: 18px;
+		width: 18px;
+		vertical-align: middle; 
 		cursor:pointer;
 	}
+	#shuffletext {
+		height: 24px;
+		width: 24px;
+		vertical-align: middle; 
+		cursor:pointer;
+	 }
 	.infolink {	    
 		padding-left:5px;
 	    padding-right:5px;
@@ -402,7 +405,7 @@
 		height: 40px;
 	}
 	#rss-dropdown { width:240px;}
-	.rss-icon { height: 30px; width: 30px; vertical-align: initial;}
+	#rss-button { height: 30px; width: 30px; vertical-align: middle;}
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
 

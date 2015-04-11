@@ -45,12 +45,13 @@
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=11/explicit=true/xml">iTunes Jazz Top 100</option>
 					<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/explicit=true/rss.xml">iTunes New Releases Top 100</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=14/explicit=true/xml">iTunes Pop Top 100</option>
-					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=15/explicit=true/xml">iTunes R&B/Soul Top 100</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=24/explicit=true/xml">iTunes Reggae Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
 					<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
 					<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
+					<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>
 				    <option value="http://feeds.feedburner.com/hiphopearly">Hip Hop Early</option>
 				    <option value="http://feeds.feedburner.com/realhotnewhiphop?format=xml">Hot New Hip Hop</option>
 				    <option value="http://feeds.feedburner.com/nah_right?format=xml">Nah Right</option>
@@ -64,9 +65,10 @@
 				    <!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
 				    <option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
 				    <option value="PUT_RSS_FEED_URL_HERE">Custom RSS</option>
-				</select> <img src="img/rss-icon.png" class="rss-icon" id="rss-button" alt="rss" title="Load RSS">
+				</select> <img src="img/rss-icon.png" id="rss-button" alt="rss" title="Load RSS">
+				 &nbsp; <img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">
 				<div class='advancedFloater'>
-				<div><button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button></div>
+				<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
 				</div>
 			</div>
 		<div id="advanced-container" style="display:none;">
@@ -114,13 +116,13 @@
 		<br>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="http://www.youtube.com/iframe_api"></script>
-	    <script src="auth.js"></script>
+		<script src="auth.js"></script>
 		<script src="search.js"></script>
 		<script src="advanced.js"></script>
-	    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-	    <script src="playlist_updates.js"></script>
-	    <script src="gradbg.js"></script>
-	    <script>
+		<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+		<script src="playlist_updates.js"></script>
+		<script src="gradbg.js"></script>
+		<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

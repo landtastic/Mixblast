@@ -259,7 +259,14 @@ function loadVid(vidId) {
 	ytPlayer.loadVideoById(vidId);
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
+$("#shuffletext").click(function(){
+	var lines = $('#query').val().split("\n");
+	shuffle(lines);
+	var randomlines = lines.join("\n");
+	//randomlines = randomlines.replace(/^(\r\n)|(\n)/,'');
+	$('#query').val(randomlines);
 
+});
 $("#shufflebutton").click(function(){
 
 	if ($('#shufflebutton').hasClass('disabled')) {
@@ -290,12 +297,21 @@ function shuffleIt() {
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	for (var c = 0; c < shuffleindex; c++) {
 		var randumb_num = shuffled_idArr[c];
+		console.log(randumb_num);
+		//make sure this isn't undefined
+		if (prev_vidObjArray[randumb_num]) {
+			var shId=prev_vidObjArray[randumb_num].vid[0];
+			var shTitle=prev_vidObjArray[randumb_num].title[0];
+			var shThumb=prev_vidObjArray[randumb_num].thumb[0]; 
+		} else {
+			var shId="Not Found",shTitle="Not Found.",shThumb="img/notfound.png"; 
+		}
 		//push new top arrays
-		topvIdArray.push(prev_vidObjArray[randumb_num].vid[0]);
-		topvTitleArray.push(prev_vidObjArray[randumb_num].title[0]);
-		topvThumbArray.push(prev_vidObjArray[randumb_num].thumb[0]);
+		topvIdArray.push(shId);
+		topvTitleArray.push(shTitle);
+		topvThumbArray.push(shThumb);
 
-		renderPlaylist(c,prev_vidObjArray[randumb_num].thumb[0],prev_vidObjArray[randumb_num].vid[0],prev_vidObjArray[randumb_num].title[0]);
+		renderPlaylist(c,shThumb,shId,shTitle);
 
 		for (var xx = 0; xx < prev_vidObjArray[0].vid.length; xx++) { 
 			vidObjArray[c] = {
@@ -400,18 +416,13 @@ $(document).ready(function() {
 	$("#shufflebutton").addClass("disabled");
 
  	//autosave
-	// Retrieve the object from storage onReady
 	var autosave = localStorage.getItem('mixfile');
-	// parses the string (btw. its UTF-8)
 	var mixtext = JSON.parse(autosave);
-	//modifies the textarea with the id="inputTextArea" 
 	$("#query").val(mixtext);
-	// Autosave on keystroke works in offline mode
 	//$("#query").change (function(){  //this worked for textarea
 	$("#query").blur(function() {
 		 // pulls the value from the textarea (made it global var)
 	 	mixfile = $('#query').val();
-	 	// sets the file string to hold the data
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 	console.log(mixfile);
 	});

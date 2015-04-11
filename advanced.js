@@ -93,7 +93,8 @@ function addArtist() {
 function removeNumbas() {
     var query = $("#query").val();
     if ($('input#removenums').is(':checked')) {
-        query = query.replace(/\d+\./g, ""); 
+        //query = query.replace(/\d+\./g, ""); 
+        query = query.replace(/^[\d+\.]/g, ""); 
         query = query.replace(/\d+\s/g, ""); 
         query = query.replace(/\d+#/g, ""); 
         //only get non-whitespace lines
@@ -112,7 +113,7 @@ function removeParentheticals() {
     var query = $("#query").val();
     if ($('input#removeparenths').is(':checked')) {
         query = query.replace(/ *\([^)]*\) */g, " ");
-        query = query.replace(/\[.*?\]/g, "");
+        query = query.replace(/\[.*?\]/g, " ");
         //only get non-whitespace lines
         var lines = query.split(/\n/);
         for (var i=0; i < lines.length; i++) {
