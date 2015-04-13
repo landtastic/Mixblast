@@ -2,7 +2,7 @@
 $(document).ready(function () {
     rssfeed = getParameterByName('rss');
     if (rssfeed) loadRSS(rssfeed);
-
+    
     //load hidden query 2 textarea for manipulating text
     $("#query2").val($("#query").val());
     prevtext_removenum = $("#query").val();

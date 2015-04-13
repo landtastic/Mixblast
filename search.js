@@ -7,6 +7,8 @@ var searchcount = 0;
 
 function onPlayerReady() {
 	$("#search-button").html('Blast a Mix');
+  	//if rss url in querystring, automate click
+  	if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
 function onPlayerError(event){
      console.log('Error: '+event.data);
@@ -37,7 +39,7 @@ function handleAPILoaded() {
   onYouTubeIframeAPIReady_removed_callback();
 }
 
-//change the name of this function so iframe api doesn't callback
+//changed the name of this function so iframe api doesn't callback
 function onYouTubeIframeAPIReady_removed_callback() {
     ytPlayer = new YT.Player('ytPlayer', { 
     	height: '368',
@@ -115,7 +117,6 @@ function cuePlayer() {
 	//if ($("#ytPlayer").is("iframe")) {
 	if (ytPlayer.cueVideoById) {
 		ytPlayer.cueVideoById(topvIdArray[0]);
-		//console.log('heyyyy, it\'s a frame.'+i)
 	} else {
 		//check for it 5x if it isn't
 		var tag = document.createElement('script');
@@ -262,7 +263,11 @@ function loadVid(vidId) {
 $("#shuffletext").click(function(){
 	var lines = $('#query').val().split("\n");
 	shuffle(lines);
-	var randomlines = lines.join("\n");
+	//var randomlines = lines.join("\n");
+	var randomlines;
+	for (var i = 0; i < lines.length; i++) {
+    	randomlines =+ "\n";
+	}
 	//randomlines = randomlines.replace(/^(\r\n)|(\n)/,'');
 	$('#query').val(randomlines);
 
@@ -297,7 +302,6 @@ function shuffleIt() {
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	for (var c = 0; c < shuffleindex; c++) {
 		var randumb_num = shuffled_idArr[c];
-		console.log(randumb_num);
 		//make sure this isn't undefined
 		if (prev_vidObjArray[randumb_num]) {
 			var shId=prev_vidObjArray[randumb_num].vid[0];
@@ -413,7 +417,6 @@ $(document).ready(function() {
 	//hide playlist url until button is clicked
 	$("#playlist-url").hide();
 	$(".closebutton").hide();
-	$("#shufflebutton").addClass("disabled");
 
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
@@ -428,6 +431,7 @@ $(document).ready(function() {
 	});
 	$("#search-button").click(function(){
 		multiSearch();
+		$("#shufflebutton").addClass("disabled");
 	 	mixfile = $('#query').val();
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 	console.log(mixfile);
