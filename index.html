@@ -15,7 +15,6 @@
   <body>
   	<span class="gradient-background"></span>
 	<div id="body-container">
-	  <a href="/mixblast"><img id="logo" src="img/mixblast-logo4.png" alt="Mixblast"></a>
 	  <div id="player-container" style="display:none;">
 	  	<div id="ytPlayer"></div>
 	  	<div class="buttonwrapper">
@@ -23,21 +22,21 @@
 		  	<div class="playerbutton"><a href="javascript:void(0);" id="playpause"><img src="img/media_play.png" id="playpb" alt="Play/Pause"></a> </div>
 		  	<div class="playerbutton"><a href="javascript:void(0);" id="nextbutton"><img src="img/media_next.png" id="nextb" alt="Next"></a> </div>
 		  	<div class="playerbutton"><a href="javascript:void(0);" id="shufflebutton"><img src="img/media-shuffle.png" id="shuffb" alt="Shuffle"></a></div>
-		  	<div class="playerbutton" style="text-align:right;"><a href="javascript:void(0);" id="editplaylist">Edit Playlist &#9776;</a>
+		  	<div class="playerbutton" style="text-align:right;"><a href="javascript:void(0);" id="editplaylist">Edit Playlist <span id="edit-playlist-icon">&#9776;</span></a>
 		  		<br><a href="javascript:void(0);" id="wrongsong" style="text-align:top;">Wrong&nbsp;Version? <img src="img/refreshb.png" id="refreshc" alt="Load another version"></a>
 		  	</div>
 		  	<div class="stretch"></div>
 	  	</div>
 	  </div>
 	  <div id="text-container">
+	  <a href="/mixblast"><img id="logo" src="img/mixblast-logo4.png" alt="Mixblast"></a>
 	   <div><h1>Make a playlist fast with Mixblast</h1></div>
 		<div class="subtext">Put a list of songs into the textbox below. </div>
 			<div class='subsubtext'>
 				<select id="rss-dropdown">
-					<option value="PUT_RSS_FEED_URL_HERE">Load Songs From RSS</option>
+					<option value="PUT_RSS_FEED_URL_HERE">Load Songs from RSS</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
-					<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
 					<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
 					<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
 					<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>
@@ -59,6 +58,7 @@
 				    <!--<option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>-->
 				    <!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
 				    <option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
+				    <option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=20/explicit=true/xml">iTunes Alternative Top 100</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=3/explicit=true/xml">iTunes Comedy Top 100</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=17/explicit=true/xml">iTunes Dance Top 100</option>
@@ -88,6 +88,7 @@
 		<div id="buttons"><div id="queryarea">
 			<textarea id="query" rows="15" cols="60"></textarea>
 			<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
+			<div id="errormsg" style="display:none;"></div>
 			<button id="search-button" disabled>Blast a Mix</button>
 			<a class="closebutton" style="display:none;">&nbsp;</a>
 		</div></div>

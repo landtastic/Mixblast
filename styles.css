@@ -202,10 +202,13 @@
 	    line-height: 0
 	}
 	#editplaylist,#wrongsong {
-		font-size:23px; 
+		font-size:16px; 
 		text-rendering: geometricPrecision;
 		margin-bottom: 5px;
 		margin-right: -6px;
+	}
+	#edit-playlist-icon {
+		font-size:23px; 
 	}
 	.subtext {
 		font-weight:normal; 
@@ -266,16 +269,18 @@
 		background-color: rgba(255,255,255,0.7); 
 		font-size: 14px;
 		width:165px;
+		margin-left: 2px;
+  		height: 30px;
 	}
 	#rss-button{
-		height: 18px;
-		width: 18px;
+		height: 27px;
+		width: 27px;
 		vertical-align: middle; 
 		cursor:pointer;
 	}
 	#shuffletext {
-		height: 24px;
-		width: 24px;
+		height: 37px;
+		width: 37px;
 		vertical-align: middle; 
 		cursor:pointer;
 	 }

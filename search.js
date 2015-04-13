@@ -143,6 +143,7 @@ function multiSearch() {
 	$('#player-container').slideToggle("fast");
 	//erase previous search
 	$( "#search-container" ).empty();
+	$('#errormsg').hide();
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
 	//split texarea into lines
@@ -156,7 +157,12 @@ function multiSearch() {
 	
 	var x = 0;
 	searchnum = searchArray.length;
-	if (searchnum < 1) { alert('Put a list of songs in the search box');editSearchTerm(0); return false; }
+	if (searchnum < 1) { 
+		$('#errormsg').show();
+		$('#errormsg').html('Put a list of songs in the search box up there');
+		editSearchTerm(0); 
+		return false; 
+	}
 
 	(function setInterval_afterDone(){
 
