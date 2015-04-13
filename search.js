@@ -3,6 +3,7 @@ var prev_vidObjArray = {};
 var	topvIdArray = [], topvTitleArray=[], topvThumbArray=[];
 var searchArray = [];
 var vidcount = 0;
+var playcount = 0;
 var searchcount = 0;
 
 function onPlayerReady() {
@@ -20,16 +21,15 @@ function onPlayerStateChange(event) {
     } else {
         $("#playpb").attr("src","img/media_pause.png");
     }
-	/*
-	(function titleMarquee() {
-	    document.title = documentTitle = documentTitle.substring(1) + documentTitle.substring(0,1);
-	    setTimeout(titleMarquee, 200);
-	})();*/
 	//if video is done, play next
     if(event.data === 0) {
-    	//vidcount++;
-		//ytPlayer.loadVideoById(topvIdArray[vidcount]);
-		nextVideo(true);
+		var totalvids = topvIdArray.length;
+		if (playcount+1 < totalvids) {
+			nextVideo(true);
+		} else {
+			playcount = -1;
+		}
+		console.log(playcount+"<-playcount|totalvids->"+totalvids);
     }
 }
 
@@ -129,7 +129,7 @@ function cuePlayer() {
 			onYouTubeIframeAPIReady();
 			setTimeout(function(){ cuePlayer(); },1000);
     		console.log('checking...'+i)
-    		i++;
+    		//i++;
     	}
 	}
 }
@@ -243,21 +243,18 @@ $("#nextbutton").click(function(){
 function nextVideo(next) {
 
 	var totalvids = topvIdArray.length;
-	var playcount = add();
-	console.log(playcount);
 	if (next==true) {
-		vidcount++; 
+		vidcount++; playcount++;
 		if (vidcount >= totalvids) vidcount = 0;
 		$('#search-container').append($('#search-container div:first'));
 	} else { 
-		vidcount--;
+		vidcount--; playcount--;
 		if ((vidcount < 0) || (vidcount=='undefined')) vidcount = totalvids-1;
 		$('#search-container').prepend($('#search-container div:last'));
 	}
 	swapper = 1;
+	
 	var thevideoid = topvIdArray[vidcount];
-	console.log(totalvids+"<-total|current->"+vidcount);
-
 	loadVid(thevideoid);
 }
 
