@@ -134,30 +134,6 @@ function what() {
     alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist.\n\nCopy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nWelp, see ya later.')
 }
 
-var demoOn = false;
-function showDemo(){
-    var demoarray = ["Booty work - t-pain", "Legowelt Memphis Rap Mix II The Legend Continues", "Led Zeppelin - The Ocean", "Ty$ - The Man", "little black egg the nightcrawlers", "Dr. Dre - The Next Episode", "Love - The Red Telephone", 
-    "Bangladesh - 100", "the velvet underground & nico full album", "cool reggae chameleon (extended mix)", "Wamp Wamp ft Slim Thug    Clipse", "Feelies - Crazy Rhythms -album", "hologram - the urinals", "Blow the Whistle  Too Short", 
-    "Karate Chop - Future", "kanye west - mercy", "moon duo - scars", "d4l - laffy taffy", "fm$ - new boyz official", "danny glover - young thug", "The Germs- Lexicon Devil", "left, right - dj mustard audio", "Planet of the Dreamers - Jacuzzi Boys", 
-    "She Cracked - Modern Lovers", "numbers on the boards - pusha t", "imaginary person - ty segall", "my sunshine - ty segall", "lean wit it, rock wit it - dem franchize boyz", "vitamin c - can", "up my alley - gucci mane", "health - die slow", 
-    "I'm straight - Modern Lovers", "Led Zeppelin - Out on the Tiles", "I Found That Essence Rare - Gang Of Four", "There But for the Grace of God Go I - The Gories", "You Set The Scene - Love", "Today Was a Good Day - Ice Cube", 
-    "Crosstown Traffic - Jimi Hendrix", "Popul Vuh - In den Garten Pharoas", "Can - Oh Yeah, Paperhouse, Spray", "Faust - Giggy Smile", "Amon Duul II - Chewing Gum Telegram", "Gila - Aggresson", "Neu! -  Hallogallo", 
-    "Dzyan - Electric Silence, For Earthly Thinking", "A.R. & Machines - Globus", "Amon Duul II - Archangel's Thunderbird", "Can -Dying Butterfly", "Faust - Knochentanz", "Cluster - Live In Der Fabrik", "Guru Guru - Stone In", 
-    "Neu! - Negativland", "Walter Wegmuller - Der Wagen", "Sergius Golowin - Der Hoch-Zeit", "microphones - universe", "Television - Marquee Moon", "Rappin 4-tay - Playaz Club", "Bam Bam - Sister Nancy","ZZ Top - Thug",
-    "Baauer Ft Rae sremmurd one touch"];
-    shuffle(demoarray);
-    firsttwenty_arr = demoarray.splice(0, 20);
-    var demotext =  firsttwenty_arr.join("\n");
-    var prevtext = JSON.parse(localStorage.getItem('mixfile'));
-    if (demoOn == false) {
-        $("#query").val(demotext);
-        demoOn = true;
-    } else {
-        $("#query").val(prevtext);
-        demoOn = false;
-    }
-}
-
 //load .txt or .m3u playlist
 function readMultipleFiles(evt) {
     //retrieve all the files from the FileList object
@@ -221,21 +197,23 @@ function parseXml(data) {
     var stripParen = false;
 	$.each(data.responseData.feed.entries, function (i, e) {
 		if (rssfeed.indexOf('digitaldripped') >= 0) {
-			var searchTerm = e.link.substr(e.link.lastIndexOf("/") + 1);
-			searchTerm = searchTerm.replace(/[-]/g," ");
-			searchTerm = searchTerm.substring(0, searchTerm.indexOf('.'));
+			var searchTerms = e.link.substr(e.link.lastIndexOf("/") + 1);
+			searchTerms = searchTerms.replace(/[-]/g," ");
+			searchTerms = searchTerms.substring(0, searchTerms.indexOf('.'));
         } else if (rssfeed.indexOf('hotnewhiphop') >= 0) {
-            if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerm = e.title; searchTerm = searchTerm.replace('Video',''); }
+            if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerms = e.title; searchTerms = searchTerms.replace('Video',''); }
         } else if (rssfeed.indexOf('nah_right') >= 0) {
-            searchTerm = e.title.replace(/Video: |Audio:/g,'');
+            searchTerms = e.title.replace(/Video: |Audio:/g,'');
         } else if (rssfeed.indexOf('SouthernSweetTea') >= 0) {
-            searchTerm = e.title.replace(/Video: |Audio: |Mixtape: |EP: /g,''); searchTerm = $.trim(searchTerm);
+            searchTerms = e.title.replace(/Video: |Audio: |Mixtape: |EP: /g,''); searchTerms = $.trim(searchTerms);
         } else if (rssfeed.indexOf('worldstar') >= 0) {
-            if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerm = e.title; searchTerm = searchTerm.replace('Video',''); }
+            if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { 
+                searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
+                searchTerms = searchTerms.replace('Video',''); stripParen = true;}
         } else if (rssfeed.indexOf('tinymixtapes') >= 0) {
             stripNums = true; stripParen = true;
-            searchTerm = e.content;
-            var lines = searchTerm.split('\n');
+            searchTerms = e.content;
+            var lines = searchTerms.split('\n');
             var cleanlines = [];
             //lines.splice(0,3);
             $.each(lines, function(i, item) {
@@ -243,13 +221,13 @@ function parseXml(data) {
                 cleanlines.push(item.replace(/<br>/g,'').replace(/<p>/g,'').replace(/<\/p>/g,'\n'));
                }
             });
-            searchTerm = cleanlines.join('\n');
+            searchTerms = cleanlines.join('\n');
         } else {
-			searchTerm = e.title;
+			searchTerms = e.title;
 		}
 
-        if (searchTerm) {
-            $("#query").val($("#query").val()+searchTerm+'\r');
+        if (searchTerms) {
+            $("#query").val($("#query").val()+searchTerms+'\r');
         }
 	});
     if (stripNums) { $('input#removenums').prop('checked', true); removeNumbas(); }

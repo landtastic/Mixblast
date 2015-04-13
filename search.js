@@ -243,6 +243,8 @@ $("#nextbutton").click(function(){
 function nextVideo(next) {
 
 	var totalvids = topvIdArray.length;
+	var playcount = add();
+	console.log(playcount);
 	if (next==true) {
 		vidcount++; 
 		if (vidcount >= totalvids) vidcount = 0;
@@ -255,6 +257,7 @@ function nextVideo(next) {
 	swapper = 1;
 	var thevideoid = topvIdArray[vidcount];
 	console.log(totalvids+"<-total|current->"+vidcount);
+
 	loadVid(thevideoid);
 }
 
@@ -266,9 +269,12 @@ $("#shuffletext").click(function(){
 	var lines = $('#query').val().split("\n");
 	shuffle(lines);
 	//var randomlines = lines.join("\n");
-	var randomlines;
-	for (var i = 0; i < lines.length; i++) {
-    	randomlines =+ "\n";
+	var randomlines = '';
+	for (var i=0; i < lines.length; i++) {
+		if (/\S/.test(lines[i])) {
+    		randomlines += lines[i] + '\n';
+    		//if (i != lines.length) randomlines += '\n';
+    	}
 	}
 	//randomlines = randomlines.replace(/^(\r\n)|(\n)/,'');
 	$('#query').val(randomlines);
