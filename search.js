@@ -143,6 +143,7 @@ function multiSearch() {
 	$('#player-container').slideToggle("fast");
 	//erase previous search
 	$( "#search-container" ).empty();
+	
 	$('#errormsg').hide();
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
@@ -159,10 +160,12 @@ function multiSearch() {
 	searchnum = searchArray.length;
 	if (searchnum < 1) { 
 		$('#errormsg').show();
-		$('#errormsg').html('Put a list of songs in the search box up there');
+		$('#errormsg').html('Seriously, you need to get a list of songs in the search box before this does anything.');
 		editSearchTerm(0); 
 		return false; 
 	}
+
+	$("#logo").animate({height:'20px',width:'600px'});
 
 	(function setInterval_afterDone(){
 
@@ -392,6 +395,7 @@ $("#editplaylist").click(function(){
 $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
+	$("#logo").animate({height:'20px',width:'600px'});
 });
 $("#closeAdvanced").click(function(){
 	$('#advanced-container').slideToggle("fast");

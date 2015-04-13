@@ -177,6 +177,7 @@ function editSearchTerm(lineNumber) {
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
 	$(".closebutton").show();
+    $("#logo").animate({height:'101px',width:'600px'});
 	
     var input = $("#query");
     var lineHeight = 1.14;
