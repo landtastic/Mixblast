@@ -5,14 +5,11 @@ $(document).ready(function () {
     
     //load hidden query 2 textarea for manipulating text
     $("#query2").val($("#query").val());
-    prevtext_removenum = $("#query").val();
-    prevtext_removepar = $("#query").val();
+    prevtext_state = $("#query").val();
 });
 $("#advanced").click(function(){
     $('#advanced-container').slideToggle("fast");
     $("#query2").val($("#query").val());
-    prevtext_removenum = $("#query").val();
-    prevtext_removepar = $("#query").val();
 });
 $(".infolink").click(function(){
     what();
@@ -57,16 +54,15 @@ $("#magic").click(function(){
 $("#query").bind("paste", function(){
     var elem = $(this);
     setTimeout(function() {
+        var text = elem.val(); 
         //populate query2
         $("#query2").val(text);
-        prevtext_removenum = text;
-        prevtext_removepar = text;
+        prevtext_state = text;
         $('input#removenums').prop('checked', true);
         removeNumbas();
         $('input#removeparenths').prop('checked', true);
         removeParentheticals();
 
-        var text = elem.val(); 
         console.log(text);
     }, 100);
 });
@@ -93,25 +89,24 @@ function addArtist() {
 function removeNumbas() {
     var query = $("#query").val();
     if ($('input#removenums').is(':checked')) {
-        query = query.replace(/\d+\./g, ""); 
-        //query = query.replace(/^[\d+\.]/g, ""); 
-        query = query.replace(/\d+\s/g, ""); 
-        query = query.replace(/\d+#/g, ""); 
-        //only get non-whitespace lines
-        var lines = query.split(/\n/);
+        prevtext_state = query;
+        var lines = query.split(/\n/); 
+        query = "";
         for (var i=0; i < lines.length; i++) {
           if (/\S/.test(lines[i])) {
-            $("#query").val(query);
+            query += lines[i].replace(/^\d+\s*[-\\.)#]?\s+/, "") + "\n"; 
           }
         }
+        $("#query").val(query);
     } else {
-        $("#query").val(prevtext_removenum);
+        $("#query").val(prevtext_state);
     }
 }
 
 function removeParentheticals() {
     var query = $("#query").val();
     if ($('input#removeparenths').is(':checked')) {
+        prevtext_state = query;
         query = query.replace(/ *\([^)]*\) */g, " ");
         query = query.replace(/\[.*?\]/g, " ");
         //only get non-whitespace lines
@@ -122,7 +117,7 @@ function removeParentheticals() {
           }
         }
     } else {
-        $("#query").val(prevtext_removepar);
+        $("#query").val(prevtext_state);
     }
 }
 
@@ -149,7 +144,7 @@ function showDemo(){
     "Crosstown Traffic - Jimi Hendrix", "Popul Vuh - In den Garten Pharoas", "Can - Oh Yeah, Paperhouse, Spray", "Faust - Giggy Smile", "Amon Duul II - Chewing Gum Telegram", "Gila - Aggresson", "Neu! -  Hallogallo", 
     "Dzyan - Electric Silence, For Earthly Thinking", "A.R. & Machines - Globus", "Amon Duul II - Archangel's Thunderbird", "Can -Dying Butterfly", "Faust - Knochentanz", "Cluster - Live In Der Fabrik", "Guru Guru - Stone In", 
     "Neu! - Negativland", "Walter Wegmuller - Der Wagen", "Sergius Golowin - Der Hoch-Zeit", "microphones - universe", "Television - Marquee Moon", "Rappin 4-tay - Playaz Club", "Bam Bam - Sister Nancy","ZZ Top - Thug",
-    "Baauer Ft Rae sremmurd one touch","Jae Murphy - You Playin"];
+    "Baauer Ft Rae sremmurd one touch"];
     shuffle(demoarray);
     firsttwenty_arr = demoarray.splice(0, 20);
     var demotext =  firsttwenty_arr.join("\n");

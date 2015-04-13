@@ -12,6 +12,7 @@ function onPlayerReady() {
 }
 function onPlayerError(event){
      console.log('Error: '+event.data);
+     nextVideo(true);
 }
 function onPlayerStateChange(event) {
 	if (event.data != 1) {
@@ -253,6 +254,7 @@ function nextVideo(next) {
 	}
 	swapper = 1;
 	var thevideoid = topvIdArray[vidcount];
+	console.log(totalvids+"<-total|current->"+vidcount);
 	loadVid(thevideoid);
 }
 
