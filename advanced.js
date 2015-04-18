@@ -224,9 +224,11 @@ function parseXml(data) {
                }
             });
             searchTerms = cleanlines.join('\n');
-        } else if (rssfeed.indexOf('audioscrobbler') >= 0) {
-            searchTerms = e.track.name; 
-            alert(e);
+        } else if (rssfeed.indexOf('billboard.com') >= 0) {
+            searchTerms = e.content.replace(/ranks /g,'');
+            searchTerms = searchTerms.replace('by','-');
+            searchTerms = searchTerms.substring(0, searchTerms.indexOf('#'));
+            //searchTerms = e.description + ' - ' + e.title.replace(/^\d+\s*[-\\:)#]?\s+/, "");
         } else {
 			searchTerms = e.title;
 		}
