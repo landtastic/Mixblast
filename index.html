@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="favicon.ico?r=7" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
   <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Mixblast - Text Lists To Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
   </head>
@@ -24,17 +24,14 @@
 		  	<div class="playerbutton"><a href="javascript:void(0);" id="nextbutton"><img src="img/media_next.png" id="nextb" alt="Next"></a> </div>
 		  	<div class="playerbutton"><a href="javascript:void(0);" id="shufflebutton"><img src="img/media-shuffle.png" id="shuffb" alt="Shuffle"></a></div>
 		  	<div class="playerbutton" style="text-align:right;"><a href="javascript:void(0);" id="editplaylist">Edit Playlist <span id="edit-playlist-icon">&#9776;</span></a>
-		  		<br><a href="javascript:void(0);" id="wrongsong" style="text-align:top;">Wrong&nbsp;Version? <img src="img/refreshb.png" id="refreshc" alt="Load another version"></a>
+		  		<br><a href="javascript:void(0);" id="wrongsong">Wrong&nbsp;Version? <img src="img/refreshb.png" id="refreshc" alt="Load another version"></a>
 		  	</div>
 		  	<div class="stretch"></div>
 	  	</div>
 	  </div>
 	  <div id="text-container">
-	   <div><h1>Make a playlist fast with Mixblast</h1></div>
-		<div class="subtext">Put a list of songs into the textbox below. </div>
-			<div class='subsubtext'>
 				<select id="rss-dropdown">
-					<option value="PUT_RSS_FEED_URL_HERE">Load Songs from RSS</option>
+					<option value="PUT_RSS_FEED_URL_HERE">Load Songs via RSS</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
 					<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
@@ -72,11 +69,12 @@
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
 				</select> <img src="img/rss-icon.png" id="rss-button" alt="rss" title="Load RSS">
-				 &nbsp; <img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">
+				&nbsp; &nbsp; <img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">&nbsp; &nbsp; 
+				<span id="playallsongsby">Play all songs by: </span><input id="playallsongsby-artist" placeholder="Artist"> 
 				<div class='advancedFloater'>
 				<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
 				</div>
-			</div>
+
 		<div id="advanced-container" style="display:none;"><hr class="advanced-top">
 		<span class="advanced-tips-title">&nbsp;Each line should be as simple as possible, e.g. <i>Artist - Song Title</i> or <i>Song Title Artist</i></span><a id="closeAdvanced">x&nbsp;&nbsp;&nbsp;</a><hr>
 		&nbsp;Replace <input id="find"> with <input id="replace"> &nbsp;<input id="frbutton" type="button" value=" GO "> <span class="advanced-tips">Tip: to remove a word, replace it with nothing</span><hr>
@@ -86,7 +84,7 @@
 		 &nbsp;<input id="addartist"> Add artist name to each line <span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
 		</div>
 		<div id="buttons"><div id="queryarea">
-			<textarea id="query" rows="15" cols="60"></textarea>
+			<textarea id="query" rows="15" cols="60" placeholder="Put a list of songs here"></textarea>
 			<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
 			<div id="errormsg" style="display:none;"></div>
 			<button id="search-button" disabled>Blast a Mix</button>

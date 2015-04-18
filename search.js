@@ -160,12 +160,12 @@ function multiSearch() {
 	searchnum = searchArray.length;
 	if (searchnum < 1) { 
 		$('#errormsg').show();
-		$('#errormsg').html('Seriously, you need to get a list of songs in the search box before this does anything.');
+		$('#errormsg').html('Put a list of songs into the textbox. (Load Songs, copy and paste, or type)');
 		editSearchTerm(0); 
 		return false; 
 	}
 
-	$("#logo").animate({height:'20px',width:'600px'});
+	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 
 	(function setInterval_afterDone(){
 
@@ -271,6 +271,27 @@ function loadVid(vidId) {
 	ytPlayer.loadVideoById(vidId);
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
+
+function allSongsBy(artistName) {
+	$('#query').val('Loading all songs by '+ artistName + '...');
+     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit=200&format=json&callback=?", function(data) {
+        var songlist = '';
+        $.each(data.toptracks.track, function(i, item) {
+            songlist += artistName + " - " + item.name + "\n";
+        });
+        $('#query').val(songlist);
+         //$('#search-button').trigger( "click" );
+    });
+}
+$("#playallsongsby-artist").keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    allSongsBy($("#playallsongsby-artist").val());
+    return false;  
+  }
+});  
+
 $("#shuffletext").click(function(){
 	var lines = $('#query').val().split("\n");
 	shuffle(lines);
@@ -395,7 +416,7 @@ $("#editplaylist").click(function(){
 $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
-	$("#logo").animate({height:'20px',width:'600px'});
+	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 });
 $("#closeAdvanced").click(function(){
 	$('#advanced-container').slideToggle("fast");

@@ -131,7 +131,7 @@ function magicSongExtractor() {
 }
 
 function what() {
-    alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist.\n\nCopy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nWelp, see ya later.')
+    alert('Mixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist.\n\nCopy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nWelp, see ya later.')
 }
 
 //load .txt or .m3u playlist
@@ -177,7 +177,7 @@ function editSearchTerm(lineNumber) {
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
 	$(".closebutton").show();
-    $("#logo").animate({height:'101px',width:'600px'});
+    $("#logo").animate({height:'101px',width:'100%',marginBottom:'5px'});
 	
     var input = $("#query");
     var lineHeight = 1.14;
@@ -196,9 +196,10 @@ function parseXml(data) {
 	$("#query").val("");
     var stripNums = false;
     var stripParen = false;
+    var searchTerms;
 	$.each(data.responseData.feed.entries, function (i, e) {
 		if (rssfeed.indexOf('digitaldripped') >= 0) {
-			var searchTerms = e.link.substr(e.link.lastIndexOf("/") + 1);
+			searchTerms = e.link.substr(e.link.lastIndexOf("/") + 1);
 			searchTerms = searchTerms.replace(/[-]/g," ");
 			searchTerms = searchTerms.substring(0, searchTerms.indexOf('.'));
         } else if (rssfeed.indexOf('hotnewhiphop') >= 0) {
@@ -223,6 +224,9 @@ function parseXml(data) {
                }
             });
             searchTerms = cleanlines.join('\n');
+        } else if (rssfeed.indexOf('audioscrobbler') >= 0) {
+            searchTerms = e.track.name; 
+            alert(e);
         } else {
 			searchTerms = e.title;
 		}
