@@ -12,7 +12,7 @@ function onPlayerReady() {
   	if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
 function onPlayerError(event){
-     console.log('Error: '+event.data);
+     alert('Whoops. Error: '+event.data);
      nextVideo(true);
 }
 function onPlayerStateChange(event) {
@@ -276,6 +276,7 @@ function allSongsBy(artistName) {
 	$('#query').val('Loading all songs by '+ artistName + '...');
      $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit=200&format=json&callback=?", function(data) {
         var songlist = '';
+        if (!data.toptracks) $('#query').val(': ( \n\nError loading tracks by: '+artistName+'\n\nCheck spelling?'); return;
         $.each(data.toptracks.track, function(i, item) {
             songlist += artistName + " - " + item.name + "\n";
         });
@@ -291,6 +292,9 @@ $("#playallsongsby-artist").keypress(function (e) {
     return false;  
   }
 });  
+$("#playall-button").click(function(){
+	allSongsBy($("#playallsongsby-artist").val());
+});
 
 $("#shuffletext").click(function(){
 	var lines = $('#query').val().split("\n");

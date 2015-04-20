@@ -254,7 +254,7 @@
 		padding-top:15px;
 		padding-bottom:15px;
 	}
-	#advanced,.infolink,#frbutton{
+	#advanced,.infolink,#frbutton,#playall-button{
 		height: 22px;
 		font-weight: bold;
 		vertical-align: middle;
@@ -265,10 +265,14 @@
 		          0 2px 8px -1px rgba(0, 0, 0, .5),
 		          0 1px 0 rgba(255, 255, 255, .3) inset;
 		text-shadow: 0 0px 0 rgba(255,255,255, .5);  
-		padding     : 0px 10px 0px 10px;
-		border      : 0;
+		padding: 0px 10px 0px 10px;
+		border: 0;
 	    cursor:pointer;
        	border-radius: 15px;
+	}
+	#playall-button { 
+		width:25px;
+		padding: 0px 0px 0px 0px;
 	}
 	#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover,#frbutton:hover { 
 		background-color: rgb(159, 150, 160);
@@ -280,11 +284,12 @@
     	border-radius: 5px;
 		background-color: rgba(255,255,255,0.7);
 		font-size: 15px;
-		width: 100px;
+		width: 80px;
 		margin-left: 2px;
 		height: 30px;
 		padding: 0px;
-		padding-left: 8px;
+		padding-left: 5px;
+		padding-right: 5px;
 		border: 0px;
 	}
 	#rss-dropdown{
@@ -438,9 +443,14 @@
 		font-size: 160%;
 		height: 80px;
 	}
-	#rss-dropdown, #advanced, .infolink{ 
+	#rss-dropdown, #playallsongsby-artist{ 
 		font-size: 160%!important; 
 		height: 40px;
+	}
+	#advanced, .infolink {
+		font-size: 160%!important; 
+		font-weight: normal;
+		height: 30px;
 	}
 	#rss-dropdown { width:200px;}
 	#rss-button { height: 25px; width: 25px; vertical-align: bottom;}
@@ -453,24 +463,39 @@
 
 /* iPhone 5*/
 @media only screen and (width:320px) and (device-width:320px) and (device-height:480px) {
+	#body-container { 
+		padding-left:10px!important; 
+		padding-right: 20px!important;
+
+	}
+	textarea#query,#playlist-title {
+		font-size: 160%!important;
+	}
+	textarea#query:focus { font-size: 160%!important}
+
+	#search-button, #playlist-button {
+		font-size: 160%;
+		height: 80px;
+	}
+	#rss-dropdown, #advanced, .infolink{ 
+		font-size: 160%!important; 
+		height: 40px;
+	}
+	#rss-dropdown { width:200px;}
+	#rss-button { height: 25px; width: 25px; vertical-align: bottom;}
+	#shuffletext { height: 30px; width: 30px; vertical-align: middle;}
+	.subtext {font-size: 22px;}
+	.subsubtext {font-size: 18px;}
+	/*
 	body {
 		font-size: 170%;
 		initial-scale:0.667;
 		maximum-scale:0.667;
 		-webkit-transform: scale(0.667);
 		padding: 5px 5px;
-		/*
-		-webkit-transform-origin: top right;
-		position: absolute;
-		right: 0;
-		top: 0; */
 		width: 100%;
-		/*
-		text-size-adjust: 150%;      
-		-webkit-text-size-adjust: 150%;
-		font-size:150%!important;
-		*/
 	}
+	*/
 }
 
 /* iPad */
