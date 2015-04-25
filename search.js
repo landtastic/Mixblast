@@ -12,7 +12,7 @@ function onPlayerReady() {
   	if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
 function onPlayerError(event){
-     alert('Whoops. Error: '+event.data);
+     console.log('Whoops. Error: '+event.data);
      nextVideo(true);
 }
 function onPlayerStateChange(event) {
@@ -117,7 +117,7 @@ function cuePlayer() {
 	//check if the ytPlayer object is loaded
 	//if ($("#ytPlayer").is("iframe")) {
 	if (ytPlayer.cueVideoById) {
-		ytPlayer.cueVideoById(topvIdArray[0]);
+		ytPlayer.cueVideoById(topvIdArray);
 	} else {
 		//check for it 5x if it isn't
 		var tag = document.createElement('script');
@@ -126,7 +126,7 @@ function cuePlayer() {
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 		if (i < 5) {
-			onYouTubeIframeAPIReady();
+			onYouTubeIframeAPIReady_removed_callback();
 			setTimeout(function(){ cuePlayer(); },1000);
     		console.log('checking...'+i)
     		//i++;
@@ -137,13 +137,13 @@ function cuePlayer() {
 var searchnum;
 function multiSearch() {
 
+	searchdone = false;
 	//hide text form
 	$("#text-container" ).slideToggle("fast");
 	//show video player
 	$('#player-container').slideToggle("fast");
 	//erase previous search
 	$( "#search-container" ).empty();
-	
 	$('#errormsg').hide();
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
@@ -176,12 +176,17 @@ function multiSearch() {
 		
 		//if(ready2search==true) waittime = 300; //wait for player to animate in
 		
-		var waittime = 300; 
+		var waittime = 600; 
 		var timerId = setTimeout(setInterval_afterDone, waittime);
 		if(x==searchnum) {
 			//ready the playlist button
 			$('#playlist-button').attr('disabled', false);
 			$("#shufflebutton").removeClass("disabled");
+
+			searchdone = true;
+			ytPlayer.cuePlaylist(topvIdArray);
+			/////todo: start with vidObjArray[vidcount].vid[0]
+
 			clearTimeout(timerId);
 		}
 	})();
@@ -268,12 +273,18 @@ function nextVideo(next) {
 }
 
 function loadVid(vidId) {
-	ytPlayer.loadVideoById(vidId);
+	if (searchdone) {
+		ytPlayer.nextVideo();
+	} else {
+		ytPlayer.loadVideoById(vidId); //not working in iOS
+	}
+	console.log('searchdone:'+searchdone);
+	/////$('#ytPlayer').attr('src','https://www.youtube.com/embed/'+ vidId +'?autoplay=1&enablejsapi=1&origin=http%3A%2F%2Flocalhost');
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
 
 function allSongsBy(artistName) {
-	$('#query').val('Loading all songs by '+ artistName + '...');
+	$('#query').val('Loading 200 songs by '+ artistName + '...');
      $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit=200&format=json&callback=?", function(data) {
         var songlist = '';
         if (data.toptracks) {
