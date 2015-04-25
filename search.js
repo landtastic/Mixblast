@@ -184,7 +184,7 @@ function multiSearch() {
 			$("#shufflebutton").removeClass("disabled");
 
 			searchdone = true;
-			ytPlayer.cuePlaylist(topvIdArray);
+			//ytPlayer.cuePlaylist(topvIdArray);
 			/////todo: start with vidObjArray[vidcount].vid[0]
 
 			clearTimeout(timerId);
