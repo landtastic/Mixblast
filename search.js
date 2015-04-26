@@ -144,7 +144,7 @@ function multiSearch() {
 	$('#player-container').slideToggle("fast");
 	//erase previous search
 	$( "#search-container" ).empty();
-	$('#related-container').hide();
+	//$('#related-container').hide();
 	$('#errormsg').hide();
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
@@ -274,11 +274,12 @@ function nextVideo(next) {
 }
 
 function loadVid(vidId) {
-	if (searchdone) {
-		ytPlayer.loadVideoById(vidId);
-	} else {
-		ytPlayer.loadVideoById(vidId); //not working in iOS
-	}
+	ytPlayer.loadVideoById({'videoId': vidId});
+	//if (searchdone) {
+	//	ytPlayer.loadVideoById(vidId);
+	//} else {
+	//	ytPlayer.loadVideoById(vidId); //not working in iOS
+	//}
 	/////$('#ytPlayer').attr('src','https://www.youtube.com/embed/'+ vidId +'?autoplay=1&enablejsapi=1&origin=http%3A%2F%2Flocalhost');
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
@@ -319,7 +320,7 @@ function showRelated(artistName) {
         var artistList = '';
         if (data.similarartists) {
 	        $.each(data.similarartists.artist, function(i, item) {
-	        	var curArtist = item.name.replace(/["']/g, " ");
+	        	var curArtist = item.name.replace(/["']/g, "\\'");
 	            artistList += '<a href="#" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
 	            if (i < data.similarartists.artist.length-1) artistList += " - "
 	        });
