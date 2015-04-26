@@ -314,12 +314,13 @@ $("#playall-button").click(function(){
 });
 
 function showRelated(artistName) {
-     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=14&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
+     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=16&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
 
         var artistList = '';
         if (data.similarartists) {
 	        $.each(data.similarartists.artist, function(i, item) {
-	            artistList += '<a href="#" onclick="$(\'#playallsongsby-artist\').val(\''+ item.name +'\');allSongsBy(\''+ item.name +'\');return false;">' + item.name + '</a>';
+	        	var curArtist = item.name.replace(/["']/g, " ");
+	            artistList += '<a href="#" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
 	            if (i < data.similarartists.artist.length-1) artistList += " - "
 	        });
 	        $("#related-container").html("<b>Similar Artists: </b>"+artistList);
