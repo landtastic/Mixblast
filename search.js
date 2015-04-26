@@ -144,6 +144,7 @@ function multiSearch() {
 	$('#player-container').slideToggle("fast");
 	//erase previous search
 	$( "#search-container" ).empty();
+	$('#related-container').hide();
 	$('#errormsg').hide();
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
@@ -274,18 +275,20 @@ function nextVideo(next) {
 
 function loadVid(vidId) {
 	if (searchdone) {
-		ytPlayer.nextVideo();
+		ytPlayer.loadVideoById(vidId);
 	} else {
 		ytPlayer.loadVideoById(vidId); //not working in iOS
 	}
-	console.log('searchdone:'+searchdone);
 	/////$('#ytPlayer').attr('src','https://www.youtube.com/embed/'+ vidId +'?autoplay=1&enablejsapi=1&origin=http%3A%2F%2Flocalhost');
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
 
 function allSongsBy(artistName) {
 	$('#query').val('Loading 200 songs by '+ artistName + '...');
-     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit=200&format=json&callback=?", function(data) {
+	//$("#related-container" ).slideToggle("fast");
+	$("#related-container" ).show();
+	showRelated(artistName);
+     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=200&format=json&callback=?", function(data) {
         var songlist = '';
         if (data.toptracks) {
 	        $.each(data.toptracks.track, function(i, item) {
@@ -309,6 +312,22 @@ $("#playallsongsby-artist").keypress(function (e) {
 $("#playall-button").click(function(){
 	allSongsBy($("#playallsongsby-artist").val());
 });
+
+function showRelated(artistName) {
+     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=14&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
+
+        var artistList = '';
+        if (data.similarartists) {
+	        $.each(data.similarartists.artist, function(i, item) {
+	            artistList += '<a href="#" onclick="$(\'#playallsongsby-artist\').val(\''+ item.name +'\');allSongsBy(\''+ item.name +'\');return false;">' + item.name + '</a>';
+	            if (i < data.similarartists.artist.length-1) artistList += " - "
+	        });
+	        $("#related-container").html("<b>Similar Artists: </b>"+artistList);
+		} else {
+			//$('#related-container').html('Error loading related tracks: '+artistName); 
+	    }
+    });
+}
 
 $("#shuffletext").click(function(){
 	var lines = $('#query').val().split("\n");

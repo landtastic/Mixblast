@@ -292,6 +292,11 @@
 		padding-right: 5px;
 		border: 0px;
 	}
+	#related-container {
+		font-size: 13px;
+		padding: 5px;
+		text-align: justify;
+	}
 	#rss-dropdown{
 		font-family: 'Roboto', sans-serif;
     	border-radius: 5px;
