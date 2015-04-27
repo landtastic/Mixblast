@@ -10,6 +10,7 @@ $(document).ready(function () {
 $("#advanced").click(function(){
     $('#advanced-container').slideToggle("fast");
     $("#query2").val($("#query").val());
+    $("#related-container").hide();
 });
 $(".infolink").click(function(){
     what();
@@ -212,6 +213,11 @@ function parseXml(data) {
             if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { 
                 searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
                 searchTerms = searchTerms.replace('Video',''); stripParen = true;}
+        } else if (rssfeed.indexOf('stereogum') >= 0) {
+                searchTerms = e.title.replace(/“|”/g,'');
+                stripParen = true;
+        } else if (rssfeed.indexOf('AlbumOfTheYear') >= 0) {
+                searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
         } else if (rssfeed.indexOf('tinymixtapes') >= 0) {
             stripNums = true; stripParen = true;
             searchTerms = e.content;

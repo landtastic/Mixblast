@@ -5,7 +5,7 @@
   <meta content="utf-8" http-equiv="encoding">
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="Fastest Youtube playlist maker, works instantly without logging in. Play top 200 songs of any artist. Also converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
-  <link rel="shortcut icon" href="favicon.ico?r=7" />
+  <link rel="shortcut icon" href="favicon.ico?r=7"/>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
   <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
   <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
@@ -18,19 +18,9 @@
 	<a href="/mixblast"><img id="logo" src="img/mixblast-logo4.png" alt="Mixblast"></a>
 	  <div id="player-container" style="display:none;">
 	  	<div id="ytPlayer"></div>
-	  	<div class="buttonwrapper">
-		  	<div class="playerbutton"><a href="javascript:void(0);" id="prevbutton"><img src="img/media_previous.png" id="prevb" alt="Prev"></a> </div>
-		  	<div class="playerbutton"><a href="javascript:void(0);" id="playpause"><img src="img/media_play.png" id="playpb" alt="Play/Pause"></a> </div>
-		  	<div class="playerbutton"><a href="javascript:void(0);" id="nextbutton"><img src="img/media_next.png" id="nextb" alt="Next"></a> </div>
-		  	<div class="playerbutton"><a href="javascript:void(0);" id="shufflebutton"><img src="img/media-shuffle.png" id="shuffb" alt="Shuffle"></a></div>
-		  	<div class="playerbutton" style="text-align:right;"><a href="javascript:void(0);" id="editplaylist">Edit Playlist <span id="edit-playlist-icon">&#9776;</span></a>
-		  		<br><a href="javascript:void(0);" id="wrongsong">Wrong&nbsp;Version? <img src="img/refreshb.png" id="refreshc" alt="Load another version"></a>
-		  	</div>
-		  	<div class="stretch"></div>
-	  	</div>
 	  </div>
 	  <div id="text-container">
-			&nbsp;<span id="playallsongsby">Play 200 songs by: </span><input id="playallsongsby-artist" placeholder="Artist"> <input id="playall-button" type="button" value=" GO ">&nbsp; &nbsp;
+			&nbsp;<span id="playallsongsby">Play 200 songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  ">&nbsp; &nbsp;
 			<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">&nbsp;&nbsp;
 			<select id="rss-dropdown">
 				<option value="PUT_RSS_FEED_URL_HERE">Music Feeds</option>
@@ -38,6 +28,7 @@
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
 				<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
+				<option value="http://www.stereogum.com/category/mp3s/feed/">Stereogum</option>
 				<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
 				<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>
 				<option value="http://drownedinsound.com/feed">Drowned in Sound</option>
@@ -86,12 +77,22 @@
 			 &nbsp;<input id="addartist"> Add artist name to each line &nbsp;<span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
 			</div>
 			<div id="buttons"><div id="queryarea">
-				<textarea id="query" rows="15" cols="60" placeholder="Put a list of songs here"></textarea>
+				<textarea id="query" rows="13" cols="60" placeholder="Put a list of songs here"></textarea>
 				<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
 				<div id="errormsg" style="display:none;"></div>
 				<button id="search-button" disabled>Blast a Mix</button>
 				<a class="closebutton" style="display:none;">&nbsp;</a>
 			</div></div>
+	  	</div>
+	  	<div id="button-container" style="display:none;">
+		  	<div class="playerbutton"><a href="javascript:void(0);" id="prevbutton"><img src="img/media_previous.png" id="prevb" alt="Prev"></a> </div>
+		  	<div class="playerbutton"><a href="javascript:void(0);" id="playpause"><img src="img/media_play.png" id="playpb" alt="Play/Pause"></a> </div>
+		  	<div class="playerbutton"><a href="javascript:void(0);" id="nextbutton"><img src="img/media_next.png" id="nextb" alt="Next"></a> </div>
+		  	<div class="playerbutton"><a href="javascript:void(0);" id="shufflebutton"><img src="img/media-shuffle.png" id="shuffb" alt="Shuffle"></a></div>
+		  	<div class="playerbutton" style="text-align:right;"><a href="javascript:void(0);" id="editplaylist">Edit Playlist <span id="edit-playlist-icon">&#9776;</span></a>
+		  		<br><a href="javascript:void(0);" id="wrongsong">Wrong&nbsp;Version? <img src="img/refreshb.png" id="refreshc" alt="Load another version"></a>
+		  	</div>
+		  	<div class="stretch"></div>
 	  	</div>
 		<div id="search-container">
 		</div>
@@ -104,7 +105,7 @@
 	   <hr>
 		Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/>
 	    <div id="buttons">
-	      <button id="playlist-button" disabled>Save a Playlist</button>
+	      <button id="playlist-button" disabled>Save a Playlist (Blast a Mix first)</button>
 		  <p id="playlist-status"></p>
 		  
 		  <span id="playlist-url">
@@ -117,7 +118,9 @@
 	    <br>
 		<hr>
 		<br>
-		<span id='emailme'></span>
+		<span id='emailme'></span> 
+		<br><br>
+		<span id='api-about'>Uses the Last.fm and Youtube APIs</span>
 		<br>
 		<br>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>

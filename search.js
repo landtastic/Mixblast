@@ -9,11 +9,11 @@ var searchcount = 0;
 function onPlayerReady() {
 	$("#search-button").html('Blast a Mix');
   	//if rss url in querystring, automate click
-  	if (getParameterByName('rss')) $('#search-button').trigger( "click" );
+  	//if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
 function onPlayerError(event){
      console.log('Whoops. Error: '+event.data);
-     nextVideo(true);
+     //nextVideo(true);
 }
 function onPlayerStateChange(event) {
 	if (event.data != 1) {
@@ -45,8 +45,8 @@ function onYouTubeIframeAPIReady_removed_callback() {
     ytPlayer = new YT.Player('ytPlayer', { 
     	height: '368',
     	width: '600',
-    	//videoId: 'Oi1BcouEmio',
-    	videoId: 'fgBLu387UM8',
+    	videoId: 'Oi1BcouEmio',
+    	//videoId: 'fgBLu387UM8',
         events: {
             'onReady': onPlayerReady,
             'onError': onPlayerError,
@@ -101,9 +101,16 @@ function search(query,c) {
 			topvThumbArray.push(vThumb);
 			//start the first video right away while the playlist loads
 			//if ((topvIdArray.length > 0) && (c == 0) && (ready2search == true)) {
+
 			if (topvIdArray.length == 1) {
-				//console.log(ytPlayer);
-				if (searchcount==1) cuePlayer();
+				console.log(ytPlayer);
+				/////ytPlayer.cueVideoById(topvIdArray);
+				//if (searchcount==1) cuePlayer();
+				//only cue on the first search, keep the video running on subsequent searches
+				if (searchcount==1) {
+					ytPlayer.loadVideoById(topvIdArray[0]);
+					ytPlayer.pauseVideo();
+				};
 			} 
 
 			c++;
@@ -142,6 +149,7 @@ function multiSearch() {
 	$("#text-container" ).slideToggle("fast");
 	//show video player
 	$('#player-container').slideToggle("fast");
+	$('#button-container').show();
 	//erase previous search
 	$( "#search-container" ).empty();
 	//$('#related-container').hide();
@@ -270,11 +278,12 @@ function nextVideo(next) {
 	swapper = 1;
 	
 	var thevideoid = topvIdArray[vidcount];
-	loadVid(thevideoid);
+	if (thevideoid) loadVid(thevideoid);
 }
 
 function loadVid(vidId) {
-	ytPlayer.loadVideoById({'videoId': vidId});
+	ytPlayer.loadVideoById(vidId);
+	ytPlayer.playVideo();
 	//if (searchdone) {
 	//	ytPlayer.loadVideoById(vidId);
 	//} else {
@@ -286,7 +295,6 @@ function loadVid(vidId) {
 
 function allSongsBy(artistName) {
 	$('#query').val('Loading 200 songs by '+ artistName + '...');
-	//$("#related-container" ).slideToggle("fast");
 	$("#related-container" ).show();
 	showRelated(artistName);
      $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=200&format=json&callback=?", function(data) {
@@ -321,10 +329,10 @@ function showRelated(artistName) {
         if (data.similarartists) {
 	        $.each(data.similarartists.artist, function(i, item) {
 	        	var curArtist = item.name.replace(/["']/g, "\\'");
-	            artistList += '<a href="#" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
-	            if (i < data.similarartists.artist.length-1) artistList += " - "
+	            artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
+	            if (i < data.similarartists.artist.length-1) artistList += " &bull; "
 	        });
-	        $("#related-container").html("<b>Similar Artists: </b>"+artistList);
+	        $("#related-container").html("<hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
 		} else {
 			//$('#related-container').html('Error loading related tracks: '+artistName); 
 	    }

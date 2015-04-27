@@ -27,6 +27,7 @@
 	}
 	#query {
 		width: 575px;
+		height: 245px;
 		color: #000;
 	    text-align: left;
 	    background-color: rgba(255,255,255,0.7);
@@ -49,7 +50,7 @@
 	}
 	h3 {
 		font-weight: 100; 
-		margin-top:70px;
+		margin-top:60px;
 		margin-bottom:0px;
 	}
 		.font-effect-3d { font-weight: 900; }
@@ -63,6 +64,10 @@
       padding-top:0px;
       margin-bottom:0px;
       padding-bottom:5px;
+	}
+	.similar-top {
+		margin:0px;
+		padding:0px;
 	}
 	#logo {
 		max-width:100%;
@@ -180,7 +185,7 @@
 		-webkit-filter: invert(0%)!important;
 		filter:invert(0%)!important; 
 	}
-	.buttonwrapper {   
+	#button-container { 
 		width:600px;
 		font-size:19px;
 	    margin-top:10px;
@@ -236,6 +241,7 @@
 	
 	.advancedFloater {
 		float: right;
+		margin-bottom: 10px;
 		/*
     	display: flex;
     	justify-content: space-between;
@@ -254,7 +260,7 @@
 		padding-top:15px;
 		padding-bottom:15px;
 	}
-	#advanced,.infolink,#frbutton,#playall-button{
+	#advanced,.infolink,#frbutton{
 		height: 22px;
 		font-weight: bold;
 		vertical-align: middle;
@@ -270,22 +276,32 @@
 	    cursor:pointer;
        	border-radius: 15px;
 	}
-	#playall-button { 
-		width:25px;
-		padding: 0px 0px 0px 0px;
-	}
 	#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover,#frbutton:hover { 
 		background-color: rgb(159, 150, 160);
 	}
+	#playall-button { 
+		background: url(img/searchglass.png) no-repeat;
+		background-color: rgb(255, 255, 255);
+		width: 24px;
+		height: 30px;
+		padding: 0px 0px 2px 0px;
+		border: none;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		cursor: pointer;
+	}
 	#playallsongsby {
 		font-size:13px;
+		background-color: rgba(0,0,0,0.2); 
+		padding:5px;
 	}
 	#playallsongsby-artist {
-    	border-radius: 5px;
+    	border-radius: 5px 0px 0px 5px;
 		background-color: rgba(255,255,255,0.7);
 		font-size: 15px;
-		width: 80px;
+		width: 69px;
 		margin-left: 2px;
+		margin-bottom: 10px;
 		height: 30px;
 		padding: 0px;
 		padding-left: 5px;
@@ -293,9 +309,14 @@
 		border: 0px;
 	}
 	#related-container {
-		font-size: 13px;
-		padding: 5px;
+		font-size: 15px;
+		padding-bottom: 5px;
 		text-align: justify;
+	}
+	#similarArtTitle {
+		color: #000;
+		background-color: rgba(255,255,255,0.2); 
+		padding:0px 1px 0px 1px;
 	}
 	#rss-dropdown{
 		font-family: 'Roboto', sans-serif;
@@ -366,7 +387,7 @@
        	border-radius: 15px;
 
 	}
-	#search-button { margin-top:10px; margin-bottom: 30px;}
+	#search-button { margin-top:10px; }
 
 	#playlist-title,#playlist-url-copy {
 		width: 575px;
@@ -428,6 +449,9 @@
 	}
 	#errormsg {
 		/*text-align: left;*/
+	}
+	#api-about {
+		font-size:10px;
 	}
 
 
