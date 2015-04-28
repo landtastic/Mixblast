@@ -513,6 +513,8 @@
 
 /* iPhone 5*/
 @media only screen and (width:320px) and (device-width:320px) and (device-height:480px) {
+
+
 	#body-container { 
 		padding-left:10px!important; 
 		padding-right: 20px!important;
@@ -527,25 +529,36 @@
 		font-size: 160%;
 		height: 80px;
 	}
-	#rss-dropdown, #advanced, .infolink{ 
+	#rss-dropdown, #playallsongsby-artist, #playall-button{ 
 		font-size: 160%!important; 
-		height: 40px;
+		height: 50px;
+	}
+	#playall-button {
+		padding: 0px 0px 0px 0px;
+		width:40px;
+	}
+	#playallsongsby-artist {
+		width:200px;
+	}
+	#advanced, .infolink {
+		font-size: 150%!important; 
+		font-weight: normal;
+		height: 30px;
+		margin-top: 20px;
+	}
+	#frbutton{
+		width:50px;
+		height: 30px;
+	}
+	#playallsongsby {
+		font-size:160%!important;
 	}
 	#rss-dropdown { width:200px;}
-	#rss-button { height: 25px; width: 25px; vertical-align: bottom;}
-	#shuffletext { height: 30px; width: 30px; vertical-align: middle;}
+	#rss-button { height: 35px; width: 35px; vertical-align: middle;}
+	#shuffletext { height: 45px; width: 45px; vertical-align: middle;}
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
-	/*
-	body {
-		font-size: 170%;
-		initial-scale:0.667;
-		maximum-scale:0.667;
-		-webkit-transform: scale(0.667);
-		padding: 5px 5px;
-		width: 100%;
-	}
-	*/
+
 }
 
 /* iPad */
