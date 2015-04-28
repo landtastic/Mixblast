@@ -7,13 +7,13 @@ var playcount = 0;
 var searchcount = 0;
 
 function onPlayerReady() {
-	$("#search-button").html('Blast a Mix');
+	$("#search-button").html('Blast a Mix &#9658;');
   	//if rss url in querystring, automate click
   	//if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
 function onPlayerError(event){
      console.log('Whoops. Error: '+event.data);
-     //nextVideo(true);
+     nextVideo(true);
 }
 function onPlayerStateChange(event) {
 	if (event.data != 1) {
@@ -45,8 +45,8 @@ function onYouTubeIframeAPIReady_removed_callback() {
     ytPlayer = new YT.Player('ytPlayer', { 
     	height: '368',
     	width: '600',
-    	videoId: 'Oi1BcouEmio',
-    	//videoId: 'fgBLu387UM8',
+    	//videoId: 'Oi1BcouEmio',
+    	videoId: 'fgBLu387UM8',
         events: {
             'onReady': onPlayerReady,
             'onError': onPlayerError,
@@ -100,17 +100,10 @@ function search(query,c) {
 			topvTitleArray.push(vTitle);
 			topvThumbArray.push(vThumb);
 			//start the first video right away while the playlist loads
-			//if ((topvIdArray.length > 0) && (c == 0) && (ready2search == true)) {
 
 			if (topvIdArray.length == 1) {
-				console.log(ytPlayer);
-				/////ytPlayer.cueVideoById(topvIdArray);
-				//if (searchcount==1) cuePlayer();
 				//only cue on the first search, keep the video running on subsequent searches
-				if (searchcount==1) {
-					ytPlayer.loadVideoById(topvIdArray[0]);
-					ytPlayer.pauseVideo();
-				};
+				if (searchcount==1) cuePlayer();
 			} 
 
 			c++;
@@ -122,9 +115,8 @@ function search(query,c) {
 function cuePlayer() {
 	var i = add(); //(in advanced.js)
 	//check if the ytPlayer object is loaded
-	//if ($("#ytPlayer").is("iframe")) {
 	if (ytPlayer.cueVideoById) {
-		ytPlayer.cueVideoById(topvIdArray);
+		ytPlayer.cueVideoById(topvIdArray[0]);
 	} else {
 		//check for it 5x if it isn't
 		var tag = document.createElement('script');
@@ -283,7 +275,7 @@ function nextVideo(next) {
 
 function loadVid(vidId) {
 	ytPlayer.loadVideoById(vidId);
-	ytPlayer.playVideo();
+	//ytPlayer.playVideo();
 	//if (searchdone) {
 	//	ytPlayer.loadVideoById(vidId);
 	//} else {
@@ -323,7 +315,7 @@ $("#playall-button").click(function(){
 });
 
 function showRelated(artistName) {
-     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=16&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
+     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=20&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
 
         var artistList = '';
         if (data.similarartists) {
@@ -464,6 +456,7 @@ $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
+	$("#editplaylist").html($("#editplaylist").html().replace("Close Playlist Editor","Edit Playlist"));
 });
 $("#closeAdvanced").click(function(){
 	$('#advanced-container').slideToggle("fast");

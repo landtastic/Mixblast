@@ -132,7 +132,7 @@ function magicSongExtractor() {
 }
 
 function what() {
-    alert('Mixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist.\n\nCopy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nWelp, see ya later.')
+    alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist.\n\nYou can load 200 songs by an artist, as well as by related artists. Copy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nWelp, see ya later.')
 }
 
 //load .txt or .m3u playlist
@@ -179,7 +179,12 @@ function editSearchTerm(lineNumber) {
 	$('#player-container').slideToggle("fast");
 	$(".closebutton").show();
     $("#logo").animate({height:'101px',width:'100%',marginBottom:'5px'});
-	
+    var toggleEditText = $("#editplaylist").html();
+    if (toggleEditText.indexOf("Edit Playlist") > -1) {
+        $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Playlist Editor"));
+    } else if (toggleEditText.indexOf("Close Playlist Editor") > -1) {
+        $("#editplaylist").html(toggleEditText.replace("Close Playlist Editor","Edit Playlist"));
+	}
     var input = $("#query");
     var lineHeight = 1.14;
     input.scrollTop(lineNumber * lineHeight);
@@ -217,6 +222,8 @@ function parseXml(data) {
                 searchTerms = e.title.replace(/“|”/g,'');
                 stripParen = true;
         } else if (rssfeed.indexOf('AlbumOfTheYear') >= 0) {
+                searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
+        } else if (rssfeed.indexOf('metacritic') >= 0) {
                 searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
         } else if (rssfeed.indexOf('tinymixtapes') >= 0) {
             stripNums = true; stripParen = true;

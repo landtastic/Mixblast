@@ -97,25 +97,25 @@
 		<div id="search-container">
 		</div>
 		<div id="flame"></div>
-	   <div>
+
 	   <h3>Save your playlist to Youtube 
 	   	<span style="display:none;" id="login-container" class="pre-auth">(<a href="javascript:void(0);" id="login-link"><b>Sign in</b></a>)</span>
 		<span style="display:none;" id="login-container" class="post-auth">(200 video limit)</span>
 	    </h3>
 	   <hr>
-		Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/>
-	    <div id="buttons">
-	      <button id="playlist-button" disabled>Save a Playlist (Blast a Mix first)</button>
-		  <p id="playlist-status"></p>
-		  
+	   <div class="playlist-container">
+	   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>
+	   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br>(Blast a Mix first)</button></div><br>
+	   </div>
+	   <div class="playlist-container">
+		  <p id="playlist-status"></p>		  
 		  <span id="playlist-url">
-		  <b>Playlist url (copy and paste): <input id="playlist-url-copy" type="text" onClick="this.select();"/></b>
+		  <b>Playlist url (copy and paste): <br><input id="playlist-url-copy" type="text" onClick="this.select();"/></b>
 		  <br><br>
 		  </span>
-	    </div>
-	    </div>
+	   </div>
 	    <div>
-	    <br>
+	    <br><br><br>
 		<hr>
 		<br>
 		<span id='emailme'></span> 
