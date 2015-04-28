@@ -20,10 +20,10 @@
 	  	<div id="ytPlayer"></div>
 	  </div>
 	  <div id="text-container">
-			&nbsp;<span id="playallsongsby">Play 200 songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  ">&nbsp; &nbsp;
+			&nbsp;<span id="playallsongsby" class="ui-widget">Play 200 songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  ">&nbsp; &nbsp;
 			<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">&nbsp;&nbsp;
 			<select id="rss-dropdown">
-				<option value="PUT_RSS_FEED_URL_HERE">Music Feeds</option>
+				<option value="">Music Feeds</option>
 				<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
@@ -124,10 +124,12 @@
 		<br>
 		<br>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 		<script src="http://www.youtube.com/iframe_api"></script>
 		<script src="auth.js"></script>
 		<script src="search.js"></script>
 		<script src="advanced.js"></script>
+		<script src="autocomplete.js"></script>
 		<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 		<script src="playlist_updates.js"></script>
 		<script src="gradbg.js"></script>

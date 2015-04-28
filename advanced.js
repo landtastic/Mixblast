@@ -296,3 +296,23 @@ var delay = (function(){
     timer = setTimeout(callback, ms);
   };
 })();
+
+/* AutoComplete */
+$("#playallsongsby-artist").autocomplete({
+    source: function(request, response){
+        var apiKey = 'AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM';
+        var query = request.term;
+        $.ajax({
+            url: "http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q="+query+"&key="+apiKey+"&format=5&alt=json&callback=?",  
+            dataType: 'jsonp',
+            success: function(data, textStatus, request) { 
+               response( $.map( data[1], function(item) {
+                    return {
+                        label: item[0],
+                        value: item[0]
+                    }
+                }));
+            }
+        });
+    },
+});

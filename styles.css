@@ -459,6 +459,25 @@
 	#api-about {
 		font-size:10px;
 	}
+	.ui-helper-hidden-accessible { display:none; }
+	#ui-id-1 {
+		width:300px;
+		height:150px!important;
+		z-index:999;
+	}
+	.ui-menu-item {
+		padding:1px;
+		width:300px;
+		margin-left:-40px;
+		background-color: rgba(255,255,255,0.95);
+	}
+	a.ui-corner-all {
+		cursor:pointer; 
+		color:#666;
+	}
+	a.ui-corner-all:hover {
+		color:#000;
+	}
 
 
  /* iPhone 6*/

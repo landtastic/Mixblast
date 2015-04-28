@@ -9,7 +9,7 @@ var searchcount = 0;
 function onPlayerReady() {
 	$("#search-button").html('Blast a Mix &#9658;');
   	//if rss url in querystring, automate click
-  	//if (getParameterByName('rss')) $('#search-button').trigger( "click" );
+  	////if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
 function onPlayerError(event){
      console.log('Whoops. Error: '+event.data);
@@ -304,11 +304,10 @@ function allSongsBy(artistName) {
 }
 $("#playallsongsby-artist").keypress(function (e) {
  var key = e.which;
- if(key == 13)  // the enter key code
-  {
+ if(key == 13) {
     allSongsBy($("#playallsongsby-artist").val());
     return false;  
-  }
+ }
 });  
 $("#playall-button").click(function(){
 	allSongsBy($("#playallsongsby-artist").val());
@@ -320,13 +319,17 @@ function showRelated(artistName) {
         var artistList = '';
         if (data.similarartists) {
 	        $.each(data.similarartists.artist, function(i, item) {
-	        	var curArtist = item.name.replace(/["']/g, "\\'");
+	        	if (item.name) {
+	        		var curArtist = item.name.replace(/["']/g, "\\'");
+	        	} else {
+	        		$('#query').val('Error loading related tracks: '+artistName); 
+	        	}
 	            artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
 	            if (i < data.similarartists.artist.length-1) artistList += " &bull; "
 	        });
 	        $("#related-container").html("<hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
 		} else {
-			//$('#related-container').html('Error loading related tracks: '+artistName); 
+			$('#query').val('Error loading related tracks: '+artistName); 
 	    }
     });
 }
