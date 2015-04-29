@@ -286,10 +286,11 @@ function loadVid(vidId) {
 }
 
 function allSongsBy(artistName) {
-	$('#query').val('Loading 200 songs by '+ artistName + '...');
+	var song_num = $("#play_songsby").val();
+	$('#query').val('Loading '+ song_num +' songs by '+ artistName + '...');
 	$("#related-container" ).show();
 	showRelated(artistName);
-     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=200&format=json&callback=?", function(data) {
+     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
         var songlist = '';
         if (data.toptracks) {
 	        $.each(data.toptracks.track, function(i, item) {
@@ -302,7 +303,7 @@ function allSongsBy(artistName) {
 	    }
     });
 }
-$("#playallsongsby-artist").keypress(function (e) {
+$("#playallsongsby-artist, #play_songsby").keypress(function (e) {
  var key = e.which;
  if(key == 13) {
     allSongsBy($("#playallsongsby-artist").val());

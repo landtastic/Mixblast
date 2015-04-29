@@ -295,6 +295,15 @@
 		background-color: rgba(0,0,0,0.2); 
 		padding:5px;
 	}
+	#play_songsby {
+		font-size:13px;
+		color: #fff;
+		background-color: rgba(0,0,0,0.2); 
+		border:0px;
+		padding:0px;
+		padding-left:2px;
+		width:23px;
+	}
 	#playallsongsby-artist {
     	border-radius: 5px 0px 0px 5px;
 		background-color: rgba(255,255,255,0.7);
@@ -466,7 +475,7 @@
 		z-index:999;
 	}
 	.ui-menu-item {
-		padding:1px;
+		padding:2px;
 		width:300px;
 		margin-left:-40px;
 		background-color: rgba(255,255,255,0.95);
@@ -491,7 +500,7 @@
 	textarea#query,#playlist-title {
 		font-size: 160%!important;
 	}
-	textarea#query:focus { font-size: 160%!important}
+	textarea#query:focus { font-size: 160%!important; }
 
 	#search-button, #playlist-button {
 		font-size: 160%;
@@ -507,6 +516,10 @@
 	}
 	#playallsongsby-artist {
 		width:200px;
+	}
+	.ui-menu-item {
+		font-size: 180%!important; 
+		padding:7px;
 	}
 	#advanced, .infolink {
 		font-size: 150%!important; 
@@ -558,6 +571,10 @@
 	}
 	#playallsongsby-artist {
 		width:200px;
+	}
+	.ui-menu-item {
+		font-size: 180%!important; 
+		padding:7px;
 	}
 	#advanced, .infolink {
 		font-size: 150%!important; 
