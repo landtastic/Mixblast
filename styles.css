@@ -505,7 +505,7 @@
 		z-index:999;
 	}
 	.ui-state-hover {
-		background-color: rgba(0,0,0,0.5);
+		background-color: rgba(0,0,0,0.7);
 	}
 	a.ui-state-hover {
 		color:#fff;

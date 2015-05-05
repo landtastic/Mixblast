@@ -331,14 +331,14 @@ function showRelated(artistName) {
 	        	if (item.name) {
 	        		var curArtist = item.name.replace(/["']/g, "\\'");
 	        	} else {
-	        		$('#query').val('Error loading related tracks: '+artistName); 
+	        		$("#related-container").html("<hr class='similar-top'>Error loading related tracks: "+artistName); 
 	        	}
 	            artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
 	            if (i < data.similarartists.artist.length-1) artistList += " &bull; "
 	        });
 	        $("#related-container").html("<hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
 		} else {
-			$('#query').val('Error loading related tracks: '+artistName); 
+			$("#related-container").html("<hr class='similar-top'>Error loading related tracks: "+artistName); 
 	    }
     });
 }
