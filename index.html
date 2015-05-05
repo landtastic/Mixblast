@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="Fastest Youtube playlist maker, works instantly without logging in. Play top 200 songs of any artist. Also converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
   <link rel="shortcut icon" href="favicon.ico?r=7"/>
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-  <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Mixblast Playlist Maker - Lists To Youtube Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
@@ -22,6 +22,7 @@
 	  <div id="text-container">
 			&nbsp;<span id="playallsongsby" class="ui-widget">Play <input id="play_songsby" value="200"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  ">&nbsp; &nbsp;
 			<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">&nbsp;&nbsp;
+			<div id="rss-container">
 			<select id="rss-dropdown">
 				<option value="">Music Feeds</option>
 				<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
@@ -63,6 +64,7 @@
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
 			</select> <img src="img/rss-icon.png" id="rss-button" alt="rss" title="Load Songs via RSS">
+			</div>
 
 			<div id="related-container" style="display:none;"></div>
 			<div id="advanced-container" style="display:none;"><hr class="advanced-top">
@@ -131,7 +133,6 @@
 		<script src="auth.js"></script>
 		<script src="search.js"></script>
 		<script src="advanced.js"></script>
-		<script src="autocomplete.js"></script>
 		<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 		<script src="playlist_updates.js"></script>
 		<script src="gradbg.js"></script>

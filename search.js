@@ -515,7 +515,6 @@ $(document).ready(function() {
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
 	$("#query").val(mixtext);
-
 	$("#query").focus(function() {
 		$(this).animate({height:'345px',width:'575px'},200);
 	});
@@ -524,6 +523,23 @@ $(document).ready(function() {
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 	console.log(mixfile);
 	});
+
+	var songnum_text = localStorage.getItem('how_many_songs');
+	if (songnum_text == '') songnum_text = 200;
+	$("#play_songsby").val(songnum_text);
+	$("#play_songsby").blur(function() {
+		how_many_songs = $('#play_songsby').val();
+		localStorage.setItem('how_many_songs', how_many_songs);
+		console.log(how_many_songs)
+	});
+	var artist_text = localStorage.getItem('artist');
+	$("#playallsongsby-artist").val(artist_text);
+	$("#playallsongsby-artist").blur(function() {
+		artist = $('#playallsongsby-artist').val();
+		localStorage.setItem('artist', artist);
+		console.log(artist)
+	});
+
 	$("#search-button").click(function(){
 		multiSearch();
 		$("#shufflebutton").addClass("disabled");
@@ -535,5 +551,5 @@ $(document).ready(function() {
 		createPlaylist();
 	});
 
-});
 
+});
