@@ -106,7 +106,10 @@
     	right: 22px;
 	    width:27px;
 	    height:27px;
-	    background:url('img/close-button.png') no-repeat center center;
+	    font-size: 30px;
+	    font-weight: 100;
+	    color: #000;
+	    /*background:url('img/close-button.png') no-repeat center center;*/
 	    cursor:pointer;
 	}
 	.closebutton:hover {
@@ -419,6 +422,9 @@
 		margin-left: 3px;
 		background-color: rgba(255,255,255,0.1); 
 	}
+	.checkbox-label {
+		cursor:pointer;
+	}
 	.advanced-tips {
 		color: #000;
 	}
@@ -477,24 +483,21 @@
 	
 	.ui-menu-item {
 		padding:2px;
-		width:230px;
+		width:233px;
 		margin-left:-40px;
 		background-color: rgba(255,255,255,0.95);
 	}
 	li.ui-menu-item:hover {
-		color: #fff;
 	  	background-color: rgba(0,0,0,0.5);
 	  	cursor:pointer; 
-		color: #fff;
   		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+	}
+	.ui-menu-item:hover a {
+		color:#fff;
 	}
 	a.ui-corner-all {
 		cursor:pointer; 
 		color:#666;
-	}
-	a.ui-corner-all:hover {
-		color: #fff;
-  		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
 	}
 	#ui-id-1 {
 		width:300px;
@@ -504,7 +507,9 @@
 	.ui-state-hover {
 		background-color: rgba(0,0,0,0.5);
 	}
-
+	a.ui-state-hover {
+		color:#fff;
+	}
 
 
  /***** iPhone 6*****/
@@ -531,6 +536,7 @@
 	#playall-button {
 		padding: 0px 0px 0px 0px;
 		width:40px;
+		background-size: cover;
 	}
 	#playallsongsby-artist {
 		width:200px;
@@ -590,6 +596,7 @@
 	#playall-button {
 		padding: 0px 0px 0px 0px;
 		width:40px;
+		background-size: cover;
 	}
 	#playallsongsby-artist {
 		width:200px;
