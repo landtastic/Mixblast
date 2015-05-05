@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="favicon.ico?r=7"/>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
   <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-  <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Mixblast Playlist Maker - Lists To Youtube Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
   </head>
@@ -63,9 +63,6 @@
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
 			</select> <img src="img/rss-icon.png" id="rss-button" alt="rss" title="Load Songs via RSS">
-			<div class='advancedFloater'>
-			<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
-			</div>
 
 			<div id="related-container" style="display:none;"></div>
 			<div id="advanced-container" style="display:none;"><hr class="advanced-top">
@@ -80,7 +77,12 @@
 				<textarea id="query" rows="13" cols="60" placeholder="Put a list of songs here"></textarea>
 				<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
 				<div id="errormsg" style="display:none;"></div>
+			<div class='advancedFloater'>
+			<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
+			</div>
+
 				<button id="search-button" disabled>Blast a Mix</button>
+
 				<a class="closebutton" style="display:none;">&nbsp;</a>
 			</div></div>
 	  	</div>
@@ -105,7 +107,7 @@
 	   <hr>
 	   <div class="playlist-container">
 	   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>
-	   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br>(Blast a Mix first)</button></div><br>
+	   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br><sup>(Blast a Mix first)</sup></button></div><br>
 	   </div>
 	   <div class="playlist-container">
 		  <p id="playlist-status"></p>		  

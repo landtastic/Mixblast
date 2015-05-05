@@ -13,7 +13,11 @@ function onPlayerReady() {
 }
 function onPlayerError(event){
      console.log('Whoops. Error: '+event.data);
-     nextVideo(true);
+     if (event.data == 150) {
+     	wrongSong();
+     } else {
+		nextVideo(true);
+     }
 }
 function onPlayerStateChange(event) {
 	if (event.data != 1) {
@@ -146,6 +150,7 @@ function multiSearch() {
 	$( "#search-container" ).empty();
 	//$('#related-container').hide();
 	$('#errormsg').hide();
+	$("#editplaylist").html($("#editplaylist").html().replace("Close Playlist Editor","Edit Playlist"));
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
 	//split texarea into lines
@@ -275,15 +280,16 @@ function nextVideo(next) {
 
 function loadVid(vidId) {
 	ytPlayer.loadVideoById(vidId);
+	//////$('#ytPlayer').attr('src','https://www.youtube.com/embed/'+ vidId +'?autoplay=1&enablejsapi=1&origin=http%3A%2F%2Fl4nd.com');
+	//////document.getElementById("ytPlayer").play();
 	//ytPlayer.playVideo();
-	//if (searchdone) {
-	//	ytPlayer.loadVideoById(vidId);
-	//} else {
-	//	ytPlayer.loadVideoById(vidId); //not working in iOS
-	//}
-	/////$('#ytPlayer').attr('src','https://www.youtube.com/embed/'+ vidId +'?autoplay=1&enablejsapi=1&origin=http%3A%2F%2Flocalhost');
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
+
+$('#ytPlayer').on('ended',function(){
+	alert($(this)[0]);
+    $(this)[0].play();
+});
 
 function allSongsBy(artistName) {
 	var song_num = $("#play_songsby").val();
@@ -410,12 +416,16 @@ function shuffle(o){
     return o;
 };
 
-var swapper = 1; //next song
 $("#wrongsong").click(function(){
+	wrongSong();
+});
+
+var swapper = 1; //next song
+function wrongSong() {
 	if (swapper > 19) swapper = 0;
 	loadVid(vidObjArray[vidcount].vid[swapper]);
 	swapper++;
-});
+}
 
 //song refresh button
 $('#search-container').on('contextmenu click', '.refreshb', function(event) {
@@ -502,9 +512,12 @@ $(document).ready(function() {
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
 	$("#query").val(mixtext);
-	//$("#query").change (function(){  //this worked for textarea
+
+	$("#query").focus(function() {
+		$(this).animate({height:245},200);
+	});
 	$("#query").blur(function() {
-		 // pulls the value from the textarea (made it global var)
+		$(this).animate({height:245},200);
 	 	mixfile = $('#query').val();
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 	console.log(mixfile);
