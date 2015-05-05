@@ -179,6 +179,7 @@ function editSearchTerm(lineNumber) {
 	$('#player-container').slideToggle("fast");
 	$(".closebutton").show();
     $("#logo").animate({height:'101px',width:'100%',marginBottom:'5px'});
+    $("#query").animate({height:'240px',width:'575px'},200);
     var toggleEditText = $("#editplaylist").html();
     if (toggleEditText.indexOf("Edit Playlist") > -1) {
         $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Playlist Editor"));

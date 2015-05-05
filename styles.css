@@ -5,7 +5,7 @@
 		text-rendering: optimizeLegibility;
 		
 		margin:0;
-		padding:10px;
+		padding:3px;
 		height:100%;
 	}
 	#body-container {
@@ -27,7 +27,7 @@
 	}
 	#query {
 		width: 575px;
-		height: 245px;
+		height: 230px;
 		color: #000;
 	    text-align: left;
 	    background-color: rgba(255,255,255,0.7);
@@ -205,6 +205,11 @@
 	    zoom: 1;
     	white-space: nowrap;
   	}
+ 	.playerbutton-littlebuttons {
+ 		float: right;
+ 		text-align: right;
+ 		width: 200px;
+ 	}
   	.stretch {
 	    width: 100%;
 	    display: inline-block;

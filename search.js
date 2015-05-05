@@ -171,6 +171,7 @@ function multiSearch() {
 		return false; 
 	}
 
+	$("#query").animate({height:'240px',width:'575px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 
 	(function setInterval_afterDone(){
@@ -272,6 +273,7 @@ function nextVideo(next) {
 		if ((vidcount < 0) || (vidcount=='undefined')) vidcount = totalvids-1;
 		$('#search-container').prepend($('#search-container div:last'));
 	}
+	//reset global swap count
 	swapper = 1;
 	
 	var thevideoid = topvIdArray[vidcount];
@@ -469,6 +471,7 @@ $("#editplaylist").click(function(){
 $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
+	$("#query").animate({height:'240px',width:'575px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Playlist Editor","Edit Playlist"));
 });
@@ -514,10 +517,9 @@ $(document).ready(function() {
 	$("#query").val(mixtext);
 
 	$("#query").focus(function() {
-		$(this).animate({height:245},200);
+		$(this).animate({height:'345px',width:'575px'},200);
 	});
 	$("#query").blur(function() {
-		$(this).animate({height:245},200);
 	 	mixfile = $('#query').val();
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 	console.log(mixfile);
