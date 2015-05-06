@@ -492,6 +492,13 @@
 	#errormsg {
 		text-align: left;
 	}
+	#not-found {
+		color: #fff;
+		background-color: rgba(0,0,0,0.3);
+		padding: 0px;
+  		border: 0px;
+  		width: 196px;
+	}
 	#api-about {
 		font-size:10px;
 	}

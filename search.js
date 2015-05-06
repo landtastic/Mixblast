@@ -82,7 +82,7 @@ function search(query,c) {
 		var vTitle = x.snippet.title;
 		var vThumb = x.snippet.thumbnails.default.url;
 		if (vId==undefined) {
-			var vId="Not Found",vTitle="Not Found. Try song reload button or edit search term: "+q,vThumb="img/notfound.png"; 
+			var vId="Not Found",vTitle="Not Found. Try version refresh button: ",vThumb="img/notfound.png"; 
 		}
 
 		vIdArr.push(vId);
@@ -177,7 +177,7 @@ function multiSearch() {
 	(function setInterval_afterDone(){
 
 		/* do search function */
-		search(searchArray[x],x);
+		if (searchArray[x]) { search(searchArray[x],x); } else { console.log('error: ILB'); }
 		
 		x++;
 		
@@ -205,10 +205,14 @@ function renderPlaylist(c,vThumb,vId,vTitle) {
 }
 function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
 	var vclick = "loadVid(\""+vId+"\"); vidcount="+c+";"
-	if (vId == "Not Found") var vclick = "editSearchTerm(0);";
+	var notFoundString = '';
+	if (vId == "Not Found") {
+		var vclick = "editSearchTerm(0);";
+		notFoundString = "<input id='not-found' value='"+ searchArray[c] +"'> ";
+	}
 	var swapcount;
 	if (swapcount == undefined) swapcount = 0;
-	return "<div class='searchresult-div' style='width:10%'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'><a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
+	return "<div class='searchresult-div' style='width:10%'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'>"+ notFoundString +"<a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
 		"</a></div><div id='searchresult-refresh' style='width:5%'><img src='img/refreshb.png' class='refreshb' id='"+c+"' alt='Version Swap'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
 }
 
