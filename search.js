@@ -438,7 +438,6 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
     var swapcount = $(this).nextAll('#swapcount').val();
 	if( event.button == 2 ) { 
 	  swapcount--;
-	  //if (swapcount < 0) swapcount = swaplen-1;
 	  event.preventDefault();
 	} else {
 	  swapcount++;
@@ -461,7 +460,6 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 		topvIdArray[index] = top5id;
 	}
 	$(this).nextAll('#swapcount').val(swapcount);
-	console.log('ol swapcount:'+swapcount)
 });
 
 
