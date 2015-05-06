@@ -210,7 +210,10 @@ function parseXml(data) {
 			searchTerms = searchTerms.replace(/[-]/g," ");
 			searchTerms = searchTerms.substring(0, searchTerms.indexOf('.'));
         } else if (rssfeed.indexOf('hotnewhiphop') >= 0) {
-            if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerms = e.title; searchTerms = searchTerms.replace('Video',''); }
+            if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerms = e.title; searchTerms = searchTerms.replace('Video',''); } else { searchTerms=''; }
+        } else if (rssfeed.indexOf('allhiphop') >= 0) {
+            console.log(searchTerms);
+            if (e.title.indexOf('“') >= 0) { searchTerms = e.title; searchTerms = e.title.replace(/“|”|\[VIDEO\] |PREMIERE: |FRESH HEAT |HEATER OF THE DAY: /g,''); } else { searchTerms=''; }
         } else if (rssfeed.indexOf('nah_right') >= 0) {
             searchTerms = e.title.replace(/Video: |Audio:/g,'');
         } else if (rssfeed.indexOf('SouthernSweetTea') >= 0) {
@@ -219,11 +222,12 @@ function parseXml(data) {
             if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { 
                 searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
                 searchTerms = searchTerms.replace('Video',''); stripParen = true;}
+            else { searchTerms=''; }
         } else if (rssfeed.indexOf('stereogum') >= 0) {
                 searchTerms = e.title.replace(/“|”/g,'');
                 stripParen = true;
         } else if (rssfeed.indexOf('AlbumOfTheYear') >= 0) {
-                searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
+                searchTerms = e.title; searchTerms = e.title.replace(/New Track: |Video: |Video: |Listen: |First Listen: /g,''); searchTerms = $("<textarea/>").html(searchTerms).text(); 
         } else if (rssfeed.indexOf('metacritic') >= 0) {
                 searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
         } else if (rssfeed.indexOf('tinymixtapes') >= 0) {
@@ -235,7 +239,7 @@ function parseXml(data) {
             $.each(lines, function(i, item) {
                if (item.indexOf('- ') >= 0) {
                 cleanlines.push(item.replace(/<br>/g,'').replace(/<p>/g,'').replace(/<\/p>/g,'\n'));
-               }
+               } else { searchTerms=''; }
             });
             searchTerms = cleanlines.join('\n');
         } else if (rssfeed.indexOf('billboard.com') >= 0) {

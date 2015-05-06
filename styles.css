@@ -135,18 +135,31 @@
 	a#link  {cursor:pointer;}
 	.searchresult {
     	white-space: nowrap;
-		width:600px;
+    	width: 600px;
 		position: relative;
 		left: 0;
+		display: inline-block;
 		text-align: left;
-		display:block;
-		overflow:hidden;
-		text-overflow:ellipsis;
 		border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
 		padding-top:5px;
 		padding-bottom:5px;
 	}
+	.searchresult-div {
+		float: left;
+		height: 47px;
+	}
+	.searchresult-title {
+		float: left;
+		width: 495px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding-top: 14px;
+		padding-right: 2px;
+		padding-bottom: 5px;
+		padding-left: 6px;
+	}
 	#thumb {
+		float: left;
 		vertical-align:middle;
 		padding:1px;
 		width:60px;
@@ -155,8 +168,6 @@
 	.refreshb {
 		margin-top:10px;
     	margin-right: 5px;
-		float:left;
-		vertical-align: bottom; 
 		padding:1px;
 		width:27px;
 		height:27px;
@@ -523,8 +534,8 @@
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
 
 	#body-container { 
-		padding-left:10px!important; 
-		padding-right: 20px!important;
+		padding-left:15px!important; 
+		padding-right: 15px!important;
 
 	}
 	textarea#query,#playlist-title {
@@ -574,7 +585,11 @@
 	#shuffletext { height: 55px; width: 55px; vertical-align: middle;}
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
-	.playerbutton-littlebuttons { font-size: 150%!important; }
+	a#editplaylist, a#wrongsong { font-size: 130%; }
+	div.playerbutton-littlebuttons { width: 240px; }
+	.searchresult { font-size: 180%; }
+	.refreshb { width:; }
+	#thumb { width: 40px; height: 40px; }
 
 }
 

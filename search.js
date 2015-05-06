@@ -166,7 +166,7 @@ function multiSearch() {
 	searchnum = searchArray.length;
 	if (searchnum < 1) { 
 		$('#errormsg').show();
-		$('#errormsg').html('Put a list of songs into the textbox. (Load Songs, copy and paste, or type)');
+		$('#errormsg').html('Put a list of songs into the textbox. (Load songs by artist, copy and paste a text list, or type)');
 		editSearchTerm(0); 
 		return false; 
 	}
@@ -207,7 +207,7 @@ function renderPlaylist(c,vThumb,vId,vTitle) {
 	//console.log(vclick);
 	if (vId == "Not Found") var vclick = "editSearchTerm(0);";
 	//vidcount = c;
-	$("#search-container").append("<div class='searchresult'><img src='img/refreshb.png' class='refreshb' id='"+c+"' alt='Version Swap'><img id='thumb' src='"+ vThumb +"'> <a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + "</a><input id='swapcount' type='hidden' value='1'></div>");
+	$("#search-container").append("<div class='searchresult'><div class='searchresult-div'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'><a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + "</a></div><div class='searchresult-div'><img src='img/refreshb.png' class='refreshb' id='"+c+"' alt='Version Swap'><input id='swapcount' type='hidden' value='1'></div></div>");
 }
 
 function renderEntirePlaylistFromIndex(){
@@ -289,7 +289,7 @@ function loadVid(vidId) {
 }
 
 $('#ytPlayer').on('ended',function(){
-	alert($(this)[0]);
+	console.log($(this)[0]);
     $(this)[0].play();
 });
 
@@ -430,7 +430,7 @@ function wrongSong() {
 }
 
 //song refresh button
-$('#search-container').on('contextmenu click', '.refreshb', function(event) {
+$('#search-result').on('contextmenu click', '.refreshb', function(event) {
 
     var thisid = this.id;
     //var swapcount = $(this).parent().closest('input[id=swapcount]').val();
@@ -455,7 +455,7 @@ $('#search-container').on('contextmenu click', '.refreshb', function(event) {
 	}
 
 	console.log(swapcount);
-	$(this).parent().html('<img src="img/refreshb.png" class="refreshb" id="'+thisid+'"><img id="thumb" src="'+top5thumb+'"> <a id="link" onclick="'+top5click+'" title="'+top5title+'">'+top5title+'</a><input id="swapcount" type="hidden" value="'+swapcount+'">');
+	$(this).parent().html('<img id="thumb" src="'+top5thumb+'"> <a id="link" onclick="'+top5click+'" title="'+top5title+'">'+top5title+'</a><img src="img/refreshb.png" class="refreshb" id="'+thisid+'"><input id="swapcount" type="hidden" value="'+swapcount+'">');
 
 	//replace current vId in global topvIdArray
 	var index = topvIdArray.indexOf(topvIdArray[thisid]);
@@ -525,7 +525,7 @@ $(document).ready(function() {
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
-	if (songnum_text == '') songnum_text = 200;
+	if ($.trim(songnum_text) == '') songnum_text = 200;
 	$("#play_songsby").val(songnum_text);
 	$("#play_songsby").blur(function() {
 		how_many_songs = $('#play_songsby').val();
