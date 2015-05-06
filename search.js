@@ -166,12 +166,12 @@ function multiSearch() {
 	searchnum = searchArray.length;
 	if (searchnum < 1) { 
 		$('#errormsg').show();
-		$('#errormsg').html('Put a list of songs into the textbox. (Load songs by artist, copy and paste a text list, or type)');
+		$('#errormsg').html('Put a list of songs into the textbox. <br>(Load songs by artist, copy and paste a text list, or type)');
 		editSearchTerm(0); 
 		return false; 
 	}
 
-	$("#query").animate({height:'240px',width:'575px'},200);
+	$("#query").animate({height:'200px',width:'575px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 
 	(function setInterval_afterDone(){
@@ -201,13 +201,15 @@ function multiSearch() {
 }
 
 function renderPlaylist(c,vThumb,vId,vTitle) {
-
-	//var vclick = 'ytPlayer.loadVideoById('+vId+'\');vidcount='+c+';renderEntirePlaylistFromIndex('+c+',\''+vThumb+'\',\''+vId+'\',\''+vTitle+'\');'
+	$("#search-container").append("<div class='searchresult'>"+createPlaylistItem(c,vThumb,vId,vTitle)+"</div>");
+}
+function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
 	var vclick = "loadVid(\""+vId+"\"); vidcount="+c+";"
-	//console.log(vclick);
 	if (vId == "Not Found") var vclick = "editSearchTerm(0);";
-	//vidcount = c;
-	$("#search-container").append("<div class='searchresult'><div class='searchresult-div'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'><a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + "</a></div><div class='searchresult-div'><img src='img/refreshb.png' class='refreshb' id='"+c+"' alt='Version Swap'><input id='swapcount' type='hidden' value='1'></div></div>");
+	var swapcount;
+	if (swapcount == undefined) swapcount = 0;
+	return "<div class='searchresult-div' style='width:10%'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'><a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
+		"</a></div><div id='searchresult-refresh' style='width:5%'><img src='img/refreshb.png' class='refreshb' id='"+c+"' alt='Version Swap'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
 }
 
 function renderEntirePlaylistFromIndex(){
@@ -289,8 +291,8 @@ function loadVid(vidId) {
 }
 
 $('#ytPlayer').on('ended',function(){
-	console.log($(this)[0]);
-    $(this)[0].play();
+	console.log('ended:'+ $(this)[0]);
+    //$(this)[0].play();
 });
 
 function allSongsBy(artistName) {
@@ -430,14 +432,20 @@ function wrongSong() {
 }
 
 //song refresh button
-$('#search-result').on('contextmenu click', '.refreshb', function(event) {
+$('#search-container').on('click contextmenu', '.refreshb', function(event) {
 
     var thisid = this.id;
-    //var swapcount = $(this).parent().closest('input[id=swapcount]').val();
     var swapcount = $(this).nextAll('#swapcount').val();
+	if( event.button == 2 ) { 
+	  swapcount--;
+	  //if (swapcount < 0) swapcount = swaplen-1;
+	  event.preventDefault();
+	} else {
+	  swapcount++;
+	}
     var swaplen = vidObjArray[thisid].vid.length;
-    //console.log('swaplen:'+swaplen);
-    if (swapcount > swaplen-1) swapcount = 0;
+    if (swapcount >= swaplen) swapcount = 0;
+    if (swapcount < 0) swapcount = swaplen-1;
 
 	var top5id = vidObjArray[thisid].vid[swapcount];
 	var top5click = "loadVid('"+top5id+"');vidcount="+thisid;
@@ -445,23 +453,15 @@ $('#search-result').on('contextmenu click', '.refreshb', function(event) {
 	if ((top5id == "Not Found") || (top5id == undefined)) var top5click = "editSearchTerm("+thisid+");";
 	var top5thumb = vidObjArray[thisid].thumb[swapcount];
 	var top5title = vidObjArray[thisid].title[swapcount];
-	
-	if( event.button == 2 ) { 
-	  swapcount--;
-	  if (swapcount < 0) swapcount = swaplen-1;
-	  event.preventDefault();
-	} else {
-	  swapcount++;
-	}
 
-	console.log(swapcount);
-	$(this).parent().html('<img id="thumb" src="'+top5thumb+'"> <a id="link" onclick="'+top5click+'" title="'+top5title+'">'+top5title+'</a><img src="img/refreshb.png" class="refreshb" id="'+thisid+'"><input id="swapcount" type="hidden" value="'+swapcount+'">');
-
+	$(this).parent().parent().html(createPlaylistItem(thisid,top5thumb,top5id,top5title,swapcount));
 	//replace current vId in global topvIdArray
 	var index = topvIdArray.indexOf(topvIdArray[thisid]);
 	if (index !== -1) {
 		topvIdArray[index] = top5id;
 	}
+	$(this).nextAll('#swapcount').val(swapcount);
+	console.log('ol swapcount:'+swapcount)
 });
 
 
