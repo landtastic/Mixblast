@@ -301,7 +301,7 @@ $('#ytPlayer').on('ended',function(){
 
 function allSongsBy(artistName) {
 	var song_num = $("#play_songsby").val();
-	$('#query').val('Loading '+ song_num +' songs by '+ artistName + '...');
+	$('#query').val('Loading list of '+ song_num +' songs by '+ artistName + '...');
 	$("#related-container" ).show();
 	showRelated(artistName);
      $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {

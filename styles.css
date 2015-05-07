@@ -145,14 +145,14 @@
 		float: left;
 	}
 	.searchresult-title {
-		float: left;
-		width: 83%;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		padding-top: 19px;
-		padding-right: 2px;
-		padding-bottom: 5px;
-		padding-left: 10px;
+			float: left;
+			width: 83%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding-top: 19px;
+			padding-right: 2px;
+			padding-bottom: 5px;
+			padding-left: 10px;
 	}
 	#thumb {
 		float: left;
@@ -499,6 +499,9 @@
   		border: 0px;
   		width: 196px;
 	}
+	#emailme {
+		font-size: 18px;
+	}
 	#api-about {
 		font-size:10px;
 	}
@@ -535,12 +538,9 @@
 	}
 
 
- /***** iPhone 6 *****/
-@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+ 	@media only screen and (max-width:666px){
 
 	#body-container { 
-		padding-left:15px!important; 
-		padding-right: 15px!important;
 
 	}
 	textarea#query,#playlist-title {
@@ -561,12 +561,10 @@
 		width:40px;
 		background-size: cover;
 	}
-	#playallsongsby-artist {
-		width:200px;
-	}
 	.ui-menu-item {
 		font-size: 180%!important; 
 		padding:7px;
+		width: 300px;
 	}
 	#advanced, .infolink {
 		font-size: 150%!important; 
@@ -575,90 +573,53 @@
 		margin-top: 20px;
 	}
 	#frbutton{
-		width:50px;
+		width: 50px;
 		height: 30px;
 	}
 	#play_songsby {
-		font-size:25px!important;
-		width: 48px;
+		font-size:20px!important;
+		width: 35px;
 	}
 	#playallsongsby {
-		font-size:160%!important;
-	}
-	#rss-dropdown { width:220px; margin-bottom: 10px;}
-	#rss-button { height: 35px; width: 35px; vertical-align: middle; }
-	#shuffletext { height: 55px; width: 55px; vertical-align: middle;}
-	.subtext {font-size: 22px;}
-	.subsubtext {font-size: 18px;}
-	a#editplaylist, a#wrongsong { font-size: 130%; }
-	div.playerbutton-littlebuttons { width: 240px; }
-	.searchresult { font-size: 180%; }
-	.refreshb { width:; }
-	#thumb { width: 40px; height: 40px; }
-
-}
-
-
-/* iPhone 5*/
-@media only screen and (width:320px) and (device-width:320px) and (device-height:480px) {
-
-
-	#body-container { 
-		padding-left:10px!important; 
-		padding-right: 20px!important;
-
-	}
-	textarea#query,#playlist-title {
-		font-size: 160%!important;
-	}
-	textarea#query:focus { font-size: 160%!important; }
-
-	#search-button, #playlist-button {
-		font-size: 160%;
-		height: 80px;
-	}
-	#rss-dropdown, #playallsongsby-artist, #playall-button{ 
-		font-size: 160%!important; 
-		height: 50px;
-	}
-	#playall-button {
-		padding: 0px 0px 0px 0px;
-		width:40px;
-		background-size: cover;
+		font-size:20px!important;
 	}
 	#playallsongsby-artist {
-		width:200px;
+		width:150px;
 	}
-	.ui-menu-item {
-		font-size: 180%!important; 
-		padding:7px;
-	}
-	#advanced, .infolink {
-		font-size: 150%!important; 
-		font-weight: normal;
-		height: 30px;
-		margin-top: 20px;
-	}
-	#frbutton{
-		width:50px;
-		height: 30px;
-	}
-	#play_songsby {
-		font-size:25px!important;
-		width: 48px;
-	}
-	#playallsongsby {
-		font-size:160%!important;
-	}
-	#rss-dropdown { width:220px; margin-bottom: 10px;}
-	#rss-button { height: 35px; width: 35px; vertical-align: middle; }
-	#shuffletext { height: 55px; width: 55px; vertical-align: middle;}
+	#rss-dropdown { width:70px; margin-bottom: 10px; }
+	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
+	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 10px;}
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
-	.playerbutton-littlebuttons { font-size: 150%!important; }
-
+	a#editplaylist, a#wrongsong { font-size: 118%; }
+	div.playerbutton-littlebuttons { width: 240px; line-height: 36px;}
+	.searchresult { font-size: 150%; }
+	.searchresult-title {
+		width: 77%;
+		padding-top: 23px;
+		padding-left: 38px;
+	}
+	#edit-playlist-icon { font-size: 30px; }
+	.refreshb {  
+  		padding: 0px;
+  		width: 40px;
+  		height: 40px;
+	}
+	#refreshc {  
+  		padding: 0px;
+  		width: 30px;
+  		height: 30px;
+  		margin-right: 3px;
+	}
+	#thumb {
+		height: 150%;
+		width: 150%;
+		margin-top: 6px;
+  		margin-bottom: 6px; 
+  	}
 
 }
+
 
 /* iPad */
 @media only screen and (width:768px) and (device-width:768px) and (device-height:1024px) {
