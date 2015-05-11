@@ -182,9 +182,9 @@ function editSearchTerm(lineNumber) {
     $("#query").animate({height:'200px',width:'575px'},200);
     var toggleEditText = $("#editplaylist").html();
     if (toggleEditText.indexOf("Edit Playlist") > -1) {
-        $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Playlist Editor"));
-    } else if (toggleEditText.indexOf("Close Playlist Editor") > -1) {
-        $("#editplaylist").html(toggleEditText.replace("Close Playlist Editor","Edit Playlist"));
+        $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
+    } else if (toggleEditText.indexOf("Close Editor") > -1) {
+        $("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
 	}
     var input = $("#query");
     var lineHeight = 1.14;

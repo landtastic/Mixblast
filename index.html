@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-  <meta name="viewport" content="user-scalable=no,width=device-width"/>
+  <meta name="viewport" content="user-scalable=no,width=640"/>
   <meta name="description" content="Instead of searching youtube for one video, search for a whole list! Instant playlists without logging in. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
   <link rel="shortcut icon" href="favicon.ico?r=7"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
@@ -64,10 +64,8 @@
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
 			</select> 
 			</div>
-
-			<div id="related-container" style="display:none;"></div>
 			<div id="advanced-container" style="display:none;"><hr class="advanced-top">
-			<span class="advanced-tips-title">&nbsp;Each line should be as simple as possible, e.g. <i>Artist - Song Title</i> or <i>Song Title Artist</i></span><a id="closeAdvanced">x&nbsp;&nbsp;&nbsp;</a><hr>
+			<span class="advanced-tips-title">&nbsp;If you copy & paste a list, each line should be as simple as possible, e.g. <i>Artist - Song Title</i> or <i>Song Title Artist</i></span><a id="closeAdvanced">x&nbsp;&nbsp;&nbsp;</a><hr>
 			&nbsp;Replace <input id="find"> with <input id="replace"> &nbsp;<input id="frbutton" type="button" value=" GO "> &nbsp;<span class="advanced-tips">Tip: to remove a word, replace it with nothing</span><hr>
 			<label class="checkbox-label"><input type="checkbox" id="removenums"> Remove numbers from list &nbsp;<span class="advanced-tips">(Numbered lists aren't good for searching)</span></label><hr>
 			<label class="checkbox-label"><input type="checkbox" id="removeparenths"> Remove words in parentheses from the list &nbsp;<span class="advanced-tips">(Like these words)</span></label><hr>
@@ -81,9 +79,8 @@
 			<div class='advancedFloater'>
 			<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
 			</div>
-
 				<button id="search-button" disabled>Blast a Mix</button>
-
+				<div id="related-container" style="display:none;"></div>
 				<a class="closebutton" style="display:none;" title="Close Playlist Editor">&nbsp;X&nbsp;</a>
 			</div></div>
 	  	</div>

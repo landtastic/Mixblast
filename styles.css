@@ -547,11 +547,11 @@
 		margin:0px;
 		padding:0px;
 	}
+	#query { height: 345px; }
 	textarea#query,#playlist-title {
-		font-size: 160%!important;
+		font-size: 180%!important;
 	}
-	textarea#query:focus { font-size: 160%!important; }
-
+	textarea#query:focus { font-size: 180%!important; }
 	#search-button, #playlist-button {
 		font-size: 160%;
 		height: 80px;
@@ -582,30 +582,30 @@
 		height: 30px;
 	}
 	#play_songsby {
-		font-size:20px!important;
-		width: 35px;
+		font-size:27px!important;
+		width: 47px;
 	}
 	#playallsongsby {
-		font-size:25px!important;
+		font-size:27px!important;
 	}
 	#playallsongsby-artist {
 		width:150px;
 	}
-	#rss-dropdown { width:50px; margin-bottom: 10px; }
+	#rss-dropdown { width:80px; margin-bottom: 10px; }
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
-	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 10px;}
+	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 5px;}
 	#button-container { text-align: -webkit-auto!important; }
 	#prevb, #nextb, #playpb { height:75px; width:75px; }
 	#shuffb { height:60px; width:60px; }
 	a#editplaylist, a#wrongsong { font-size: 118%; }
-	div.playerbutton-littlebuttons { width: 240px; line-height: 26px; margin-top: -44px;}
+	div.playerbutton-littlebuttons { width: 240px; line-height: 290%; margin-top: -96px;}
 	.playerbutton {
 		padding-right:40px;
 	}
 
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
-	.searchresult { font-size: 150%; }
+	.searchresult { font-size: 200%; }
 	.searchresult-title {
 		width: 77%;
 		padding-top: 23px;
@@ -630,7 +630,7 @@
   		margin-bottom: 6px; 
   	}
   	#emailme {
-  		font-size: 25px;
+  		font-size: 35px;
   	}
 }
 
