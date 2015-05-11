@@ -146,6 +146,7 @@ function multiSearch() {
 	//show video player
 	$('#player-container').slideToggle("fast");
 	$('#button-container').show();
+	$('#youtube-playlist-container').show();
 	//erase previous search
 	$( "#search-container" ).empty();
 	//$('#related-container').hide();
@@ -527,7 +528,7 @@ $(document).ready(function() {
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
-	if ($.trim(songnum_text) == '') songnum_text = 200;
+	if ($.trim(songnum_text) == '') songnum_text = 100;
 	$("#play_songsby").val(songnum_text);
 	$("#play_songsby").blur(function() {
 		how_many_songs = $('#play_songsby').val();

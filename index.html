@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-  <meta name="viewport" content="user-scalable=no,width=640"/>
+  <meta name="viewport" content="user-scalable=no,width=device-width"/>
   <meta name="description" content="Instead of searching youtube for one video, search for a whole list! Instant playlists without logging in. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
   <link rel="shortcut icon" href="favicon.ico?r=7"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
@@ -19,11 +19,11 @@
 	  	<div id="ytPlayer"></div>
 	  </div>
 	  <div id="text-container">
-			&nbsp;<span id="playallsongsby" class="ui-widget">Play <input id="play_songsby" value="200"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  ">&nbsp; &nbsp;
-			<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">&nbsp;&nbsp;
+			&nbsp;<span id="playallsongsby" class="ui-widget">Play <input id="play_songsby" value="100"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  ">
+			<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">
 			<div id="rss-container">
 			<select id="rss-dropdown">
-				<option value="">Music Feeds</option>
+				<option value="">&#9835; Feeds</option>
 				<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
@@ -62,7 +62,7 @@
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=24/explicit=true/xml">iTunes Reggae Top 100</option>
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
 				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
-			</select> <img src="img/rss-icon.png" id="rss-button" alt="rss" title="Load Songs via RSS">
+			</select> 
 			</div>
 
 			<div id="related-container" style="display:none;"></div>
@@ -100,23 +100,22 @@
 		<div id="search-container">
 		</div>
 		<div id="flame"></div>
-
-	   <h3>Save your playlist to Youtube 
-	   	<span style="display:none;" id="login-container" class="pre-auth">(<a href="javascript:void(0);" id="login-link"><b>Sign in</b></a>)</span>
-		<span style="display:none;" id="login-container" class="post-auth">(200 video limit)</span>
-	    </h3>
-	   <hr>
-	   <div class="playlist-container">
-	   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>
-	   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br><sup>(Blast a Mix first)</sup></button></div><br>
-	   </div>
-	   <div class="playlist-container">
-		  <p id="playlist-status"></p>		  
-		  <span id="playlist-url">
-		  <b>Playlist url (copy and paste): <br><input id="playlist-url-copy" type="text" onClick="this.select();"/></b>
-		  <br><br>
-		  </span>
-	   </div>
+		  <div id="youtube-playlist-container" style="display:none;">
+		   <h3>Save your playlist to Youtube 
+		   	<span style="display:none;" id="login-container" class="pre-auth">(<a href="javascript:void(0);" id="login-link"><b>Sign in</b></a>)</span>
+			<span style="display:none;" id="login-container" class="post-auth">(200 video limit)</span>
+		    </h3>
+		   <hr>
+		   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>
+		   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br><sup>(Blast a Mix first)</sup></button></div><br>
+		  </div>
+		   <div class="playlist-container">
+			  <p id="playlist-status"></p>		  
+			  <span id="playlist-url">
+			  <b>Playlist url (copy and paste): <br><input id="playlist-url-copy" type="text" onClick="this.select();"/></b>
+			  <br><br>
+			  </span>
+		   </div>
 	    <div>
 	    <br><br><br>
 		<hr>

@@ -30,6 +30,7 @@
 		height: 200px;
 		color: #000;
 	    text-align: left;
+	    resize:both; 
 	    background-color: rgba(255,255,255,0.7);
 	}
 	input[type='checkbox'] {vertical-align: sub;}
@@ -309,19 +310,19 @@
 		cursor: pointer;
 	}
 	#playallsongsby {
-		font-size:13px;
+		font-size:15px;
 		background-color: rgba(0,0,0,0.2); 
 		padding:5px;
 	}
 	#play_songsby {
-		font-size:13px;
+		font-size:15px;
 		color: #fff;
 		background-color: rgba(0,0,0,0.2); 
 		border:0px;
 		padding:0px;
 		padding-left:2px;
 		padding-right:2px;
-		width:23px;
+		width:26px;
 		text-align: center;
 	}
 	#playallsongsby-artist {
@@ -353,13 +354,10 @@
 	}
 	#rss-dropdown{
 		font-family: 'Roboto', sans-serif;
-		border-top-left-radius: 5px;
-		border-top-right-radius: 0px;
-		border-bottom-right-radius: 0px;
-		border-bottom-left-radius: 5px;
+		border-radius: 5px;
 		background-color: rgba(255,255,255,0.7); 
 		font-size: 14px;
-		width:105px;
+		width:80px;
 		margin-left: 2px;
   		height: 34px;
 	}
@@ -589,7 +587,7 @@
 	#playallsongsby-artist {
 		width:150px;
 	}
-	#rss-dropdown { width:70px; margin-bottom: 10px; }
+	#rss-dropdown { width:50px; margin-bottom: 10px; }
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
 	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 10px;}
 	.subtext {font-size: 22px;}
