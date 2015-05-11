@@ -173,12 +173,12 @@ function multiSearch() {
 	}
 
 	$("#query").animate({height:'200px',width:'575px'},200);
-	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
+	$("#logo").animate({height:'0px',width:'100%',marginBottom:'10px'});
 
 	(function setInterval_afterDone(){
 
 		/* do search function */
-		if (searchArray[x]) { search(searchArray[x],x); } else { console.log('error: ILB'); }
+		if (searchArray[x]) { search(searchArray[x],x); } else { console.log('error: ILB'); return false;}
 		
 		x++;
 		
@@ -214,7 +214,7 @@ function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
 	var swapcount;
 	if (swapcount == undefined) swapcount = 0;
 	return "<div class='searchresult-div' style='width:10%'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'>"+ notFoundString +"<a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
-		"</a></div><div id='searchresult-refresh' style='width:5%'><img src='img/refreshb.png' class='refreshb' id='"+c+"' alt='Version Swap'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
+		"</a></div><div id='searchresult-refresh' style='width:5%'><img src='img/refreshb.png' class='refreshb' id='"+c+"' title='Version Swap'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
 }
 
 function renderEntirePlaylistFromIndex(){
@@ -302,12 +302,12 @@ $('#ytPlayer').on('ended',function(){
 
 function allSongsBy(artistName) {
 	var song_num = $("#play_songsby").val();
-	$('#query').val('Loading list of '+ song_num +' songs by '+ artistName + '...');
+	$('#query').val('Loading list:'+ song_num +' songs by '+ artistName + '...');
 	$("#related-container" ).show();
 	showRelated(artistName);
      $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
         var songlist = '';
-        if (data.toptracks) {
+        if (data.toptracks.track) {
 	        $.each(data.toptracks.track, function(i, item) {
 	            songlist += artistName + " - " + item.name + "\n";
 	        });
@@ -475,7 +475,7 @@ $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
 	$("#query").animate({height:'240px',width:'575px'},200);
-	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
+	$("#logo").animate({height:'0px',width:'100%',marginBottom:'10px'});
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Playlist Editor","Edit Playlist"));
 });
 $("#closeAdvanced").click(function(){

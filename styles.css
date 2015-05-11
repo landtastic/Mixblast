@@ -373,6 +373,7 @@
 		width: 37px;
 		vertical-align: middle; 
 		cursor:pointer;
+		margin-left: 10px;
 	 }
 	.infolink {	    
 		padding-left:4px;
@@ -501,7 +502,7 @@
   		width: 196px;
 	}
 	#emailme {
-		font-size: 18px;
+		font-size: 21px;
 	}
 	#api-about {
 		font-size:10px;
@@ -542,7 +543,10 @@
 /*========== PHONES ==========*/
 
 @media only screen and (max-width:666px){
-
+	body {
+		margin:0px;
+		padding:0px;
+	}
 	textarea#query,#playlist-title {
 		font-size: 160%!important;
 	}
@@ -582,7 +586,7 @@
 		width: 35px;
 	}
 	#playallsongsby {
-		font-size:20px!important;
+		font-size:25px!important;
 	}
 	#playallsongsby-artist {
 		width:150px;
@@ -590,10 +594,17 @@
 	#rss-dropdown { width:50px; margin-bottom: 10px; }
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
 	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 10px;}
+	#button-container { text-align: -webkit-auto!important; }
+	#prevb, #nextb, #playpb { height:75px; width:75px; }
+	#shuffb { height:60px; width:60px; }
+	a#editplaylist, a#wrongsong { font-size: 118%; }
+	div.playerbutton-littlebuttons { width: 240px; line-height: 26px; margin-top: -44px;}
+	.playerbutton {
+		padding-right:40px;
+	}
+
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
-	a#editplaylist, a#wrongsong { font-size: 118%; }
-	div.playerbutton-littlebuttons { width: 240px; line-height: 36px;}
 	.searchresult { font-size: 150%; }
 	.searchresult-title {
 		width: 77%;
@@ -618,7 +629,9 @@
 		margin-top: 6px;
   		margin-bottom: 6px; 
   	}
-
+  	#emailme {
+  		font-size: 25px;
+  	}
 }
 
 	
