@@ -602,7 +602,7 @@
 	.playerbutton {
 		padding-right:40px;
 	}
-
+	#related-container {font-size: 150%;}
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
 	.searchresult { font-size: 200%; }
