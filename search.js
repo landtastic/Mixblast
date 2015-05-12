@@ -151,7 +151,7 @@ function multiSearch() {
 	$( "#search-container" ).empty();
 	//$('#related-container').hide();
 	$('#errormsg').hide();
-	$("#editplaylist").html($("#editplaylist").html().replace("Close Playlist Editor","Edit Playlist"));
+	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
 	//split texarea into lines
@@ -476,7 +476,7 @@ $(".closebutton").click(function(){
 	$('#player-container').slideToggle("fast");
 	$("#query").animate({height:'240px',width:'575px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
-	$("#editplaylist").html($("#editplaylist").html().replace("Close Playlist Editor","Edit Playlist"));
+	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
 });
 $("#closeAdvanced").click(function(){
 	$('#advanced-container').slideToggle("fast");

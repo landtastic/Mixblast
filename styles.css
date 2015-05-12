@@ -206,7 +206,6 @@
 	    margin-left: auto; 
 	    margin-right: auto;
 	    vertical-align: top;
-	    text-align: top;
 	    text-align: justify;
 	    -ms-text-justify: distribute-all-lines;
 	    text-justify: distribute-all-lines;
@@ -594,7 +593,12 @@
 	#rss-dropdown { width:80px; margin-bottom: 10px; }
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
 	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 5px;}
-	#button-container { text-align: -webkit-auto!important; }
+	#button-container { 
+		text-align: -webkit-auto!important; 
+	    text-align: auto!important;
+	    -ms-text-justify: auto!important;
+	    text-justify: auto!important;
+	}
 	#prevb, #nextb, #playpb { height:75px; width:75px; }
 	#shuffb { height:60px; width:60px; }
 	a#editplaylist, a#wrongsong { font-size: 118%; }
