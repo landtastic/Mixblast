@@ -539,7 +539,19 @@
 	a.ui-state-hover {
 		color:#fff;
 	}
-
+	.ui-state-focus {
+	  	background-color: rgba(0,0,0,0.5);
+	  	cursor:pointer; 
+  		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;		
+	}
+	a.ui-state-focus {
+		color:#fff;
+	}
+	li.ui-state-focus {
+	  	background-color: rgba(0,0,0,0.5);
+	  	cursor:pointer; 
+  		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+	}
 
 /*========== PHONES ==========*/
 
