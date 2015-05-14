@@ -335,18 +335,9 @@ $(function() {
           }
         },
         focus: function( event, ui ) {
-          // prevent value inserted on focus
-          ////return false;
-          /*
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          terms.push( ui.item.value );
-          // add placeholder to get the \n-and-space at the end
-          terms.push( "" );
-          this.value = terms.join( "\n" );
-          */
+          //var menu = $(this).data("ui-autocomplete").menu.element;
+          //var focused = menu.find("li:has(a.ui-state-focus)");
+          //focused.css('background-color', 'rgba(0,0,0,0.5)');
           var terms = split( this.value );
           terms.pop();
           terms.push( ui.item.value );

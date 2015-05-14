@@ -274,11 +274,11 @@ function nextVideo(next) {
 	if (next==true) {
 		vidcount++; playcount++;
 		if (vidcount >= totalvids) vidcount = 0;
-		$('#search-container').append($('#search-container div:first'));
+		$('#search-container').append($('#search-container div.searchresult:first'));
 	} else { 
 		vidcount--; playcount--;
 		if ((vidcount < 0) || (vidcount=='undefined')) vidcount = totalvids-1;
-		$('#search-container').prepend($('#search-container div:last'));
+		$('#search-container').prepend($('#search-container div.searchresult:last'));
 	}
 	//reset global swap count
 	swapper = 1;
@@ -289,9 +289,6 @@ function nextVideo(next) {
 
 function loadVid(vidId) {
 	ytPlayer.loadVideoById(vidId);
-	//////$('#ytPlayer').attr('src','https://www.youtube.com/embed/'+ vidId +'?autoplay=1&enablejsapi=1&origin=http%3A%2F%2Fl4nd.com');
-	//////document.getElementById("ytPlayer").play();
-	//ytPlayer.playVideo();
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
 
@@ -302,7 +299,7 @@ $('#ytPlayer').on('ended',function(){
 
 function allSongsBy(artistName) {
 	var song_num = $("#play_songsby").val();
-	$('#query').val('Loading list: '+ song_num +' songs by '+ artistName + '...');
+	$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
 	$("#related-container" ).show();
 	showRelated(artistName);
      $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
@@ -314,7 +311,7 @@ function allSongsBy(artistName) {
 	        $('#query').val(songlist);
 	         //$('#search-button').trigger( "click" );
 		} else {
-			$('#query').val(': ( \n\nError loading tracks by: '+artistName+'\n\nCheck spelling?'); 
+			$('#query').val(': ( \n\nError loading videos by: '+artistName+'\n\nCheck spelling?'); 
 	    }
     });
 }
@@ -338,14 +335,14 @@ function showRelated(artistName) {
 	        	if (item.name) {
 	        		var curArtist = item.name.replace(/["']/g, "\\'");
 	        	} else {
-	        		$("#related-container").html("<br><hr class='similar-top'>Error loading related tracks: "+artistName); 
+	        		$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 	        	}
 	            artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
 	            if (i < data.similarartists.artist.length-1) artistList += " &bull; "
 	        });
 	        $("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
 		} else {
-			$("#related-container").html("<br><hr class='similar-top'>Error loading related tracks: "+artistName); 
+			$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 	    }
     });
 }
