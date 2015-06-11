@@ -502,6 +502,19 @@ $(document).keydown(function(e) {
     //e.preventDefault(); // prevent the default action (scroll / move caret)
 });
 
+var pastBlasts = {
+	blastItem : [],
+	list : function() {
+		alert(this);
+		alert(this.blastItem);
+		localStorage["blastItem"] = JSON.stringify(blastItem);
+		var storedBlasts = JSON.parse(localStorage["blastItem"]);
+	},
+	addBlast : function() {
+		blastItem.push();
+	}
+}
+
 $(document).ready(function() {
 	//email link
 	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";

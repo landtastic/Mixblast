@@ -8,7 +8,7 @@ function createPlaylist() {
     resource: {
       snippet: {
         title: $('#playlist-title').val(),
-        description: 'Playlist created with Mixblast - http://l4nd.com/mixblast'
+        description: 'Playlist created with Mixblast - http://mixbla.st'
       },
       status: {
         privacyStatus: 'public'

@@ -354,6 +354,15 @@ $(function() {
           // add placeholder to get the \n-and-space at the end
           terms.push( "" );
           this.value = terms.join( "\n" );
+            var originalEvent = event;
+            while (originalEvent) {
+            if (originalEvent.keyCode == 13)
+                originalEvent.stopPropagation();
+
+            if (originalEvent == event.originalEvent)
+                break;
+            originalEvent = event.originalEvent;
+            }
           return false;
         }
     });

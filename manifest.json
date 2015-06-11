@@ -1,0 +1,17 @@
+{
+  "name": "Mixblast",
+  "description": "Youtube Playlist Maker, converts lists to playlists, uses the Last.fm API",
+  "version": "1.0.0.1",
+  "manifest_version": 2,
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "app": {
+    "urls": [
+      "http://mixbla.st/"
+    ],
+    "launch": {
+      "web_url": "http://mixbla.st"
+    }
+  }
+}
