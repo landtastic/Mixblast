@@ -154,6 +154,9 @@ function multiSearch() {
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
+
+	pastBlasts.add($('#query').val());
+
 	//split texarea into lines
 	var lines = $('#query').val().split(/\n/);
 	//only get non-whitespace lines, push into searchArray
@@ -503,17 +506,20 @@ $(document).keydown(function(e) {
 });
 
 var pastBlasts = {
-	blastItem : [],
-	//storedBlasts : JSON.parse(localStorage["blastItem"]),
 	list : function() {
-		alert(this);
-		alert(this.blastItem);
-		localStorage["blastItem"] = JSON.stringify(blastItem);
+		return localStorage.getItem("pastBlasts");
 	},
-	addBlast : function() {
+	add : function(pl_text) {
+		var pastBlasts = pastBlasts.list;
+    	if (!pastBlasts) {
+	        pastBlasts = [];
+	    } else {
+	        pastBlasts = JSON.parse(pastBlasts);
+	    }
 		var dt = new Date();
 		var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-		this.blastItem.push('');
+		pastBlasts.push(time + '\n' + pl_text);
+		localStorage.setItem("pastBlasts", JSON.stringify(pastBlasts));
 	}
 }
 
