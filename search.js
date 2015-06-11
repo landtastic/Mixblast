@@ -504,14 +504,16 @@ $(document).keydown(function(e) {
 
 var pastBlasts = {
 	blastItem : [],
+	//storedBlasts : JSON.parse(localStorage["blastItem"]),
 	list : function() {
 		alert(this);
 		alert(this.blastItem);
 		localStorage["blastItem"] = JSON.stringify(blastItem);
-		var storedBlasts = JSON.parse(localStorage["blastItem"]);
 	},
 	addBlast : function() {
-		blastItem.push();
+		var dt = new Date();
+		var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+		this.blastItem.push('');
 	}
 }
 
