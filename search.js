@@ -509,17 +509,28 @@ var pastBlasts = {
 	list : function() {
 		return localStorage.getItem("pastBlasts");
 	},
-	add : function(pl_text) {
-		var pastBlasts = pastBlasts.list;
+	display : function() {
+		var blasts = pastBlasts.list();
     	if (!pastBlasts) {
-	        pastBlasts = [];
+	        blasts = [];
 	    } else {
-	        pastBlasts = JSON.parse(pastBlasts);
+	        blasts = JSON.parse(blasts);
+			if (blasts) blasts.sort().reverse();
 	    }
-		var dt = new Date();
-		var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-		pastBlasts.push(time + '\n' + pl_text);
-		localStorage.setItem("pastBlasts", JSON.stringify(pastBlasts));
+		$('#query').val(blasts);
+	},
+	add : function(pl_text) {
+		var blasts = pastBlasts.list();
+    	if (!blasts) {
+	        blasts = [];
+	    } else {
+	        blasts = JSON.parse(blasts);
+	    }
+		var date = new Date();
+		var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
+		var dateTime = date.toLocaleTimeString("en-us", options);
+		blasts.push(dateTime + '\n' + pl_text+ '\n');
+		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
 	}
 }
 

@@ -212,7 +212,6 @@ function parseXml(data) {
         } else if (rssfeed.indexOf('hotnewhiphop') >= 0) {
             if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerms = e.title; searchTerms = searchTerms.replace('Video',''); } else { searchTerms=''; }
         } else if (rssfeed.indexOf('allhiphop') >= 0) {
-            console.log(searchTerms);
             if (e.title.indexOf('“') >= 0) { searchTerms = e.title; searchTerms = e.title.replace(/“|”|\[VIDEO\] |PREMIERE: |FRESH HEAT |HEATER OF THE DAY: /g,''); } else { searchTerms=''; }
         } else if (rssfeed.indexOf('nah_right') >= 0) {
             searchTerms = e.title.replace(/Video: |Audio:/g,'');
