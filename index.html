@@ -12,144 +12,158 @@
     <title>Mixblast Playlist Maker - Lists To Youtube Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
   </head>
   <body>
-  	<span class="gradient-background"></span>
-	<div id="body-container">
-	<a href="."><img id="logo" src="img/mixblast-logo4.png" alt="Mixblast"></a>
-	  <div id="player-container" style="display:none;">
-	  	<div id="ytPlayer"></div>
-	  </div>
-	  <div id="text-container">
-			&nbsp;<span id="playallsongsby" class="ui-widget">Play <input id="play_songsby" value="100"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  ">
-			<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">
-			<div id="rss-container">
-			<select id="rss-dropdown">
-				<option value="">&#9835; Feeds</option>
-				<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
-				<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
-				<option value="http://www.stereogum.com/category/mp3s/feed/">Stereogum</option>
-				<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
-				<option value="http://www.popmatters.com/feeds/fd_listen">Pop Matters</option>
-				<option value="http://video.vulture.com/feed/magnify.rss/WHB24B38378F8L2F">The Vulture</option> 
-				<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>
-				<option value="http://drownedinsound.com/feed">Drowned in Sound</option>
-				<option value="http://consequenceofsound.net/category/check-out/feed/">Consequence of Sound</option>
-				<option value="http://www.metacritic.com/rss/music">Metacritic</option>
-				<option value="http://feeds.feedburner.com/AllLinks-AlbumOfTheYear">Album Of The Year.org</option>
-				<option value="http://feeds.feedburner.com/RecentlyRatedAlbums-AlbumOfTheYear?format=xml">AOTY Recently Rated</option>
-				<option value="http://allhiphop.com/feed/">All Hip Hop</option>
-			    <option value="http://feeds.feedburner.com/hiphopearly">Hip Hop Early</option>
-			    <option value="http://feeds.feedburner.com/realhotnewhiphop?format=xml">Hot New Hip Hop</option>
-			    <option value="http://rapradar.com/feed/">Rap Radar</option>
-			    <option value="http://theboombox.com/category/songs-1/feed/">The Boombox</option>
-			    <option value="http://feeds.feedburner.com/nah_right?format=xml">Nah Right</option>
-			    <option value="http://feeds.feedburner.com/SouthernSweetTea?format=xml">A Girl And Her Hip Hop</option>
-			    <option value="http://www.worldstarhiphop.com/videos/rss.php">World Star Hip Hop</option>
-			    <option value="http://www.xxlmag.com/feed/">XXL Mag</option>
-			    <option value="http://digitaldripped.com/rss">Digital Dripped</option>
-			    <option value="http://www.newjamz.net/rss/home">New Jamz.net</option>
-			    <!--<option value="http://www.ihiphopmusic.com/feed">iHipHopMusic</option>-->
-			    <option value="http://feeds.feedburner.com/ughhblog">Underground Hip Hop Blog</option>
-			    <!--<option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>-->
-			    <!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
-			    <option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
-			    <option value="http://cantstophiphop.com/feed/">Can't Stop Hip Hop</option>
-			    <option value="http://trapsntrunks.com/feed/">Traps 'N Trunks</option>
-			    <option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=20/explicit=true/xml">iTunes Alternative Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=3/explicit=true/xml">iTunes Comedy Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=17/explicit=true/xml">iTunes Dance Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=7/explicit=true/xml">iTunes Electronic Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=50/explicit=true/xml">iTunes Fitness and Workout Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=11/explicit=true/xml">iTunes Jazz Top 100</option>
-				<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/explicit=true/rss.xml">iTunes New Releases Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=14/explicit=true/xml">iTunes Pop Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=15/explicit=true/xml">iTunes R&B/Soul Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=24/explicit=true/xml">iTunes Reggae Top 100</option>
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
-				<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
-			</select> 
-			</div>
-			<div id="advanced-container" style="display:none;"><hr class="advanced-top">
-			<span class="advanced-tips-title">&nbsp;If you copy & paste a list, each line should be as simple as possible, e.g. <i>Artist - Song Title</i></span><div id="closeAdvanced"><a>x</a></div><hr>
-			&nbsp;Replace <input id="find"> with <input id="replace"> &nbsp;<input id="frbutton" type="button" value=" GO "> &nbsp;<span class="advanced-tips">Tip: to remove a word, replace it with nothing</span><hr>
-			<label class="checkbox-label"><input type="checkbox" id="removenums"> Remove numbers from list &nbsp;<span class="advanced-tips">(Numbered lists aren't good for searching)</span></label><hr>
-			<label class="checkbox-label"><input type="checkbox" id="removeparenths"> Remove words in parentheses from the list &nbsp;<span class="advanced-tips">(Like these words)</span></label><hr>
-			 &nbsp;Import a .txt file or an .m3u (iTunes playlist) <input type="file" id="fileinput" accept=".m3u,.txt,.xml,.pls,.asx,.xspf" /><hr>
-			 &nbsp;<input id="addartist"> Add artist name to each line &nbsp;<span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
-			</div>
-			<div id="buttons"><div id="queryarea" class="ui-widget">
-				<textarea id="query" rows="13" cols="60" placeholder="Put a list of songs here"></textarea>
-				<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
-				<div id="errormsg" style="display:none;"></div>
-			<div class='advancedFloater'>
-			<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
-			</div>
-				<button id="search-button" disabled>Blast a Mix</button>
-				<div id="related-container" style="display:none;"></div>
-				<a class="closebutton" style="display:none;" title="Close Playlist Editor">&nbsp;X&nbsp;</a>
-			</div></div>
-	  	</div>
-	  	<div id="button-container" style="display:none;">
-		  	<div class="playerbutton"><a href="javascript:void(0);" id="prevbutton"><img src="img/media_previous.png" id="prevb" alt="Prev"></a> </div>
-		  	<div class="playerbutton"><a href="javascript:void(0);" id="playpause"><img src="img/media_play.png" id="playpb" alt="Play/Pause"></a> </div>
-		  	<div class="playerbutton"><a href="javascript:void(0);" id="nextbutton"><img src="img/media_next.png" id="nextb" alt="Next"></a> </div>
-		  	<div class="playerbutton"><a href="javascript:void(0);" id="shufflebutton"><img src="img/media-shuffle.png" id="shuffb" alt="Shuffle"></a></div>
-		  	<div class="playerbutton-littlebuttons"><a href="javascript:void(0);" id="editplaylist">Edit Playlist <span id="edit-playlist-icon">&#9776;</span></a>
-		  		<br><a href="javascript:void(0);" id="wrongsong">Wrong Version? <img src="img/refreshb.png" id="refreshc" alt="Load another version"></a>
-		  	</div>
-		  	<div class="stretch"></div>
-	  	</div>
-		<div id="search-container">
-		</div>
-		<div id="flame"></div>
-		  <div id="youtube-playlist-container" style="display:none;">
-		   <h3>Save your playlist to Youtube 
-		   	<span style="display:none;" id="login-container" class="pre-auth">(<a href="javascript:void(0);" id="login-link"><b>Sign in</b></a>)</span>
-			<span style="display:none;" id="login-container" class="post-auth">(200 video limit)</span>
-		    </h3>
-		   <hr>
-		   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>
-		   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br><sup>(Blast a Mix first)</sup></button></div><br>
-		  </div>
-		   <div class="playlist-container">
-			  <p id="playlist-status"></p>		  
-			  <span id="playlist-url">
-			  <b>Playlist url (copy and paste): <br><input id="playlist-url-copy" type="text" onClick="this.select();"/></b>
-			  <br><br>
-			  </span>
-		   </div>
-	    <div>
-	    <br>
-		<hr>
-		<br>
-		<span id='emailme'></span> 
-		<!--<br><br>
-		<span id='api-about'>Uses the Last.fm and Youtube APIs</span>-->
-		<br>
-		<br>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-		<script src="http://www.youtube.com/iframe_api"></script>
-		<script src="auth.js"></script>
-		<script src="search.js"></script>
-		<script src="player.js"></script>
-		<script src="advanced.js"></script>
-		<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-		<script src="playlist_updates.js"></script>
-		<script src="gradbg.js"></script>
-		<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-45908619-1', 'auto');
-		ga('send', 'pageview');
-		setTimeout("ga('send','event','Profitable Engagement','time on page more than 20 seconds')",20000);
-		</script>
-	    </div>
+  <div class="wrapper">
+	<a href="#" class="fa fa-bars toggle">&#9776;</a>
+	<nav class="side-nav">
+	  <ul>
+	    <li><a href="#">Home</a></li>
+	    <li><a href="#">About</a></li>
+	    <li><a href="#">Portfolio</a></li>
+	    <li><a href="#">Contact me</a></li>
+	  </ul>
+	</nav>
+
+	<div id="body-container">
+		<span class="gradient-background"></span>
+		<a href="."><img id="logo" src="img/mixblast-logo4.png" alt="Mixblast"></a>
+		  <div id="player-container" style="display:none;">
+		  	<div id="ytPlayer"></div>
+		  </div>
+		  <div id="text-container">
+				&nbsp;<span id="playallsongsby" class="ui-widget">Play <input id="play_songsby" value="100"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  ">
+				<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">
+				<div id="rss-container">
+				<select id="rss-dropdown">
+					<option value="">&#9835; Feeds</option>
+					<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
+					<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
+					<option value="http://www.stereogum.com/category/mp3s/feed/">Stereogum</option>
+					<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
+					<option value="http://www.popmatters.com/feeds/fd_listen">Pop Matters</option>
+					<option value="http://video.vulture.com/feed/magnify.rss/WHB24B38378F8L2F">The Vulture</option> 
+					<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>
+					<option value="http://drownedinsound.com/feed">Drowned in Sound</option>
+					<option value="http://consequenceofsound.net/category/check-out/feed/">Consequence of Sound</option>
+					<option value="http://www.metacritic.com/rss/music">Metacritic</option>
+					<option value="http://feeds.feedburner.com/AllLinks-AlbumOfTheYear">Album Of The Year.org</option>
+					<option value="http://feeds.feedburner.com/RecentlyRatedAlbums-AlbumOfTheYear?format=xml">AOTY Recently Rated</option>
+					<option value="http://allhiphop.com/feed/">All Hip Hop</option>
+				    <option value="http://feeds.feedburner.com/hiphopearly">Hip Hop Early</option>
+				    <option value="http://feeds.feedburner.com/realhotnewhiphop?format=xml">Hot New Hip Hop</option>
+				    <option value="http://rapradar.com/feed/">Rap Radar</option>
+				    <option value="http://theboombox.com/category/songs-1/feed/">The Boombox</option>
+				    <option value="http://feeds.feedburner.com/nah_right?format=xml">Nah Right</option>
+				    <option value="http://feeds.feedburner.com/SouthernSweetTea?format=xml">A Girl And Her Hip Hop</option>
+				    <option value="http://www.worldstarhiphop.com/videos/rss.php">World Star Hip Hop</option>
+				    <option value="http://www.xxlmag.com/feed/">XXL Mag</option>
+				    <option value="http://digitaldripped.com/rss">Digital Dripped</option>
+				    <option value="http://www.newjamz.net/rss/home">New Jamz.net</option>
+				    <!--<option value="http://www.ihiphopmusic.com/feed">iHipHopMusic</option>-->
+				    <option value="http://feeds.feedburner.com/ughhblog">Underground Hip Hop Blog</option>
+				    <!--<option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>-->
+				    <!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
+				    <option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
+				    <option value="http://cantstophiphop.com/feed/">Can't Stop Hip Hop</option>
+				    <option value="http://trapsntrunks.com/feed/">Traps 'N Trunks</option>
+				    <option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=20/explicit=true/xml">iTunes Alternative Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=3/explicit=true/xml">iTunes Comedy Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=17/explicit=true/xml">iTunes Dance Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=7/explicit=true/xml">iTunes Electronic Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=50/explicit=true/xml">iTunes Fitness and Workout Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=11/explicit=true/xml">iTunes Jazz Top 100</option>
+					<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/explicit=true/rss.xml">iTunes New Releases Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=14/explicit=true/xml">iTunes Pop Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=15/explicit=true/xml">iTunes R&B/Soul Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=24/explicit=true/xml">iTunes Reggae Top 100</option>
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
+					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
+				</select> 
+				</div>
+				<div id="advanced-container" style="display:none;"><hr class="advanced-top">
+				<span class="advanced-tips-title">&nbsp;If you copy & paste a list, each line should be as simple as possible, e.g. <i>Artist - Song Title</i></span><div id="closeAdvanced"><a>x</a></div><hr>
+				&nbsp;Replace <input id="find"> with <input id="replace"> &nbsp;<input id="frbutton" type="button" value=" GO "> &nbsp;<span class="advanced-tips">Tip: to remove a word, replace it with nothing</span><hr>
+				<label class="checkbox-label"><input type="checkbox" id="removenums"> Remove numbers from list &nbsp;<span class="advanced-tips">(Numbered lists aren't good for searching)</span></label><hr>
+				<label class="checkbox-label"><input type="checkbox" id="removeparenths"> Remove words in parentheses from the list &nbsp;<span class="advanced-tips">(Like these words)</span></label><hr>
+				 &nbsp;Import a .txt file or an .m3u (iTunes playlist) <input type="file" id="fileinput" accept=".m3u,.txt,.xml,.pls,.asx,.xspf" /><hr>
+				 &nbsp;<input id="addartist"> Add artist name to each line &nbsp;<span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
+				</div>
+				<div id="buttons"><div id="queryarea" class="ui-widget">
+					<textarea id="query" rows="13" cols="60" placeholder="Put a list of songs here"></textarea>
+					<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
+					<div id="errormsg" style="display:none;"></div>
+				<div class='advancedFloater'>
+				<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
+				</div>
+					<button id="search-button" disabled>Blast a Mix</button>
+					<div id="related-container" style="display:none;"></div>
+					<a class="closebutton" style="display:none;" title="Close Playlist Editor">&nbsp;X&nbsp;</a>
+				</div></div>
+		  	</div>
+		  	<div id="button-container" style="display:none;">
+			  	<div class="playerbutton"><a href="javascript:void(0);" id="prevbutton"><img src="img/media_previous.png" id="prevb" alt="Prev"></a> </div>
+			  	<div class="playerbutton"><a href="javascript:void(0);" id="playpause"><img src="img/media_play.png" id="playpb" alt="Play/Pause"></a> </div>
+			  	<div class="playerbutton"><a href="javascript:void(0);" id="nextbutton"><img src="img/media_next.png" id="nextb" alt="Next"></a> </div>
+			  	<div class="playerbutton"><a href="javascript:void(0);" id="shufflebutton"><img src="img/media-shuffle.png" id="shuffb" alt="Shuffle"></a></div>
+			  	<div class="playerbutton-littlebuttons"><a href="javascript:void(0);" id="editplaylist">Edit Playlist <span id="edit-playlist-icon">&#9776;</span></a>
+			  		<br><a href="javascript:void(0);" id="wrongsong">Wrong Version? <img src="img/refreshb.png" id="refreshc" alt="Load another version"></a>
+			  	</div>
+			  	<div class="stretch"></div>
+		  	</div>
+			<div id="search-container">
+			</div>
+			<div id="flame"></div>
+			  <div id="youtube-playlist-container" style="display:none;">
+			   <h3>Save your playlist to Youtube 
+			   	<span style="display:none;" id="login-container" class="pre-auth">(<a href="javascript:void(0);" id="login-link"><b>Sign in</b></a>)</span>
+				<span style="display:none;" id="login-container" class="post-auth">(200 video limit)</span>
+			    </h3>
+			   <hr>
+			   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>
+			   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br><sup>(Blast a Mix first)</sup></button></div><br>
+			  </div>
+			   <div class="playlist-container">
+				  <p id="playlist-status"></p>		  
+				  <span id="playlist-url">
+				  <b>Playlist url (copy and paste): <br><input id="playlist-url-copy" type="text" onClick="this.select();"/></b>
+				  <br><br>
+				  </span>
+			   </div>
+		    <div>
+		    <br>
+			<hr>
+			<br>
+			<span id='emailme'></span> 
+			<!--<br><br>
+			<span id='api-about'>Uses the Last.fm and Youtube APIs</span>-->
+			<br>
+			<br>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+			<script src="http://www.youtube.com/iframe_api"></script>
+			<script src="auth.js"></script>
+			<script src="search.js"></script>
+			<script src="player.js"></script>
+			<script src="advanced.js"></script>
+			<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+			<script src="playlist_updates.js"></script>
+			<script src="gradbg.js"></script>
+			<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-45908619-1', 'auto');
+			ga('send', 'pageview');
+			setTimeout("ga('send','event','Profitable Engagement','time on page more than 20 seconds')",20000);
+			</script>
+		    </div>
+		</div>
+
 	</div>
   </body>
 </html>

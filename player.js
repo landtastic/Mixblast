@@ -160,6 +160,7 @@ $("#playallsongsby-artist, #play_songsby").keypress(function (e) {
  var key = e.which;
  if(key == 13) {
     allSongsBy($("#playallsongsby-artist").val());
+    $("#ui-id-1").hide();
     //return false;  
  }
 });  
@@ -342,6 +343,27 @@ $(document).keydown(function(e) {
         default: return; // exit this handler for other keys
     }
     //e.preventDefault(); // prevent the default action (scroll / move caret)
+});
+
+$(function() {
+  var wrapper = $(".wrapper"),
+      toggle = $(".toggle"),
+      nav = $(".side-nav");
+  toggle.on("click", function() {
+    wrapper.toggleClass("nav-open");
+    // Change the font-awesome icons on click.
+    toggle.toggleClass("fa-bars");
+    toggle.toggleClass("fa-times");
+  });
+  
+  $(window).on("click", function(e) { 
+    if (wrapper.hasClass("nav-open") && 
+        !$(e.target).hasClass("toggle")) {
+      wrapper.removeClass("nav-open");
+      toggle.toggleClass("fa-bars");
+      toggle.toggleClass("fa-times");
+    }
+  });
 });
 
 var pastBlasts = {
