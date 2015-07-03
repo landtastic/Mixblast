@@ -345,26 +345,19 @@ $(document).keydown(function(e) {
     //e.preventDefault(); // prevent the default action (scroll / move caret)
 });
 
-$(function() {
-  var wrapper = $(".wrapper"),
-      toggle = $(".toggle"),
-      nav = $(".side-nav");
-  toggle.on("click", function() {
-    wrapper.toggleClass("nav-open");
-    // Change the font-awesome icons on click.
-    toggle.toggleClass("fa-bars");
-    toggle.toggleClass("fa-times");
-  });
-  
-  $(window).on("click", function(e) { 
-    if (wrapper.hasClass("nav-open") && 
-        !$(e.target).hasClass("toggle")) {
-      wrapper.removeClass("nav-open");
-      toggle.toggleClass("fa-bars");
-      toggle.toggleClass("fa-times");
+$('#pb-button').on('click',function() {
+    if($('#pb-menu').css('left')=='0px'){
+        $('#pb-menu').animate({left: '-300px'}, 'fast');
+        $('#pb-text').html('');
+    }else{
+    	pastBlasts.display();
+        $('#pb-menu').animate({left:0}, 'fast'); 
+        $('#pb-text').html('');
     }
-  });
 });
+$('#pb-button').hover(
+  function() { $('#pb-text').html('Past Blasts'); }, function() {$('#pb-text').html(''); }
+);
 
 var pastBlasts = {
 	list : function() {
@@ -378,7 +371,17 @@ var pastBlasts = {
 	        blasts = JSON.parse(blasts);
 			if (blasts) blasts.sort().reverse();
 	    }
-		$('#query').val(blasts);
+	    $.each(blasts, function(i,val) {
+	    	var blastArr = val.split('\n');
+	    	var thisBlast = '';
+	    	$.each(blastArr, function(i,v) {
+	    		if (i == 0) v = '<span id="pb-date">' + v + '</span>'; 
+	    		thisBlast += v + '<br>';
+			});
+	    	//val = val.replace(/\n/g, "<br>");
+    		$('#pb-menu').append('<p class="pb-module line-clamp">' + thisBlast + '</p>');
+		});
+		//$('#pb-text').html('Past Blasts');
 	},
 	add : function(pl_text) {
 		var blasts = pastBlasts.list();
@@ -390,7 +393,7 @@ var pastBlasts = {
 		var date = new Date();
 		var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
 		var dateTime = date.toLocaleTimeString("en-us", options);
-		blasts.push(dateTime + '\n' + pl_text+ '\n');
+		blasts.push(dateTime + '\n' + pl_text + '\n');
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
 	}
 }
@@ -398,7 +401,7 @@ var pastBlasts = {
 $(document).ready(function() {
 	//email link
 	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";
-	$( "#emailme" ).append("<a href='mai"+"lto:"+antiSpamString+"'>"+antiSpamString+"</a>");
+	$( "#emailme" ).append("<a href='mai"+"lto:"+antiSpamString+"' target='_blank'>"+antiSpamString+"</a>");
 	
 	//hide playlist url until button is clicked
 	$("#playlist-url").hide();

@@ -13,66 +13,57 @@
 		min-height:100%;		
 	}
 
-
-
-.wrapper {
-  overflow-x: hidden;
-  position: relative;
-  left: 0;
-}
-
-.toggle {
-  color: #333;
-  cursor: pointer;
-  font-size: 2em;
-  position: relative;
-  top: 20px;
-  left: 20px;
-}
-
-.side-nav {
-  background-color: #34495e;
-  border-right: 1px solid #34495e;
-  color: #fff;
-  position: fixed;
-  top: 0;
-  left: -231px;
-  width: 210px;
-  height: 100%;
-  padding: 10px;
-  
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    
-    a {
-      padding: 10px 20px;
-      display: block;
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      
-      &:hover {
-          color: rgba(255, 255, 255, 1);
-          font-weight: bold;
-      }
-    }
-  }
-}
-
-.nav-open {
-  left: 231px;
-  
-  .side-nav {
-    left: 0;
-  }
-}
-
-.wrapper, .side-nav {
-  transition: left .2s ease;
-}
-
-
+	#pb-button {
+	    position: fixed;
+	    left:20px; top:10px;
+	    cursor:pointer;
+	    font-size: 30px;
+	    z-index:200;
+	}
+	#pb-text { font-size: 16px; color: #fff; vertical-align: 20%; }
+	#pb-date { font-weight:bold; font-size:14px; }
+	#pb-menu {
+	    height: 100%;
+	    position: fixed;
+	    background: rgba(0,0,0,0.7);
+	    width: 300px;
+	    left: -300px;
+	    top: 0px;
+	    z-index: 199;
+	    padding-top: 50px;
+	}
+	.pb-module {
+		font-size:15px;
+		width: 250px;
+		overflow: hidden;
+		margin: 20px;
+	}
+	.line-clamp {
+	      position: relative;
+	      height: 5em; 
+	    }
+	.line-clamp:after {
+	      content: "";
+	      text-align: right;
+	      position: absolute;
+	      bottom: 0;
+	      right: 0;
+	      width: 70%;
+	      height: 1.2em;
+	      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+	 }
+	@supports (-webkit-line-clamp: 4) {
+	    .line-clamp {
+	        display: -webkit-box;
+	        -webkit-line-clamp: 4;
+	        -webkit-box-orient: vertical;  
+	        max-height:5em; 
+	        height: auto;
+	    }
+	    .line-clamp:after {
+	        display: none;
+	    }
+	}
 	#text-container { width:600px; }
 	textarea#query,input,button {
 		font-family: 'Roboto', sans-serif;
@@ -615,6 +606,7 @@
 	  	cursor:pointer; 
   		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
 	}
+
 
 /*========== PHONES ==========*/
 
