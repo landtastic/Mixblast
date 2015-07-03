@@ -364,6 +364,8 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 	lines.splice(0,1);
 	thisBlast = lines.join('\n');
 	$("#text-container").show(); $('#player-container').hide();
+	$("#query").animate({height:'345px',width:'575px'},200);
+
     $("#query").val(thisBlast);
 });
 
