@@ -345,19 +345,27 @@ $(document).keydown(function(e) {
     //e.preventDefault(); // prevent the default action (scroll / move caret)
 });
 
-$('#pb-button').on('click',function() {
+$('#pb-button').click(function(){
     if($('#pb-menu').css('left')=='0px'){
-        $('#pb-menu').animate({left: '-300px'}, 'fast');
+        $('#pb-menu').animate({left: '-400px'}, 'fast');
         $('#pb-text').html('');
     }else{
     	pastBlasts.display();
         $('#pb-menu').animate({left:0}, 'fast'); 
-        $('#pb-text').html('');
+        $('#pb-text').html('Past Blasts');
     }
 });
 $('#pb-button').hover(
-  function() { $('#pb-text').html('Past Blasts'); }, function() {$('#pb-text').html(''); }
+  function() { $('#pb-text').html('Past Blasts'); }, function() { /*$('#pb-text').html('');*/ }
 );
+$('#pb-menu').on('click', '.pb-module', function(event) {
+	var thisBlast = $(this).html();
+	var lines = thisBlast.split('<br>');
+	lines.splice(0,1);
+	thisBlast = lines.join('\n');
+	$("#text-container").show(); $('#player-container').hide();
+    $("#query").val(thisBlast);
+});
 
 var pastBlasts = {
 	list : function() {
@@ -371,6 +379,7 @@ var pastBlasts = {
 	        blasts = JSON.parse(blasts);
 			if (blasts) blasts.sort().reverse();
 	    }
+	    $('#pb-menu').html('');
 	    $.each(blasts, function(i,val) {
 	    	var blastArr = val.split('\n');
 	    	var thisBlast = '';
