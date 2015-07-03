@@ -347,8 +347,7 @@ $(document).keydown(function(e) {
 
 $('#pb-button').click(function(){
     if($('#pb-menu').css('left')=='0px'){
-        $('#pb-menu').animate({left: '-400px'}, 'fast');
-        $('#pb-text').html('');
+    	pastBlasts.hide();
     }else{
     	pastBlasts.display();
         $('#pb-menu').animate({left:0}, 'fast'); 
@@ -394,6 +393,10 @@ var pastBlasts = {
 		});
 		//$('#pb-text').html('Past Blasts');
 	},
+	hide : function() {
+		$('#pb-menu').animate({left: '-400px'}, 'fast');
+		$('#pb-text').html('');
+	},
 	add : function(pl_text) {
 		var blasts = pastBlasts.list();
     	if (!blasts) {
@@ -410,13 +413,10 @@ var pastBlasts = {
 }
 
 $(document).ready(function() {
-	//email link
-	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";
-	$( "#emailme" ).append("<a href='mai"+"lto:"+antiSpamString+"' target='_blank'>"+antiSpamString+"</a>");
-	
-	//hide playlist url until button is clicked
-	$("#playlist-url").hide();
-	$(".closebutton").hide();
+
+   $("#body-container, #query, .gradient-background").click(function(e) {
+		pastBlasts.hide();
+    });
 
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
@@ -458,5 +458,12 @@ $(document).ready(function() {
 		createPlaylist();
 	});
 
+	//hide playlist url until button is clicked
+	$("#playlist-url").hide();
+	$(".closebutton").hide();
 
+	//email link
+	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";
+	$( "#emailme" ).append("<a href='mai"+"lto:"+antiSpamString+"' target='_blank'>"+antiSpamString+"</a>");
+	
 });
