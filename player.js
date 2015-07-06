@@ -317,6 +317,7 @@ $(".closebutton").click(function(){
 	$("#query").animate({height:'240px',width:'575px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
+	$("#pb-icon" ).slideToggle("fast");
 });
 $("#closeAdvanced").click(function(){
 	$('#advanced-container').slideToggle("fast");
@@ -367,6 +368,13 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 
     $("#query").val(thisBlast);
 });
+$('#pb-menu').on('click', '.pb-delete', function(event) {
+	var thisBlast = $(this).html();
+	var lines = thisBlast.split('<br>');
+	lines.splice(0,1);
+	thisBlast = lines.join('\n');
+	alert('delete');
+});
 
 var pastBlasts = {
 	list : function() {
@@ -385,13 +393,15 @@ var pastBlasts = {
 	    	var blastArr = val.split('\n');
 	    	var thisBlast = '';
 	    	$.each(blastArr, function(i,v) {
-	    		if (i == 0) v = '<span id="pb-date">' + v + '</span>'; 
+	    		if (i == 0) {
+	    			v = '<span id="pb-date">' + v + '</span>'; 
+	    			//var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
+					//var dateTime = date.toLocaleTimeString("en-us", options);
+	    		}
 	    		thisBlast += v + '<br>';
 			});
-	    	//val = val.replace(/\n/g, "<br>");
     		$('#pb-menu').append('<p class="pb-module line-clamp">' + thisBlast + '</p>');
 		});
-		//$('#pb-text').html('Past Blasts');
 	},
 	hide : function() {
 		$('#pb-menu').animate({left: '-400px'}, 'fast');
@@ -405,13 +415,12 @@ var pastBlasts = {
 	        blasts = JSON.parse(blasts);
 	    }
 		var date = new Date();
-		var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-		var dateTime = date.toLocaleTimeString("en-us", options);
-		blasts.push(dateTime + '\n' + pl_text + '\n');
+		blasts.push(date.toJSON() + '\n' + pl_text + '\n');
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
 	},
 	delete : function() {
-		alert();
+		var thisBlast = $(this).html();
+		alert(thisBlast);
 	}
 }
 

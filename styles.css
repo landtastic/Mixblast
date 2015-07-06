@@ -37,6 +37,11 @@
 	    z-index: 199;
 	    padding-top: 50px;
 	}
+	@-moz-document url-prefix() {
+	    #pb-menu {
+    		height: 100%;
+	    }
+	}
 	.pb-module {
 		font-size:15px;
 		width: 350px;
@@ -624,19 +629,19 @@
 		padding:0px;
 	}
 	#logo {
-		max-width: 90%;
+		max-width: 85%;
     	float: right;
     	clear: both;
 	}
 	#pb-icon{     
-	    height: 50px;
-	    width: 50px;
-		padding-left: 8px;
+	    height: 65px;
+	    width: 65px;
+		padding-left: 1px;
 	}
 	#pb-text{ 
 		font-size: 15px;
 	}
-	#pb-module { font-size: 25px; }
+	.pb-module { font-size: 25px; }
 	#query { height: 345px; }
 	textarea#query,#playlist-title {
 		font-size: 180%!important;
