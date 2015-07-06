@@ -409,6 +409,9 @@ var pastBlasts = {
 		var dateTime = date.toLocaleTimeString("en-us", options);
 		blasts.push(dateTime + '\n' + pl_text + '\n');
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
+	},
+	delete : function() {
+		alert();
 	}
 }
 

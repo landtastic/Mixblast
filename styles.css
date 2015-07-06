@@ -28,12 +28,12 @@
 	#pb-text { font-size: 16px; color: #fff; vertical-align: 14%; }
 	#pb-date { font-weight:bold; font-size:14px; }
 	#pb-menu {
-	    height: 100%;
+    	top: 0px;
 	    position: absolute;
 	    background: rgba(0,0,0,0.8);
+	    overflow:auto;
 	    width: 400px;
 	    left: -400px;
-	    top: 0px;
 	    z-index: 199;
 	    padding-top: 50px;
 	}
@@ -624,19 +624,19 @@
 		padding:0px;
 	}
 	#logo {
-		max-width: 70%;
+		max-width: 90%;
     	float: right;
     	clear: both;
 	}
 	#pb-icon{     
 	    height: 50px;
 	    width: 50px;
-	    padding-left: 0px;
+		padding-left: 8px;
 	}
 	#pb-text{ 
 		font-size: 15px;
 	}
-	#pb-module { font-size: 19px; }
+	#pb-module { font-size: 25px; }
 	#query { height: 345px; }
 	textarea#query,#playlist-title {
 		font-size: 180%!important;

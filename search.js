@@ -78,6 +78,7 @@ function multiSearch() {
 	searchArray.length = 0;
 
 	pastBlasts.add($('#query').val());
+	$('#pb-icon').hide();
 
 	//split texarea into lines
 	var lines = $('#query').val().split(/\n/);
