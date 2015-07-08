@@ -366,15 +366,9 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 	$("#text-container").show(); $('#player-container').hide();
 	$("#query").animate({height:'345px',width:'575px'},200);
 
-    $("#query").val(thisBlast);
+    $("#query").val($.trim(thisBlast));
 });
 $('#pb-menu').on('click', '.pb-delete', function(event) {
-//	var thisBlast = this.id;
-	//var swapcount = $(this).prevAll('#swapcount').val();
-//	console.log(thisBlast);
-	//var lines = thisBlast.split('<br>');
-	//lines.splice(0,1);
-	//thisBlast = lines.join('\n');
 	pastBlasts.delete(this.id);
 });
 
@@ -395,6 +389,7 @@ var pastBlasts = {
 	    	var blastArr = val.split('\n');
 	    	var thisBlast = '';
 	    	var date = '';
+	    	var trunc_thisBla;
 	    	$.each(blastArr, function(i,v) {
 	    		if (i == 0) {
 	    			date = new Date(v);
@@ -403,9 +398,11 @@ var pastBlasts = {
 	    			v = '<span id="pb-date">' + dateTime + '</span>'; 
 	    		}
 	    		thisBlast += v + '<br>';
+	    		if (i == 4) trunc_thisBla = thisBlast;
+	    		//console.log(trunc_thisBla);
 			});
-    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date.toJSON() +'" title="Delete"> &#x274C; </a></div>');
-    		$('#pb-menu').css('height', $(window).height());
+    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date.toJSON() +'" title="Delete"> &#215; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
+    		//$('#pb-menu').css('height', $(window).height());
 		});
 	},
 	hide : function() {
