@@ -404,7 +404,8 @@ var pastBlasts = {
 	    		}
 	    		thisBlast += v + '<br>';
 			});
-    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date.toJSON() +'" title="Delete"> &#x274e; </a></div>');
+    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date.toJSON() +'" title="Delete"> &#x274C; </a></div>');
+    		$('#pb-menu').css('height', $(window).height());
 		});
 	},
 	hide : function() {

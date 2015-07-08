@@ -8,7 +8,7 @@ function createPlaylist() {
     resource: {
       snippet: {
         title: $('#playlist-title').val(),
-        description: 'Playlist created with Mixblast - http://mixbla.st'
+        description: 'Playlist created with Mixblast - http://mixbla.st \n' + $('#query').val()
       },
       status: {
         privacyStatus: 'public'
@@ -32,7 +32,7 @@ function createPlaylist() {
   		multiAddVideosToPlaylist();
 		
     } else {
-      alert("Uh oh. Could not create playlist. \n\nMake sure your youtube account has a \"youtube channel.\" You can do this by creating at least one playlist on youtube.com. \n\nOr try logging out of youtube and logging in again, then refresh mixblast. Sorry 'bout that.");
+      alert("Uh oh. Could not create playlist. Try logging out of youtube.com, then refresh mixblast. Sorry 'bout that.\n\nMake sure your youtube account has a \"youtube channel.\" You can do this by creating at least one playlist on youtube.com. ");
     }
   });
   
