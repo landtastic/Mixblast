@@ -1,6 +1,7 @@
 var vidObjArray = {}, prev_vidObjArray = {};
 var	topvIdArray = [], topvTitleArray =[], topvThumbArray = [], searchArray = [];
 var vidcount = 0, playcount = 0, searchcount = 0;
+var mobile_width = 666;
 
 function search(query,c) {
 
@@ -78,7 +79,7 @@ function multiSearch() {
 	searchArray.length = 0;
 
 	pastBlasts.add($('#query').val());
-	$('#pb-icon').hide();
+	if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
 
 	//split texarea into lines
 	var lines = $('#query').val().split(/\n/);

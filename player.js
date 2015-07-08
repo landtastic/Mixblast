@@ -314,10 +314,10 @@ $("#editplaylist").click(function(){
 $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
+	if ($(window).width() < mobile_width) $("#pb-icon" ).slideToggle("fast");
 	$("#query").animate({height:'240px',width:'575px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
-	$("#pb-icon" ).slideToggle("fast");
 });
 $("#closeAdvanced").click(function(){
 	$('#advanced-container').slideToggle("fast");
@@ -369,11 +369,13 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
     $("#query").val(thisBlast);
 });
 $('#pb-menu').on('click', '.pb-delete', function(event) {
-	var thisBlast = $(this).html();
-	var lines = thisBlast.split('<br>');
-	lines.splice(0,1);
-	thisBlast = lines.join('\n');
-	alert('delete');
+//	var thisBlast = this.id;
+	//var swapcount = $(this).prevAll('#swapcount').val();
+//	console.log(thisBlast);
+	//var lines = thisBlast.split('<br>');
+	//lines.splice(0,1);
+	//thisBlast = lines.join('\n');
+	pastBlasts.delete(this.id);
 });
 
 var pastBlasts = {
@@ -392,15 +394,17 @@ var pastBlasts = {
 	    $.each(blasts, function(i,val) {
 	    	var blastArr = val.split('\n');
 	    	var thisBlast = '';
+	    	var date = '';
 	    	$.each(blastArr, function(i,v) {
 	    		if (i == 0) {
-	    			v = '<span id="pb-date">' + v + '</span>'; 
-	    			//var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-					//var dateTime = date.toLocaleTimeString("en-us", options);
+	    			date = new Date(v);
+	    			var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
+					var dateTime = date.toLocaleTimeString("en-us", options);
+	    			v = '<span id="pb-date">' + dateTime + '</span>'; 
 	    		}
 	    		thisBlast += v + '<br>';
 			});
-    		$('#pb-menu').append('<p class="pb-module line-clamp">' + thisBlast + '</p>');
+    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date.toJSON() +'" title="Delete"> &#x274e; </a></div>');
 		});
 	},
 	hide : function() {
@@ -418,9 +422,32 @@ var pastBlasts = {
 		blasts.push(date.toJSON() + '\n' + pl_text + '\n');
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
 	},
-	delete : function() {
-		var thisBlast = $(this).html();
-		alert(thisBlast);
+	delete : function(date_id) {
+		var blasts = JSON.parse(pastBlasts.list());
+		console.log(blasts);
+//		blasts = blasts.filter(function(str) {
+//		    return /\S/.test(str);
+//		});
+//	    $.each(blasts, function(i,val) {
+		for (var i=0; i < blasts.length; i++) {
+		  if (/\S/.test(blasts[i])) {
+			//console.log(i + '<-i val->' + blasts[i]);
+	    	var blastArr = blasts[i].split('\n');
+	    	$.each(blastArr, function(ii,v) {
+	    		if (ii == 0) {
+	    			if (v == date_id) {
+	    				console.log(i);
+	    				blasts.splice(i,1);
+	    				console.log('deleting:'+ v);
+	    			}
+	    		}
+			});
+          }
+        }
+	    
+//	    });
+	    localStorage.setItem("pastBlasts", JSON.stringify(blasts));
+	    pastBlasts.display();
 	}
 }
 

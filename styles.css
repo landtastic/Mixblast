@@ -30,17 +30,13 @@
 	#pb-menu {
     	top: 0px;
 	    position: absolute;
+	    height: 100%;
 	    background: rgba(0,0,0,0.8);
-	    overflow:auto;
+	    overflow: auto;
 	    width: 400px;
 	    left: -400px;
 	    z-index: 199;
 	    padding-top: 50px;
-	}
-	@-moz-document url-prefix() {
-	    #pb-menu {
-    		height: 100%;
-	    }
 	}
 	.pb-module {
 		font-size:15px;
@@ -50,6 +46,16 @@
 		cursor:pointer;
 	}
 	.pb-module:hover { color:#ccc; }
+	.pb-delete {
+		position:absolute;
+		top:0;
+		right:0;
+		text-decoration: none;
+		cursor:pointer;
+		font-size: 15px;
+	}
+	.pb-delete:hover { color: #FF3300!important; }
+	.pb-wrapper { position: relative; margin-right:20px;}
 	.line-clamp {
 	      position: relative;
 	      height: 5em; 
