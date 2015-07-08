@@ -425,13 +425,8 @@ var pastBlasts = {
 	delete : function(date_id) {
 		var blasts = JSON.parse(pastBlasts.list());
 		console.log(blasts);
-//		blasts = blasts.filter(function(str) {
-//		    return /\S/.test(str);
-//		});
-//	    $.each(blasts, function(i,val) {
 		for (var i=0; i < blasts.length; i++) {
 		  if (/\S/.test(blasts[i])) {
-			//console.log(i + '<-i val->' + blasts[i]);
 	    	var blastArr = blasts[i].split('\n');
 	    	$.each(blastArr, function(ii,v) {
 	    		if (ii == 0) {
@@ -444,8 +439,6 @@ var pastBlasts = {
 			});
           }
         }
-	    
-//	    });
 	    localStorage.setItem("pastBlasts", JSON.stringify(blasts));
 	    pastBlasts.display();
 	}
