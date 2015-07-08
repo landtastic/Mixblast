@@ -1,6 +1,6 @@
 
 function onPlayerReady() {
-	$("#search-button").html('Blast a Mix &#9658;');
+	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg">');
   	//if rss url in querystring, automate click
   	////if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }

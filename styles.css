@@ -55,8 +55,9 @@
 		text-decoration: none;
 		cursor:pointer;
 		font-size: 15px;
+		color: #8A0707;
 	}
-	.pb-delete:hover { color: #FF3300!important; }
+	.pb-delete:hover { color: #FF3300; }
 	.pb-wrapper { position: relative; margin-right:20px;}
 	.line-clamp {
 	      position: relative;
@@ -177,7 +178,7 @@
     	right: 22px;
 	    width:27px;
 	    height:27px;
-	    font-size: 30px;
+	    font-size: 20px;
 	    font-weight: 100;
 	    color: #000;
 	    /*background:url('img/close-button.png') no-repeat center center;*/
@@ -189,16 +190,16 @@
 	}
 	#closeAdvanced {
 		color:#000;
-		font-size:29px;
+		font-size:18px;
 		float:right;
 		cursor:pointer;
 		text-decoration: none;
-    	padding-right: 8px;
-    	margin-top: -11px;
+		padding-right: 8px;
+    	margin-top: -2px;
 	}
+	#closeAdvanced:hover { color: #fff;}
 	.swapzone {
 		cursor:pointer;
-		/*float: left;*/
 		position: absolute;
 		left:0;
 		width: 29px;
