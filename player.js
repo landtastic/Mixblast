@@ -314,8 +314,8 @@ $("#editplaylist").click(function(){
 $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
-	if ($(window).width() < mobile_width) $("#pb-icon" ).slideToggle("fast");
-	$("#query").animate({height:'240px',width:'575px'},200);
+	if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
+	$("#query").animate({height:'240px',width:'595px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
 });
@@ -364,7 +364,7 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 	lines.splice(0,1);
 	thisBlast = lines.join('\n');
 	$("#text-container").show(); $('#player-container').hide();
-	$("#query").animate({height:'345px',width:'575px'},200);
+	$("#query").animate({height:'345px',width:'595px'},200);
 
     $("#query").val($.trim(thisBlast));
 });
@@ -389,7 +389,7 @@ var pastBlasts = {
 	    	var blastArr = val.split('\n');
 	    	var thisBlast = '';
 	    	var date = '';
-	    	var trunc_thisBla;
+	    	//var trunc_thisBla;
 	    	$.each(blastArr, function(i,v) {
 	    		if (i == 0) {
 	    			date = new Date(v);
@@ -398,7 +398,7 @@ var pastBlasts = {
 	    			v = '<span id="pb-date">' + dateTime + '</span>'; 
 	    		}
 	    		thisBlast += v + '<br>';
-	    		if (i == 4) trunc_thisBla = thisBlast;
+	    		//if (i == 4) trunc_thisBla = thisBlast;
 	    		//console.log(trunc_thisBla);
 			});
     		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date.toJSON() +'" title="Delete"> &#215; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
@@ -442,6 +442,7 @@ var pastBlasts = {
 	}
 }
 
+
 $(document).ready(function() {
 
    $("#body-container, #query, .gradient-background").click(function(e) {
@@ -453,7 +454,7 @@ $(document).ready(function() {
 	var mixtext = JSON.parse(autosave);
 	$("#query").val(mixtext);
 	$("#query").focus(function() {
-		$(this).animate({height:'345px',width:'575px'},200);
+		$(this).animate({height:'345px',width:'595px'},200);
 	});
 	$("#query").blur(function() {
 	 	mixfile = $('#query').val();
@@ -495,5 +496,5 @@ $(document).ready(function() {
 	//email link
 	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";
 	$( "#emailme" ).append("<a href='mai"+"lto:"+antiSpamString+"' target='_blank'>"+antiSpamString+"</a>");
-	
+
 });

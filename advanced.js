@@ -180,7 +180,7 @@ function editSearchTerm(lineNumber) {
     if ($(window).width() < 666) $("#pb-icon" ).slideToggle("fast");
 	$(".closebutton").show();
     $("#logo").animate({height:'101px',width:'100%',marginBottom:'5px'});
-    $("#query").animate({height:'200px',width:'575px'},200);
+    $("#query").animate({height:'200px',width:'595px'},200);
     var toggleEditText = $("#editplaylist").html();
     if (toggleEditText.indexOf("Edit Playlist") > -1) {
         $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));

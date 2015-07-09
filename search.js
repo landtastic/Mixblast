@@ -1,3 +1,17 @@
+window.onerror = function(error, url, line) {
+    $('#secret-err-msg-logger').append({acc:'error', data:'ERR:'+error+' URL:'+url+' L:'+line});
+};
+waterbug.log("Array",[1,2,3]);
+
+waterbug.log("object",{x:9,ar:[4,5,{t:234}]});
+
+window.onload=function(){
+	waterbug.log("dom elements",document.getElementById("heading"));
+
+	document.body.addEventListener("touchstart",function(evt){
+		waterbug.log("event",evt);
+	},false);
+};
 var vidObjArray = {}, prev_vidObjArray = {};
 var	topvIdArray = [], topvTitleArray =[], topvThumbArray = [], searchArray = [];
 var vidcount = 0, playcount = 0, searchcount = 0;
@@ -99,7 +113,7 @@ function multiSearch() {
 		return false; 
 	}
 
-	$("#query").animate({height:'200px',width:'575px'},200);
+	$("#query").animate({height:'200px',width:'595px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 
 	(function setInterval_afterDone(){
