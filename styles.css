@@ -32,6 +32,9 @@
 		/*overflow: auto;*/
 		/*padding-bottom: 100px*/
 	}
+	#player-container{
+		overflow: inherit!important;
+	}
 	#pb-button {
 	    position: absolute;
 	    left:18px; top:10px;
@@ -646,7 +649,7 @@
 	}
 	#foot-wrap {
 		width:600px;
-		height: 50px;
+		height: 100px;
 		margin: 0 auto;
 	}
 	#foot {
@@ -677,6 +680,10 @@
 		font-size: 15px;
 	}
 	.pb-module { font-size: 25px; }
+	.line-clamp {
+	      position: relative;
+	      height: 4.5em; 
+	}
 	#query { height: 345px; }
 	textarea#query,#playlist-title {
 		font-size: 180%!important;
@@ -755,7 +762,7 @@
 	.subsubtext {font-size: 18px;}
 	.searchresult { font-size: 200%; }
 	.searchresult-title {
-		width: 77%;
+		width: 84%;
 		padding-top: 23px;
 		padding-left: 38px;
 	}

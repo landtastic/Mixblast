@@ -6,6 +6,7 @@ function onPlayerReady() {
 }
 function onPlayerError(event){
      console.log('Whoops. Error: '+event.data);
+     waterbug.log('Whoops. Error: '+event.data);
      if (event.data == 150) {
      	wrongSong();
      } else {
@@ -388,21 +389,26 @@ var pastBlasts = {
 	    $.each(blasts, function(i,val) {
 	    	var blastArr = val.split('\n');
 	    	var thisBlast = '';
-	    	var date = '';
-	    	//var trunc_thisBla;
+	    	var thisDate = '';
+	    	var date_id;
 	    	$.each(blastArr, function(i,v) {
 	    		if (i == 0) {
-	    			date = new Date(v);
-	    			var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-					var dateTime = date.toLocaleTimeString("en-us", options);
+					thisDate = new Date(v);
+					date_id = v;
+					//waterbug.log(thisDate);
+	    			if (thisDate == undefined || thisDate == 'Invalid Date' || thisDate == null) { 
+	    				var dateTime = v;
+	    				thisDate = v;
+	    			} else { 
+	    				var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
+	    				var dateTime = thisDate.toLocaleTimeString("en-us", options);
+	    				date_id = thisDate.toISOString();
+	    			}
 	    			v = '<span id="pb-date">' + dateTime + '</span>'; 
 	    		}
 	    		thisBlast += v + '<br>';
-	    		//if (i == 4) trunc_thisBla = thisBlast;
-	    		//console.log(trunc_thisBla);
 			});
-    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date.toJSON() +'" title="Delete"> &#215; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
-    		//$('#pb-menu').css('height', $(window).height());
+    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#215; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 		});
 	},
 	hide : function() {
