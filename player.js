@@ -121,6 +121,7 @@ function nextVideo(next) {
 		vidcount++; playcount++;
 		if (vidcount >= totalvids) vidcount = 0;
 		$('#search-container').append($('#search-container div.searchresult:first'));
+		$("#closebutton-thumb").html("<img src='"+ topvThumbArray[vidcount] +"' id='thumb'>"); 
 	} else { 
 		vidcount--; playcount--;
 		if ((vidcount < 0) || (vidcount=='undefined')) vidcount = totalvids-1;
@@ -316,7 +317,7 @@ $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
 	if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
-	$("#query").animate({height:'240px',width:'595px'},200);
+	//$("#query").animate({height:'240px',width:'595px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
 });
@@ -365,7 +366,7 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 	lines.splice(0,1);
 	thisBlast = lines.join('\n');
 	$("#text-container").show(); $('#player-container').hide();
-	$("#query").animate({height:'345px',width:'595px'},200);
+	//$("#query").animate({height:'345px',width:'595px'},200);
 
     $("#query").val($.trim(thisBlast));
 });
@@ -390,12 +391,17 @@ var pastBlasts = {
 	    	var blastArr = val.split('\n');
 	    	var thisBlast = '';
 	    	var thisDate = '';
-	    	var date_id;
+	    	var date_id = '';
 	    	$.each(blastArr, function(i,v) {
 	    		if (i == 0) {
+	    			var arr = v.split(/[-T:.]/),
+    				thisDate = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
+					var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
+	    			var dateTime = thisDate.toLocaleTimeString("en-us", options);
+	    			date_id = thisDate.toISOString();
+/*
 					thisDate = new Date(v);
 					date_id = v;
-					//waterbug.log(thisDate);
 	    			if (thisDate == undefined || thisDate == 'Invalid Date' || thisDate == null) { 
 	    				var dateTime = v;
 	    				thisDate = v;
@@ -404,11 +410,13 @@ var pastBlasts = {
 	    				var dateTime = thisDate.toLocaleTimeString("en-us", options);
 	    				date_id = thisDate.toISOString();
 	    			}
+					waterbug.log(thisDate);
+*/
 	    			v = '<span id="pb-date">' + dateTime + '</span>'; 
 	    		}
 	    		thisBlast += v + '<br>';
 			});
-    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#215; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
+    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 		});
 	},
 	hide : function() {
@@ -451,7 +459,7 @@ var pastBlasts = {
 
 $(document).ready(function() {
 
-   $("#body-container, #query, .gradient-background").click(function(e) {
+   $("#body-container, #query, .gradient-background, #foot-wrap").click(function(e) {
 		pastBlasts.hide();
     });
 
@@ -460,7 +468,7 @@ $(document).ready(function() {
 	var mixtext = JSON.parse(autosave);
 	$("#query").val(mixtext);
 	$("#query").focus(function() {
-		$(this).animate({height:'345px',width:'595px'},200);
+		//$(this).animate({height:'345px',width:'595px'},200);
 	});
 	$("#query").blur(function() {
 	 	mixfile = $('#query').val();

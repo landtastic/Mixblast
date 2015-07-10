@@ -75,6 +75,7 @@ function multiSearch() {
 	//$('#related-container').hide();
 	$('#errormsg').hide();
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
+	//$("#closebutton-thumb").html("<img src='"+ topvThumbArray[0] +"' id='thumb'>"); 
 	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
 	searchArray.length = 0;
 
@@ -99,7 +100,7 @@ function multiSearch() {
 		return false; 
 	}
 
-	$("#query").animate({height:'200px',width:'595px'},200);
+	//$("#query").animate({height:'200px',width:'595px'},200);
 	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 
 	(function setInterval_afterDone(){
