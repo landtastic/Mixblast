@@ -196,19 +196,21 @@
 	    display:block;
 	    position:absolute;
 		top: 3px;
-    	right: 22px;
-	    width:27px;
-	    height:27px;
-	    font-size: 30px;
+		right: 21px;
+    	width: 95px;
+    	height: 88px;
+	    font-size: 40px;
 	    font-weight: 100;
 	    color: #000;
 	    cursor:pointer;
 	}
 	.closebutton:hover {
+		/*
 		-webkit-filter: invert(100%);
 		filter:invert(100%); 
+		*/
 	}
-	.closebutton-thumb {
+	#closebutton-thumb {
 		display:block;
 		position:absolute;
 		height:30px;

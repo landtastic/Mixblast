@@ -121,7 +121,6 @@ function nextVideo(next) {
 		vidcount++; playcount++;
 		if (vidcount >= totalvids) vidcount = 0;
 		$('#search-container').append($('#search-container div.searchresult:first'));
-		$("#closebutton-thumb").html("<img src='"+ topvThumbArray[vidcount] +"' id='thumb'>"); 
 	} else { 
 		vidcount--; playcount--;
 		if ((vidcount < 0) || (vidcount=='undefined')) vidcount = totalvids-1;
@@ -394,11 +393,11 @@ var pastBlasts = {
 	    	var date_id = '';
 	    	$.each(blastArr, function(i,v) {
 	    		if (i == 0) {
+	    			date_id = v;
 	    			var arr = v.split(/[-T:.]/),
     				thisDate = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
 					var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
 	    			var dateTime = thisDate.toLocaleTimeString("en-us", options);
-	    			date_id = thisDate.toISOString();
 /*
 					thisDate = new Date(v);
 					date_id = v;
@@ -442,6 +441,7 @@ var pastBlasts = {
 	    	var blastArr = blasts[i].split('\n');
 	    	$.each(blastArr, function(ii,v) {
 	    		if (ii == 0) {
+	    			console.log(date_id +' sadf '+ v);
 	    			if (v == date_id) {
 	    				console.log(i);
 	    				blasts.splice(i,1);

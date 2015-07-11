@@ -179,6 +179,7 @@ function editSearchTerm(lineNumber) {
 	$('#player-container').slideToggle("fast");
     if ($(window).width() < 666) $("#pb-icon" ).slideToggle("fast");
 	$(".closebutton").show();
+    $("#closebutton-thumb").html("<img src='"+ topvThumbArray[vidcount] +"' id='thumb'>"); 
     $("#logo").animate({height:'101px',width:'100%',marginBottom:'5px'});
     //$("#query").animate({height:'200px',width:'595px'},200);
     var toggleEditText = $("#editplaylist").html();
