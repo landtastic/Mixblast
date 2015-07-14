@@ -95,13 +95,13 @@ function multiSearch() {
 	var searchnum = searchArray.length;
 	if (searchnum < 1) { 
 		$('#errormsg').show();
-		$('#errormsg').html('Put a list of songs into the textbox. <br>(Load songs by artist, copy and paste a text list, or type)');
+		$('#errormsg').html('Put a list of songs into the textbox. <br>(Load songs by artist, copy and paste a text list, load an RSS Feed, or type)');
 		editSearchTerm(0); 
 		return false; 
 	}
 
 	//$("#query").animate({height:'200px',width:'595px'},200);
-	$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
+	//$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 
 	(function setInterval_afterDone(){
 
