@@ -48,23 +48,21 @@
 	#pb-menu {
     	top: 0px;
 	    position: absolute;
+	    background: rgba(0,0,0,0.8);
 	    width: 400px;
 	    left: -400px;
 	    z-index: 199;
 	    padding-top: 50px;
-	    /*overflow: auto;*/
-	    height: 100%;
+	    /*overflow: auto;
+	    height: 100%;*/
 	}
-	#pb-wrapper:first-child { 
-    	margin-top: 150px;
-	}	
 	.pb-module {
 		font-size:15px;
 		width: 350px;
 		overflow: hidden;
-		padding: 20px;
-		padding-left: 25px;
+		margin: 20px;
 		cursor:pointer;
+
 	}
 	.pb-module:hover { color:#ccc; }
 	.pb-delete {
@@ -75,19 +73,12 @@
 		cursor:pointer;
 		font-size: 15px;
 		color: #8A0707;
-		height: 75px;
-    	width: 30px;
-    	background: rgba(0,0,0,0.5);
 	}
 	.pb-delete:hover { color: #FF3300; }
-	.pb-wrapper { 
-		position: relative;
-		margin-right:20px;
-	}
+	.pb-wrapper { position: relative; margin-right:20px;}
 	.line-clamp {
 	      position: relative;
 	      height: 5em; 
-	      background: rgba(0,0,0,0.5);
 	    }
 	.line-clamp:after {
 	      content: "";
@@ -97,7 +88,6 @@
 	      right: 0;
 	      width: 70%;
 	      height: 1.2em;
-	      background: rgba(0,0,0,0.5);
 	      /*background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 50%);*/
 	 }
 	@supports (-webkit-line-clamp: 4) {
@@ -135,7 +125,20 @@
 	    border: 0px;
 	    overflow: auto;
 	}
-
+	::-webkit-input-placeholder { /* WebKit browsers */
+	    color:    #666;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	   color:    #666;
+	   opacity:  1;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	   color:    #666;
+	   opacity:  1;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10+ */
+	   color:    #666;
+	}
 	input[type='checkbox'] {vertical-align: sub;}
 	a:link,a:visited,a:hover,a:active { text-decoration: none; }
 	a:link { color: #FFF; }
@@ -237,6 +240,11 @@
 		height:30px;
 		width:30px;
 	}
+	#closebutton-thumb img{
+		height: 150%;
+		margin-top: 6px;
+  		margin-bottom: 6px; 
+  	}
 	#closeAdvanced {
 		color:#000;
 		font-size:25px;
@@ -545,7 +553,7 @@
        	border-radius: 15px;
 
 	}
-	#search-button { margin-top:10px; }
+	#search-button { margin-top:10px; margin-bottom: 6px;}
 	#playlist-button-span { float:right; }
 	#playlist-title,#playlist-url-copy {
 		width: 320px;
@@ -720,7 +728,7 @@
 	      position: relative;
 	      height: 4.5em; 
 	}
-	#query { height: 345px; }
+	#query { height: 251px; }
 	textarea#query,#playlist-title {
 		font-size: 180%!important;
 	}

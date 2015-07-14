@@ -179,7 +179,7 @@ function editSearchTerm(lineNumber) {
 	$('#player-container').slideToggle("fast");
     if ($(window).width() < 666) $("#pb-icon" ).slideToggle("fast");
 	$(".closebutton").show();
-    $("#closebutton-thumb").html("<img src='"+ topvThumbArray[vidcount] +"' id='thumb'>"); 
+    $("#closebutton-thumb").html("<img src='"+ topvThumbArray[vidcount] +"'>"); 
     //$("#logo").animate({width:'100%',marginBottom:'5px'});
     //$("#query").animate({height:'200px',width:'595px'},200);
     var toggleEditText = $("#editplaylist").html();

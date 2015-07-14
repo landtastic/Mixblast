@@ -353,11 +353,11 @@ $('#pb-button').click(function(){
     }else{
     	pastBlasts.display();
         $('#pb-menu').animate({left:0}, 'fast'); 
-        $('#pb-text').html('Past Blasts');
+        $('#pb-text').html('Blasts from the Past');
     }
 });
 $('#pb-button').hover(
-  function() { $('#pb-text').html('Past Blasts'); }, function() { /*$('#pb-text').html('');*/ }
+  function() { $('#pb-text').html('Blasts from the Past'); }, function() { /*$('#pb-text').html('');*/ }
 );
 $('#pb-menu').on('click', '.pb-module', function(event) {
 	var thisBlast = $(this).html();
