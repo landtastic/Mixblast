@@ -379,8 +379,9 @@ var pastBlasts = {
 	},
 	display : function() {
 		var blasts = pastBlasts.list();
-    	if (!pastBlasts) {
-	        blasts = [];
+    	if (blasts == null) {
+    		var date = new Date();
+	        blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
 	    } else {
 	        blasts = JSON.parse(blasts);
 			if (blasts) blasts.sort().reverse();
