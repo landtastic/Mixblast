@@ -315,7 +315,7 @@ $("#editplaylist").click(function(){
 $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
-	if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
+	//if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
 	//$("#query").animate({height:'240px',width:'595px'},200);
 	//$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
@@ -490,7 +490,6 @@ $(document).ready(function() {
 	$("#playallsongsby-artist").blur(function() {
 		artist = $('#playallsongsby-artist').val();
 		localStorage.setItem('artist', artist);
-		console.log(artist)
 	});
 
 	$("#search-button").click(function(){
