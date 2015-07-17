@@ -277,7 +277,7 @@
 	}
 	.searchresult-title {
 			float: left;
-			width: 83%;
+			width: 86%;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			padding-top: 19px;
@@ -720,8 +720,9 @@
 		margin-top: -4px;
 		*/
 	}
+	#pb-menu {padding-top: 70px;}
 	#pb-text{ 
-		font-size: 15px;
+		font-size: 22px;
 	}
 	.pb-module { font-size: 25px; }
 	.line-clamp {
@@ -806,7 +807,7 @@
 	.subsubtext {font-size: 18px;}
 	.searchresult { font-size: 200%; }
 	.searchresult-title {
-		width: 84%;
+		width: 86%;
 		padding-top: 23px;
 		padding-left: 38px;
 	}

@@ -28,6 +28,7 @@ function onPlayerStateChange(event) {
 			playcount = -1;
 		}
 		console.log(playcount+"<-playcount|totalvids->"+totalvids);
+		waterbug.log(playcount+"<-playcount|totalvids->"+totalvids+' waterbug!');
     }
 }
 
@@ -41,10 +42,10 @@ function handleAPILoaded() {
 //changed the name of this function so iframe api doesn't callback
 function onYouTubeIframeAPIReady_removed_callback() {
     ytPlayer = new YT.Player('ytPlayer', { 
-    	height: '368',
-    	width: '600',
+    	//height: '368',
+    	//width: '600',
     	//videoId: 'Oi1BcouEmio',
-    	videoId: 'fgBLu387UM8',
+    	//videoId: 'fgBLu387UM8',
         events: {
             'onReady': onPlayerReady,
             'onError': onPlayerError,
@@ -115,7 +116,8 @@ $("#nextbutton").click(function(){
 });
 
 function nextVideo(next) {
-
+     console.log('helo: '+next);
+     waterbug.log('hello: '+next);
 	var totalvids = topvIdArray.length;
 	if (next==true) {
 		vidcount++; playcount++;
@@ -139,72 +141,6 @@ function loadVid(vidId) {
 }
 
 
-function allSongsBy(artistName) {
-	var song_num = $("#play_songsby").val();
-	$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
-	$("#related-container" ).show();
-	showRelated(artistName);
-     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
-        var songlist = '';
-        if (data.toptracks.track) {
-	        $.each(data.toptracks.track, function(i, item) {
-	            songlist += artistName + " - " + item.name + "\n";
-	        });
-	        $('#query').val(songlist);
-	         //$('#search-button').trigger( "click" );
-		} else {
-			$('#query').val(': ( \n\nError loading videos by: '+artistName+'\n\nCheck spelling?'); 
-	    }
-    });
-}
-$("#playallsongsby-artist, #play_songsby").keypress(function (e) {
- var key = e.which;
- if(key == 13) {
-    allSongsBy($("#playallsongsby-artist").val());
-    $("#ui-id-1").hide();
-    //return false;  
- }
-});  
-$("#playall-button").click(function(){
-	allSongsBy($("#playallsongsby-artist").val());
-});
-
-function showRelated(artistName) {
-     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=20&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
-
-        var artistList = '';
-        if (data.similarartists) {
-	        $.each(data.similarartists.artist, function(i, item) {
-	        	if (item.name) {
-	        		var curArtist = item.name.replace(/["']/g, "\\'");
-	        	} else {
-	        		$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
-	        	}
-	            artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
-	            if (i < data.similarartists.artist.length-1) artistList += " &bull; "
-	        });
-	        $("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
-		} else {
-			$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
-	    }
-    });
-}
-
-$("#shuffletext").click(function(){
-	var lines = $('#query').val().split("\n");
-	shuffle(lines);
-	//var randomlines = lines.join("\n");
-	var randomlines = '';
-	for (var i=0; i < lines.length; i++) {
-		if (/\S/.test(lines[i])) {
-    		randomlines += lines[i] + '\n';
-    		//if (i != lines.length) randomlines += '\n';
-    	}
-	}
-	//randomlines = randomlines.replace(/^(\r\n)|(\n)/,'');
-	$('#query').val(randomlines);
-
-});
 $("#shufflebutton").click(function(){
 
 	if ($('#shufflebutton').hasClass('disabled')) {
@@ -306,45 +242,6 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 		topvIdArray[index] = top5id;
 	}
 	$(this).nextAll('#swapcount').val(swapcount);
-});
-
-
-$("#editplaylist").click(function(){
-	editSearchTerm(0);
-});
-$(".closebutton").click(function(){
-	$("#text-container" ).slideToggle("fast");
-	$('#player-container').slideToggle("fast");
-	//if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
-	//$("#query").animate({height:'240px',width:'595px'},200);
-	//$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
-	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
-});
-$("#closeAdvanced").click(function(){
-	$('#advanced-container').slideToggle("fast");
-});
-
-$(document).keydown(function(e) {
-	//allow arrow keys if an input is focused
-	if($("input,textarea").is(":focus")) return; 
-
-    switch(e.which) {
-        case 37: nextVideo(false);// left
-        break;
-
-        case 192: editSearchTerm(0);// `
-        return;
-
-        case 39: nextVideo(true);// right
-        break;
-
-        case 32: playPause();// space
-        e.preventDefault();
-        break;
-
-        default: return; // exit this handler for other keys
-    }
-    //e.preventDefault(); // prevent the default action (scroll / move caret)
 });
 
 $('#pb-button').click(function(){

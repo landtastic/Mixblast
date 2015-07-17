@@ -19,10 +19,10 @@
 		<span class="gradient-background"></span>
 		<a href="."><img id="logo" src="img/mixblast-logo4.png" alt="Mixblast" title="&quot;You'll Have a Blast&quot;"></a>
 		  <div id="player-container" style="display:none;">
-		  	<div id="ytPlayer"></div>
+			<iframe id="ytPlayer" width="600" height="368" src="https://www.youtube.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>
 		  </div>
 		  <div id="text-container">
-				&nbsp;<span id="playallsongsby" class="ui-widget">Top <input id="play_songsby" value="100"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist" onclick="this.focus();this.select()"><input id="playall-button" type="button" value="  " title="Search">
+				&nbsp;<span id="playallsongsby" class="ui-widget">Top <input id="play_songsby" value="100"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  " title="Search">
 				<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">
 				<div id="rss-container">
 				<select id="rss-dropdown">
@@ -83,15 +83,13 @@
 				 &nbsp;<input id="addartist"> Add artist name to each line &nbsp;<span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
 				</div>
 				<div id="buttons"><div id="queryarea" class="ui-widget">
-<textarea id="query" rows="13" cols="60" placeholder="
-Search Youtube for a list of songs. 
-
-Use the tools above, or just type a list here. (Or copy & paste) 
+<textarea id="query" rows="13" cols="60" placeholder="Search Youtube for a list of songs. 
+Use the tools above, or just type a list here. (Or copy & paste)
 
 Example: 
-Artist - Song Title
-Artist - Song Title
-Artist - Song Title
+Artist - Song Title 
+Artist - Song Title 
+Artist - Song Title 
 
 Then click Blast a Mix to make a playlist."></textarea>
 					<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
@@ -145,10 +143,10 @@ Then click Blast a Mix to make a playlist."></textarea>
 		<span id='api-about'>Uses the Last.fm and Youtube APIs</span>-->
 		<br>
 		<br>
-		<!--<script src="waterbug.js"></script>-->
+		<script src="waterbug.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-		<script src="http://www.youtube.com/iframe_api"></script>
+		<script src="https://www.youtube.com/iframe_api"></script>
 		<script src="auth.js"></script>
 		<script src="search.js"></script>
 		<script src="player.js"></script>

@@ -175,8 +175,8 @@ document.getElementById('fileinput').addEventListener('change', readMultipleFile
 
 
 function editSearchTerm(lineNumber) {
-	$("#text-container" ).slideToggle("fast");
-	$('#player-container').slideToggle("fast");
+	$("#text-container" ).toggle();
+	$('#player-container').toggle();
     //if ($(window).width() < 666) $("#pb-icon" ).slideToggle("fast");
 	$(".closebutton").show();
     $("#closebutton-thumb").html("<img src='"+ topvThumbArray[vidcount] +"'>"); 
