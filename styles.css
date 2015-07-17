@@ -729,6 +729,18 @@
 	      position: relative;
 	      height: 4.5em; 
 	}
+	#query::-webkit-input-placeholder { /* WebKit browsers */
+		font-size: 18px;
+	}
+	#query:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		font-size: 18px;
+	}
+	#query::-moz-placeholder { /* Mozilla Firefox 19+ */
+		font-size: 18px;
+	}
+	#query:-ms-input-placeholder { /* Internet Explorer 10+ */
+		font-size: 18px;
+	}
 	#query { height: 251px; }
 	textarea#query,#playlist-title {
 		font-size: 180%!important;
@@ -784,7 +796,7 @@
     	padding-bottom: 8px;
 	}
 	#playallsongsby-artist {
-		width:150px;
+		width:145px;
 	}
 	#rss-dropdown { width:80px; margin-bottom: 10px; }
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }

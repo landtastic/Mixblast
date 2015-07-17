@@ -365,9 +365,9 @@ $(document).ready(function() {
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
 	$("#query").val(mixtext);
-	$("#query").focus(function() {
+	//$("#query").focus(function() {
 		//$(this).animate({height:'345px',width:'595px'},200);
-	});
+	//});
 	$("#query").blur(function() {
 	 	mixfile = $('#query').val();
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));

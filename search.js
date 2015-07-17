@@ -13,7 +13,7 @@ function search(query,c) {
     part: 'snippet',
     maxResults: 20
 	//order: 'viewCount'
-  });
+	});
   
   request.execute(function(response) {
 	var searchObj = response.result;
