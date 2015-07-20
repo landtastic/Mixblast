@@ -292,24 +292,11 @@ var pastBlasts = {
 	    	$.each(blastArr, function(i,v) {
 	    		if (i == 0) {
 	    			date_id = v;
-	    			var arr = v.split(/[-T:.]/),
-    				thisDate = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
+	    			var arr = v.split(/[-T:.]/);
+    				thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
 					var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-	    			var dateTime = thisDate.toLocaleTimeString("en-us", options);
-/*
-					thisDate = new Date(v);
-					date_id = v;
-	    			if (thisDate == undefined || thisDate == 'Invalid Date' || thisDate == null) { 
-	    				var dateTime = v;
-	    				thisDate = v;
-	    			} else { 
-	    				var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-	    				var dateTime = thisDate.toLocaleTimeString("en-us", options);
-	    				date_id = thisDate.toISOString();
-	    			}
-					waterbug.log(thisDate);
-*/
-	    			v = '<span id="pb-date">' + dateTime + '</span>'; 
+	    			var dateString = thisDate.toLocaleTimeString("en-us", options);
+	    			v = '<span id="pb-date">' + dateString + '</span>'; 
 	    		}
 	    		thisBlast += v + '<br>';
 			});
