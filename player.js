@@ -1,4 +1,24 @@
-
+function handleAPILoaded() {
+  gapi.client.setApiKey('AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM');
+  $("#playlist-button").html('Save a Playlist');
+  $('#search-button').attr('disabled', false);
+  onYouTubeIframeAPIReady_removed_callback();
+}
+//changed the name of this function so iframe api doesn't callback
+function onYouTubeIframeAPIReady_removed_callback() {
+    ytPlayer = new YT.Player('ytPlayer', { 
+    	suggestedQuality: 'medium',
+    	//height: '368',
+    	//width: '600',
+    	//videoId: 'Oi1BcouEmio',
+    	//videoId: 'fgBLu387UM8',
+        events: {
+            'onReady': onPlayerReady,
+            'onError': onPlayerError,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
 function onPlayerReady() {
 	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg">');
   	//if rss url in querystring, automate click
@@ -21,53 +41,29 @@ function onPlayerStateChange(event) {
     }
 	//if video is done, play next
     if(event.data === 0) {
-		var totalvids = topvIdArray.length;
-		if (playcount+1 < totalvids) {
+		var totalvids = search.topvIdArray.length;
+		if (search.playcount+1 < totalvids) {
 			nextVideo(true);
 		} else {
-			playcount = -1;
+			search.playcount = -1;
 		}
-		console.log(playcount+"<-playcount|totalvids->"+totalvids);
-		waterbug.log(playcount+"<-playcount|totalvids->"+totalvids+' waterbug!');
+		console.log(search.playcount+"<-search.playcount|totalvids->"+totalvids);
+		waterbug.log(search.playcount+"<-search.playcount|totalvids->"+totalvids+' waterbug!');
     }
 	waterbug.log(event.data+' waterbug!');
-}
-
-function handleAPILoaded() {
-  gapi.client.setApiKey('AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM');
-  $("#playlist-button").html('Save a Playlist');
-  $('#search-button').attr('disabled', false);
-  onYouTubeIframeAPIReady_removed_callback();
-}
-
-//changed the name of this function so iframe api doesn't callback
-function onYouTubeIframeAPIReady_removed_callback() {
-    ytPlayer = new YT.Player('ytPlayer', { 
-    	suggestedQuality: 'medium',
-    	//height: '368',
-    	//width: '600',
-    	//videoId: 'Oi1BcouEmio',
-    	//videoId: 'fgBLu387UM8',
-        events: {
-            'onReady': onPlayerReady,
-            'onError': onPlayerError,
-            'onStateChange': onPlayerStateChange
-        }
-    });
 }
 
 function renderPlaylist(c,vThumb,vId,vTitle) {
 	$("#search-container").append("<div class='searchresult'>"+createPlaylistItem(c,vThumb,vId,vTitle)+"</div>");
 }
 function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
-	var vclick = "loadVid(\""+vId+"\"); vidcount="+c+";"
+	var vclick = "loadVid(\""+vId+"\"); search.vidcount="+c+";";
 	var notFoundString = '';
 	if (vId == "Not Found") {
-		var vclick = "editSearchTerm(0);";
-		notFoundString = "<input id='not-found' value='"+ searchArray[c] +"'> ";
+		vclick = "editSearchTerm(0);";
+		notFoundString = "<input id='not-found' value='"+ search.listArray[c] +"'> ";
 	}
-	var swapcount;
-	if (swapcount == undefined) swapcount = 0;
+	if (swapcount === undefined) swapcount = 0;
 	return "<div class='searchresult-div' style='width:10%'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'>"+ notFoundString +"<a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
 		"</a></div><div id='searchresult-refresh' style='width:5%'><img src='img/refreshb.png' class='refreshb' id='"+c+"' title='Version Swap'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
 }
@@ -95,20 +91,20 @@ $("#nextbutton").click(function(){
 });
 
 function nextVideo(next) {
-	var totalvids = topvIdArray.length;
-	if (next==true) {
-		vidcount++; playcount++;
-		if (vidcount >= totalvids) vidcount = 0;
+	var totalvids = search.topvIdArray.length;
+	if (next===true) {
+		search.vidcount++; search.playcount++;
+		if (search.vidcount >= totalvids) search.vidcount = 0;
 		$('#search-container').append($('#search-container div.searchresult:first'));
 	} else { 
-		vidcount--; playcount--;
-		if ((vidcount < 0) || (vidcount=='undefined')) vidcount = totalvids-1;
+		search.vidcount--; search.playcount--;
+		if ((search.vidcount < 0) || (search.vidcount=='undefined')) search.vidcount = totalvids-1;
 		$('#search-container').prepend($('#search-container div.searchresult:last'));
 	}
 	//reset global swap count
 	swapper = 1;
 	
-	var thevideoid = topvIdArray[vidcount];
+	var thevideoid = search.topvIdArray[search.vidcount];
 	if (thevideoid) loadVid(thevideoid);
 }
 
@@ -117,14 +113,14 @@ function loadVid(vidId) {
 	//$("#ytPlayer").attr("src", "http://www.youtube.com/embed/" + vidId);
 	//ytPlayer.playVideo();
 	//ytPlayer.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
-	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
+	if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
 }
 
 function cuePlayer() {
 	var i = add(); //(in advanced.js)
 	//check if the ytPlayer object is loaded
 	if (ytPlayer.cueVideoById) {
-		ytPlayer.cueVideoById(topvIdArray[0]);
+		ytPlayer.cueVideoById(search.topvIdArray[0]);
 	} else {
 		//check for it 5x if it isn't
 		var tag = document.createElement('script');
@@ -135,12 +131,12 @@ function cuePlayer() {
 		if (i < 5) {
 			onYouTubeIframeAPIReady_removed_callback();
 			setTimeout(function(){ cuePlayer(); },1000);
-    		console.log('checking...'+i)
+    		console.log('checking...'+i);
     		//i++;
     	}
 	}
 }
-
+//shuffle after search
 $("#shufflebutton").click(function(){
 
 	if ($('#shufflebutton').hasClass('disabled')) {
@@ -150,12 +146,11 @@ $("#shufflebutton").click(function(){
 		shuffleIt();
 	}
 });
-//shuffle after search
 function shuffleIt() {
 	$("#search-container").empty();
-	if (searchcount>1) vidcount = 0;
+	if (search.count>1) search.vidcount = 0;
 
-	var shuffleindex = topvIdArray.length;
+	var shuffleindex = search.topvIdArray.length;
 	//random array of numbers to use as keys
 	var numlist = [];
 	for (var i = 0; i < shuffleindex; i++) {
@@ -164,34 +159,34 @@ function shuffleIt() {
 	var shuffled_idArr = shuffle(numlist);
 
 	//copy video object, create previous copy
-	if ($.isEmptyObject(prev_vidObjArray)) {
-		prev_vidObjArray = jQuery.extend(true, {}, vidObjArray);
-		//console.log('new prev obj:'+prev_vidObjArray);
+	if ($.isEmptyObject(search.prev_vidObjArray)) {
+		search.prev_vidObjArray = jQuery.extend(true, {}, search.vidObjArray);
 	}
 	//clear out top arrays
-	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
+	search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
 	for (var c = 0; c < shuffleindex; c++) {
 		var randumb_num = shuffled_idArr[c];
+		var shId, shTitle, shThumb;
 		//make sure this isn't undefined
-		if (prev_vidObjArray[randumb_num]) {
-			var shId=prev_vidObjArray[randumb_num].vid[0];
-			var shTitle=prev_vidObjArray[randumb_num].title[0];
-			var shThumb=prev_vidObjArray[randumb_num].thumb[0]; 
+		if (search.prev_vidObjArray[randumb_num]) {
+			shId=search.prev_vidObjArray[randumb_num].vid[0];
+			shTitle=search.prev_vidObjArray[randumb_num].title[0];
+			shThumb=search.prev_vidObjArray[randumb_num].thumb[0]; 
 		} else {
-			var shId="Not Found",shTitle="Not Found.",shThumb="img/notfound.png"; 
+			shId="Not Found"; shTitle="Not Found."; shThumb="img/notfound.png"; 
 		}
 		//push new top arrays
-		topvIdArray.push(shId);
-		topvTitleArray.push(shTitle);
-		topvThumbArray.push(shThumb);
+		search.topvIdArray.push(shId);
+		search.topvTitleArray.push(shTitle);
+		search.topvThumbArray.push(shThumb);
 
 		renderPlaylist(c,shThumb,shId,shTitle);
 
-		for (var xx = 0; xx < prev_vidObjArray[0].vid.length; xx++) { 
-			vidObjArray[c] = {
-			'vid': prev_vidObjArray[randumb_num].vid,
-			'title': prev_vidObjArray[randumb_num].title, 
-			'thumb': prev_vidObjArray[randumb_num].thumb
+		for (var xx = 0; xx < search.prev_vidObjArray[0].vid.length; xx++) { 
+			search.vidObjArray[c] = {
+			vid: search.prev_vidObjArray[randumb_num].vid,
+			title: search.prev_vidObjArray[randumb_num].title, 
+			thumb: search.prev_vidObjArray[randumb_num].thumb
 			};
 		}
 	}
@@ -200,7 +195,7 @@ function shuffleIt() {
 function shuffle(o){ 
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
-};
+}
 
 $("#wrongsong").click(function(){
 	wrongSong();
@@ -209,7 +204,7 @@ $("#wrongsong").click(function(){
 var swapper = 1; //next song
 function wrongSong() {
 	if (swapper > 19) swapper = 0;
-	loadVid(vidObjArray[vidcount].vid[swapper]);
+	loadVid(search.vidObjArray[search.vidcount].vid[swapper]);
 	swapper++;
 }
 
@@ -224,22 +219,22 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 	} else {
 	  swapcount++;
 	}
-    var swaplen = vidObjArray[thisid].vid.length;
+    var swaplen = search.vidObjArray[thisid].vid.length;
     if (swapcount >= swaplen) swapcount = 0;
     if (swapcount < 0) swapcount = swaplen-1;
 
-	var top5id = vidObjArray[thisid].vid[swapcount];
-	var top5click = "loadVid('"+top5id+"');vidcount="+thisid;
+	var top5id = search.vidObjArray[thisid].vid[swapcount];
+	var top5click = "loadVid('"+top5id+"'); search.vidcount="+thisid;
 
-	if ((top5id == "Not Found") || (top5id == undefined)) var top5click = "editSearchTerm("+thisid+");";
-	var top5thumb = vidObjArray[thisid].thumb[swapcount];
-	var top5title = vidObjArray[thisid].title[swapcount];
+	if ((top5id === "Not Found") || (top5id === undefined)) top5click = "editSearchTerm("+thisid+");";
+	var top5thumb = search.vidObjArray[thisid].thumb[swapcount];
+	var top5title = search.vidObjArray[thisid].title[swapcount];
 
 	$(this).parent().parent().html(createPlaylistItem(thisid,top5thumb,top5id,top5title,swapcount));
-	//replace current vId in global topvIdArray
-	var index = topvIdArray.indexOf(topvIdArray[thisid]);
+	//replace current vId in global search.topvIdArray
+	var index = search.topvIdArray.indexOf(search.topvIdArray[thisid]);
 	if (index !== -1) {
-		topvIdArray[index] = top5id;
+		search.topvIdArray[index] = top5id;
 	}
 	$(this).nextAll('#swapcount').val(swapcount);
 });
@@ -276,7 +271,7 @@ var pastBlasts = {
 	},
 	display : function() {
 		var blasts = pastBlasts.list();
-    	if (blasts == null) {
+    	if (blasts === null) {
     		var date = new Date();
 	        blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
 	    } else {
@@ -290,7 +285,7 @@ var pastBlasts = {
 	    	var thisDate = '';
 	    	var date_id = '';
 	    	$.each(blastArr, function(i,v) {
-	    		if (i == 0) {
+	    		if (i === 0) {
 	    			date_id = v;
 	    			var arr = v.split(/[-T:.]/);
     				thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
@@ -320,26 +315,23 @@ var pastBlasts = {
 	},
 	delete : function(date_id) {
 		var blasts = JSON.parse(pastBlasts.list());
-		console.log(blasts);
 		for (var i=0; i < blasts.length; i++) {
 		  if (/\S/.test(blasts[i])) {
 	    	var blastArr = blasts[i].split('\n');
-	    	$.each(blastArr, function(ii,v) {
-	    		if (ii == 0) {
-	    			console.log(date_id +' sadf '+ v);
-	    			if (v == date_id) {
-	    				console.log(i);
-	    				blasts.splice(i,1);
-	    				console.log('deleting:'+ v);
-	    			}
-	    		}
-			});
+			for (var ii = 0, len = blastArr.length; ii < len; ii++) {
+				if (ii === 0) {
+					if (blastArr[ii] == date_id) {
+						blasts.splice(i,1);
+						console.log('deleting:'+ blastArr[ii]);
+					}
+				}
+			}
           }
         }
 	    localStorage.setItem("pastBlasts", JSON.stringify(blasts));
 	    pastBlasts.display();
 	}
-}
+};
 
 
 $(document).ready(function() {
@@ -362,12 +354,11 @@ $(document).ready(function() {
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
-	if ($.trim(songnum_text) == '') songnum_text = 100;
+	if ($.trim(songnum_text) === '') songnum_text = 100;
 	$("#play_songsby").val(songnum_text);
 	$("#play_songsby").blur(function() {
 		how_many_songs = $('#play_songsby').val();
 		localStorage.setItem('how_many_songs', how_many_songs);
-		console.log(how_many_songs)
 	});
 	var artist_text = localStorage.getItem('artist');
 	$("#playallsongsby-artist").val(artist_text);

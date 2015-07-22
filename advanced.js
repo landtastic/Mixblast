@@ -132,7 +132,7 @@ function magicSongExtractor() {
 }
 
 function what() {
-    alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.\n\nYou can load the top songs by an artist, as well as by related artists. You can also copy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nMixblast uses the Youtube and Last.fm APIs. \n\nWelp, see ya later.')
+    alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.\n\nYou can load the top songs by an artist, as well as by related artists. You can also copy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nMixblast uses the Youtube and Last.fm APIs. \n\nWelp, see ya later.');
 }
 
 //load .txt or .m3u playlist
@@ -154,7 +154,7 @@ function readMultipleFiles(evt) {
 					if ($.trim(lines[0]) == '#EXTM3U') {
 						//read every other line
 						for (var i=1; i < lines.length; i+=2) {
-							var songArray = lines[i].split(",");
+							songArray = lines[i].split(",");
 							songStr = songStr + $.trim(songArray[1]) + "\n";
 							//remove useless keywords
 							songStr = songStr.replace("(DatPiff Exclusive)","");
@@ -179,7 +179,7 @@ function editSearchTerm(lineNumber) {
     $('#player-container').slideToggle("fast");
     //if ($(window).width() < 666) $("#pb-icon" ).slideToggle("fast");
 	$(".closebutton").show();
-    $("#closebutton-thumb").html("<img src='"+ topvThumbArray[vidcount] +"'>"); 
+    $("#closebutton-thumb").html("<img src='"+ search.topvThumbArray[search.vidcount] +"'>"); 
     //$("#logo").animate({width:'100%',marginBottom:'5px'});
     //$("#query").animate({height:'200px',width:'595px'},200);
     var toggleEditText = $("#editplaylist").html();
@@ -261,7 +261,7 @@ function parseXml(data) {
 }
 function loadRSS(rssfeedurl) {
     rssfeed = rssfeedurl;
-    if (rssfeed==''||rssfeed==undefined||!rssfeed) return;
+    if (!rssfeed) return;
 
     $.ajax({
         type: 'GET',
@@ -279,7 +279,7 @@ function loadRSS(rssfeedurl) {
 }
 function findReplace() {
     var find = $("#find").val();
-    var find = new RegExp(find, "gi");
+    find = new RegExp(find, "gi");
     var replace = $("#replace").val();   
     var arrayOfLines = $("#query2").val().split("\n");
     var newquery_arr = [];
@@ -292,7 +292,7 @@ function findReplace() {
 }
 var add = (function () {
     var counter = 0;
-    return function () {return counter += 1;}
+    return function () {return counter += 1;};
 })();
 
 var delay = (function(){
@@ -323,7 +323,7 @@ $(function() {
                         return {
                             label: item[0],
                             value: item[0]
-                        }
+                        };
                     }));
                 }
             });

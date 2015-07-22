@@ -1,12 +1,6 @@
-var vidObjArray = {}, prev_vidObjArray = {};
-var	topvIdArray = [], topvTitleArray =[], topvThumbArray = [], searchArray = [];
-var vidcount = 0, playcount = 0, searchcount = 0;
-var mobile_width = 666;
-
-function search(query,c) {
-
+var search = function(query,counter) {
     var q = query;
-    var c = c;
+    var c = counter;
 
     var request = gapi.client.youtube.search.list({
     q: q,
@@ -19,51 +13,53 @@ function search(query,c) {
 	var searchObj = response.result;
 	//these arrays will hold the top 20 results of each one in the loop
 	var vIdArr=[], vTitleArr=[], vThumbArr=[];
-	if (!searchObj) {return; console.log('bad search: '+c);} 
+	if (!searchObj) { console.log('bad search: '+c); }
 
 	$.each(searchObj.items, function(i,x) {
 		var vId = x.id.videoId;
 		var vTitle = x.snippet.title;
 		var vThumb = x.snippet.thumbnails.default.url;
-		if (vId==undefined) {
-			var vId="Not Found",vTitle="Not Found. Try version refresh button: ",vThumb="img/notfound.png"; 
+		if (vId===undefined) {
+			vId="Not Found"; vTitle="Not Found. Try version refresh button: "; vThumb="img/notfound.png"; 
 		}
 
 		vIdArr.push(vId);
 		vTitleArr.push(vTitle);
 		vThumbArr.push(vThumb);
 		//global object of all the song results
-		vidObjArray[c] = {
+		search.vidObjArray[c] = {
 			vid:vIdArr,
 			title:vTitleArr, 
 			thumb:vThumbArr
 		};
 
 		//display list, use only first result of each
-		if (i == 0) {
+		if (i === 0) {
 			renderPlaylist(c,vThumb,vId,vTitle);
 			
-			//put top ids into global array
-			topvIdArray.push(vId);	
-			topvTitleArray.push(vTitle);
-			topvThumbArray.push(vThumb);
+			search.topvIdArray.push(vId);	
+			search.topvTitleArray.push(vTitle);
+			search.topvThumbArray.push(vThumb);
 			//start the first video right away while the playlist loads
 
-			if (topvIdArray.length == 1) {
+			if (search.topvIdArray.length == 1) {
 				//only cue on the first search, keep the video running on subsequent searches
-				//////if (searchcount==1) cuePlayer();
-				if (searchcount==1) loadVid(topvIdArray[0], 0, "medium"); //ok nevermind, let's autoplay instead of cue
+				//////if (count==1) cuePlayer();
+				if (search.count==1) loadVid(search.topvIdArray[0], 0, "medium"); //ok nevermind, let's autoplay instead of cue
 			} 
 
 			c++;
 		}
 	});
   });    
-}
+};
 
-//var searchnum;
+
 function multiSearch() {
-	searchdone = false;
+	search.vidObjArray = {}; //, search.prev_vidObjArray = {};
+	search.topvIdArray = []; search.topvTitleArray =[]; search.topvThumbArray = []; search.listArray = [];
+	search.vidcount = 0; search.playcount = 0; search.done = false;
+	if (!search.count) search.count = 0;
 	//hide text form
 	$("#text-container" ).hide();
 	//show video player
@@ -75,24 +71,26 @@ function multiSearch() {
 	//$('#related-container').hide();
 	$('#errormsg').hide();
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
-	//$("#closebutton-thumb").html("<img src='"+ topvThumbArray[0] +"' id='thumb'>"); 
-	topvIdArray.length = 0; topvTitleArray.length = 0; topvThumbArray.length = 0;
-	searchArray.length = 0;
-
+	//$("#closebutton-thumb").html("<img src='"+ search.topvThumbArray[0] +"' id='thumb'>"); 
+	if (search.topvIdArray) {
+		search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
+		search.listArray.length = 0;
+	}
 	pastBlasts.add($('#query').val());
+	//var mobile_width = 666;
 	//if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
 
 	//split texarea into lines
 	var lines = $('#query').val().split(/\n/);
-	//only get non-whitespace lines, push into searchArray
+	//only get non-whitespace lines, push into listArray
 	for (var i=0; i < lines.length; i++) {
 	  if (/\S/.test(lines[i])) {
-	    searchArray.push($.trim(lines[i]));
+	    search.listArray.push($.trim(lines[i]));
 	  }
 	}
 	
 	var x = 0;
-	var searchnum = searchArray.length;
+	var searchnum = search.listArray.length;
 	if (searchnum < 1) { 
 		$('#errormsg').show();
 		$('#errormsg').html('Put a list of songs into the textbox. <br>(Load songs by artist, copy and paste a text list, load an RSS Feed, or type)');
@@ -106,7 +104,7 @@ function multiSearch() {
 	(function setInterval_afterDone(){
 
 		/* do search function */
-		if (searchArray[x]) { search(searchArray[x],x); } else { console.log('error: ILB'); return false;}
+		if (search.listArray[x]) { search(search.listArray[x],x); }// else { console.log('error: ILB'); return false;}
 		
 		x++;
 		
@@ -119,14 +117,14 @@ function multiSearch() {
 			$('#playlist-button').attr('disabled', false);
 			$("#shufflebutton").removeClass("disabled");
 
-			searchdone = true;
-			//ytPlayer.cuePlaylist(topvIdArray);
+			search.done = true;
+			//ytPlayer.cuePlaylist(search.topvIdArray);
 			/////todo: start with vidObjArray[vidcount].vid[0]
 
 			clearTimeout(timerId);
 		}
 	})();
-	searchcount++;
+	search.count++;
 }
 
 function allSongsBy(artistName) {
@@ -164,17 +162,17 @@ $("#playall-button").click(function(){
 
 function showRelated(artistName) {
      $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=20&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
-
+     	var curArtist;
         var artistList = '';
         if (data.similarartists) {
 	        $.each(data.similarartists.artist, function(i, item) {
 	        	if (item.name) {
-	        		var curArtist = item.name.replace(/["']/g, "\\'");
+	        		curArtist = item.name.replace(/["']/g, "\\'");
 	        	} else {
 	        		$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 	        	}
 	            artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
-	            if (i < data.similarartists.artist.length-1) artistList += " &bull; "
+	            if (i < data.similarartists.artist.length-1) artistList += " &bull; ";
 	        });
 	        $("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
 		} else {
