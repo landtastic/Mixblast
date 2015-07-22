@@ -310,7 +310,7 @@
 	}
 	#refreshc {
 		vertical-align: text-bottom;
-		padding: 5px 2px 0px 0px;
+		margin: 5px 2px 0px 0px;
 		width:25px;
 		height:25px;
 	}
@@ -461,7 +461,7 @@
 		background-color: rgba(255,255,255,0.7);
 		font-size: 15px;
 		margin-left: 2px;
-		margin-bottom: 10px;
+		margin-bottom: 22px;
 		height: 30px;
 		padding: 0px;
 		padding-left: 5px;
@@ -725,6 +725,7 @@
 		font-size: 22px;
 	}
 	.pb-module { font-size: 25px; }
+	.pb-delete { font-size: 25px; }
 	.line-clamp {
 	      position: relative;
 	      height: 4.5em; 
@@ -741,7 +742,7 @@
 	#query:-ms-input-placeholder { /* Internet Explorer 10+ */
 		font-size: 18px;
 	}
-	#query { height: 251px; }
+	/*#query { height: 251px; }*/
 	textarea#query,#playlist-title {
 		font-size: 180%!important;
 	}

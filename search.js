@@ -34,9 +34,9 @@ function search(query,c) {
 		vThumbArr.push(vThumb);
 		//global object of all the song results
 		vidObjArray[c] = {
-			'vid':vIdArr,
-			'title':vTitleArr, 
-			'thumb':vThumbArr
+			vid:vIdArr,
+			title:vTitleArr, 
+			thumb:vThumbArr
 		};
 
 		//display list, use only first result of each
@@ -51,7 +51,8 @@ function search(query,c) {
 
 			if (topvIdArray.length == 1) {
 				//only cue on the first search, keep the video running on subsequent searches
-				if (searchcount==1) cuePlayer();
+				//////if (searchcount==1) cuePlayer();
+				if (searchcount==1) loadVid(topvIdArray[0], 0, "medium"); //ok nevermind, let's autoplay instead of cue
 			} 
 
 			c++;

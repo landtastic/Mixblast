@@ -30,6 +30,7 @@ function onPlayerStateChange(event) {
 		console.log(playcount+"<-playcount|totalvids->"+totalvids);
 		waterbug.log(playcount+"<-playcount|totalvids->"+totalvids+' waterbug!');
     }
+	waterbug.log(event.data+' waterbug!');
 }
 
 function handleAPILoaded() {
@@ -42,6 +43,7 @@ function handleAPILoaded() {
 //changed the name of this function so iframe api doesn't callback
 function onYouTubeIframeAPIReady_removed_callback() {
     ytPlayer = new YT.Player('ytPlayer', { 
+    	suggestedQuality: 'medium',
     	//height: '368',
     	//width: '600',
     	//videoId: 'Oi1BcouEmio',
@@ -53,29 +55,6 @@ function onYouTubeIframeAPIReady_removed_callback() {
         }
     });
 }
-
-function cuePlayer() {
-	var i = add(); //(in advanced.js)
-	//check if the ytPlayer object is loaded
-	if (ytPlayer.cueVideoById) {
-		ytPlayer.cueVideoById(topvIdArray[0]);
-	} else {
-		//check for it 5x if it isn't
-		var tag = document.createElement('script');
-		tag.src = "https://www.youtube.com/iframe_api";
-		var firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-		if (i < 5) {
-			onYouTubeIframeAPIReady_removed_callback();
-			setTimeout(function(){ cuePlayer(); },1000);
-    		console.log('checking...'+i)
-    		//i++;
-    	}
-	}
-}
-
-
 
 function renderPlaylist(c,vThumb,vId,vTitle) {
 	$("#search-container").append("<div class='searchresult'>"+createPlaylistItem(c,vThumb,vId,vTitle)+"</div>");
@@ -116,8 +95,6 @@ $("#nextbutton").click(function(){
 });
 
 function nextVideo(next) {
-     console.log('helo: '+next);
-     waterbug.log('hello: '+next);
 	var totalvids = topvIdArray.length;
 	if (next==true) {
 		vidcount++; playcount++;
@@ -136,10 +113,33 @@ function nextVideo(next) {
 }
 
 function loadVid(vidId) {
-	ytPlayer.loadVideoById(vidId);
+	ytPlayer.loadVideoById(vidId, 0, "medium");
+	//$("#ytPlayer").attr("src", "http://www.youtube.com/embed/" + vidId);
+	//ytPlayer.playVideo();
+	//ytPlayer.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
 	if (topvTitleArray[vidcount]) document.title = topvTitleArray[vidcount] +' - Mixblast';
 }
 
+function cuePlayer() {
+	var i = add(); //(in advanced.js)
+	//check if the ytPlayer object is loaded
+	if (ytPlayer.cueVideoById) {
+		ytPlayer.cueVideoById(topvIdArray[0]);
+	} else {
+		//check for it 5x if it isn't
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		if (i < 5) {
+			onYouTubeIframeAPIReady_removed_callback();
+			setTimeout(function(){ cuePlayer(); },1000);
+    		console.log('checking...'+i)
+    		//i++;
+    	}
+	}
+}
 
 $("#shufflebutton").click(function(){
 
