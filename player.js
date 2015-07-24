@@ -244,8 +244,6 @@ $('#pb-button').click(function(){
     	pastBlasts.hide();
     }else{
     	pastBlasts.display();
-        $('#pb-menu').animate({left:0}, 'fast'); 
-        $('#pb-text').html('Blasts from the Past');
     }
 });
 $('#pb-button').hover(
@@ -257,7 +255,7 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 	lines.splice(0,1);
 	thisBlast = lines.join('\n');
 	$("#text-container").show(); $('#player-container').hide();
-	//$("#query").animate({height:'345px',width:'595px'},200);
+	//$("#query").animate({height:'345px'},200);
 
     $("#query").val($.trim(thisBlast));
 });
@@ -270,33 +268,39 @@ var pastBlasts = {
 		return localStorage.getItem("pastBlasts");
 	},
 	display : function() {
-		var blasts = pastBlasts.list();
-    	if (blasts === null) {
-    		var date = new Date();
-	        blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
-	    } else {
-	        blasts = JSON.parse(blasts);
-			if (blasts) blasts.sort().reverse();
-	    }
-	    $('#pb-menu').html('');
-	    $.each(blasts, function(i,val) {
-	    	var blastArr = val.split('\n');
-	    	var thisBlast = '';
-	    	var thisDate = '';
-	    	var date_id = '';
-	    	$.each(blastArr, function(i,v) {
-	    		if (i === 0) {
-	    			date_id = v;
-	    			var arr = v.split(/[-T:.]/);
-    				thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
-					var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-	    			var dateString = thisDate.toLocaleTimeString("en-us", options);
-	    			v = '<span id="pb-date">' + dateString + '</span>'; 
-	    		}
-	    		thisBlast += v + '<br>';
-			});
-    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
-		});
+		var openCount = new add();
+		console.log(openCount);
+		$('#pb-menu').animate({left: '0px'}, 'fast');
+		$('#pb-text').html('Blasts from the Past');
+		//if (search.count===undefined) {
+			var blasts = pastBlasts.list();
+	    	if (blasts === null) {
+	    		var date = new Date();
+		        blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
+		    } else {
+		        blasts = JSON.parse(blasts);
+				if (blasts) blasts.sort().reverse();
+		    }
+		    $('#pb-menu').html('');
+		    for (var i=0, max=blasts.length; i<max; i++) {
+		    	var blastArr = blasts[i].split('\n');
+		    	var thisBlast = '';
+		    	var thisDate = '';
+		    	var date_id = '';
+		    	for (var ii=0, maxx=blastArr.length; ii<maxx; ii++) {
+		    		if (ii === 0) {
+		    			date_id = blastArr[ii];
+		    			var arr = blastArr[ii].split(/[-T:.]/);
+	    				thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
+						var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
+		    			var dateString = thisDate.toLocaleTimeString("en-us", options);
+		    			blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
+		    		}
+		    		thisBlast += blastArr[ii] + '<br>';
+		    	}
+	    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
+			}
+		//}
 	},
 	hide : function() {
 		$('#pb-menu').animate({left: '-400px'}, 'fast');
@@ -345,7 +349,7 @@ $(document).ready(function() {
 	var mixtext = JSON.parse(autosave);
 	$("#query").val(mixtext);
 	//$("#query").focus(function() {
-		//$(this).animate({height:'345px',width:'595px'},200);
+		//$(this).animate({height:'345px'},200);
 	//});
 	$("#query").blur(function() {
 	 	mixfile = $('#query').val();

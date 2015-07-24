@@ -181,7 +181,7 @@ function editSearchTerm(lineNumber) {
 	$(".closebutton").show();
     $("#closebutton-thumb").html("<img src='"+ search.topvThumbArray[search.vidcount] +"'>"); 
     //$("#logo").animate({width:'100%',marginBottom:'5px'});
-    //$("#query").animate({height:'200px',width:'595px'},200);
+    //$("#query").animate({height:'200px'},200);
     var toggleEditText = $("#editplaylist").html();
     if (toggleEditText.indexOf("Edit Playlist") > -1) {
         $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));

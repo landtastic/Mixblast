@@ -98,7 +98,7 @@ function multiSearch() {
 		return false; 
 	}
 
-	//$("#query").animate({height:'200px',width:'595px'},200);
+	//$("#query").animate({height:'200px'},200);
 	//$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 
 	(function setInterval_afterDone(){
@@ -205,7 +205,7 @@ $(".closebutton").click(function(){
 	$("#text-container" ).slideToggle("fast");
 	$('#player-container').slideToggle("fast");
 	//if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
-	//$("#query").animate({height:'240px',width:'595px'},200);
+	//$("#query").animate({height:'240px'},200);
 	//$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
 	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
 });
