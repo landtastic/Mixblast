@@ -43,10 +43,10 @@ function multiAddVideosToPlaylist() {
 	//add topvIdArray to playlist, setInterval to stagger api requests
 	var x = 0;
 	var interval = setInterval(function() {
-		$('#playlist-status').html('Generating YouTube Playlist... (Don\'t leave this page) '+x+' of '+topvIdArray.length);
-		addToPlaylist(topvIdArray[x]);
+		$('#playlist-status').html('Generating YouTube Playlist... (Don\'t leave this page) '+x+' of '+search.topvIdArray.length);
+		addToPlaylist(search.topvIdArray[x]);
 		x++;
-		if(x==topvIdArray.length+1) {
+		if(x==search.topvIdArray.length+1) {
 			clearInterval(interval);
 			$('#playlist-status').html('Done!');
 			//alert("Loop complete");

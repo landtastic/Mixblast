@@ -268,10 +268,8 @@ var pastBlasts = {
 		return localStorage.getItem("pastBlasts");
 	},
 	display : function() {
-		var openCount = new add();
-		console.log(openCount);
-		$('#pb-menu').animate({left: '0px'}, 'fast');
-		$('#pb-text').html('Blasts from the Past');
+		//var openCount = new add(); 
+		//console.log(openCount);
 		//if (search.count===undefined) {
 			var blasts = pastBlasts.list();
 	    	if (blasts === null) {
@@ -301,6 +299,8 @@ var pastBlasts = {
 	    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 			}
 		//}
+		$('#pb-text').html('Blasts from the Past');
+		$('#pb-menu').animate({left: '0px'}, 'fast');
 	},
 	hide : function() {
 		$('#pb-menu').animate({left: '-400px'}, 'fast');

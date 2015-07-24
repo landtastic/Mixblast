@@ -570,7 +570,7 @@
 	.righty { width:38%; float: right; }
 	#playlist-status { width:99.4%px; padding-top: 20px;}
 	#advanced-container {
-		font-size:11px;
+		font-size:13px;
 		font-weight:normal;
 		margin-left: 3px;
 		background-color: rgba(255,255,255,0.1); 
@@ -698,8 +698,8 @@
 	#foot {
 		position: absolute;
 		bottom: 0;
-	    width: 700px;
-    	margin: 0 auto;
+		width: 700px;
+		margin: 0 auto;
 	} 
 
 /*========== PHONES ==========*/
@@ -760,6 +760,7 @@
 		font-size: 160%;
 		height: 80px;
 	}
+	#search-button { margin-top:27px; }
 	#rss-dropdown, #playallsongsby-artist, #playall-button{ 
 		font-size: 160%!important; 
 		height: 50px;
@@ -852,8 +853,15 @@
 		margin-top: 6px;
   		margin-bottom: 6px; 
   	}
+	#foot-wrap {
+		width:100%;
+	}
+	#foot {
+	    width: 100%;
+	} 
   	#emailme {
   		font-size: 35px;
+  		padding-left:10px;
   	}
 }
 
