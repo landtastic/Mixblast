@@ -37,7 +37,7 @@
 	}
 	#pb-button {
 	    position: absolute;
-	    left:18px; top:10px;
+	    left:18px; top:18px;
 	    cursor:pointer;
 	    font-size: 30px;
 	    z-index:200;
@@ -508,7 +508,7 @@
 		width: 50px;
 		vertical-align: middle; 
 		cursor:pointer;
-		margin-left: 10px;
+		margin-left: 38px;
 	 }
 	.infolink {	    
 		padding-left:4px;
@@ -710,18 +710,19 @@
 		padding:0px;
 	}
 	#body-column{
-		width:100%;
+		width:97%;
 	}
 	#logo {
 		max-width: 83%;
 		float: right;
 		clear: both;
-		padding-bottom: 3px;
+		padding-bottom: 40px;
 		padding-top: 7px;
 	}
 	#pb-icon{     
-		height: 75px;
-		width: 75px;
+		height: 70px;
+		width: 70px;
+		margin-top: -10px;
 		/*
 		padding-left: 1px;
 		margin-left: -3px;
@@ -810,7 +811,7 @@
 	}
 	#rss-dropdown { width:80px; margin-bottom: 10px; }
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
-	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 5px;}
+	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 30px;}
 	#button-container { 
 		text-align: -webkit-auto!important; 
 	    text-align: auto!important;
