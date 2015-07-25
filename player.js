@@ -384,7 +384,6 @@ $(document).ready(function() {
 
 	//hide playlist url until button is clicked
 	$("#playlist-url").hide();
-	$(".closebutton").hide();
 
 	//email link
 	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";

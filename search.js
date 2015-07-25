@@ -56,21 +56,20 @@ var search = function(query,counter) {
 
 
 function multiSearch() {
+	//this toggles some edit playlist stuff
+	editSearchTerm(0);
 	search.vidObjArray = {}; //, search.prev_vidObjArray = {};
 	search.topvIdArray = []; search.topvTitleArray =[]; search.topvThumbArray = []; search.listArray = [];
 	search.vidcount = 0; search.playcount = 0; search.done = false;
 	if (!search.count) search.count = 0;
-	//hide text form
-	$("#text-container" ).hide();
 	//show video player
 	$('#player-container').show();
 	$('#button-container').show();
-	$('#youtube-playlist-container').show();
 	//erase previous search
 	$( "#search-container" ).empty();
-	//$('#related-container').hide();
 	$('#errormsg').hide();
-	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
+	$('#youtube-playlist-container').show();
+	$('#ytPlayer-thumb-close').show();
 	//$("#closebutton-thumb").html("<img src='"+ search.topvThumbArray[0] +"' id='thumb'>"); 
 	if (search.topvIdArray) {
 		search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
@@ -134,7 +133,7 @@ function allSongsBy(artistName) {
 	showRelated(artistName);
      $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
         var songlist = '';
-        if (data.toptracks.track) {
+        if (data.toptracks.track != undefined) {
 	        $.each(data.toptracks.track, function(i, item) {
 	            songlist += artistName + " - " + item.name + "\n";
 	        });
@@ -201,17 +200,41 @@ $("#shuffletext").click(function(){
 $("#editplaylist").click(function(){
 	editSearchTerm(0);
 });
-$(".closebutton").click(function(){
-	$("#text-container" ).slideToggle("fast");
-	$('#player-container').slideToggle("fast");
-	//if ($(window).width() < mobile_width) $("#pb-icon" ).hide();
-	//$("#query").animate({height:'240px'},200);
-	//$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
-	$("#editplaylist").html($("#editplaylist").html().replace("Close Editor","Edit Playlist"));
+$("#ytPlayer-thumb-close").click(function(){
+	editSearchTerm(0);
 });
 $("#closeAdvanced").click(function(){
 	$('#advanced-container').slideToggle("fast");
 });
+
+function editSearchTerm(lineNumber) {
+	var mobile_width = 795, vidTop = '0px', vidWidth = '700px', thumbTop = '72px', queryHeight = '222px';
+	if ($(window).width() < mobile_width) { 
+		vidTop = '95px'; vidWidth = '100%'; thumbTop = '200px'; queryHeight = '135px';
+	}
+
+    var toggleEditText = $("#editplaylist").html();
+    if (toggleEditText.indexOf("Edit Playlist") > -1) {
+        $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
+        console.log(thumbTop);
+        $("#ytPlayer").animate({top: thumbTop, right: '21px', width: '95px', height: '71px'}, 'fast');
+        $('#query').animate({height: '345px'}, 'fast');
+        $("#related-container").show();
+        $("#ytPlayer-thumb-close").show();
+    } else if (toggleEditText.indexOf("Close Editor") > -1) {
+        $("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
+        $('#ytPlayer').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast');
+        $('#query').animate({height: queryHeight}, 'fast');
+        $("#related-container").hide();
+        $("#ytPlayer-thumb-close").hide();
+	}
+    /*
+    var input = $("#query");
+    var lineHeight = 1.14;
+    input.scrollTop(lineNumber * lineHeight);
+    window.scrollTo(0, 0);
+    */
+}
 
 $(document).keydown(function(e) {
 	//allow arrow keys if an input is focused

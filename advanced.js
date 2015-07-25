@@ -173,27 +173,6 @@ function readMultipleFiles(evt) {
 }
 document.getElementById('fileinput').addEventListener('change', readMultipleFiles, false);
 
-
-function editSearchTerm(lineNumber) {
-    $("#text-container" ).slideToggle("fast");
-    $('#player-container').slideToggle("fast");
-    //if ($(window).width() < 666) $("#pb-icon" ).slideToggle("fast");
-	$(".closebutton").show();
-    $("#closebutton-thumb").html("<img src='"+ search.topvThumbArray[search.vidcount] +"'>"); 
-    //$("#logo").animate({width:'100%',marginBottom:'5px'});
-    //$("#query").animate({height:'200px'},200);
-    var toggleEditText = $("#editplaylist").html();
-    if (toggleEditText.indexOf("Edit Playlist") > -1) {
-        $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
-    } else if (toggleEditText.indexOf("Close Editor") > -1) {
-        $("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
-	}
-    var input = $("#query");
-    var lineHeight = 1.14;
-    input.scrollTop(lineNumber * lineHeight);
-    window.scrollTo(0, 0);
-}
-
 function getParameterByName(name) {
 	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),

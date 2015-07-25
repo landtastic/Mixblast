@@ -32,7 +32,7 @@ function createPlaylist() {
   		multiAddVideosToPlaylist();
 		
     } else {
-      alert("Uh oh. Could not create playlist. Make sure you're signed in to Youtube. It should say \"(200 video limit)\" instead of \"(Sign in)\".\n\nIf you are logged in, try logging out of youtube.com, then refresh mixblast, then sign in again. Sorry 'bout that.\n\nMake sure your youtube account has a \"youtube channel.\" You can do this by creating at least one playlist on youtube.com. ");
+      alert("Uh oh. Could not create playlist. Make sure you're signed in to Youtube. It should say (200 video limit) instead of (Sign in).\n\nIf you are logged in, try logging out of youtube.com, then refresh mixblast, then sign in again. Sorry 'bout that.\n\nMake sure your youtube account has a \"youtube channel.\" You can do this by creating at least one playlist on youtube.com. ");
     }
   });
   
