@@ -90,7 +90,7 @@ function multiSearch() {
 	
 	var x = 0;
 	var searchnum = search.listArray.length;
-	if (searchnum < 1) { 
+	if ((searchnum < 1) || (search.listArray[0] == 'Search Youtube for a list of songs.')) { 
 		$('#errormsg').show();
 		$('#errormsg').html('Put a list of songs into the textbox. <br>(Load songs by artist, copy and paste a text list, load an RSS Feed, or type)');
 		editSearchTerm(0); 
@@ -216,7 +216,7 @@ function editSearchTerm(lineNumber) {
     var toggleEditText = $("#editplaylist").html();
     if (toggleEditText.indexOf("Edit Playlist") > -1) {
         $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
-        console.log(thumbTop);
+        //console.log(thumbTop);
         $("#ytPlayer").animate({top: thumbTop, right: '21px', width: '95px', height: '71px'}, 'fast');
         $('#query').animate({height: '345px'}, 'fast');
         $("#related-container").show();
