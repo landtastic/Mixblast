@@ -346,7 +346,7 @@ $(document).ready(function() {
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
-	$("#query").val(mixtext);
+	if (mixtext != "") $("#query").val(mixtext);
 
 	$("#query").focus(function() {
 		if (this.value == this.defaultValue) {
@@ -355,12 +355,14 @@ $(document).ready(function() {
 	});
 
 	$("#query").blur(function() {
+		if (this.value != "") {
+			mixfile = $('#query').val();
+	 		localStorage.setItem('mixfile', JSON.stringify(mixfile));
+	 		console.log(mixfile);
+	 	}
 		if (this.value == "") {
 		    this.value = this.defaultValue;
 		}
-	 	mixfile = $('#query').val();
-	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
-	 	console.log(mixfile);
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
