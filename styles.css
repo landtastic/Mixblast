@@ -761,8 +761,11 @@
 		font-size: 160%;
 		height: 80px;
 	}
+	#ytPlayer{
+		top: 200px;
+	}
 	#ytPlayer-thumb-close {
-		width: 95px; top: 200px; right: 21px; height: 71px;
+		top: 200px; right: 21px; width: 95px; height: 71px;
 	}
 	#search-button { margin-top:27px; }
 	#rss-dropdown, #playallsongsby-artist, #playall-button{ 
@@ -883,10 +886,11 @@
 	  -ms-transition: background .3s;
 	  -o-transition: background .3s;
 	  transition: background .3s;
-	  background-color: #7fc5c9;
+	  background-color: #ccc;
+	  /*background-color: #7fc5c9;*/
 	  /*top colour*/
-	  background-image: linear-gradient(#7fc5c9, #deabbe);
+	  /*background-image: linear-gradient(#7fc5c9, #deabbe);
 	  background-image: -webkit-linear-gradient(top, #7fc5c9, #deabbe);
 	  background-image: -moz-linear-gradient(top, #7fc5c9, #deabbe);
-	  background-image: -o-linear-gradient(top, #7fc5c9, #deabbe); 
+	  background-image: -o-linear-gradient(top, #7fc5c9, #deabbe); */
 	}

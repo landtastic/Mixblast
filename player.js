@@ -339,22 +339,30 @@ var pastBlasts = {
 
 
 $(document).ready(function() {
-
+	//hide pastBlasts if user clicks background
    $("#body-container, #query, .gradient-background, #foot-wrap").click(function(e) {
 		pastBlasts.hide();
     });
-
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
 	$("#query").val(mixtext);
-	//$("#query").focus(function() {
-		//$(this).animate({height:'345px'},200);
-	//});
+
+	$("#query").focus(function() {
+		if (this.value == this.defaultValue) {
+		    this.value = "";
+		}
+		console.log(this.defaultValue);
+	});
+
 	$("#query").blur(function() {
+		if (this.value == "") {
+		    this.value = this.defaultValue;
+		}
 	 	mixfile = $('#query').val();
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 	console.log(mixfile);
+	 	console.log(this.value);
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
