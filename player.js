@@ -352,7 +352,6 @@ $(document).ready(function() {
 		if (this.value == this.defaultValue) {
 		    this.value = "";
 		}
-		console.log(this.defaultValue);
 	});
 
 	$("#query").blur(function() {
@@ -362,7 +361,6 @@ $(document).ready(function() {
 	 	mixfile = $('#query').val();
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 	console.log(mixfile);
-	 	console.log(this.value);
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
