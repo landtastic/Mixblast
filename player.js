@@ -346,7 +346,7 @@ $(document).ready(function() {
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
-	if (mixtext != "") $("#query").val(mixtext);
+	if ((mixtext) && (mixtext != "")) $("#query").val(mixtext);
 
 	$("#query").focus(function() {
 		if (this.value == this.defaultValue) {
