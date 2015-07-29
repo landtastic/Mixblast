@@ -6,18 +6,17 @@ function handleAPILoaded() {
 }
 //changed the name of this function so iframe api doesn't callback
 function onYouTubeIframeAPIReady_removed_callback() {
-    ytPlayer = new YT.Player('ytPlayer', { 
-    	suggestedQuality: 'medium',
-    	//height: '368',
-    	//width: '600',
-    	//videoId: 'Oi1BcouEmio',
-    	//videoId: 'fgBLu387UM8',
-        events: {
-            'onReady': onPlayerReady,
-            'onError': onPlayerError,
-            'onStateChange': onPlayerStateChange
-        }
-    });
+	ytPlayer = new YT.Player('ytPlayer', { 
+		//suggestedQuality: 'medium',
+		height: '368',
+		width: '600',
+		videoId: 'fgBLu387UM8',
+		events: {
+			'onReady': onPlayerReady,
+			'onError': onPlayerError,
+			'onStateChange': onPlayerStateChange
+		}
+	});
 }
 function onPlayerReady() {
 	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg">');
@@ -25,22 +24,22 @@ function onPlayerReady() {
   	////if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
 function onPlayerError(event){
-     console.log('Whoops. Error: '+event.data);
-     waterbug.log('Whoops. Error: '+event.data);
-     if (event.data == 150) {
-     	wrongSong();
-     } else {
+	 console.log('Whoops. Error: '+event.data);
+	 waterbug.log('Whoops. Error: '+event.data);
+	 if (event.data == 150) {
+	 	wrongSong();
+	 } else {
 		nextVideo(true);
-     }
+	 }
 }
 function onPlayerStateChange(event) {
 	if (event.data != 1) {
-        $("#playpb").attr("src","img/media_play.png");
-    } else {
-        $("#playpb").attr("src","img/media_pause.png");
-    }
+		$("#playpb").attr("src","img/media_play.png");
+	} else {
+		$("#playpb").attr("src","img/media_pause.png");
+	}
 	//if video is done, play next
-    if(event.data === 0) {
+	if(event.data === 0) {
 		var totalvids = search.topvIdArray.length;
 		if (search.playcount+1 < totalvids) {
 			nextVideo(true);
@@ -49,7 +48,7 @@ function onPlayerStateChange(event) {
 		}
 		console.log(search.playcount+"<-search.playcount|totalvids->"+totalvids);
 		waterbug.log(search.playcount+"<-search.playcount|totalvids->"+totalvids+' waterbug!');
-    }
+	}
 	waterbug.log(event.data+' waterbug!');
 }
 
@@ -73,17 +72,17 @@ $("#prevbutton").click(function(){
 });
 
 $("#playpause").click(function(){
-    playPause();
+	playPause();
 });
 
 function playPause() {
 	if (ytPlayer.getPlayerState() != 1) {
-         ytPlayer.playVideo();
-         $("#playpb").attr("src","img/media_pause.png");
-    } else {
-        ytPlayer.pauseVideo();
-        $("#playpb").attr("src","img/media_play.png");
-    }
+		 ytPlayer.playVideo();
+		 $("#playpb").attr("src","img/media_pause.png");
+	} else {
+		ytPlayer.pauseVideo();
+		$("#playpb").attr("src","img/media_play.png");
+	}
 }
 
 $("#nextbutton").click(function(){
@@ -131,9 +130,9 @@ function cuePlayer() {
 		if (i < 5) {
 			onYouTubeIframeAPIReady_removed_callback();
 			setTimeout(function(){ cuePlayer(); },1000);
-    		console.log('checking...'+i);
-    		//i++;
-    	}
+			console.log('checking...'+i);
+			//i++;
+		}
 	}
 }
 //shuffle after search
@@ -154,7 +153,7 @@ function shuffleIt() {
 	//random array of numbers to use as keys
 	var numlist = [];
 	for (var i = 0; i < shuffleindex; i++) {
-    	numlist.push(i);
+		numlist.push(i);
 	}
 	var shuffled_idArr = shuffle(numlist);
 
@@ -193,8 +192,8 @@ function shuffleIt() {
 }
 
 function shuffle(o){ 
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
+	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	return o;
 }
 
 $("#wrongsong").click(function(){
@@ -211,17 +210,17 @@ function wrongSong() {
 //song refresh button
 $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 
-    var thisid = this.id;
-    var swapcount = $(this).nextAll('#swapcount').val();
+	var thisid = this.id;
+	var swapcount = $(this).nextAll('#swapcount').val();
 	if( event.button == 2 ) { 
 	  swapcount--;
 	  event.preventDefault();
 	} else {
 	  swapcount++;
 	}
-    var swaplen = search.vidObjArray[thisid].vid.length;
-    if (swapcount >= swaplen) swapcount = 0;
-    if (swapcount < 0) swapcount = swaplen-1;
+	var swaplen = search.vidObjArray[thisid].vid.length;
+	if (swapcount >= swaplen) swapcount = 0;
+	if (swapcount < 0) swapcount = swaplen-1;
 
 	var top5id = search.vidObjArray[thisid].vid[swapcount];
 	var top5click = "loadVid('"+top5id+"'); search.vidcount="+thisid;
@@ -240,11 +239,11 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 });
 
 $('#pb-button').click(function(){
-    if($('#pb-menu').css('left')=='0px'){
-    	pastBlasts.hide();
-    }else{
-    	pastBlasts.display();
-    }
+	if($('#pb-menu').css('left')=='0px'){
+		pastBlasts.hide();
+	}else{
+		pastBlasts.display();
+	}
 });
 $('#pb-button').hover(
   function() { $('#pb-text').html('Blasts from the Past'); }, function() { /*$('#pb-text').html('');*/ }
@@ -257,7 +256,7 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 	$("#text-container").show(); $('#player-container').hide();
 	//$("#query").animate({height:'345px'},200);
 
-    $("#query").val($.trim(thisBlast));
+	$("#query").val($.trim(thisBlast));
 });
 $('#pb-menu').on('click', '.pb-delete', function(event) {
 	pastBlasts.delete(this.id);
@@ -272,31 +271,31 @@ var pastBlasts = {
 		//console.log(openCount);
 		//if (search.count===undefined) {
 			var blasts = pastBlasts.list();
-	    	if (blasts === null) {
-	    		var date = new Date();
-		        blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
-		    } else {
-		        blasts = JSON.parse(blasts);
+			if (blasts === null) {
+				var date = new Date();
+				blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
+			} else {
+				blasts = JSON.parse(blasts);
 				if (blasts) blasts.sort().reverse();
-		    }
-		    $('#pb-menu').html('');
-		    for (var i=0, max=blasts.length; i<max; i++) {
-		    	var blastArr = blasts[i].split('\n');
-		    	var thisBlast = '';
-		    	var thisDate = '';
-		    	var date_id = '';
-		    	for (var ii=0, maxx=blastArr.length; ii<maxx; ii++) {
-		    		if (ii === 0) {
-		    			date_id = blastArr[ii];
-		    			var arr = blastArr[ii].split(/[-T:.]/);
-	    				thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
+			}
+			$('#pb-menu').html('');
+			for (var i=0, max=blasts.length; i<max; i++) {
+				var blastArr = blasts[i].split('\n');
+				var thisBlast = '';
+				var thisDate = '';
+				var date_id = '';
+				for (var ii=0, maxx=blastArr.length; ii<maxx; ii++) {
+					if (ii === 0) {
+						date_id = blastArr[ii];
+						var arr = blastArr[ii].split(/[-T:.]/);
+						thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
 						var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-		    			var dateString = thisDate.toLocaleTimeString("en-us", options);
-		    			blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
-		    		}
-		    		thisBlast += blastArr[ii] + '<br>';
-		    	}
-	    		$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
+						var dateString = thisDate.toLocaleTimeString("en-us", options);
+						blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
+					}
+					thisBlast += blastArr[ii] + '<br>';
+				}
+				$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 			}
 		//}
 		$('#pb-text').html('Blasts from the Past');
@@ -308,11 +307,11 @@ var pastBlasts = {
 	},
 	add : function(pl_text) {
 		var blasts = pastBlasts.list();
-    	if (!blasts) {
-	        blasts = [];
-	    } else {
-	        blasts = JSON.parse(blasts);
-	    }
+		if (!blasts) {
+			blasts = [];
+		} else {
+			blasts = JSON.parse(blasts);
+		}
 		var date = new Date();
 		blasts.push(date.toJSON() + '\n' + pl_text + '\n');
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
@@ -321,7 +320,7 @@ var pastBlasts = {
 		var blasts = JSON.parse(pastBlasts.list());
 		for (var i=0; i < blasts.length; i++) {
 		  if (/\S/.test(blasts[i])) {
-	    	var blastArr = blasts[i].split('\n');
+			var blastArr = blasts[i].split('\n');
 			for (var ii = 0, len = blastArr.length; ii < len; ii++) {
 				if (ii === 0) {
 					if (blastArr[ii] == date_id) {
@@ -330,10 +329,10 @@ var pastBlasts = {
 					}
 				}
 			}
-          }
-        }
-	    localStorage.setItem("pastBlasts", JSON.stringify(blasts));
-	    pastBlasts.display();
+		  }
+		}
+		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
+		pastBlasts.display();
 	}
 };
 
@@ -342,7 +341,7 @@ $(document).ready(function() {
 	//hide pastBlasts if user clicks background
    $("#body-container, #query, .gradient-background, #foot-wrap").click(function(e) {
 		pastBlasts.hide();
-    });
+	});
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
@@ -350,7 +349,7 @@ $(document).ready(function() {
 
 	$("#query").focus(function() {
 		if (this.value == this.defaultValue) {
-		    this.value = "";
+			this.value = "";
 		}
 	});
 
@@ -361,7 +360,7 @@ $(document).ready(function() {
 	 		console.log(mixfile);
 	 	}
 		if (this.value == "") {
-		    this.value = this.defaultValue;
+			this.value = this.defaultValue;
 		}
 	});
 

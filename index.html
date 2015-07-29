@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Mixblast Playlist Maker - Lists To Youtube Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
+	<title>Mixblast Playlist Maker - Lists To Youtube Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
   </head>
   <body>
 	<div id="pb-button"><a><img id="pb-icon" src="img/past-blasts-icon.svg"> <span id='pb-text'></span></a></div>
@@ -18,9 +18,6 @@
 	  <div id="body-column">
 		<span class="gradient-background"></span>
 		<a href="."><img id="logo" src="img/mixblast-logo6.png" alt="Mixblast" title="&quot;You'll Have a Blast&quot;"></a>
-		  <div id="player-container">
-			<iframe id="ytPlayer" src="https://www.youtube.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe><span id="ytPlayer-thumb-close" title="Go Back to Video"></span>
-		  </div>
 		  <div id="text-container">
 				&nbsp;<span id="playallsongsby" class="ui-widget">Top <input id="play_songsby" value="100"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  " title="Search">
 				<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">
@@ -30,36 +27,25 @@
 					<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
-					<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
-					<option value="http://www.stereogum.com/category/mp3s/feed/">Stereogum</option>
-					<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
-					<option value="http://www.popmatters.com/feeds/fd_listen">Pop Matters</option>
-					<option value="http://video.vulture.com/feed/magnify.rss/WHB24B38378F8L2F">The Vulture</option> 
-					<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>
-					<option value="http://drownedinsound.com/feed">Drowned in Sound</option>
-					<option value="http://consequenceofsound.net/category/check-out/feed/">Consequence of Sound</option>
-					<option value="http://www.metacritic.com/rss/music">Metacritic</option>
-					<option value="http://feeds.feedburner.com/AllLinks-AlbumOfTheYear">Album Of The Year.org</option>
-					<option value="http://feeds.feedburner.com/RecentlyRatedAlbums-AlbumOfTheYear?format=xml">AOTY Recently Rated</option>
 					<option value="http://allhiphop.com/feed/">All Hip Hop</option>
-				    <option value="http://feeds.feedburner.com/hiphopearly">Hip Hop Early</option>
-				    <option value="http://feeds.feedburner.com/realhotnewhiphop?format=xml">Hot New Hip Hop</option>
-				    <option value="http://rapradar.com/feed/">Rap Radar</option>
-				    <option value="http://theboombox.com/category/songs-1/feed/">The Boombox</option>
-				    <option value="http://feeds.feedburner.com/nah_right?format=xml">Nah Right</option>
-				    <option value="http://feeds.feedburner.com/SouthernSweetTea?format=xml">A Girl And Her Hip Hop</option>
-				    <option value="http://www.worldstarhiphop.com/videos/rss.php">World Star Hip Hop</option>
-				    <option value="http://www.xxlmag.com/feed/">XXL Mag</option>
-				    <option value="http://digitaldripped.com/rss">Digital Dripped</option>
-				    <option value="http://www.newjamz.net/rss/home">New Jamz.net</option>
-				    <!--<option value="http://www.ihiphopmusic.com/feed">iHipHopMusic</option>-->
-				    <option value="http://feeds.feedburner.com/ughhblog">Underground Hip Hop Blog</option>
-				    <!--<option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>-->
-				    <!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
-				    <option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
-				    <option value="http://cantstophiphop.com/feed/">Can't Stop Hip Hop</option>
-				    <option value="http://trapsntrunks.com/feed/">Traps 'N Trunks</option>
-				    <option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
+					<option value="http://feeds.feedburner.com/hiphopearly">Hip Hop Early</option>
+					<option value="http://feeds.feedburner.com/realhotnewhiphop?format=xml">Hot New Hip Hop</option>
+					<option value="http://rapradar.com/feed/">Rap Radar</option>
+					<option value="http://theboombox.com/category/songs-1/feed/">The Boombox</option>
+					<option value="http://feeds.feedburner.com/nah_right?format=xml">Nah Right</option>
+					<option value="http://feeds.feedburner.com/SouthernSweetTea?format=xml">A Girl And Her Hip Hop</option>
+					<option value="http://www.worldstarhiphop.com/videos/rss.php">World Star Hip Hop</option>
+					<option value="http://www.xxlmag.com/feed/">XXL Mag</option>
+					<option value="http://digitaldripped.com/rss">Digital Dripped</option>
+					<option value="http://www.newjamz.net/rss/home">New Jamz.net</option>
+					<!--<option value="http://www.ihiphopmusic.com/feed">iHipHopMusic</option>-->
+					<option value="http://feeds.feedburner.com/ughhblog">Underground Hip Hop Blog</option>
+					<!--<option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>-->
+					<!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
+					<option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
+					<option value="http://cantstophiphop.com/feed/">Can't Stop Hip Hop</option>
+					<option value="http://trapsntrunks.com/feed/">Traps 'N Trunks</option>
+					<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=20/explicit=true/xml">iTunes Alternative Top 100</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=3/explicit=true/xml">iTunes Comedy Top 100</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=17/explicit=true/xml">iTunes Dance Top 100</option>
@@ -72,10 +58,25 @@
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=24/explicit=true/xml">iTunes Reggae Top 100</option>
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
 					<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
+					<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
+					<option value="http://www.stereogum.com/category/mp3s/feed/">Stereogum</option>
+					<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
+					<option value="http://www.popmatters.com/feeds/fd_listen">Pop Matters</option>
+					<option value="http://video.vulture.com/feed/magnify.rss/WHB24B38378F8L2F">The Vulture</option> 
+					<!--<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>-->
+					<option value="http://drownedinsound.com/feed">Drowned in Sound</option>
+					<option value="http://consequenceofsound.net/category/check-out/feed/">Consequence of Sound</option>
+					<option value="http://www.metacritic.com/rss/music">Metacritic</option>
+					<option value="http://feeds.feedburner.com/AllLinks-AlbumOfTheYear">Album Of The Year.org</option>
+					<option value="http://feeds.feedburner.com/RecentlyRatedAlbums-AlbumOfTheYear?format=xml">AOTY Recently Rated</option>
 				</select> 
 				</div>
 				
 				<div id="buttons"><div id="queryarea" class="ui-widget">
+					<div id="player-container">
+						<div id="ytPlayer"></div>
+						<!--<iframe id="ytPlayer" src="https://www.youtube.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe><span id="ytPlayer-thumb-close" title="Go Back to Video"></span>-->
+					</div>
 					<textarea id="query" rows="13" cols="60">
 Search Youtube for a list of songs.											
 
@@ -123,7 +124,7 @@ Then click "Blast a Mix" to make a playlist.
 			   <h3>Save your playlist to Youtube 
 			   	<span style="display:none;" id="login-container" class="pre-auth">(<a href="javascript:void(0);" id="login-link"><b>Sign in</b></a>)</span>
 				<span style="display:none;" id="login-container" class="post-auth">(200 video limit)</span>
-			    </h3>
+				</h3>
 			   <hr>
 			   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>
 			   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br><sup>(Blast a Mix first)</sup></button></div><br>
@@ -139,7 +140,7 @@ Then click "Blast a Mix" to make a playlist.
 	</div>
 	<div id="foot-wrap">
 	<div id="foot">
-	    <br>
+		<br>
 		<hr>
 		<br>
 		<span id='emailme'></span> 
@@ -168,7 +169,7 @@ Then click "Blast a Mix" to make a playlist.
 		ga('send', 'pageview');
 		setTimeout("ga('send','event','Profitable Engagement','time on page more than 20 seconds')",20000);
 		</script>
-	    </div>
+		</div>
 	</div>
 	</div>
 	<span id="secret-err-msg-logger"></span>

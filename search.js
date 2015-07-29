@@ -1,11 +1,11 @@
 var search = function(query,counter) {
-    var q = query;
-    var c = counter;
+	var q = query;
+	var c = counter;
 
-    var request = gapi.client.youtube.search.list({
-    q: q,
-    part: 'snippet',
-    maxResults: 20
+	var request = gapi.client.youtube.search.list({
+	q: q,
+	part: 'snippet',
+	maxResults: 20
 	//order: 'viewCount'
 	});
   
@@ -51,7 +51,7 @@ var search = function(query,counter) {
 			c++;
 		}
 	});
-  });    
+  });	
 };
 
 
@@ -84,12 +84,13 @@ function multiSearch() {
 	//only get non-whitespace lines, push into listArray
 	for (var i=0; i < lines.length; i++) {
 	  if (/\S/.test(lines[i])) {
-	    search.listArray.push($.trim(lines[i]));
+		search.listArray.push($.trim(lines[i]));
 	  }
 	}
 	
 	var x = 0;
 	var searchnum = search.listArray.length;
+	console.log('listarray: '+search.listArray[0]);
 	if ((searchnum < 1) || (search.listArray[0] == 'Search Youtube for a list of songs.')) { 
 		$('#errormsg').show();
 		$('#errormsg').html('Put a list of songs into the textbox. <br>(Load songs by artist, copy and paste a text list, load an RSS Feed, or type)');
@@ -131,25 +132,25 @@ function allSongsBy(artistName) {
 	$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
 	$("#related-container" ).show();
 	showRelated(artistName);
-     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
-        var songlist = '';
-        if (data.toptracks.track != undefined) {
-	        $.each(data.toptracks.track, function(i, item) {
-	            songlist += artistName + " - " + item.name + "\n";
-	        });
-	        $('#query').val(songlist);
-	         //$('#search-button').trigger( "click" );
+	 $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
+		var songlist = '';
+		if (data.toptracks.track != undefined) {
+			$.each(data.toptracks.track, function(i, item) {
+				songlist += artistName + " - " + item.name + "\n";
+			});
+			$('#query').val(songlist);
+			 //$('#search-button').trigger( "click" );
 		} else {
 			$('#query').val(': ( \n\nError loading videos by: '+artistName+'\n\nCheck spelling?'); 
-	    }
-    });
+		}
+	});
 }
 $("#playallsongsby-artist, #play_songsby").keypress(function (e) {
  var key = e.which;
  if(key == 13) {
-    allSongsBy($("#playallsongsby-artist").val());
-    $("#ui-id-1").hide();
-    //return false;  
+	allSongsBy($("#playallsongsby-artist").val());
+	$("#ui-id-1").hide();
+	//return false;  
  }
 });  
 $("#playallsongsby-artist").click(function(){
@@ -160,24 +161,24 @@ $("#playall-button").click(function(){
 });
 
 function showRelated(artistName) {
-     $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=20&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
-     	var curArtist;
-        var artistList = '';
-        if (data.similarartists) {
-	        $.each(data.similarartists.artist, function(i, item) {
-	        	if (item.name) {
-	        		curArtist = item.name.replace(/["']/g, "\\'");
-	        	} else {
-	        		$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
-	        	}
-	            artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
-	            if (i < data.similarartists.artist.length-1) artistList += " &bull; ";
-	        });
-	        $("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
+	 $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=20&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
+	 	var curArtist;
+		var artistList = '';
+		if (data.similarartists) {
+			$.each(data.similarartists.artist, function(i, item) {
+				if (item.name) {
+					curArtist = item.name.replace(/["']/g, "\\'");
+				} else {
+					$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
+				}
+				artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
+				if (i < data.similarartists.artist.length-1) artistList += " &bull; ";
+			});
+			$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
 		} else {
 			$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
-	    }
-    });
+		}
+	});
 }
 
 $("#shuffletext").click(function(){
@@ -187,9 +188,9 @@ $("#shuffletext").click(function(){
 	var randomlines = '';
 	for (var i=0; i < lines.length; i++) {
 		if (/\S/.test(lines[i])) {
-    		randomlines += lines[i] + '\n';
-    		//if (i != lines.length) randomlines += '\n';
-    	}
+			randomlines += lines[i] + '\n';
+			//if (i != lines.length) randomlines += '\n';
+		}
 	}
 	//randomlines = randomlines.replace(/^(\r\n)|(\n)/,'');
 	$('#query').val(randomlines);
@@ -213,48 +214,48 @@ function editSearchTerm(lineNumber) {
 		vidTop = '95px'; vidWidth = '100%'; thumbTop = '200px'; queryHeight = '135px';
 	}
 
-    var toggleEditText = $("#editplaylist").html();
-    if (toggleEditText.indexOf("Edit Playlist") > -1) {
-        $("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
-        //console.log(thumbTop);
-        $("#ytPlayer").animate({top: thumbTop, right: '21px', width: '95px', height: '71px'}, 'fast');
-        $('#query').animate({height: '345px'}, 'fast');
-        $("#related-container").show();
-        $("#ytPlayer-thumb-close").show();
-    } else if (toggleEditText.indexOf("Close Editor") > -1) {
-        $("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
-        $('#ytPlayer').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast');
-        $('#query').animate({height: queryHeight}, 'fast');
-        $("#related-container").hide();
-        $("#ytPlayer-thumb-close").hide();
+	var toggleEditText = $("#editplaylist").html();
+	if (toggleEditText.indexOf("Edit Playlist") > -1) {
+		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
+		//console.log(thumbTop);
+		$("#ytPlayer").animate({top: thumbTop, right: '21px', width: '95px', height: '71px'}, 'fast');
+		$('#query').animate({height: '345px'}, 'fast');
+		$("#related-container").show();
+		$("#ytPlayer-thumb-close").show();
+	} else if (toggleEditText.indexOf("Close Editor") > -1) {
+		$("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
+		$('#ytPlayer').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast');
+		$('#query').animate({height: queryHeight}, 'fast');
+		$("#related-container").hide();
+		$("#ytPlayer-thumb-close").hide();
 	}
-    /*
-    var input = $("#query");
-    var lineHeight = 1.14;
-    input.scrollTop(lineNumber * lineHeight);
-    window.scrollTo(0, 0);
-    */
+	/*
+	var input = $("#query");
+	var lineHeight = 1.14;
+	input.scrollTop(lineNumber * lineHeight);
+	window.scrollTo(0, 0);
+	*/
 }
 
 $(document).keydown(function(e) {
 	//allow arrow keys if an input is focused
 	if($("input,textarea").is(":focus")) return; 
 
-    switch(e.which) {
-        case 37: nextVideo(false);// left
-        break;
+	switch(e.which) {
+		case 37: nextVideo(false);// left
+		break;
 
-        case 192: editSearchTerm(0);// `
-        return;
+		case 192: editSearchTerm(0);// `
+		return;
 
-        case 39: nextVideo(true);// right
-        break;
+		case 39: nextVideo(true);// right
+		break;
 
-        case 32: playPause();// space
-        e.preventDefault();
-        break;
+		case 32: playPause();// space
+		e.preventDefault();
+		break;
 
-        default: return; // exit this handler for other keys
-    }
-    //e.preventDefault(); // prevent the default action (scroll / move caret)
+		default: return; // exit this handler for other keys
+	}
+	//e.preventDefault(); // prevent the default action (scroll / move caret)
 });

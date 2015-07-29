@@ -38,18 +38,18 @@
 		overflow: inherit!important;
 	}
 	#ytPlayer {
-		position:absolute;
+		position: absolute;
 		z-index: 300;
-	    display:block;
-		top: 72px;
-		right: 21px;
+		display:block;
+		top: 0px;
+		right: 0px;
 		width: 95px;
 		height: 71px;
 	}
 	#ytPlayer-thumb-close {
-		position:absolute;
+		position: relative;
 		z-index: 301;
-	    display:block;
+		display:block;
 		top: 72px;
 		right: 21px;
 		width: 95px;
@@ -68,25 +68,25 @@
   		margin-bottom: 6px; 
   	}
 	#pb-button {
-	    position: absolute;
-	    left:18px; top:18px;
-	    cursor:pointer;
-	    font-size: 30px;
-	    z-index:600;
+		position: absolute;
+		left:18px; top:18px;
+		cursor:pointer;
+		font-size: 30px;
+		z-index:600;
 	}
 	#pb-icon { height: 40px; width:40px; vertical-align: middle;}
 	#pb-text { font-size: 16px; color: #fff; vertical-align: 14%; background-color: rgba(0, 0, 0, 0.3);}
 	#pb-date { font-weight:bold; font-size:14px; }
 	#pb-menu {
-    	top: 0px;
-	    position: absolute;
-	    background: rgba(0,0,0,0.8);
-	    width: 400px;
-	    left: -400px;
-	    z-index: 599;
-	    padding-top: 50px;
-	    /*overflow: auto;
-	    height: 100%;*/
+		top: 0px;
+		position: absolute;
+		background: rgba(0,0,0,0.8);
+		width: 400px;
+		left: -400px;
+		z-index: 599;
+		padding-top: 50px;
+		/*overflow: auto;
+		height: 100%;*/
 	}
 	.pb-module {
 		font-size:15px;
@@ -109,38 +109,38 @@
 	.pb-delete:hover { color: #FF3300; }
 	.pb-wrapper { position: relative; margin-right:20px;}
 	.line-clamp {
-	      position: relative;
-	      height: 5em; 
-	    }
+		  position: relative;
+		  height: 5em; 
+		}
 	.line-clamp:after {
-	      content: "";
-	      text-align: right;
-	      position: absolute;
-	      bottom: 0;
-	      right: 0;
-	      width: 70%;
-	      height: 1.2em;
-	      /*background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 50%);*/
+		  content: "";
+		  text-align: right;
+		  position: absolute;
+		  bottom: 0;
+		  right: 0;
+		  width: 70%;
+		  height: 1.2em;
+		  /*background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 50%);*/
 	 }
 	@supports (-webkit-line-clamp: 4) {
-	    .line-clamp {
-	        display: -webkit-box;
-	        -webkit-line-clamp: 4;
-	        -webkit-box-orient: vertical;  
-	        max-height:5em; 
-	        height: auto;
-	    }
-	    .line-clamp:after {
-	        display: none;
-	    }
+		.line-clamp {
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;  
+			max-height:5em; 
+			height: auto;
+		}
+		.line-clamp:after {
+			display: none;
+		}
 	}
 	#text-container { width:100%; }
 	textarea#query,input,button {
 		font-family: 'Roboto', sans-serif;
 		font-size: 18px;
 		/*border: 1px solid #fff;*/
-    	border-radius: 5px;
-    	padding:10px;
+		border-radius: 5px;
+		padding:10px;
 	}
 	textarea#query:focus,input:focus,button:focus {
 		outline:0;
@@ -149,29 +149,31 @@
 		width: 99.4%;
 		height: 345px;
 		color: #000;
-	    text-align: left;
-	    resize:both; 
-	    background-color: rgba(255,255,255,0.7);
-    	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%,rgba(255,255,255,0) 100%);
-    	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%, rgba(255,255,255,0) 100%);
-	    border: 0px;
-	    overflow: auto!important;
+		text-align: left;
+		resize:both; 
+		background-color: rgba(255,255,255,0.7);
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%,rgba(255,255,255,0) 100%);
+		background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%, rgba(255,255,255,0) 100%);
+		border: 0px;
+		overflow: auto!important;
 	}
 	::-webkit-input-placeholder { /* WebKit browsers */
-	    color:    #666;
+		color:	#666;
 	}
 	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-	   color:    #666;
+	   color:	#666;
 	   opacity:  1;
 	}
 	::-moz-placeholder { /* Mozilla Firefox 19+ */
-	   color:    #666;
+	   color:	#666;
 	   opacity:  1;
 	}
 	:-ms-input-placeholder { /* Internet Explorer 10+ */
-	   color:    #666;
+	   color:	#666;
 	}
-	input[type='checkbox'] {vertical-align: sub;}
+	input[type='checkbox'] {
+		vertical-align: sub;
+	}
 	a:link,a:visited,a:hover,a:active { text-decoration: none; }
 	a:link { color: #FFF; }
 	a:visited { color: #FFF;}
@@ -179,7 +181,7 @@
 	a:active { color: #000;}
 
 	ul{
-	    list-style-type: none;
+		list-style-type: none;
 	}
 	h1 {
 		font-size: 23px;
@@ -195,14 +197,14 @@
 		.font-effect-3d { font-weight: 900; }
 	hr {
 	  border: 0px;
-      border-top: 1px dotted rgba(0, 0, 0, 0.5);
-      clear: both;
+	  border-top: 1px dotted rgba(0, 0, 0, 0.5);
+	  clear: both;
 	}
 	.advanced-top{
 	  margin-top:0px;
-      padding-top:0px;
-      margin-bottom:0px;
-      padding-bottom:5px;
+	  padding-top:0px;
+	  margin-bottom:0px;
+	  padding-bottom:5px;
 	}
 	.similar-top {
 		margin:0px;
@@ -215,12 +217,12 @@
 	}
 	/*
 	#logo:before {
-    	content: "";
-    	display: block;
-    	background: url("img/past-blasts-icon.svg") no-repeat;
+		content: "";
+		display: block;
+		background: url("img/past-blasts-icon.svg") no-repeat;
 		height: 40px; width:40px;
-    	float: left;
-    	margin: 0 6px 0 0;
+		float: left;
+		margin: 0 6px 0 0;
 	}
 	
 	#ytPlayer {
@@ -230,20 +232,20 @@
 	}
 	*/
 	#buttons {
-	    text-align: right;
+		text-align: right;
 	}
 	#buttons div.queryarea{
-	    position: relative;
-	    color: #EEE;
-	    font-size: 15px;
-	    display: inline-block;
-	    border: 2px solid #324566;
-	    border-radius: 4px;
-	    -webkit-border-radius: 4px;
-	    -moz-border-radius: 4px;
-	    background-color: #283957;
-	    padding: 8px;
-	    margin: 5px;
+		position: relative;
+		color: #EEE;
+		font-size: 15px;
+		display: inline-block;
+		border: 2px solid #324566;
+		border-radius: 4px;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		background-color: #283957;
+		padding: 8px;
+		margin: 5px;
 	}
 	#queryarea {
 		position:relative;
@@ -255,7 +257,7 @@
 		cursor:pointer;
 		text-decoration: none;
 		padding-right: 8px;
-    	margin-top: -9px;;
+		margin-top: -9px;;
 	}
 	#closeAdvanced:hover { color: #fff;}
 	.swapzone {
@@ -267,8 +269,8 @@
 	}
 	a#link  {cursor:pointer;}
 	.searchresult {
-    	white-space: nowrap;
-    	width: 100%;
+		white-space: nowrap;
+		width: 100%;
 		position: relative;
 		left: 0;
 		display: inline-block;
@@ -299,7 +301,7 @@
 	} 
 	.refreshb {
 		margin-top:16px;
-    	margin-right: 5px;
+		margin-right: 5px;
 		padding:1px;
 		width:27px;
 		height:27px;
@@ -334,19 +336,19 @@
 	}
 	#button-container { 
 		font-size:19px;
-	    margin-top:10px;
-	    margin-left: auto; 
-	    margin-right: auto;
-	    vertical-align: top;
+		margin-top:10px;
+		margin-left: auto; 
+		margin-right: auto;
+		vertical-align: top;
   	}
   	.playerbutton {
-	    vertical-align: top;
-	    text-align: top;
-	    display: inline-block;
-	    *display: inline;
-	    zoom: 1;
-    	white-space: nowrap;
-    	margin-right: 40px;
+		vertical-align: top;
+		text-align: top;
+		display: inline-block;
+		*display: inline;
+		zoom: 1;
+		white-space: nowrap;
+		margin-right: 40px;
   	}
  	.playerbutton-littlebuttons {
  		float: right;
@@ -354,10 +356,10 @@
  		width: 200px;
  	}
   	.stretch {
-	    width: 100%;
-	    display: inline-block;
-	    font-size: 0;
-	    line-height: 0
+		width: 100%;
+		display: inline-block;
+		font-size: 0;
+		line-height: 0
 	}
 	#editplaylist,#wrongsong {
 		font-size:16px; 
@@ -381,18 +383,18 @@
 	.subsubtext {
 		/*font-size:smaller;  */
 		margin-top:auto;
-	    margin-left: auto; 
-	    margin-right: 2px;
-	    margin-bottom: 4px;
-	    width:700px;
+		margin-left: auto; 
+		margin-right: 2px;
+		margin-bottom: 4px;
+		width:700px;
 	}
 	
 	.advancedFloater {
 		float: left;
 		margin: 10px;
 		/*
-    	display: flex;
-    	justify-content: space-between;
+		display: flex;
+		justify-content: space-between;
 		margin: 0px 0px 10px 0px;
 		width:100%;
 		*/
@@ -416,13 +418,13 @@
 		font-size:13px;
 		background-color: rgba(179, 170, 180, 0.29);
 		box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
-		          0 2px 8px -1px rgba(0, 0, 0, .5),
-		          0 1px 0 rgba(255, 255, 255, .3) inset;
+				  0 2px 8px -1px rgba(0, 0, 0, .5),
+				  0 1px 0 rgba(255, 255, 255, .3) inset;
 		text-shadow: 0 0px 0 rgba(255,255,255, .5);  
 		padding: 0px 10px 0px 10px;
 		border: 0;
-	    cursor:pointer;
-       	border-radius: 15px;
+		cursor:pointer;
+	   	border-radius: 15px;
 	}
 	#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover,#frbutton:hover { 
 		background-color: rgb(159, 150, 160);
@@ -462,7 +464,7 @@
 	}
 	#playallsongsby-artist {
 		width: 227px;
-    	border-radius: 5px 0px 0px 5px;
+		border-radius: 5px 0px 0px 5px;
 		background-color: rgba(255,255,255,0.7);
 		font-size: 20px;
 		margin-left: 2px;
@@ -510,35 +512,35 @@
 		cursor:pointer;
 		margin-left: 27px;
 	 }
-	.infolink {	    
+	.infolink {		
 		padding-left:4px;
-	    padding-right:5px;
-	    cursor:help;
+		padding-right:5px;
+		cursor:help;
 	}
 	.infolink::before
 	{
-	    content: '?';
-	    font-size: 90%;
-	    font-family: sans-serif;
-	    font-weight: bold;
-	    text-align: center;
-	    line-height:1;
-	    display: inline-block;
-	    width: 1.9ex;
-	    height: 1.9ex;
-	    /*
-   	    vertical-align: initial;
-	    border-radius: 1ex;
-	    color: black;
-	    border: thin solid black;
-	    */
+		content: '?';
+		font-size: 90%;
+		font-family: sans-serif;
+		font-weight: bold;
+		text-align: center;
+		line-height:1;
+		display: inline-block;
+		width: 1.9ex;
+		height: 1.9ex;
+		/*
+   		vertical-align: initial;
+		border-radius: 1ex;
+		color: black;
+		border: thin solid black;
+		*/
 	}
 
 	.infolink_removed:hover::before
 	{
-	    color: white;
-	    background: black;
-	    border-color: black;
+		color: white;
+		background: black;
+		border-color: black;
 	}
 
 	#search-button,#playlist-button {
@@ -548,14 +550,14 @@
 		font-size:22px;
 		background-color: rgb(13, 210, 98);
 		box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
-		          0 2px 8px -1px rgba(0, 0, 0, .5),
-		          0 1px 0 rgba(255, 255, 255, .3) inset;
+				  0 2px 8px -1px rgba(0, 0, 0, .5),
+				  0 1px 0 rgba(255, 255, 255, .3) inset;
 		text-shadow: 0 1px 0 rgba(255,255,255, .8);  
-		padding     : 0;
-		border      : 0;
-	    cursor:pointer;
-	    font-weight: bold;
-       	border-radius: 15px;
+		padding	 : 0;
+		border	  : 0;
+		cursor:pointer;
+		font-weight: bold;
+	   	border-radius: 15px;
 
 	}
 	#search-button { margin-top:10px; margin-bottom: 6px;}
@@ -570,7 +572,7 @@
 	.righty { width:38%; float: right; }
 	#playlist-status { width:99.4%px; padding-top: 20px;}
 	#advanced-container {
-		font-size:13px;
+		font-size:14px;
 		font-weight:normal;
 		margin-left: 3px;
 		background-color: rgba(255,255,255,0.1); 
@@ -583,9 +585,8 @@
 	}
 	.advanced-tips-title {
 		color: #000;
-		font-size: 130%;
+		font-size: 120%;
 		background-color: rgba(255,255,255,0.3);
-		padding: 4px;
 	}
 	.row-bg {
 		background-color: rgba(255,255,255,0.3);
@@ -630,6 +631,9 @@
 	}
 	#errormsg {
 		text-align: left;
+		background-color: rgba(234, 19, 19, 0.4);
+		padding: 10px;
+		border-radius: 5px 5px 5px 5px;
 	}
 	#not-found {
 		color: #fff;
@@ -710,17 +714,17 @@
 		padding:0px;
 	}
 	#body-column{
-		width:96%;
+		width:97%;
 	}
 	#logo {
 		max-width: 83%;
 		float: right;
 		clear: both;
-		padding-bottom: 40px;
+		padding-bottom: 20px;
 		padding-top: 7px;
 	}
 
-	#pb-icon{     
+	#pb-icon{	 
 		height: 70px;
 		width: 70px;
 		margin-top: -10px;
@@ -737,8 +741,8 @@
 	.pb-module { font-size: 25px; }
 	.pb-delete { font-size: 25px; }
 	.line-clamp {
-	      position: relative;
-	      height: 4.5em; 
+		  position: relative;
+		  height: 4.5em; 
 	}
 	textarea#query,#playlist-title {
 		font-size: 180%!important;
@@ -777,14 +781,16 @@
   		padding-bottom: 34px;
 	}
 	#advanced-container {
-		font-size: 18px!important;
+		font-size: 145%;
 	}
 	#closeAdvanced {
 		font-size:35px;
 	}
+	.advanced-tips { display: block; }
+	input[type='checkbox'] { height: 18px; width:18px; vertical-align: initial;}
 	#addartist, #find, #replace, #frbutton {
-	    font-size: 23px;
-	    padding: 1px;
+		font-size: 23px;
+		padding: 1px;
 	}
 	#frbutton{
 		width: 68px;
@@ -797,8 +803,8 @@
 	#playallsongsby {
 		font-size:27px!important;
 		margin-left: 4px;
-		padding-top: 8px;
-    	padding-bottom: 8px;
+		padding-top: 6px;
+		padding-bottom: 6px;
 		width:230px;
 	}
 	#playallsongsby-artist {
@@ -809,9 +815,9 @@
 	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-left: 23px;}
 	#button-container { 
 		text-align: -webkit-auto!important; 
-	    text-align: auto!important;
-	    -ms-text-justify: auto!important;
-	    text-justify: auto!important;
+		text-align: auto!important;
+		-ms-text-justify: auto!important;
+		text-justify: auto!important;
 	}
 	#prevb, #nextb, #playpb { height:75px; width:75px; }
 	#shuffb { height:60px; width:60px; }
@@ -851,7 +857,7 @@
 		width:100%;
 	}
 	#foot {
-	    width: 100%;
+		width: 100%;
 	} 
   	#emailme {
   		font-size: 35px;
