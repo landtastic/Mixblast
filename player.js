@@ -10,7 +10,7 @@ function onYouTubeIframeAPIReady_removed_callback() {
 		//suggestedQuality: 'medium',
 		height: '394',
 		width: '700',
-		videoId: 'fgBLu387UM8',
+		//videoId: 'fgBLu387UM8',
 		events: {
 			'onReady': onPlayerReady,
 			'onError': onPlayerError,
@@ -18,10 +18,9 @@ function onYouTubeIframeAPIReady_removed_callback() {
 		},
 		playerVars: {
 			modestbranding: 0,
-			showinfo: 0,
 			enablejsapi : 1,
 			iv_load_policy: 3,
-			theme: 'light',
+			theme: 'dark',
 			color: 'white',
 			showinfo: 0,
 			playsinline: 1
@@ -118,7 +117,8 @@ function nextVideo(next) {
 }
 
 function loadVid(vidId) {
-	ytPlayer.loadVideoById(vidId, 0, "medium");
+	ytPlayer.loadVideoById(vidId);
+	//ytPlayer.loadVideoById(vidId, 0, "medium");
 	//$("#ytPlayer").attr("src", "http://www.youtube.com/embed/" + vidId);
 	//ytPlayer.playVideo();
 	//ytPlayer.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
@@ -256,10 +256,12 @@ $('#pb-button').click(function(){
 	}
 });
 $('#pb-button').hover(
-  function() { $('#pb-text').html('Blasts from the Past'); }, function() { /*$('#pb-text').html('');*/ }
+  function() { $('#pb-text').html('Past Blasts'); }, function() { /*$('#pb-text').html('');*/ }
 );
 $('#pb-menu').on('click', '.pb-module', function(event) {
-	var thisBlast = $(this).html();
+	//var thisBlast = $(this).html();
+	var thisBlast = 0000;
+	console.log(event);
 	var lines = thisBlast.split('<br>');
 	lines.splice(0,1);
 	thisBlast = lines.join('\n');
@@ -279,18 +281,27 @@ $('#pb-menu').on('click', '.pb-delete', function(event) {
 
 var pastBlasts = {
 	list : function() {
-		return localStorage.getItem("pastBlasts");
+		if (!pastBlasts.allBlasts) {
+			console.log(pastBlasts.allBlasts +'creating!!');
+			pastBlasts.allBlasts = JSON.parse(localStorage.getItem("pastBlasts"));
+			pastBlasts.lastBlast = pastBlasts.allBlasts[0].split('\n');
+		} else if (pastBlasts.lastBlastId != pastBlasts.allBlasts[0].split('\n')[0]) {
+			pastBlasts.lastBlastId = pastBlasts.allBlasts[0].split('\n')[0];
+			console.log('pastBlasts.lastBlastId: '+pastBlasts.lastBlastId);
+			console.log('pastBlasts.lastBlast[0]: '+pastBlasts.allBlasts[0].split('\n')[0]);
+		} else {
+
+		}
+		return pastBlasts.allBlasts;
 	},
 	display : function() {
-		//var openCount = new add(); 
-		//console.log(openCount);
-		//if (search.count===undefined) {
 			var blasts = pastBlasts.list();
+			//var blasts = pastBlasts.list;
 			if (blasts === null) {
 				var date = new Date();
 				blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
 			} else {
-				blasts = JSON.parse(blasts);
+				//blasts = JSON.parse(blasts);
 				if (blasts) blasts.sort().reverse();
 			}
 			$('#pb-menu').html('');
@@ -299,7 +310,7 @@ var pastBlasts = {
 				var thisBlast = '';
 				var thisDate = '';
 				var date_id = '';
-				for (var ii=0, maxx=blastArr.length; ii<maxx; ii++) {
+				for (var ii=0, maxx=4; ii<maxx; ii++) { //old: maxx=blastArr.length
 					if (ii === 0) {
 						date_id = blastArr[ii];
 						var arr = blastArr[ii].split(/[-T:.]/);
@@ -312,8 +323,7 @@ var pastBlasts = {
 				}
 				$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 			}
-		//}
-		$('#pb-text').html('Blasts from the Past');
+		$('#pb-text').html('Past Blasts');
 		$('#pb-menu').animate({left: '0px'}, 'fast');
 	},
 	hide : function() {
@@ -322,10 +332,11 @@ var pastBlasts = {
 	},
 	add : function(pl_text) {
 		var blasts = pastBlasts.list();
+		//var blasts = pastBlasts.list;
 		if (!blasts) {
 			blasts = [];
 		} else {
-			blasts = JSON.parse(blasts);
+			//blasts = JSON.parse(blasts);
 		}
 		var date = new Date();
 		blasts.push(date.toJSON() + '\n' + pl_text + '\n');
