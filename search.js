@@ -134,7 +134,7 @@ function allSongsBy(artistName) {
 	showRelated(artistName);
 	 $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
 		var songlist = '';
-		if (data.toptracks.track != undefined) {
+		if ((data.toptracks != undefined) && (data.toptracks.track != undefined)) {
 			$.each(data.toptracks.track, function(i, item) {
 				songlist += artistName + " - " + item.name + "\n";
 			});
@@ -209,25 +209,26 @@ $("#closeAdvanced").click(function(){
 });
 
 function editSearchTerm(lineNumber) {
-	var mobile_width = 795, vidTop = '0px', vidWidth = '700px', thumbTop = '72px', queryHeight = '222px';
+	var mobile_width = 795, vidTop = '-72px', vidWidth = '100%', thumbTop = '0px', queryHeight = '222px';
 	if ($(window).width() < mobile_width) { 
-		vidTop = '95px'; vidWidth = '100%'; thumbTop = '200px'; queryHeight = '135px';
+		queryHeight = '170px';
+		//vidTop = '-90px'; vidWidth = '100%'; thumbTop = '0px'; 
 	}
-
 	var toggleEditText = $("#editplaylist").html();
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
-		//console.log(thumbTop);
-		$("#ytPlayer").animate({top: thumbTop, right: '21px', width: '95px', height: '71px'}, 'fast');
+		$("#player-container").animate({top: thumbTop, right: '21px', width: '95px', height: '71px'}, 'fast');
 		$('#query').animate({height: '345px'}, 'fast');
 		$("#related-container").show();
 		$("#ytPlayer-thumb-close").show();
+		$("#blast-button-container").css("visibility", "visible");
 	} else if (toggleEditText.indexOf("Close Editor") > -1) {
 		$("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
-		$('#ytPlayer').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast');
+		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast');
 		$('#query').animate({height: queryHeight}, 'fast');
 		$("#related-container").hide();
 		$("#ytPlayer-thumb-close").hide();
+		$("#blast-button-container").css("visibility", "hidden");
 	}
 	/*
 	var input = $("#query");

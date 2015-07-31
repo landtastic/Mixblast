@@ -8,8 +8,8 @@ function handleAPILoaded() {
 function onYouTubeIframeAPIReady_removed_callback() {
 	ytPlayer = new YT.Player('ytPlayer', { 
 		//suggestedQuality: 'medium',
-		height: '368',
-		width: '600',
+		height: '394',
+		width: '700',
 		videoId: 'fgBLu387UM8',
 		events: {
 			'onReady': onPlayerReady,
@@ -260,6 +260,11 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 });
 $('#pb-menu').on('click', '.pb-delete', function(event) {
 	pastBlasts.delete(this.id);
+	/*
+	$(this).parent().css("background:red!important;");
+	console.log($(this).parent().html());
+	console.log(this);
+	*/
 });
 
 var pastBlasts = {

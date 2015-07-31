@@ -71,11 +71,11 @@
 					<option value="http://feeds.feedburner.com/RecentlyRatedAlbums-AlbumOfTheYear?format=xml">AOTY Recently Rated</option>
 				</select> 
 				</div>
-				
-				<div id="buttons"><div id="queryarea" class="ui-widget">
-					<div id="player-container">
+				<div id="queryarea" class="ui-widget">
+		  			<div id="player-container" style="display:none;">
 						<div id="ytPlayer"></div>
-						<!--<iframe id="ytPlayer" src="https://www.youtube.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe><span id="ytPlayer-thumb-close" title="Go Back to Video"></span>-->
+						<!--<iframe id="ytPlayer" src="https://www.youtube.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>-->
+						<span id="ytPlayer-thumb-close" title="Go Back to Video"></span>
 					</div>
 					<textarea id="query" rows="13" cols="60">
 Search Youtube for a list of songs.											
@@ -91,13 +91,14 @@ Then click "Blast a Mix" to make a playlist.
 					</textarea>
 					<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
 					<div id="errormsg" style="display:none;"></div>
-					<div class='advancedFloater'>
-						<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
+					<div id="blast-button-container">
+						<div class="advancedFloater">
+							<button id="advanced">Advanced Options</button> &nbsp; <button class="infolink"></button>
+						</div>
+						<button id="search-button" disabled>Blast a Mix</button>
 					</div>
-					<button id="search-button" disabled>Blast a Mix</button>
 					<div id="related-container" style="display:none;"></div>
-					<!--<a class="closebutton" style="display:none;" title="Close Playlist Editor"><span id="closebutton-thumb"></span>&nbsp;&#215;&nbsp;</a>-->
-				</div></div>
+				</div>
 		  	</div>
 			<div id="advanced-container" style="display:none;"><hr class="advanced-top">
 				<span class="advanced-tips-title">&nbsp;If you copy & paste a list, each line should be as simple as possible, e.g. <i>Artist - Song Title</i></span><div id="closeAdvanced"><a>&#215;</a></div><hr>
