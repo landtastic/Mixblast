@@ -15,6 +15,16 @@ function onYouTubeIframeAPIReady_removed_callback() {
 			'onReady': onPlayerReady,
 			'onError': onPlayerError,
 			'onStateChange': onPlayerStateChange
+		},
+		playerVars: {
+			modestbranding: 0,
+			showinfo: 0,
+			enablejsapi : 1,
+			iv_load_policy: 3,
+			theme: 'light',
+			color: 'white',
+			showinfo: 0,
+			playsinline: 1
 		}
 	});
 }
