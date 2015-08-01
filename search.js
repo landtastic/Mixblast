@@ -129,16 +129,18 @@ function multiSearch() {
 
 function allSongsBy(artistName) {
 	var song_num = $("#play_songsby").val();
-	$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
+	//$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
 	$("#related-container" ).show();
 	showRelated(artistName);
 	 $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
-		var songlist = '';
+		if (!songlist) var songlist = '';
 		if ((data.toptracks != undefined) && (data.toptracks.track != undefined)) {
 			$.each(data.toptracks.track, function(i, item) {
 				songlist += artistName + " - " + item.name + "\n";
 			});
-			$('#query').val(songlist);
+			////////////experimental version in use/////////
+			$('#query').val($('#query').val() + songlist);
+			//$('#query').val(songlist);
 			 //$('#search-button').trigger( "click" );
 		} else {
 			$('#query').val(': ( \n\nError loading videos by: '+artistName+'\n\nCheck spelling?'); 
@@ -158,6 +160,7 @@ $("#playallsongsby-artist").click(function(){
 });
 $("#playall-button").click(function(){
 	allSongsBy($("#playallsongsby-artist").val());
+	$('#query').val('');
 });
 
 function showRelated(artistName) {
@@ -174,7 +177,7 @@ function showRelated(artistName) {
 				artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
 				if (i < data.similarartists.artist.length-1) artistList += " &bull; ";
 			});
-			$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Similar Artists:</span> "+artistList);
+			$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add Similar Artists:</span> "+artistList);
 		} else {
 			$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 		}
