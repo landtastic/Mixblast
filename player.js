@@ -260,8 +260,8 @@ $('#pb-button').hover(
 );
 $('#pb-menu').on('click', '.pb-module', function(event) {
 	//var thisBlast = $(this).html();
-	var thisBlast = 0000;
-	console.log(event);
+	var thisBlast = this;
+	console.log(this.id);
 	var lines = thisBlast.split('<br>');
 	lines.splice(0,1);
 	thisBlast = lines.join('\n');
@@ -281,8 +281,9 @@ $('#pb-menu').on('click', '.pb-delete', function(event) {
 
 var pastBlasts = {
 	list : function() {
+		pastBlasts.needsUpdate = true;
 		if (!pastBlasts.allBlasts) {
-			console.log(pastBlasts.allBlasts +'creating!!');
+			console.log(pastBlasts.allBlasts +' creating!!');
 			pastBlasts.allBlasts = JSON.parse(localStorage.getItem("pastBlasts"));
 			pastBlasts.lastBlast = pastBlasts.allBlasts[0].split('\n');
 		} else if (pastBlasts.lastBlastId != pastBlasts.allBlasts[0].split('\n')[0]) {
@@ -290,7 +291,7 @@ var pastBlasts = {
 			console.log('pastBlasts.lastBlastId: '+pastBlasts.lastBlastId);
 			console.log('pastBlasts.lastBlast[0]: '+pastBlasts.allBlasts[0].split('\n')[0]);
 		} else {
-
+			pastBlasts.needsUpdate = false;
 		}
 		return pastBlasts.allBlasts;
 	},
@@ -304,24 +305,26 @@ var pastBlasts = {
 				//blasts = JSON.parse(blasts);
 				if (blasts) blasts.sort().reverse();
 			}
-			$('#pb-menu').html('');
-			for (var i=0, max=blasts.length; i<max; i++) {
-				var blastArr = blasts[i].split('\n');
-				var thisBlast = '';
-				var thisDate = '';
-				var date_id = '';
-				for (var ii=0, maxx=4; ii<maxx; ii++) { //old: maxx=blastArr.length
-					if (ii === 0) {
-						date_id = blastArr[ii];
-						var arr = blastArr[ii].split(/[-T:.]/);
-						thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
-						var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-						var dateString = thisDate.toLocaleTimeString("en-us", options);
-						blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
+			if (pastBlasts.needsUpdate) {
+				$('#pb-menu').html('');
+				for (var i=0, max=blasts.length; i<max; i++) {
+					var blastArr = blasts[i].split('\n');
+					var thisBlast = '';
+					var thisDate = '';
+					var date_id = '';
+					for (var ii=0, maxx=4; ii<maxx; ii++) { //old: maxx=blastArr.length
+						if (ii === 0) {
+							date_id = blastArr[ii];
+							var arr = blastArr[ii].split(/[-T:.]/);
+							thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
+							var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
+							var dateString = thisDate.toLocaleTimeString("en-us", options);
+							blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
+						}
+						thisBlast += blastArr[ii] + '<br>';
 					}
-					thisBlast += blastArr[ii] + '<br>';
+					$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp" id="'+ date_id +'">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 				}
-				$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 			}
 		$('#pb-text').html('Past Blasts');
 		$('#pb-menu').animate({left: '0px'}, 'fast');
@@ -343,7 +346,7 @@ var pastBlasts = {
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
 	},
 	delete : function(date_id) {
-		var blasts = JSON.parse(pastBlasts.list());
+		var blasts = pastBlasts.list();
 		for (var i=0; i < blasts.length; i++) {
 		  if (/\S/.test(blasts[i])) {
 			var blastArr = blasts[i].split('\n');
