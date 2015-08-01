@@ -267,8 +267,12 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 			if (ii === 0) {
 				if (blastArr[ii] == this.id) {
 					//blasts.splice(i,1);
-					console.log(pastBlasts.allBlasts[i]);
-					$("#query").val($.trim(pastBlasts.allBlasts[i].shift()));
+					var thisBlast = $.trim(pastBlasts.allBlasts[i]);
+					var thisBlastArr = thisBlast.split('\n');
+					thisBlastArr = thisBlastArr; thisBlastArr.shift();
+					console.log(thisBlastArr);
+					thisBlast = thisBlastArr.join('\n');
+					$("#query").val(thisBlast);
 				}
 			}
 		}
