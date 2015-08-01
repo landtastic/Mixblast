@@ -259,16 +259,22 @@ $('#pb-button').hover(
   function() { $('#pb-text').html('Past Blasts'); }, function() { /*$('#pb-text').html('');*/ }
 );
 $('#pb-menu').on('click', '.pb-module', function(event) {
-	//var thisBlast = $(this).html();
-	var thisBlast = this;
-	console.log(this.id);
-	var lines = thisBlast.split('<br>');
-	lines.splice(0,1);
-	thisBlast = lines.join('\n');
+	var blasts = pastBlasts.list();
+	for (var i=0; i < blasts.length; i++) {
+	  if (/\S/.test(blasts[i])) {
+		var blastArr = blasts[i].split('\n');
+		for (var ii = 0, len = blastArr.length; ii < len; ii++) {
+			if (ii === 0) {
+				if (blastArr[ii] == this.id) {
+					//blasts.splice(i,1);
+					console.log(pastBlasts.allBlasts[i]);
+					$("#query").val($.trim(pastBlasts.allBlasts[i].shift()));
+				}
+			}
+		}
+	  }
+	}
 	$("#text-container").show(); $('#player-container').hide();
-	//$("#query").animate({height:'345px'},200);
-
-	$("#query").val($.trim(thisBlast));
 });
 $('#pb-menu').on('click', '.pb-delete', function(event) {
 	pastBlasts.delete(this.id);
