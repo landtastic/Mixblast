@@ -281,15 +281,16 @@ $('#pb-menu').on('click', '.pb-delete', function(event) {
 
 var pastBlasts = {
 	list : function() {
-		pastBlasts.needsUpdate = true;
 		if (!pastBlasts.allBlasts) {
+			pastBlasts.needsUpdate = true;
 			console.log(pastBlasts.allBlasts +' creating!!');
 			pastBlasts.allBlasts = JSON.parse(localStorage.getItem("pastBlasts"));
-			pastBlasts.lastBlast = pastBlasts.allBlasts[0].split('\n');
-		} else if (pastBlasts.lastBlastId != pastBlasts.allBlasts[0].split('\n')[0]) {
-			pastBlasts.lastBlastId = pastBlasts.allBlasts[0].split('\n')[0];
-			console.log('pastBlasts.lastBlastId: '+pastBlasts.lastBlastId);
-			console.log('pastBlasts.lastBlast[0]: '+pastBlasts.allBlasts[0].split('\n')[0]);
+			pastBlasts.lastBlast = pastBlasts.allBlasts[0].split('\n')[0];
+		} else if (pastBlasts.lastBlast != pastBlasts.allBlasts[0].split('\n')[0]) {
+			pastBlasts.lastBlast = pastBlasts.allBlasts[0].split('\n')[0];
+			pastBlasts.needsUpdate = false;
+			console.log('pastBlasts.lastBlast: '+pastBlasts.lastBlast);
+			console.log('pastBlasts.allBlasts[0].split(n)[0]: '+ pastBlasts.allBlasts[0].split('\n')[0]);
 		} else {
 			pastBlasts.needsUpdate = false;
 		}
@@ -344,6 +345,7 @@ var pastBlasts = {
 		var date = new Date();
 		blasts.push(date.toJSON() + '\n' + pl_text + '\n');
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
+		pastBlasts.needsUpdate = true;
 	},
 	delete : function(date_id) {
 		var blasts = pastBlasts.list();
