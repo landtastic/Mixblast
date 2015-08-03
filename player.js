@@ -270,7 +270,7 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 					var thisBlast = $.trim(pastBlasts.allBlasts[i]);
 					var thisBlastArr = thisBlast.split('\n');
 					thisBlastArr = thisBlastArr; thisBlastArr.shift();
-					console.log(thisBlastArr);
+					//console.log(thisBlastArr);
 					thisBlast = thisBlastArr.join('\n');
 					$("#query").val(thisBlast);
 				}
@@ -290,53 +290,53 @@ $('#pb-menu').on('click', '.pb-delete', function(event) {
 });
 
 var pastBlasts = {
+
+	needsUpdate : true,
+
 	list : function() {
 		if (!pastBlasts.allBlasts) {
 			pastBlasts.needsUpdate = true;
-			console.log(pastBlasts.allBlasts +' creating!!');
+			console.log(/*pastBlasts.allBlasts +*/' creating!!');
 			pastBlasts.allBlasts = JSON.parse(localStorage.getItem("pastBlasts"));
-			pastBlasts.lastBlast = pastBlasts.allBlasts[0].split('\n')[0];
-		} else if (pastBlasts.lastBlast != pastBlasts.allBlasts[0].split('\n')[0]) {
-			pastBlasts.lastBlast = pastBlasts.allBlasts[0].split('\n')[0];
+			console.log(pastBlasts.allBlasts.length);
+			pastBlasts.allBlasts_len = pastBlasts.allBlasts.length;
+		} else if (pastBlasts.allBlasts_len != pastBlasts.allBlasts.length) {
+			pastBlasts.allBlasts_len = pastBlasts.allBlasts.length;
 			pastBlasts.needsUpdate = false;
-			console.log('pastBlasts.lastBlast: '+pastBlasts.lastBlast);
-			console.log('pastBlasts.allBlasts[0].split(n)[0]: '+ pastBlasts.allBlasts[0].split('\n')[0]);
 		} else {
 			pastBlasts.needsUpdate = false;
 		}
 		return pastBlasts.allBlasts;
 	},
 	display : function() {
+		if (pastBlasts.needsUpdate) {
 			var blasts = pastBlasts.list();
-			//var blasts = pastBlasts.list;
 			if (blasts === null) {
 				var date = new Date();
 				blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
 			} else {
-				//blasts = JSON.parse(blasts);
 				if (blasts) blasts.sort().reverse();
 			}
-			if (pastBlasts.needsUpdate) {
-				$('#pb-menu').html('');
-				for (var i=0, max=blasts.length; i<max; i++) {
-					var blastArr = blasts[i].split('\n');
-					var thisBlast = '';
-					var thisDate = '';
-					var date_id = '';
-					for (var ii=0, maxx=4; ii<maxx; ii++) { //old: maxx=blastArr.length
-						if (ii === 0) {
-							date_id = blastArr[ii];
-							var arr = blastArr[ii].split(/[-T:.]/);
-							thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
-							var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
-							var dateString = thisDate.toLocaleTimeString("en-us", options);
-							blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
-						}
-						thisBlast += blastArr[ii] + '<br>';
+			$('#pb-menu').html('');
+			for (var i=0, max=blasts.length; i<max; i++) {
+				var blastArr = blasts[i].split('\n');
+				var thisBlast = '';
+				var thisDate = '';
+				var date_id = '';
+				for (var ii=0, maxx=4; ii<maxx; ii++) { //old: maxx=blastArr.length
+					if (ii === 0) {
+						date_id = blastArr[ii];
+						var arr = blastArr[ii].split(/[-T:.]/);
+						thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
+						var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
+						var dateString = thisDate.toLocaleTimeString("en-us", options);
+						blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
 					}
-					$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp" id="'+ date_id +'">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
+					thisBlast += blastArr[ii] + '<br>';
 				}
+				$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp" id="'+ date_id +'">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 			}
+		}
 		$('#pb-text').html('Past Blasts');
 		$('#pb-menu').animate({left: '0px'}, 'fast');
 	},
@@ -346,7 +346,6 @@ var pastBlasts = {
 	},
 	add : function(pl_text) {
 		var blasts = pastBlasts.list();
-		//var blasts = pastBlasts.list;
 		if (!blasts) {
 			blasts = [];
 		} else {
@@ -373,6 +372,7 @@ var pastBlasts = {
 		  }
 		}
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
+		pastBlasts.needsUpdate = true;
 		pastBlasts.display();
 	}
 };
