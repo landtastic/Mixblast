@@ -334,11 +334,14 @@ var pastBlasts = {
 				$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp" id="'+ date_id +'">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 			}
 		}
+		$('#pb-menu').show();
 		$('#pb-text').html('Past Blasts');
 		$('#pb-menu').animate({left: '0px'}, 'fast');
 	},
 	hide : function() {
-		$('#pb-menu').animate({left: '-400px'}, 'fast');
+		$('#pb-menu').animate({left: '-400px'}, 'fast', function(){
+        	$('#pb-menu').hide();
+    	});
 		$('#pb-text').html('');
 	},
 	add : function(pl_text) {

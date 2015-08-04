@@ -230,6 +230,7 @@
 	*/
 	#queryarea {
 		position:relative;
+		padding-left:4px;
 	}
 	#closeAdvanced {
 		color:#000;
@@ -302,7 +303,7 @@
 	}
 	#prevb, #nextb, #playpb { height:50px;margin-top:10px;}
 	#shuffb { height: 70px;}
-	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover {
+	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover, #playall-button:hover {
 		opacity:1.0;
 		color:white;
 		-webkit-filter: invert(100%);
@@ -382,7 +383,7 @@
 		width:100%;
 		*/
 	}
-	#login-container {
+	.login-container {
 		text-align:default;
 		font-size: 17px;
 	}
