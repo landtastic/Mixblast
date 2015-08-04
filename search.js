@@ -164,7 +164,7 @@ $("#playall-button").click(function(){
 });
 
 function showRelated(artistName) {
-	 $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=20&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
+	 $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=40&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
 	 	var curArtist;
 		var artistList = '';
 		if (data.similarartists) {
@@ -174,10 +174,10 @@ function showRelated(artistName) {
 				} else {
 					$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 				}
-				artistList += '<a href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
+				artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
 				if (i < data.similarartists.artist.length-1) artistList += " &bull; ";
 			});
-			$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add Similar Artists:</span> "+artistList);
+			$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add Songs By Similar Artists:</span> "+artistList);
 		} else {
 			$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 		}

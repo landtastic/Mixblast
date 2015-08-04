@@ -159,8 +159,8 @@
 		text-align: left;
 		resize:both; 
 		background-color: rgba(255,255,255,0.7);
-		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%,rgba(255,255,255,0) 100%);
-		background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%, rgba(255,255,255,0) 100%);
+		/*background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%,rgba(255,255,255,0) 100%);
+		background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%, rgba(255,255,255,0) 100%);*/
 		border: 0px;
 		overflow: auto!important;
 	}
@@ -466,13 +466,21 @@
 		margin-left: 5px;
 		text-align: justify;
 	}
+	.similar-artistButton {
+		background-color: rgba(0,0,0,0.4);
+		border-radius: 5px;
+		line-height: 37px;
+		padding: 5px;
+	}
+	a.similar-artistButton:hover { color: rgb(119, 204, 201);}
 	#similarArtTitle {
 		color: #000;
 		background-color: rgba(255,255,255,0.2); 
-		padding:0px 1px 0px 1px;
+		padding:3px;
 	}
 	#rss-container {
 		display: inline-block;
+		float: right;
 	}
 	#rss-dropdown{
 		font-family: 'Roboto', sans-serif;
@@ -569,9 +577,12 @@
 		color: #000;
 	}
 	.advanced-tips-title {
+		display: inline-block;
+		border-radius: 5px;
 		color: #000;
 		font-size: 120%;
 		background-color: rgba(255,255,255,0.3);
+		padding:10px;
 	}
 	.row-bg {
 		background-color: rgba(255,255,255,0.3);
@@ -812,6 +823,7 @@
 		padding-right:8px;
 	}
 	#related-container {font-size: 150%;}
+	.similar-artistButton { line-height: 46px;}
 	.subtext {font-size: 22px;}
 	.subsubtext {font-size: 18px;}
 	.searchresult { font-size: 200%; }
