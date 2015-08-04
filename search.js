@@ -90,7 +90,6 @@ function multiSearch() {
 	
 	var x = 0;
 	var searchnum = search.listArray.length;
-	console.log('listarray: '+search.listArray[0]);
 	if ((searchnum < 1) || (search.listArray[0] == 'Search Youtube for a list of songs.')) { 
 		$('#errormsg').show();
 		$('#errormsg').html('Put a list of songs into the textbox. <br>(Load songs by artist, copy and paste a text list, load an RSS Feed, or type)');
@@ -175,7 +174,7 @@ function showRelated(artistName) {
 					$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 				}
 				artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
-				if (i < data.similarartists.artist.length-1) artistList += " &bull; ";
+				if (i < data.similarartists.artist.length-1) artistList += "<span class='artistbull'> &bull; </span>";
 			});
 			$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add Songs By Similar Artists:</span> "+artistList);
 		} else {
