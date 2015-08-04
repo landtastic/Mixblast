@@ -34,7 +34,6 @@ function onPlayerReady() {
 }
 function onPlayerError(event){
 	 console.log('Whoops. Error: '+event.data);
-	 waterbug.log('Whoops. Error: '+event.data);
 	 if (event.data == 150) {
 	 	wrongSong();
 	 } else {
@@ -56,9 +55,7 @@ function onPlayerStateChange(event) {
 			search.playcount = -1;
 		}
 		console.log(search.playcount+"<-search.playcount|totalvids->"+totalvids);
-		waterbug.log(search.playcount+"<-search.playcount|totalvids->"+totalvids+' waterbug!');
 	}
-	waterbug.log(event.data+' waterbug!');
 }
 
 function renderPlaylist(c,vThumb,vId,vTitle) {
