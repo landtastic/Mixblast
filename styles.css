@@ -32,6 +32,18 @@
 		/*overflow: auto;*/
 		/*padding-bottom: 100px*/
 	}
+	#shuffletext {
+		position: absolute;
+		z-index: 301;
+		display: block;
+		top: 4px;
+		right: 0px;
+		height: 25px;
+		width: 25px;
+		vertical-align: middle;
+		cursor: pointer;
+		margin-right: 27px;
+	 }
 	#player-container{
 		position: absolute;
 		z-index: 300;
@@ -303,7 +315,7 @@
 	}
 	#prevb, #nextb, #playpb { height:50px;margin-top:10px;}
 	#shuffb { height: 70px;}
-	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover, #playall-button:hover {
+	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover, #mixbuilder-search-button:hover {
 		opacity:1.0;
 		color:white;
 		-webkit-filter: invert(100%);
@@ -413,7 +425,7 @@
 	#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover,#frbutton:hover { 
 		background-color: rgb(159, 150, 160);
 	}
-	#playall-button { 
+	#mixbuilder-search-button { 
 		background: url(img/search-icon.svg) no-repeat;
 		background-size: cover;
 		background-position: 50% 50%; 
@@ -426,16 +438,16 @@
 		cursor: pointer;
 		margin-right: 28px;
 	}
-	#playallsongsby {
+	#topSongs-container {
 		height: 46px;
 		width: 190px;
 		font-size: 20px;
 		background-color: rgba(0,0,0,0.2);
-		padding-top: 11px;
+		padding-top: 10px;
 		padding-left: 6px;
 		display: inline-block;
 	}
-	#play_songsby {
+	#topSongs-num {
 		font-size:20px;
 		color: #fff;
 		background-color: rgba(0,0,0,0.2); 
@@ -446,11 +458,11 @@
 		width:50px;
 		text-align: center;
 	}
-	#playallsongsby-artist {
-		width: 227px;
+	#topSongs-artist {
+		width: 43%;
 		border-radius: 5px 0px 0px 5px;
 		background-color: rgba(255,255,255,0.7);
-		font-size: 19px;
+		font-size: 18px;
 		margin-left: 2px;
 		margin-bottom: 22px;
 		height: 46px;
@@ -497,13 +509,6 @@
 		cursor: pointer;
 		margin-left: -4px;
 	}
-	#shuffletext {
-		height: 50px;
-		width: 50px;
-		vertical-align: middle; 
-		cursor:pointer;
-		margin-right: 27px;
-	 }
 	.infolink {		
 		padding-left:4px;
 		padding-right:5px;
@@ -792,11 +797,11 @@
 		width: 68px;
 		height: 30px;
 	}
-	#play_songsby {
+	#topSongs_input {
 		font-size:27px!important;
 		width: 47px;
 	}
-	#playallsongsby {
+	#topSongs {
 		font-size:27px!important;
 		margin-left: 4px;
 		padding-top: 6px;
@@ -806,7 +811,7 @@
 	#playallsongsby-artist {
 		width:145px;
 	}
-	#rss-dropdown { width:80px; margin-bottom: 10px; }
+	#rss-dropdown { width:80px; vertical-align: middle;}
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
 	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-right: 23px;}
 	#button-container { 

@@ -70,6 +70,7 @@ function multiSearch() {
 	$('#errormsg').hide();
 	$('#youtube-playlist-container').show();
 	$('#ytPlayer-thumb-close').show();
+	$("#shuffletext").hide();
 	//$("#closebutton-thumb").html("<img src='"+ search.topvThumbArray[0] +"' id='thumb'>"); 
 	if (search.topvIdArray) {
 		search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
@@ -125,7 +126,26 @@ function multiSearch() {
 	})();
 	search.count++;
 }
-
+function similarTrackPlaylist(artistName,trackName) {
+	var song_num = $("#play_songsby").val();
+	//$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
+	//$("#related-container" ).show();
+	//showRelated(artistName);
+	 $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist="+artistName+"&track="+trackName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
+		if (!songlist) var songlist = '';
+		//if ((data.similartracks != undefined) && (data.similartracks.track != undefined)) {
+			$.each(data.similartracks.track, function(i, item) {
+				songlist += artistName + " - " + item.name + "\n";
+			});
+			////////////experimental version in use/////////
+			$('#query').val($('#query').val() + songlist);
+			//$('#query').val(songlist);
+			 //$('#search-button').trigger( "click" );
+		//} else {
+		//	$('#query').val(': ( \n\nError loading videos by: '+artistName+'\n\nCheck spelling?'); 
+		//}
+	});	
+}
 function allSongsBy(artistName) {
 	var song_num = $("#play_songsby").val();
 	//$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
@@ -224,6 +244,7 @@ function editSearchTerm(lineNumber) {
 		$("#related-container").show();
 		$("#ytPlayer-thumb-close").show();
 		$("#blast-button-container").css("visibility", "visible");
+		$("#shuffletext").css("right", "100px").show();
 	} else if (toggleEditText.indexOf("Close Editor") > -1) {
 		$("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
 		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast');
@@ -231,6 +252,7 @@ function editSearchTerm(lineNumber) {
 		$("#related-container").hide();
 		$("#ytPlayer-thumb-close").hide();
 		$("#blast-button-container").css("visibility", "hidden");
+		$("#shuffletext").hide();
 	}
 	/*
 	var input = $("#query");

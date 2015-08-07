@@ -22,8 +22,7 @@
 		<span class="gradient-background"></span>
 		<a href="."><img id="logo" src="img/mixblast-logo6.png" alt="Mixblast" title="&quot;You'll Have a Blast&quot;"></a>
 		  <div id="text-container">
-				&nbsp;<span id="playallsongsby" class="ui-widget">Top <input id="play_songsby" value="20"> songs by:</span> <input id="playallsongsby-artist" placeholder="Artist"><input id="playall-button" type="button" value="  " title="Search">
-				<img src="img/media-shuffle.png" id="shuffletext" alt="Shuffle" title="Shuffle Text List">
+				&nbsp;<span id="topSongs-container" class="ui-widget">Top <input id="topSongs-num" value="20"> songs by:</span> <input id="topSongs-artist" placeholder="Artist"><input id="mixbuilder-search-button" type="button" value="  " title="Search">
 				<div id="rss-container">
 				<select id="rss-dropdown">
 					<option value="">&#9835; Feeds</option>
@@ -75,7 +74,7 @@
 				</select> 
 				</div>
 				<div id="queryarea" class="ui-widget">
-		  			<div id="player-container" style="display:none;">
+		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" title="Shuffle Text List"> <div id="player-container" style="display:none;">
 						<!--<div id="ytPlayer"></div>-->
 						<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>
 						<span id="ytPlayer-thumb-close" title="Go Back to Video"></span>
