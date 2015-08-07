@@ -407,15 +407,15 @@ $(document).ready(function() {
 
 	var songnum_text = localStorage.getItem('how_many_songs');
 	if ($.trim(songnum_text) === '') songnum_text = 100;
-	$("#play_songsby").val(songnum_text);
-	$("#play_songsby").blur(function() {
-		how_many_songs = $('#play_songsby').val();
+	$("#topSongs-artist").val(songnum_text);
+	$("#topSongs-artist").blur(function() {
+		how_many_songs = $('#topSongs-artist').val();
 		localStorage.setItem('how_many_songs', how_many_songs);
 	});
 	var artist_text = localStorage.getItem('artist');
-	$("#playallsongsby-artist").val(artist_text);
-	$("#playallsongsby-artist").blur(function() {
-		artist = $('#playallsongsby-artist').val();
+	$("#topSongs-artist").val(artist_text);
+	$("#topSongs-artist").blur(function() {
+		artist = $('#topSongs-artist').val();
 		localStorage.setItem('artist', artist);
 	});
 

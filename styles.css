@@ -431,7 +431,7 @@
 		background-position: 50% 50%; 
 		background-color: rgb(255, 255, 255);
 		width: 40px;
-		height: 46px;
+		height: 44px;
 		border: none;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
@@ -462,10 +462,10 @@
 		width: 43%;
 		border-radius: 5px 0px 0px 5px;
 		background-color: rgba(255,255,255,0.7);
-		font-size: 18px;
+		font-size: 19px;
 		margin-left: 2px;
 		margin-bottom: 22px;
-		height: 46px;
+		height: 44px;
 		padding: 0px;
 		padding-left: 5px;
 		padding-right: 5px;
@@ -760,11 +760,11 @@
 		/*top: 200px; right: 21px; width: 95px; height: 71px;*/
 	}
 	#search-button { margin-top:27px; }
-	#rss-dropdown, #playallsongsby-artist, #playall-button{ 
+	#rss-dropdown, #topSongs-artist, #mixbuilder-search-button{ 
 		font-size: 160%!important; 
 		height: 50px;
 	}
-	#playall-button {
+	#mixbuilder-search-button {
 		padding: 0px 0px 0px 0px;
 		width:40px;
 		background-size: cover;
@@ -796,20 +796,6 @@
 	#frbutton{
 		width: 68px;
 		height: 30px;
-	}
-	#topSongs_input {
-		font-size:27px!important;
-		width: 47px;
-	}
-	#topSongs {
-		font-size:27px!important;
-		margin-left: 4px;
-		padding-top: 6px;
-		padding-bottom: 6px;
-		width:230px;
-	}
-	#playallsongsby-artist {
-		width:145px;
 	}
 	#rss-dropdown { width:80px; vertical-align: middle;}
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }

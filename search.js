@@ -127,7 +127,7 @@ function multiSearch() {
 	search.count++;
 }
 function similarTrackPlaylist(artistName,trackName) {
-	var song_num = $("#play_songsby").val();
+	var song_num = $("#topSongs-num").val();
 	//$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
 	//$("#related-container" ).show();
 	//showRelated(artistName);
@@ -147,7 +147,7 @@ function similarTrackPlaylist(artistName,trackName) {
 	});	
 }
 function allSongsBy(artistName) {
-	var song_num = $("#play_songsby").val();
+	var song_num = $("#topSongs-num").val();
 	//$('#query').val('Loading list: '+ song_num +' videos by '+ artistName + '...');
 	$("#related-container" ).show();
 	showRelated(artistName);
@@ -166,19 +166,19 @@ function allSongsBy(artistName) {
 		}
 	});
 }
-$("#playallsongsby-artist, #play_songsby").keypress(function (e) {
+$("#topSongs-artist, #topSongs-num").keypress(function (e) {
  var key = e.which;
  if(key == 13) {
-	allSongsBy($("#playallsongsby-artist").val());
+	allSongsBy($("#topSongs-artist").val());
 	$("#ui-id-1").hide();
 	//return false;  
  }
 });  
-$("#playallsongsby-artist").click(function(){
+$("#topSongs-artist").click(function(){
 	$(this).focus();$(this).select();this.setSelectionRange(0, 9999);
 });
-$("#playall-button").click(function(){
-	allSongsBy($("#playallsongsby-artist").val());
+$("#mixbuilder-search-button").click(function(){
+	allSongsBy($("#topSongs-artist").val());
 	$('#query').val('');
 });
 
@@ -193,7 +193,7 @@ function showRelated(artistName) {
 				} else {
 					$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 				}
-				artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="$(\'#playallsongsby-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
+				artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="$(\'#topSongs-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
 				if (i < data.similarartists.artist.length-1) artistList += "<span class='artistbull'> &bull; </span>";
 			});
 			$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add Songs By Similar Artists:</span> "+artistList);
