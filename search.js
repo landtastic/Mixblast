@@ -159,12 +159,19 @@ function allSongsBy(artistName) {
 			});
 			////////////experimental version in use/////////
 			$('#query').val($('#query').val() + songlist);
+			$('#query').change(function(){
+				alert("It's changed now");
+				var textarea = document.getElementById('query');
+				textarea.scrollTop = textarea.scrollHeight;		
+			});
+
 			//$('#query').val(songlist);
 			 //$('#search-button').trigger( "click" );
 		} else {
 			$('#query').val(': ( \n\nError loading videos by: '+artistName+'\n\nCheck spelling?'); 
 		}
 	});
+
 }
 $("#topSongs-artist, #topSongs-num").keypress(function (e) {
  var key = e.which;
@@ -194,7 +201,7 @@ function showRelated(artistName) {
 					$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 				}
 				artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="$(\'#topSongs-artist\').val(\''+ curArtist +'\');allSongsBy(\''+ curArtist +'\');return false;">' + item.name + '</a>';
-				if (i < data.similarartists.artist.length-1) artistList += "<span class='artistbull'> &bull; </span>";
+				if (i < data.similarartists.artist.length-1) artistList += " ";
 			});
 			$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add Songs By Similar Artists:</span> "+artistList);
 		} else {
@@ -234,7 +241,7 @@ function editSearchTerm(lineNumber) {
 	var mobile_width = 795, vidTop = '-72px', vidWidth = '100%', thumbTop = '0px', queryHeight = '222px';
 	if ($(window).width() < mobile_width) { 
 		queryHeight = '170px';
-		//vidTop = '-90px'; vidWidth = '100%'; thumbTop = '0px'; 
+		vidTop = '-100px'; vidWidth = '100%'; thumbTop = '0px'; 
 	}
 	var toggleEditText = $("#editplaylist").html();
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {

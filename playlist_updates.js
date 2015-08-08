@@ -24,7 +24,7 @@ function createPlaylist() {
 	  $('#playlist-url-copy').val('http://youtube.com/playlist?list='+playlistId);
 	  //$('#playlist-url').append('<iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list='+playlistId+'" frameborder="0" allowfullscreen></iframe><br>');
 	  $('#playlist-url').append('<a href="http://youtube.com/playlist?list='+playlistId+'" target="_blank">Click here to to view your playlist</a><br><br>');
-	  $('#playlist-url').append('<a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://youtube.com/playlist?list='+playlistId)+'&p[images][0]=http://l4nd.com/mixblast/img/mixblast-logo4.png" target="_blank">Blast your mix to Facebook</a><br><br>');
+	  $('#playlist-url').append('<a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://youtube.com/playlist?list='+playlistId)+'&p[images][0]=http://mixbla.st/img/mixblast-logo8.png" target="_blank">Blast your mix to Facebook</a><br><br>');
 
 	  $('#playlist-title').val(result.snippet.title);
 

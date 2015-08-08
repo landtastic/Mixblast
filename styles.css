@@ -222,7 +222,7 @@
 	#logo {
 		max-width:100%;
 		display: block; 
-		margin-bottom:5px;
+		margin-bottom:10px;
 	}
 	/*
 	#logo:before {
@@ -440,13 +440,15 @@
 		cursor: pointer;
 	}
 	#topSongs-container {
-		height: 46px;
-		width: 190px;
+		height: 41px;
+		width: 28%;
 		font-size: 20px;
 		background-color: rgba(0,0,0,0.2);
-		padding-top: 10px;
-		padding-left: 6px;
+		/* padding-top: 6px; */
+		/* padding-left: 6px; */
 		display: inline-block;
+		white-space: nowrap;
+		padding: 8px;
 	}
 	#topSongs-num {
 		font-size:20px;
@@ -460,7 +462,7 @@
 		text-align: center;
 	}
 	#topSongs-artist {
-		width: 55%;
+		width: 63%;
 		border-radius: 5px 0px 0px 5px;
 		background-color: rgba(255,255,255,0.7);
 		font-size: 19px;
@@ -719,21 +721,18 @@
 	}
 	#logo {
 		max-width: 83%;
-		float: right;
+		min-width: 200px;
+		margin-left: 95px;
 		clear: both;
 		padding-bottom: 20px;
-		padding-top: 7px;
+		margin-top: 19px;
 	}
 
 	#pb-icon{	 
 		height: 70px;
 		width: 70px;
-		margin-top: -10px;
-		/*
-		padding-left: 1px;
-		margin-left: -3px;
-		margin-top: -4px;
-		*/
+		margin-top: -19px;
+		margin-left: -9px;
 	}
 	#pb-menu {padding-top: 70px;}
 	#pb-text{ 
@@ -744,6 +743,9 @@
 	.line-clamp {
 		  position: relative;
 		  height: 4.5em; 
+	}
+	#query {
+		height: 575px;
 	}
 	textarea#query,#playlist-title {
 		font-size: 180%!important;
@@ -761,21 +763,23 @@
 	}
 	#search-button { margin-top:27px; }
 	#topSongs-container { 
-		font-size: 31px;
+		font-size: 33px;
 		width: 38%;
-		height: 50px;
+		height: 68px;
 		/* line-height: 0px; */
-		padding: 6px;
+		padding: 13px;
+		padding-left: 6px;
 		min-width: 271px;
 	}
 	#topSongs-artist, #mixbuilder-search-button{ 
 		font-size: 160%!important; 
-		height: 50px;
+		height: 68px;
 	}
+	#topSongs-artist { width: 41%; }
 	#topSongs-num { font-size:31px; }
 	#mixbuilder-search-button {
 		padding: 0px 0px 0px 0px;
-		width:40px;
+		width:13%;
 		background-size: cover;
 	}
 	.ui-menu-item {
@@ -787,11 +791,10 @@
 		display: inline-block;
 		font-size: 150%!important; 
 		font-weight: normal;
-		height: 30px;
-  		padding-bottom: 34px;
+		height: 40px;
 	}
 	#advanced { 
-		width: 237px;
+		width: 134px;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: clip;
@@ -801,6 +804,7 @@
 	}
 	#closeAdvanced {
 		font-size:35px;
+		margin-top: -160px;
 	}
 	.advanced-tips { display: block; }
 	input[type='checkbox'] { height: 18px; width:18px; vertical-align: initial;}
@@ -828,11 +832,10 @@
 	.playerbutton {
 		padding-right:8px;
 	}
-	#related-container {font-size: 150%;}
+	#related-container {font-size: 150%; margin-top:22px;}
 	.similar-artistButton { 
-		line-height: 77px;
-		padding-top: 14px;
-		padding-bottom: 14px;
+		line-height: 83px;
+		padding: 12px;
 	}
 	.artistbull { padding:0px; font-size:50%; }
 	.subtext {font-size: 22px;}
