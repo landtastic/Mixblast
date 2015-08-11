@@ -1,3 +1,4 @@
+"use strict";
 /*dev*/
 var OAUTH2_CLIENT_ID = '1069965346841-omq120306nl685roud6bvdut0dnka460.apps.googleusercontent.com';
 /*live*/
@@ -7,7 +8,7 @@ var OAUTH2_SCOPES = [
 ];
 
 // Upon loading, the Google APIs JS client automatically invokes this callback.
-googleApiClientReady = function() {
+var googleApiClientReady = function() {
   gapi.auth.init(function() {
     window.setTimeout(checkAuth, 1);
   });

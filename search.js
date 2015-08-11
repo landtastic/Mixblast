@@ -159,12 +159,6 @@ function allSongsBy(artistName) {
 			});
 			////////////experimental version in use/////////
 			$('#query').val($('#query').val() + songlist);
-			$('#query').change(function(){
-				alert("It's changed now");
-				var textarea = document.getElementById('query');
-				textarea.scrollTop = textarea.scrollHeight;		
-			});
-
 			//$('#query').val(songlist);
 			 //$('#search-button').trigger( "click" );
 		} else {
@@ -177,6 +171,7 @@ $("#topSongs-artist, #topSongs-num").keypress(function (e) {
  var key = e.which;
  if(key == 13) {
 	allSongsBy($("#topSongs-artist").val());
+	$('#query').val('');
 	$("#ui-id-1").hide();
 	//return false;  
  }
@@ -251,7 +246,7 @@ function editSearchTerm(lineNumber) {
 		$("#related-container").show();
 		$("#ytPlayer-thumb-close").show();
 		$("#blast-button-container").css("visibility", "visible");
-		$("#shuffletext").css("right", "100px").show();
+		$("#shuffletext").show();
 	} else if (toggleEditText.indexOf("Close Editor") > -1) {
 		$("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
 		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast');
