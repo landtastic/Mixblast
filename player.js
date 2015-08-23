@@ -28,7 +28,7 @@ function onYouTubeIframeAPIReady_removed_callback() {
 	});
 }
 function onPlayerReady() {
-	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg">');
+	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg" id="play-arrow-icon">');
   	//if rss url in querystring, automate click
   	////if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
@@ -293,9 +293,9 @@ var pastBlasts = {
 	list : function() {
 		if (!pastBlasts.allBlasts) {
 			pastBlasts.needsUpdate = true;
-			console.log(/*pastBlasts.allBlasts +*/' creating!!');
+			//console.log(/*pastBlasts.allBlasts +*/' creating!!');
 			pastBlasts.allBlasts = JSON.parse(localStorage.getItem("pastBlasts"));
-			console.log(pastBlasts.allBlasts.length);
+			if(pastBlasts.allBlasts == null) pastBlasts.allBlasts = [];
 			pastBlasts.allBlasts_len = pastBlasts.allBlasts.length;
 		} else if (pastBlasts.allBlasts_len != pastBlasts.allBlasts.length) {
 			pastBlasts.allBlasts_len = pastBlasts.allBlasts.length;

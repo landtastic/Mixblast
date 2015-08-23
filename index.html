@@ -26,14 +26,14 @@
 				<div id="queryarea" class="ui-widget">
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" title="Shuffle Text List"> 
 		  			<div id="player-container" style="display:none;">
-						<!--<div id="ytPlayer"></div>-->
-						<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>
+						<div id="ytPlayer"></div>
+						<!--<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>-->
 						<span id="ytPlayer-thumb-close" title="Go Back to Video"></span>
 					</div>
 					<textarea id="query" rows="13" cols="60">
 Search Youtube for a list of songs.											
 
-Use the search above, or just type a list here. (Or copy &amp; paste)
+Use the search above to build a mix, or just type a list here. (Or copy &amp; paste)
 
 Example:
 Artist - Song Title
@@ -43,8 +43,8 @@ Artist - Song Title
 Then click "Blast a Mix" to make a playlist.
 					</textarea>
 					<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
-					<div id="errormsg" style="display:none;"></div>
 					<div id="blast-button-container">
+						<div id="errormsg" style="display:none;"></div>
 						<div class="advancedFloater">
 							<button class="infolink"></button> &nbsp; <button id="advanced">Advanced Options</button> &nbsp;&nbsp; 
 								<div id="rss-container">
@@ -101,8 +101,8 @@ Then click "Blast a Mix" to make a playlist.
 						</div>
 						<button id="search-button" disabled>Blast a Mix</button>
 					</div>
-					<div id="related-container" style="display:none;"></div>
 				</div>
+				<div id="related-container" style="display:none;"></div>
 		  	</div>
 			<div id="advanced-container" style="display:none;"><hr class="advanced-top">
 				<span class="advanced-tips-title">&nbsp;If you copy & paste a list, each line should be as simple as possible, e.g. <i>Artist - Song Title</i></span><div id="closeAdvanced"><a>&#215;</a></div><hr>
@@ -127,8 +127,8 @@ Then click "Blast a Mix" to make a playlist.
 			<div id="flame"></div>
 			  <div id="youtube-playlist-container" style="display:none;">
 			   <h3>Save your playlist to Youtube 
-			   	<span style="display:none;" class="login-container" class="pre-auth">(<a href="javascript:void(0);" id="login-link"><b>Sign in</b></a>)</span>
-				<span style="display:none;" class="login-container" class="post-auth">(200 video limit)</span>
+			   	<span style="display:none;" class="login-container pre-auth">(<a href="javascript:void(0);" id="login-link"><b>Sign in</b></a>)</span>
+				<span style="display:none;" class="login-container post-auth">(200 video limit)</span>
 				</h3>
 			   <hr>
 			   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>

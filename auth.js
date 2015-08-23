@@ -1,5 +1,5 @@
-"use strict";
-/*dev*/
+//"use strict";
+/*dev !!!!!!!!!comment out if uploading live*/
 var OAUTH2_CLIENT_ID = '1069965346841-omq120306nl685roud6bvdut0dnka460.apps.googleusercontent.com';
 /*live*/
 //var OAUTH2_CLIENT_ID = '1069965346841-uggqc6vqcna4j32gfncdbaaq39elcc02.apps.googleusercontent.com';
@@ -8,7 +8,7 @@ var OAUTH2_SCOPES = [
 ];
 
 // Upon loading, the Google APIs JS client automatically invokes this callback.
-var googleApiClientReady = function() {
+googleApiClientReady = function() {
   gapi.auth.init(function() {
     window.setTimeout(checkAuth, 1);
   });
@@ -30,12 +30,14 @@ function checkAuth() {
 // Handle the result of a gapi.auth.authorize() call.
 function handleAuthResult(authResult) {
   if (authResult && !authResult.error) {
+    console.log('authResult && !authResult.error');
     // Authorization was successful. Hide authorization prompts and show
     // content that should be visible after authorization succeeds.
     $('.pre-auth').hide();
     $('.post-auth').show();
     loadAPIClientInterfaces();
   } else {
+    console.log('else');
     // Make the #login-link clickable. Attempt a non-immediate OAuth 2.0
     // client flow. The current function is called when that flow completes.
     $('.pre-auth').css( "display", "block !important");
@@ -63,5 +65,6 @@ function loadAPIClientInterfaces() {
     handleAPILoaded();
   });
 */
+
 }
 
