@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-  <meta name="viewport" content="user-scalable=no,width=640"/>
+  <meta name="viewport" content="user-scalable=yes,width=640"/>
   <meta name="description" content="Instead of searching youtube for one video, search for a whole list! Instant playlists without logging in. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
   <link rel="shortcut icon" href="favicon.ico?r=8"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
@@ -10,8 +10,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Mixblast">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 	<title>Mixblast Playlist Maker - Lists To Youtube Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
   </head>
   <body>
@@ -20,9 +21,9 @@
 	<div id="body-container">
 	<span class="gradient-background"></span>
 	  <div id="body-column">
-		<a href="."><img id="logo" src="img/mixblast-logo8.png" alt="Mixblast" title="&quot;You'll Have a Blast&quot;"></a>
+		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo8.png" alt="Mixblast" title="&quot;You'll Have a Blast&quot;"></a></div>
 		  <div id="text-container">
-				&nbsp;<span id="topSongs-container" class="ui-widget">Top <input id="topSongs-num" value="20"> songs by:</span> <input id="topSongs-artist" placeholder="Artist"><input id="mixbuilder-search-button" type="button" value="  " title="Search">
+				&nbsp;<span id="topSongs-container" class="ui-widget">Add top <input id="topSongs-num" value="20"> songs by:</span> <input id="topSongs-artist" placeholder="Artist"><input id="mixbuilder-search-button" type="button" value="  " title="Add Songs">
 				<div id="queryarea" class="ui-widget">
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" title="Shuffle Text List"> 
 		  			<div id="player-container" style="display:none;">
@@ -33,7 +34,7 @@
 					<textarea id="query" rows="13" cols="60">
 Search Youtube for a list of songs.											
 
-Use the search above to build a mix, or just type a list here. (Or copy &amp; paste)
+Use the artist field above to build a mix, or just type a list here. (Or copy &amp; paste)
 
 Example:
 Artist - Song Title
@@ -107,8 +108,8 @@ Then click "Blast a Mix" to make a playlist.
 			<div id="advanced-container" style="display:none;"><hr class="advanced-top">
 				<span class="advanced-tips-title">&nbsp;If you copy & paste a list, each line should be as simple as possible, e.g. <i>Artist - Song Title</i></span><div id="closeAdvanced"><a>&#215;</a></div><hr>
 				&nbsp;Replace <input id="find"> with <input id="replace"> &nbsp;<input id="frbutton" type="button" value=" GO "> &nbsp;<span class="advanced-tips">Tip: to remove a word, replace it with nothing</span><hr>
-				<label class="checkbox-label"><input type="checkbox" id="removenums"> Remove numbers from list &nbsp;<span class="advanced-tips">(Numbered lists aren't good for searching)</span></label><hr>
-				<label class="checkbox-label"><input type="checkbox" id="removeparenths"> Remove words in parentheses from the list &nbsp;<span class="advanced-tips">(Like these words)</span></label><hr>
+				<label class="checkbox-label">&nbsp;<input type="checkbox" id="removenums"> Remove numbers from list &nbsp;<span class="advanced-tips">(Numbered lists aren't good for searching)</span></label><hr>
+				<label class="checkbox-label">&nbsp;<input type="checkbox" id="removeparenths"> Remove words in parentheses from the list &nbsp;<span class="advanced-tips">(Like these words)</span></label><hr>
 				 &nbsp;Import a .txt file or an .m3u (iTunes playlist) <input type="file" id="fileinput" accept=".m3u,.txt,.xml,.pls,.asx,.xspf" /><hr>
 				 &nbsp;<input id="addartist"> Add artist name to each line &nbsp;<span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
 			</div>
@@ -154,16 +155,17 @@ Then click "Blast a Mix" to make a playlist.
 		<br>
 		<br>
 		<!--<script src="waterbug.js"></script>-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 		<script src="https://www.youtube.com/iframe_api"></script>
-		<script src="auth.js"></script>
-		<script src="search.js"></script>
-		<script src="player.js"></script>
-		<script src="advanced.js"></script>
+		<script src="js/auth.js"></script>
+		<script src="js/search.js"></script>
+		<script src="js/player.js"></script>
+		<script src="js/advanced.js"></script>
 		<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-		<script src="playlist_updates.js"></script>
-		<script src="gradbg.js"></script>
+		<script src="js/playlist_updates.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="js/gradbg.js"></script>
 		<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
