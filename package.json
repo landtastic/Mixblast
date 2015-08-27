@@ -1,8 +1,37 @@
 {
-  "name": "Test-Project",
-  "version": "0.1.0",
+  "name": "mixblast",
+  "version": "1.0.0",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-concat": "~0.1.3"
-  }
+    "grunt": "~0.4.4",
+    "grunt-contrib-jshint": "latest",
+    "jshint-stylish": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-watch": "latest"
+  },
+  "description": "Youtube Playlist Maker",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/landtastic/Mixblast.git"
+  },
+  "keywords": [
+    "youtube",
+    "api",
+    "last.fm",
+    "playlist",
+    "music",
+    "songs",
+    "videos"
+  ],
+  "author": "Land",
+  "license": "No License",
+  "bugs": {
+    "url": "https://github.com/landtastic/Mixblast/issues"
+  },
+  "homepage": "http://mixbla.st"
 }
