@@ -188,7 +188,7 @@ $("#topSongs-artist").click(function(){
 });
 $("#mixbuilder-search-button").click(function(){
 	allSongsBy($("#topSongs-artist").val());
-	//$('#query').val('');
+	if (!search.count) $('#query').val('');
 });
 
 

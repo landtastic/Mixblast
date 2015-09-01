@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "devDependencies": {
     "grunt": "~0.4.4",
-    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-concat": "latest",
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-qunit": "latest",
+    "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-contrib-concat": "latest"
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-util": "^3.0.6",
+    "jshint-stylish": "^2.0.1"
   },
   "description": "Youtube Playlist Maker",
   "main": "index.html",
