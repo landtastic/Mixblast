@@ -174,16 +174,25 @@ function allSongsBy(artistName,needsUpdate) {
 	});
 
 }
+$('.dropdown-menu li').click(function( event ){
+	var $target = $( event.currentTarget );
+	$target.closest( '.btn-group' )
+		.find( '[data-bind="label"]' ).html( $target.html() )
+			.end()
+		.children( '.dropdown-toggle' ).dropdown( 'toggle' );
+
+		return false;
+});
 $("#topSongs-artist, #topSongs-num").keypress(function (e) {
  var key = e.which;
  if(key == 13) {
 	allSongsBy($("#topSongs-artist").val());
-	$('#query').val('');
+	//$('#query').val('');
 	$("#ui-id-1").hide();
 	//return false;  
  }
 });  
-$("#topSongs-artist").click(function(){
+$("#topSongs-artist", "#topSongs-num").click(function(){
 	$(this).focus();$(this).select();this.setSelectionRange(0, 9999);
 });
 $("#mixbuilder-search-button").click(function(){

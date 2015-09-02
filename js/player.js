@@ -17,12 +17,12 @@ function onYouTubeIframeAPIReady_removed_callback() {
 			'onStateChange': onPlayerStateChange
 		},
 		playerVars: {
-			modestbranding: 0,
+			modestbranding: 1,
 			enablejsapi : 1,
 			iv_load_policy: 3,
 			theme: 'dark',
 			color: 'white',
-			showinfo: 0,
+			showinfo: 1,
 			playsinline: 1
 		}
 	});
@@ -439,6 +439,8 @@ $(document).ready(function() {
 
 	//hide playlist url until button is clicked
 	$("#playlist-url").hide();
+
+	$('[data-toggle="tooltip"]').tooltip();
 
 	//email link
 	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";

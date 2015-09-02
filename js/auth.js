@@ -36,7 +36,6 @@ function handleAuthResult(authResult) {
     $('.post-auth').show();
     loadAPIClientInterfaces();
   } else {
-    console.log('else');
     // Make the #login-link clickable. Attempt a non-immediate OAuth 2.0
     // client flow. The current function is called when that flow completes.
     $('.pre-auth').css( "display", "block !important");
