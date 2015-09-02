@@ -3,7 +3,7 @@
   <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="user-scalable=yes,width=640"/>
-  <meta name="description" content="Instead of searching youtube for one video, search for a whole list! Instant playlists without logging in. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
+  <meta name="description" content="Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
   <link rel="shortcut icon" href="favicon.ico?r=8"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
   <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
@@ -13,33 +13,43 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
-	<title>Mixblast Playlist Maker - Lists To Youtube Playlists, Right In Your Browser - "You'll Have a Blast!"</title>
+	<title>Mixblast Playlist Maker - Lists To Youtube Playlists, Instantly - "You'll Have a Blast!"</title>
   </head>
   <body>
-	<div id="pb-button"><a><img id="pb-icon" src="img/past-blasts-icon.svg"> <span id='pb-text'></span></a></div>
+	<!--<div id="pb-button"><a><img id="pb-icon" src="img/past-blasts-icon.svg"> <span id='pb-text'></span></a></div>-->
 	<div id="pb-menu"></div>
 	<div id="body-container">
 	<span class="gradient-background"></span>
 	  <div id="body-column">
-		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo8.png" alt="Mixblast" title="&quot;You'll Have a Blast&quot;"></a></div>
+		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo8.png" data-toggle="tooltip" title="&quot;You'll Have a Blast&quot;"></a></div>
 		  <div id="text-container">
-				&nbsp;<span id="topSongs-container" class="ui-widget">Add top <input id="topSongs-num" value="20"> songs by:</span> <input id="topSongs-artist" placeholder="Artist"><input id="mixbuilder-search-button" type="button" value="  " title="Add Songs">
+               <div class="btn-group btn-input">
+                 <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                   <span data-bind="label">Mixbuilder - Select Option</span>&nbsp;<span class="caret"></span>
+                 </button>
+                 <ul class="dropdown-menu" role="menu">
+                   <li><a href="javascript:void();">Add top <input id="topSongs-num" value="20"> songs by</a></li>
+                   <li><a href="javascript:void();">Another item</a></li>
+                   <li><a href="javascript:void();">This is a longer item that will not fit properly</a></li>
+                 </ul>
+               </div>
+				<input id="topSongs-artist" placeholder="Artist"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
 				<div id="queryarea" class="ui-widget">
-		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" title="Shuffle Text List"> 
+		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle Text List"> 
 		  			<div id="player-container" style="display:none;">
 						<!--<div id="ytPlayer"></div>-->
 						<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>
-						<span id="ytPlayer-thumb-close" title="Go Back to Video"></span>
+						<span id="ytPlayer-thumb-close" data-toggle="tooltip" title="Go Back to Video"></span>
 					</div>
 					<textarea id="query" rows="13" cols="60">
 Search Youtube for a list of songs.											
-
-Use the artist field above to build a mix, or just type a list here. (Or copy &amp; paste)
 
 Example:
 Artist - Song Title
 Artist - Song Title
 Artist - Song Title
+
+Use the mixbuilder above, or just type a list here. (Or copy &amp; paste)
 
 Then click "Blast a Mix" to make a playlist.
 					</textarea>
@@ -47,6 +57,7 @@ Then click "Blast a Mix" to make a playlist.
 					<div id="blast-button-container">
 						<div id="errormsg" style="display:none;"></div>
 						<div class="advancedFloater">
+							<button class="pb-button-sm"><img id="pb-button" src="img/past-blasts-icon.svg"></button> &nbsp;  
 							<button class="infolink"></button> &nbsp; <button id="advanced">Advanced Options</button> &nbsp;&nbsp; 
 								<div id="rss-container">
 								<select id="rss-dropdown">
