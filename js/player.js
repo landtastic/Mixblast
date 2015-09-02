@@ -245,16 +245,20 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 	$(this).nextAll('#swapcount').val(swapcount);
 });
 
-$('#pb-button').click(function(){
+$('#pb-button').click(function(e){
+	alert($('#pb-menu').css('left'));
 	if($('#pb-menu').css('left')=='0px'){
 		pastBlasts.hide();
 	}else{
 		pastBlasts.display();
+		e.stopPropagation();
 	}
 });
-$('#pb-button').hover(
-  function() { $('#pb-text').html('Past Blasts'); }, function() { /*$('#pb-text').html('');*/ }
-);
+
+//$('#pb-button').hover(
+//  function() { $('#pb-text').html('Past Blasts'); }, function() { /*$('#pb-text').html('');*/ }
+//);
+
 $('#pb-menu').on('click', '.pb-module', function(event) {
 	var blasts = pastBlasts.list();
 	for (var i=0; i < blasts.length; i++) {

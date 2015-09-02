@@ -259,7 +259,6 @@ $("#closeAdvanced").click(function(){
 function editSearchTerm(lineNumber) {
 	var mobile_width = 795, vidTop = '-72px', vidWidth = '100%', thumbTop = '0px', queryHeight = '222px';
 	if ($(window).width() < mobile_width) { 
-		queryHeight = '170px';
 		vidTop = '-100px'; vidWidth = '100%'; thumbTop = '0px'; 
 	}
 	var toggleEditText = $("#editplaylist").html();

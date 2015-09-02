@@ -25,6 +25,14 @@
 	    vertical-align: inherit;
 	}
 	hr { margin-top: 5px; margin-bottom: 5px;}
+	input,button,select {     
+		border-radius: 5px 5px 5px 5px;
+		background-color: rgba(255,255,255,0.7); 
+		border: 0px;
+	}
+	textarea#query:focus,input:focus,button:focus,select:focus {
+		outline:0;
+	}
 	#body-container {
 		min-height:100%;		
 		min-width:100%;
@@ -92,22 +100,10 @@
 		margin-top: 6px;
   		margin-bottom: 6px; 
   	}
-	#pb-button {
-		-webkit-filter: invert(100%);
-		filter:invert(100%); 
-		height: 18px;
-		margin-left: -8px;
-		color: #000;
-		cursor: pointer;
-		/*
-		position: absolute;
-		left:18px; top:18px;
-		cursor:pointer;
-		font-size: 30px;
-		z-index:600;
-		*/
+	#pb-icon { 
+    height: 18px;
+    margin-left: -8px;
 	}
-	#pb-icon { height: 40px; width:40px; vertical-align: middle;}
 	#pb-text { font-size: 16px; color: #fff; vertical-align: 14%; background-color: rgba(0, 0, 0, 0.3);}
 	#pb-date { font-weight:bold; font-size:14px; }
 	#pb-menu {
@@ -174,9 +170,6 @@
 		/*border: 1px solid #fff;*/
 		border-radius: 5px;
 		padding:10px;
-	}
-	textarea#query:focus,input:focus,button:focus {
-		outline:0;
 	}
 	#query {
 		/*width: 99.4%;*/
@@ -260,13 +253,13 @@
 		padding-left:4px;
 	}
 	#closeAdvanced {
-		color:#000;
-		font-size:25px;
-		float:right;
-		cursor:pointer;
+		right: 3px;
+		top: -5px;
+		position: inherit;
+		color: #000;
+		font-size: 25px;
+		cursor: pointer;
 		text-decoration: none;
-		padding-right: 8px;
-		margin-top: -9px;;
 	}
 	#closeAdvanced:hover { color: #fff;}
 	.swapzone {
@@ -444,7 +437,7 @@
 		cursor:pointer;
 	   	border-radius: 15px;
 	}
-	#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover,#frbutton:hover,.pb-button-sm:hover { 
+	#search-button:hover,#playlist-button:hover,#advanced:hover,.infolink:hover,#frbutton:hover,.pb-button-sm:hover, #rss-dropdown:hover { 
 		background-color: rgb(159, 150, 160);
 	}
 	#mixbuilder-search-button { 
@@ -495,7 +488,7 @@ div.btn-group.btn-input {
 }
 .btn.btn-default.dropdown-toggle.form-control {
     background-color: rgba(0, 0, 0, 0.2);
-    height: 45px;
+    height: 44px;
     width: 237px;
     margin-left: 4px!important;
     margin-top: -2px;
@@ -534,7 +527,7 @@ div.btn-group.btn-input {
 		margin-bottom: 22px;
 		height: 44px;
 		padding: 0px;
-		padding-left: 5px;
+		padding-left: 13px;
 		padding-right: 5px;
 		padding-top: 0px;
 		border: 0px;
@@ -638,6 +631,7 @@ div.btn-group.btn-input {
 	.righty { width:38%; float: right; }
 	#playlist-status { width:99.4%px; padding-top: 20px;}
 	#advanced-container {
+		position: absolute;
 		margin-top: 13px;
 		display: inline-block;
 		font-size:14px;
@@ -664,6 +658,8 @@ div.btn-group.btn-input {
 		background-color: rgba(255,255,255,0.3);
 	}
 	#fileinput {
+		background-color: transparent;
+		display: inline-block;
 		color: black;
 		font-size:12px;
 		padding-top:0px;
@@ -841,7 +837,7 @@ div.btn-group.btn-input {
 		height: 68px;
 		/* line-height: 0px; */
 		padding: 13px;
-		padding-left: 6px;
+		padding-left: 13px;
 		min-width: 271px;
 	}
 	#topSongs-artist, #mixbuilder-search-button{ 
