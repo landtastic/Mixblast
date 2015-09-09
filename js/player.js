@@ -246,7 +246,6 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 });
 
 $('#pb-button').click(function(e){
-	alert($('#pb-menu').css('left'));
 	if($('#pb-menu').css('left')=='0px'){
 		pastBlasts.hide();
 	}else{
