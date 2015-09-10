@@ -388,7 +388,7 @@ $(document).ready(function() {
    $("#body-container, #query, .gradient-background, #foot-wrap").click(function(e) {
 		pastBlasts.hide();
 	});
-   search.dropVal = 'drop-similarSongs';
+   search.dropVal = 'drop-topSongs';
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
@@ -459,6 +459,8 @@ $(document).ready(function() {
 
 	//hide playlist url until button is clicked
 	$("#playlist-url").hide();
+
+	//$('input[name=topSongs-num]').val($('.topSongs-num').val());
 
 	$('[data-toggle="tooltip"]').tooltip();
 

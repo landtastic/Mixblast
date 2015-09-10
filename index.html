@@ -24,13 +24,13 @@
 		  <div id="text-container">
 			   <div class="btn-group btn-input">
 				<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-					<span data-bind="label">Add <input id="topSongs-num" value="20"> songs similar to</span>&nbsp;<span class="caret"></span>
+					<span data-bind="label"><input class="topSongs-num" value="20"> top songs by</span>&nbsp;<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-					<li id="drop-topSongs"><a href="javascript:void();">Add top <input id="topSongs-num" value="20"> songs by</a></li>
-					<li id="drop-similarSongs"><a href="javascript:void();">Add <input id="topSongs-num" value="20"> songs similar to</a></li>
+					<li id="drop-topSongs"><a href="javascript:void();"><input class="topSongs-num" value="20"> top songs by</a></li>
+					<li id="drop-similarSongs"><a href="javascript:void();"><input class="topSongs-num" value="20"> songs similar to</a></li>
                  </ul>
-               </div><input id="topSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-artist" placeholder="Artist"><input id="similarSongs-song" placeholder="Song Title"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+               </div><input id="topSongs-artist" placeholder="Artist"><input id="similarSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-song" placeholder="Song Title" style="display:none;"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
 				<div id="queryarea" class="ui-widget">
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List"> 
 		  			<div id="player-container" style="display:none;">
@@ -142,7 +142,7 @@ Then click "Blast a Mix" to make a playlist.</textarea>
 			   	<div class="lefty">Playlist title: <input id="playlist-title" value='Party Jamz Vol. 1' type="text" onClick="this.select();"/></div>
 			   	<div class="righty"><button id="playlist-button" disabled>Save a Playlist<br><sup>(Blast a Mix first)</sup></button></div><br>
 			  </div>
-			   <div class="playlist-container">
+			   <div class="playlist-container" style="display:none;">
 				  <p id="playlist-status"></p>		  
 				  <span id="playlist-url">
 				  <b>Playlist url (copy and paste): <br><input id="playlist-url-copy" type="text" onClick="this.select();"/></b>

@@ -253,13 +253,13 @@
 		padding-left:4px;
 	}
 	#closeAdvanced {
-		right: 3px;
-		top: -5px;
-		position: inherit;
 		color: #000;
-		font-size: 25px;
 		cursor: pointer;
 		text-decoration: none;
+		font-size:35px;
+		float: right;
+		margin-top: -12px;
+		padding-right: 1px;
 	}
 	#closeAdvanced:hover { color: #fff;}
 	.swapzone {
@@ -477,6 +477,9 @@
 		font: inherit;
 
 	}
+	.btn-default:hover {
+		color: #fff;
+	}
 	.form-control {
     	display: inherit;
     	width: inherit;
@@ -499,7 +502,7 @@
 	.btn.btn-default.dropdown-toggle.form-control {
 		background-color: rgba(0, 0, 0, 0.2);
 		height: 44px;
-		width: 237px;
+		width: 196px;
 		margin-left: 4px!important;
 		margin-top: -2px;
 		border-radius: 5px 0px 0px 5px;
@@ -516,7 +519,7 @@
 		white-space: nowrap;
 		padding: 8px;
 	}
-	#topSongs-num {
+	.topSongs-num {
 		font-size:20px;
 		color: #fff;
 		background-color: rgba(0,0,0,0.1); 
@@ -527,11 +530,11 @@
 		width:37px;
 		text-align: center;
 	}
-	#drop-topSongs #topSongs-num { color: #000;}
-	#drop-similarSongs #topSongs-num { color: #000;}
+	#drop-topSongs .topSongs-num { color: #000;}
+	#drop-similarSongs .topSongs-num { color: #000;}
 	#topSongs-artist {
 		color: #000;
-		width: 58.1%;
+		width: 64.1%;
 		border-radius: 0px 0px 0px 0px;
 		background-color: rgba(255,255,255,0.7);
 		font-size: 18px;
@@ -558,8 +561,8 @@
 		width: 28.1%;
 	}
 	#similarSongs-song {
-		width: 30%;
-		border-left: 1px solid #000;
+		width: 36%;
+		border-left: 1px solid #888888;
 		border-width: thin;
 	}
 	#related-container {
@@ -661,7 +664,6 @@
 	.righty { width:38%; float: right; }
 	#playlist-status { width:99.4%px; padding-top: 20px;}
 	#advanced-container {
-		position: absolute;
 		margin-top: 13px;
 		display: inline-block;
 		font-size:14px;
@@ -837,7 +839,7 @@
 	.btn.btn-default.dropdown-toggle.form-control {
 		font-size: 31px;
 		height: 68px;
-		width: 349px;
+		width: 288px;
 		margin-top: -10px;
 	}
 	.dropdown-menu {
@@ -874,21 +876,24 @@
 		font-size: 160%!important; 
 		height: 68px;
 	}
-	#topSongs-artist { width: 29.7%; }
+	#topSongs-artist { width: 43.3%; }
 	#similarSongs-artist, #similarSongs-song {
 		font-size: 160%!important; 
 		height: 68px;
 	}
-	#topSongs-num { font-size:31px; }
-	#similarSongs-song {
-		width: 15%;
+	.topSongs-num { 
+		font-size:31px; 
+		width: 39px;
 	}
 	#similarSongs-artist {
-		width: 15%;
+		width: 17%;
+	}
+	#similarSongs-song {
+		width: 26%;
 	}
 	#mixbuilder-search-button {
 		padding: 0px 0px 0px 0px;
-		width:13%;
+		width:9.5%;
 	}
 	.ui-menu-item {
 		font-size: 180%!important; 
@@ -918,8 +923,8 @@
 		font-size: 145%;
 	}
 	#closeAdvanced {
-		font-size:35px;
-		margin-top: -100px;
+		margin-top: -150px;
+		padding-right: 5px;
 	}
 	.advanced-tips { display: block; }
 	input[type='checkbox'] { height: 18px; width:18px; vertical-align: initial;}
