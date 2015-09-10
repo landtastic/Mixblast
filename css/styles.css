@@ -101,10 +101,10 @@
   		margin-bottom: 6px; 
   	}
 	#pb-icon { 
-    height: 18px;
-    margin-left: -8px;
+		height: 18px;
+		margin-left: -8px;
 	}
-	#pb-text { font-size: 16px; color: #fff; vertical-align: 14%; background-color: rgba(0, 0, 0, 0.3);}
+	#pb-text { font-size: 16px; color: #fff; vertical-align: 18px; background-color: rgba(0, 0, 0, 0.3);}
 	#pb-date { font-weight:bold; font-size:14px; }
 	#pb-menu {
 		top: 0px;
@@ -416,10 +416,18 @@
 		padding-top:15px;
 		padding-bottom:15px;
 	}
+	#pb-button {
+		cursor:pointer;
+	}
 	.pb-button-sm {
 		height: 22px;
 		width: 22px;
 		color: #fff;
+	}
+	.pb-button-big {
+		height: 45px;
+		margin-left: 18px;
+		margin-top: -10px;
 	}
 	#advanced,.infolink,#frbutton, #rss-dropdown, .pb-button-sm {
 		color: #000;
@@ -451,6 +459,7 @@
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		cursor: pointer;
+		margin-bottom: 22px;
 	}
 	div.btn-group.btn-input {
 		color: #fff;
@@ -477,27 +486,27 @@
     }
     .dropdown-menu {
     	padding: 0px;
-    	font-size: 20px;
+    	font-size: 17px;
     }
-div.btn-group.btn-input {
-    color: inherit;
-    height: inherit;
-    background-color: inherit;
-    display: inline-block;
-    white-space: nowrap;
-    padding: 0px;
-}
-.btn.btn-default.dropdown-toggle.form-control {
-    background-color: rgba(0, 0, 0, 0.2);
-    height: 44px;
-    width: 237px;
-    margin-left: 4px!important;
-    margin-top: -2px;
-    border-radius: 5px 0px 0px 5px;
-}
-.btn-group.btn-input {
-	display: inline-block;
-}
+	div.btn-group.btn-input {
+	    color: inherit;
+	    height: inherit;
+	    background-color: inherit;
+	    display: inline-block;
+	    white-space: nowrap;
+	    padding: 0px;
+	}
+	.btn.btn-default.dropdown-toggle.form-control {
+		background-color: rgba(0, 0, 0, 0.2);
+		height: 44px;
+		width: 237px;
+		margin-left: 4px!important;
+		margin-top: -2px;
+		border-radius: 5px 0px 0px 5px;
+	}
+	.btn-group.btn-input {
+		display: inline-block;
+	}
 	#topSongs-container {
 		font-size: 20px;
 		background-color: rgba(0,0,0,0.2);
@@ -510,7 +519,7 @@ div.btn-group.btn-input {
 	#topSongs-num {
 		font-size:20px;
 		color: #fff;
-		background-color: rgba(0,0,0,0.2); 
+		background-color: rgba(0,0,0,0.1); 
 		border:0px;
 		padding:0px;
 		padding-left:2px;
@@ -518,20 +527,40 @@ div.btn-group.btn-input {
 		width:37px;
 		text-align: center;
 	}
+	#drop-topSongs #topSongs-num { color: #000;}
+	#drop-similarSongs #topSongs-num { color: #000;}
 	#topSongs-artist {
 		color: #000;
 		width: 58.1%;
 		border-radius: 0px 0px 0px 0px;
 		background-color: rgba(255,255,255,0.7);
 		font-size: 18px;
-		margin-left: -4px;
-		margin-bottom: 22px;
 		height: 44px;
 		padding: 0px;
 		padding-left: 13px;
 		padding-right: 5px;
 		padding-top: 0px;
 		border: 0px;
+	}
+	#similarSongs-artist, #similarSongs-song {
+		color: #000;
+		display: inline-block;
+		font-size: 18px;
+		height: 44px;
+		padding: 0px;
+		padding-top: 0px;
+		border: 0px;
+		padding-left: 13px;
+		padding-right: 5px;
+		border-radius: 0px 0px 0px 0px;
+	}
+	#similarSongs-artist {
+		width: 28.1%;
+	}
+	#similarSongs-song {
+		width: 30%;
+		border-left: 1px solid #000;
+		border-width: thin;
 	}
 	#related-container {
 		font-size: 15px;
@@ -790,19 +819,10 @@ div.btn-group.btn-input {
 		width:97%;
 	}
 	#logo {
-		max-width: 83%;
 		min-width: 200px;
-		margin-left: 95px;
 		clear: both;
 		padding-bottom: 20px;
 		margin-top: 19px;
-	}
-
-	#pb-icon{	 
-		height: 70px;
-		width: 70px;
-		margin-top: -19px;
-		margin-left: -9px;
 	}
 	#pb-menu {padding-top: 70px; top:-19px;}
 	#pb-text{ 
@@ -813,6 +833,15 @@ div.btn-group.btn-input {
 	.line-clamp {
 		  position: relative;
 		  height: 4.5em; 
+	}
+	.btn.btn-default.dropdown-toggle.form-control {
+		font-size: 31px;
+		height: 68px;
+		width: 349px;
+		margin-top: -10px;
+	}
+	.dropdown-menu {
+		font-size: 32px;
 	}
 	#query {
 		height: 575px;
@@ -845,8 +874,18 @@ div.btn-group.btn-input {
 		font-size: 160%!important; 
 		height: 68px;
 	}
-	#topSongs-artist { width: 32%; }
+	#topSongs-artist { width: 29.7%; }
+	#similarSongs-artist, #similarSongs-song {
+		font-size: 160%!important; 
+		height: 68px;
+	}
 	#topSongs-num { font-size:31px; }
+	#similarSongs-song {
+		width: 15%;
+	}
+	#similarSongs-artist {
+		width: 15%;
+	}
 	#mixbuilder-search-button {
 		padding: 0px 0px 0px 0px;
 		width:13%;
@@ -856,11 +895,18 @@ div.btn-group.btn-input {
 		padding:7px;
 		width: 300px;
 	}
-	#advanced, .infolink, #rss-dropdown {
+	#advanced, .infolink, #rss-dropdown, #pb-button {
 		display: inline-block;
 		font-size: 150%!important; 
 		font-weight: normal;
 		height: 40px;
+	}
+	#pb-icon{	 
+		height: 30px;
+    margin-top: -5px;
+	}
+	.pb-button-sm {
+		width: 34px;
 	}
 	#advanced { 
 		width: 134px;

@@ -13,29 +13,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
-	<title>Mixblast Playlist Maker - Lists To Youtube Playlists, Instantly - "You'll Have a Blast!"</title>
+	<title>Mixblast Playlist Maker - Lists To Youtube Playlists, Instantly</title>
   </head>
   <body>
-	<!--<div id="pb-button"><a><img id="pb-icon" src="img/past-blasts-icon.svg"> <span id='pb-text'></span></a></div>-->
 	<div id="pb-menu"></div>
 	<div id="body-container">
 	<span class="gradient-background"></span>
 	  <div id="body-column">
-		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo8.png" data-toggle="tooltip" title="&quot;You'll Have a Blast&quot;"></a></div>
+		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo8.png" data-toggle="tooltip" data-placement="right" title="&quot;You'll Have a Blast&quot;"></a></div>
 		  <div id="text-container">
-               <div class="btn-group btn-input">
-                 <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                   <span data-bind="label">Mixbuilder - Select Option</span>&nbsp;<span class="caret"></span>
-                 </button>
-                 <ul class="dropdown-menu" role="menu">
-                   <li><a href="javascript:void();">Add top <input id="topSongs-num" value="20"> songs by</a></li>
-                   <li><a href="javascript:void();">Add <input id="topSongs-num" value="20"> songs similar to</a></li>
-                   <li><a href="javascript:void();">This is a longer item that will not fit properly</a></li>
+			   <div class="btn-group btn-input">
+				<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+					<span data-bind="label">Add <input id="topSongs-num" value="20"> songs similar to</span>&nbsp;<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li id="drop-topSongs"><a href="javascript:void();">Add top <input id="topSongs-num" value="20"> songs by</a></li>
+					<li id="drop-similarSongs"><a href="javascript:void();">Add <input id="topSongs-num" value="20"> songs similar to</a></li>
                  </ul>
-               </div>
-				<input id="topSongs-artist" placeholder="Artist"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+               </div><input id="topSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-artist" placeholder="Artist"><input id="similarSongs-song" placeholder="Song Title"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
 				<div id="queryarea" class="ui-widget">
-		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle Text List"> 
+		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List"> 
 		  			<div id="player-container" style="display:none;">
 						<!--<div id="ytPlayer"></div>-->
 						<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>
@@ -49,18 +46,17 @@ Artist - Song Title
 Artist - Song Title
 Artist - Song Title
 
-Use the mixbuilder above, or just type a list here. (Or copy &amp; paste)
+Use the MixBuilder above, or just type a list here. (Or copy &amp; paste)
 
-Then click "Blast a Mix" to make a playlist.
-					</textarea>
+Then click "Blast a Mix" to make a playlist.</textarea>
 					<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
 					<div id="blast-button-container">
 						<div id="errormsg" style="display:none;"></div>
 						<div class="advancedFloater">
-							<button class="pb-button-sm" id="pb-button"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button> &nbsp;  
-							<button class="infolink"></button> &nbsp; <button id="advanced">Advanced Options</button> &nbsp;&nbsp; 
+							<button class="pb-button-sm" id="pb-button" data-toggle="tooltip" title="Recent History"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button> &nbsp;  
+							<button class="infolink" data-toggle="tooltip" title="Info"></button> &nbsp; <button id="advanced" data-toggle="tooltip" title="Advanced Options">Advanced Options</button> &nbsp;&nbsp; 
 								<div id="rss-container">
-								<select id="rss-dropdown">
+								<select id="rss-dropdown" data-toggle="tooltip" title="RSS Feeds">
 									<option value="">&#9835; Feeds</option>
 									<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
 									<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>

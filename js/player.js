@@ -311,13 +311,13 @@ var pastBlasts = {
 	display : function() {
 		if (pastBlasts.needsUpdate) {
 			var blasts = pastBlasts.list();
-			if (blasts === null) {
+			if (blasts.length <= 0) {
 				var date = new Date();
 				blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
 			} else {
 				if (blasts) blasts.sort().reverse();
 			}
-			$('#pb-menu').html('');
+			$('#pb-menu').html('<div id="pb-button"><img class="pb-button-big" src="img/past-blasts-icon.svg"> <span id="pb-text"></span></div>');
 			for (var i=0, max=blasts.length; i<max; i++) {
 				var blastArr = blasts[i].split('\n');
 				var thisBlast = '';
@@ -332,7 +332,9 @@ var pastBlasts = {
 						var dateString = thisDate.toLocaleTimeString("en-us", options);
 						blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
 					}
-					thisBlast += blastArr[ii] + '<br>';
+					if (blastArr[ii]) {
+						thisBlast += blastArr[ii] + '<br>';
+					}
 				}
 				$('#pb-menu').append('<div class="pb-wrapper"><div class="pb-module line-clamp" id="'+ date_id +'">' + thisBlast + '</div><a class="pb-delete" id="'+ date_id +'" title="Delete"> &#9940; </a></div>'); //title="'+ thisBlast.replace("<br>", "|") +'"
 			}
@@ -386,11 +388,14 @@ $(document).ready(function() {
    $("#body-container, #query, .gradient-background, #foot-wrap").click(function(e) {
 		pastBlasts.hide();
 	});
+   search.dropVal = 'drop-similarSongs';
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
 	if ((mixtext) && (mixtext != "")) {
 		$("#query").val(mixtext); search.isDefaultMsg = false;
+	} else {
+		search.isDefaultMsg = true;
 	}
 
 	$("#query").focus(function() {
@@ -427,6 +432,18 @@ $(document).ready(function() {
 	$("#topSongs-artist").blur(function() {
 		artist = $('#topSongs-artist').val();
 		localStorage.setItem('artist', artist);
+	});
+	var last_similarArtist = localStorage.getItem('last_similarArtist');
+	$("#similarSongs-artist").val(last_similarArtist);
+	$("#similarSongs-artist").blur(function() {
+		last_similarArtist = $('#similarSongs-artist').val();
+		localStorage.setItem('last_similarArtist', last_similarArtist);
+	});
+	var last_similarSong = localStorage.getItem('last_similarSong');
+	$("#similarSongs-song").val(last_similarSong);
+	$("#similarSongs-song").blur(function() {
+		last_similarSong = $('#similarSongs-song').val();
+		localStorage.setItem('last_similarSong', last_similarSong);
 	});
 
 	$("#search-button").click(function(){

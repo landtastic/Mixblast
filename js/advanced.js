@@ -290,7 +290,7 @@ $(function() {
 	function extractLast( term ) {
 	  return split( term ).pop();
 	}
-	$("#topSongs-artist, #query").autocomplete({
+	$("#topSongs-artist, #similarSongs-artist, #similarSongs-song, #query").autocomplete({
 		source: function(request, response){
 			var apiKey = 'AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM';
 			var query = extractLast( request.term );
