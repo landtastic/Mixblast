@@ -661,7 +661,7 @@
 		-webkit-filter: drop-shadow(0 1px 0 rgba(255,255,255, .8));
 		filter: drop-shadow(0 1px 0 rgba(255,255,255, .8)); 
 	}
-	#playlist-button-span { float:right; }
+	#playlist-button { float:right; }
 	#playlist-title,#playlist-url-copy {
 		color:#000;
 		font-weight: normal;
