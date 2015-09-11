@@ -167,6 +167,7 @@ function readMultipleFiles(evt) {
 			})(f);
 			r.readAsText(f);
 		}
+		search.isDefaultMsg = false;
 	} else {
 		alert("Failed to load files");
 	}
