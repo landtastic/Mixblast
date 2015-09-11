@@ -120,6 +120,8 @@ function loadVid(vidId) {
 	//ytPlayer.playVideo();
 	//ytPlayer.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
 	if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
+	$("#favicon").attr("href", search.topvThumbArray[vidId]);
+	console.log(search.topvThumbArray[vidId]);
 }
 
 function cuePlayer() {
@@ -388,6 +390,7 @@ $(document).ready(function() {
    $("#body-container, #query, .gradient-background, #foot-wrap").click(function(e) {
 		pastBlasts.hide();
 	});
+   //dropdown default
    search.dropVal = 'drop-topSongs';
  	//autosave
 	var autosave = localStorage.getItem('mixfile');

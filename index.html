@@ -4,7 +4,7 @@
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="user-scalable=yes,width=640"/>
   <meta name="description" content="Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
-  <link rel="shortcut icon" href="favicon.ico?r=8"/>
+  <link rel="shortcut icon" href="favicon.ico?r=8" id="favicon"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
   <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,15 +22,17 @@
 	  <div id="body-column">
 		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo8.png" data-toggle="tooltip" data-placement="right" title="&quot;You'll Have a Blast&quot;"></a></div>
 		  <div id="text-container">
-			   <div class="btn-group btn-input">
+		  	  <div id="mixbuilder-bar">
+		  	  <div id="songNum"><input class="topSongs-num" value="20"></div><div class="btn-group btn-input">
 				<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-					<span data-bind="label"><input class="topSongs-num" value="20"> top songs by</span>&nbsp;<span class="caret"></span>
+					<span data-bind="label"> top songs by</span>&nbsp;<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-					<li id="drop-topSongs"><a href="javascript:void();"><input class="topSongs-num" value="20"> top songs by</a></li>
-					<li id="drop-similarSongs"><a href="javascript:void();"><input class="topSongs-num" value="20"> songs similar to</a></li>
+					<li id="drop-topSongs"><a href="javascript:void();"> top songs by</a></li>
+					<li id="drop-similarSongs"><a href="javascript:void();"> songs similar to</a></li>
                  </ul>
                </div><input id="topSongs-artist" placeholder="Artist"><input id="similarSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-song" placeholder="Song Title" style="display:none;"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+              </div>
 				<div id="queryarea" class="ui-widget">
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List"> 
 		  			<div id="player-container" style="display:none;">
