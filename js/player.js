@@ -120,8 +120,8 @@ function loadVid(vidId) {
 	//ytPlayer.playVideo();
 	//ytPlayer.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
 	if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
-	$("#favicon").attr("href", search.topvThumbArray[vidId]);
-	console.log(search.topvThumbArray[vidId]);
+	$("#favicon").attr("href", search.topvThumbArray[search.vidcount]);
+	console.log(search.topvThumbArray[search.vidcount]);
 }
 
 function cuePlayer() {

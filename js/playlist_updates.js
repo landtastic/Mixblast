@@ -8,7 +8,7 @@ function createPlaylist() {
 	resource: {
 	  snippet: {
 		title: $('#playlist-title').val(),
-		description: 'Playlist created with Mixblast - http://mixbla.st \n' + $('#query').val()
+		description: 'Playlist created with Mixblast - http://mixbla.st \n' //+ $('#query').val()
 	  },
 	  status: {
 		privacyStatus: 'public'
@@ -17,12 +17,11 @@ function createPlaylist() {
   });
   request.execute(function(response) {
 	var result = response.result;
-	
+console.log(result);	
 	if (result) {
 	  playlistId = result.id;
 	  $('#playlist-id').val(playlistId);
 	  $('#playlist-url-copy').val('http://youtube.com/playlist?list='+playlistId);
-	  //$('#playlist-url').append('<iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list='+playlistId+'" frameborder="0" allowfullscreen></iframe><br>');
 	  $('#playlist-url').append('<a href="http://youtube.com/playlist?list='+playlistId+'" target="_blank">Click here to to view your playlist</a><br><br>');
 	  $('#playlist-url').append('<a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://youtube.com/playlist?list='+playlistId)+'&p[images][0]=http://mixbla.st/img/mixblast-logo8.png" target="_blank">Blast your mix to Facebook</a><br><br>');
 
@@ -42,11 +41,13 @@ function createPlaylist() {
 function multiAddVideosToPlaylist() {
 	//add topvIdArray to playlist, setInterval to stagger api requests
 	var x = 0;
+	var plLimit = search.topvIdArray.length+1;
+	if (plLimit > 199) plLimit = 199;
 	var interval = setInterval(function() {
 		$('#playlist-status').html('Generating YouTube Playlist... (Don\'t leave this page) '+x+' of '+search.topvIdArray.length);
 		addToPlaylist(search.topvIdArray[x]);
 		x++;
-		if(x==search.topvIdArray.length+1) {
+		if(x==plLimit) {
 			clearInterval(interval);
 			$('#playlist-status').html('Done!');
 			//alert("Loop complete");
