@@ -54,7 +54,7 @@ function onPlayerStateChange(event) {
 		} else {
 			search.playcount = -1;
 		}
-		console.log(search.playcount+"<-search.playcount|totalvids->"+totalvids);
+		//console.log(search.playcount+"<-search.playcount|totalvids->"+totalvids);
 	}
 }
 
@@ -70,7 +70,7 @@ function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
 	}
 	if (swapcount === undefined) swapcount = 0;
 	return "<div class='searchresult-div' style='width:10%'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'>"+ notFoundString +"<a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
-		"</a></div><div id='searchresult-refresh' style='width:5%'><img src='img/refreshb.png' class='refreshb' id='"+c+"' title='Version Swap'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
+		"</a></div><div id='searchresult-refresh' style='width:5%'><img src='img/refreshb.png' data-toggle='tooltip' title='Version Swap \n("+ search.listArray[c] +")' class='refreshb' id='"+c+"'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
 }
 
 $("#prevbutton").click(function(){
@@ -121,7 +121,6 @@ function loadVid(vidId) {
 	//ytPlayer.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
 	if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
 	$("#favicon").attr("href", search.topvThumbArray[search.vidcount]);
-	console.log(search.topvThumbArray[search.vidcount]);
 }
 
 function cuePlayer() {

@@ -132,7 +132,10 @@ function magicSongExtractor() {
 }
 
 function what() {
-	alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.\n\nYou can load the top songs by an artist, as well as by related artists. You can also copy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nMixblast uses the Youtube and Last.fm APIs. \n\nWelp, see ya later.');
+	//alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.\n\nYou can load the top songs by an artist, as well as by related artists. You can also copy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nMixblast uses the Youtube and Last.fm APIs. \n\nWelp, see ya later.');
+	//$('#pb-menu').show();
+	$('#pb-menu').animate({left: '0px'}, 'fast');
+	$('#pb-menu').html('<img id="logo" src="img/mixblast-logo8.png" style="width:10%"><br>What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.\n\nYou can load the top songs by an artist, as well as by related artists. You can also copy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nMixblast uses the Youtube and Last.fm APIs. \n\nWelp, see ya later.');
 }
 
 //load .txt or .m3u playlist

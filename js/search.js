@@ -151,9 +151,14 @@ function allSongsBy(artistName,trackName,needsUpdate) {
 			$.each(data.toptracks.track, function(i, item) {
 				songlist += artistName + " - " + item.name + "\n";
 			});
-			////////////add instead of overwrite list/////////
-			$('#query').val($('#query').val() + songlist);
-			//$('#query').val(songlist);
+
+			if (search.count === undefined) {
+				$('#query').val(songlist);
+				search.count = 1;
+			} else {
+				$('#query').val($('#query').val() + songlist);
+			}
+			
 			 //$('#search-button').trigger( "click" );
 			var textarea = document.getElementById('query');
 			if (!search.isDefaultMsg) var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
@@ -217,9 +222,8 @@ $("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song").k
 	//return false;  
  }
 });  
-$("#topSongs-artist", ".topSongs-num").click(function(e){
-	e.stopImmediatePropagation();
-	$(this).focus();$(this).select();this.setSelectionRange(0, 9999);
+$("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song").click(function(e){
+	$(this).select();this.setSelectionRange(0, 9999);
 });
 $("#mixbuilder-search-button").click(function(){
  	if (search.dropVal == 'drop-topSongs') {
