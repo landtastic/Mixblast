@@ -222,7 +222,7 @@ $("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song").k
 	//return false;  
  }
 });  
-$("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song").click(function(e){
+$("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song").click(function (e){
 	$(this).select();this.setSelectionRange(0, 9999);
 });
 $("#mixbuilder-search-button").click(function(){
