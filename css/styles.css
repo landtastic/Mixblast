@@ -163,6 +163,7 @@
 			display: none;
 		}
 	}
+
 	#text-container { width:100%; }
 	textarea#query,input,button {
 		font-family: 'Roboto', sans-serif;
@@ -601,7 +602,7 @@
 		/*float: right;*/
 	}
 	#rss-dropdown{
-		width:97px;
+		width:153px;
 		/*height: 46px;*/
 	}
 	#rss-button{
@@ -627,14 +628,14 @@
 		display: inline-block;
 		width: 1.9ex;
 		height: 1.9ex;
-		/*
-   		vertical-align: initial;
-		border-radius: 1ex;
-		color: black;
-		border: thin solid black;
-		*/
 	}
-
+	#infodiv {
+		padding:40px;
+		margin-top:-47px;
+	}
+	#infoear {
+		height:45px;
+	}
 	#search-button,#playlist-button {
 		color: #000;
 		height: 52px;
@@ -836,7 +837,7 @@
 		margin-top: 19px;
 	}
 	#pb-menu {padding-top: 70px; top:-19px;}
-	#pb-text{ 
+	#pb-text, #infodiv { 
 		font-size: 22px;
 	}
 	.pb-module { font-size: 25px; }

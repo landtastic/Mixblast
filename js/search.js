@@ -154,7 +154,7 @@ function allSongsBy(artistName,trackName,needsUpdate) {
 
 			if (search.count === undefined) {
 				$('#query').val(songlist);
-				search.count = 1;
+				search.count = 0;
 			} else {
 				$('#query').val($('#query').val() + songlist);
 			}
