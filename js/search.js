@@ -275,7 +275,6 @@ $("#mixbuilder-search-button").click(function(){
 	} else if (search.dropVal == 'drop-similarSongs') {
 		mixBuilder($("#similarSongs-artist").val(),$("#similarSongs-song").val());
 	} else {
-		alert($("#similarSongs-artistOnly").val());
 		mixBuilder($("#similarSongs-artistOnly").val(),'');
 	}
 });
