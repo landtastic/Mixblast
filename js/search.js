@@ -127,9 +127,8 @@ function multiSearch() {
 	search.count++;
 }
 
-function mixBuilder(artistName,trackName,needsUpdate) {
+function mixBuilder(artistName,trackName) {
 	console.log(artistName + '|' + trackName)
-	if (needsUpdate === undefined) needsUpdate = true;
 	if (search.isDefaultMsg) $('#query').val('');
 	$('#errormsg').hide();
 	$("#related-container" ).show();
@@ -137,14 +136,19 @@ function mixBuilder(artistName,trackName,needsUpdate) {
 		similarTrackPlaylist($.trim(artistName),$.trim(trackName));
 		search.isDefaultMsg = false;
 	} else if (search.dropVal == 'drop-topSongs'){
-		allSongsBy($.trim(artistName),trackName,needsUpdate);
+		allSongsBy($.trim(artistName));
+		search.isDefaultMsg = false;
+	} else {
+		similarArtistPlaylist($.trim(artistName));
 		search.isDefaultMsg = false;
 	}
+	//var needsUpdate = true;
+	//if (needsUpdate) 
+		showRelated.artists(artistName);
 }
 
-function allSongsBy(artistName,trackName,needsUpdate) {
+function allSongsBy(artistName) {
 	var song_num = $(".topSongs-num").val();
-	if (needsUpdate) showRelated.artists(artistName);
 	$.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {
 		if (!songlist) var songlist = '';
 		if ((data.toptracks != undefined) && (data.toptracks.track != undefined)) {
@@ -181,7 +185,38 @@ function similarTrackPlaylist(artistName,trackName) {
 				$('#errormsg').show();
 				$('#errormsg').html(': ( <br><br>Error loading similar songs for: '+ artistName +' - '+ trackName +'. <br><br>Check spelling?'); 
 			}
-			$('#query').val($('#query').val() + songlist);
+			if (search.count === undefined) {
+				$('#query').val(songlist);
+				search.count = 0;
+			} else {
+				$('#query').val($('#query').val() + songlist);
+			}
+			var textarea = document.getElementById('query');
+			if (!search.isDefaultMsg) var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
+		} else {
+			$('#errormsg').show();
+			$('#errormsg').html(': ( <br><br>Error loading similar songs. <br><br>Check spelling?'); 
+		}
+	});	
+}
+function similarArtistPlaylist(artistName) {
+	var song_num = $(".topSongs-num").val();
+	$.getJSON("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+$.trim(artistName)+"&type=artist-radio&results="+ song_num, function(data) {
+		if (!songlist) var songlist = '';
+		if (data.response != undefined) {
+			$.each(data.response.songs, function(i, item) {
+				songlist += item.artist_name + " - " + item.title + "\n";
+			});
+			if ($.trim(songlist) == '') {
+				$('#errormsg').show();
+				$('#errormsg').html(': ( <br><br>Error loading similar songs for: '+ artistName +'. <br><br>Check spelling?'); 
+			}
+			if (search.count === undefined) {
+				$('#query').val(songlist);
+				search.count = 0;
+			} else {
+				$('#query').val($('#query').val() + songlist);
+			}
 			var textarea = document.getElementById('query');
 			if (!search.isDefaultMsg) var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
 		} else {
@@ -193,14 +228,21 @@ function similarTrackPlaylist(artistName,trackName) {
 $('.dropdown-menu li').click(function( event ){
 	var $target = $( event.currentTarget );
 	search.dropVal = this.id;
-	if (search.dropVal == 'drop-similarSongs') {
-		$('#similarSongs-artist').show();
-		$('#similarSongs-song').show();
-		$('#topSongs-artist').hide();
-	} else {
+	if (search.dropVal == 'drop-topSongs'){
 		$('#similarSongs-artist').hide();
 		$('#similarSongs-song').hide();
 		$('#topSongs-artist').show();
+		$('#similarSongs-artistOnly').hide();
+	} else if (search.dropVal == 'drop-similarSongs') {
+		$('#similarSongs-artist').show();
+		$('#similarSongs-song').show();
+		$('#topSongs-artist').hide();
+		$('#similarSongs-artistOnly').hide();
+	} else {
+		$('#similarSongs-artist').hide();
+		$('#similarSongs-song').hide();
+		$('#topSongs-artist').hide();
+		$('#similarSongs-artistOnly').show();
 	}
 
 	$target.closest( '.btn-group' )
@@ -210,26 +252,31 @@ $('.dropdown-menu li').click(function( event ){
 
 		return false;
 });
-$("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song").keypress(function (e) {
+$("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song, #similarSongs-artistOnly").keypress(function (e) {
  var key = e.which;
  if(key == 13) {
  	if (search.dropVal == 'drop-topSongs') {
-		mixBuilder($("#topSongs-artist").val(),null);
-	} else {
+		mixBuilder($("#topSongs-artist").val(),'');
+	} else if (search.dropVal == 'drop-similarSongs') {
 		mixBuilder($("#similarSongs-artist").val(),$("#similarSongs-song").val());
+	} else {
+		mixBuilder($("#similarSongs-artistOnly").val(),'')
 	}
 	$("#ui-id-1").hide();
 	//return false;  
  }
 });  
-$("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song").click(function (e){
+$("#topSongs-artist, .topSongs-num, #similarSongs-artist, #similarSongs-song, #similarSongs-artistOnly").click(function (e){
 	$(this).select();this.setSelectionRange(0, 9999);
 });
 $("#mixbuilder-search-button").click(function(){
  	if (search.dropVal == 'drop-topSongs') {
-		mixBuilder($("#topSongs-artist").val(),null);
-	} else {
+		mixBuilder($("#topSongs-artist").val(),'');
+	} else if (search.dropVal == 'drop-similarSongs') {
 		mixBuilder($("#similarSongs-artist").val(),$("#similarSongs-song").val());
+	} else {
+		alert($("#similarSongs-artistOnly").val());
+		mixBuilder($("#similarSongs-artistOnly").val(),'');
 	}
 });
 

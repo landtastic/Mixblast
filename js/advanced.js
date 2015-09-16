@@ -140,7 +140,7 @@ function magicSongExtractor() {
 function what() {
 	//alert('What\'s the point of this?\n\nMixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.\n\nYou can load the top songs by an artist, as well as by related artists. You can also copy and paste a plain text list, or load an RSS feed. Mixblast will search each line of text for the top video.\n\nIf a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. \n\nMixblast uses the Youtube and Last.fm APIs. \n\nWelp, see ya later.');
 	pastBlasts.display();
-	$('#pb-menu').html('<div id="infodiv"><img src="android-chrome-192x192.png" id="infoear"><br><br>What\'s the point of this?<br><br>Mixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.<br><br>You can copy and paste a plain text list, load an RSS feed, or use the MixBuilder to populate the list with top songs and related songs. Mixblast will search each line of text for the top video.<br><br>If a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. <br><br>Mixblast uses the Youtube and Last.fm APIs. <br><br>Welp, see ya later.</div>');
+	$('#pb-menu').html('<div id="infodiv"><img src="android-chrome-192x192.png" id="infoear"><br><br>What\'s the point of this?<br><br>Mixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.<br><br>You can copy and paste a plain text list, load an RSS feed, or use the MixBuilder at the top to populate the list with top songs and related songs. Mixblast will search each line of text for the top video.<br><br>If a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. <br><br>Mixblast uses the Youtube, Last.fm, and Echo Nest APIs. <br><br>Welp, see ya later.</div>');
 }
 
 //load .txt or .m3u playlist
@@ -301,7 +301,7 @@ $(function() {
 	function extractLast( term ) {
 	  return split( term ).pop();
 	}
-	$("#topSongs-artist, #similarSongs-artist, #similarSongs-song, #query").autocomplete({
+	$("#topSongs-artist, #similarSongs-artist, #similarSongs-song, #similarSongs-artistOnly, #query").autocomplete({
 		source: function(request, response){
 			var apiKey = 'AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM';
 			var query = extractLast( request.term );

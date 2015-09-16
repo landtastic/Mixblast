@@ -392,7 +392,7 @@ $(document).ready(function() {
 		pastBlasts.hide();
 	});
    //dropdown default
-   search.dropVal = 'drop-topSongs';
+   search.dropVal = 'similarArtists';
  	//autosave
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);

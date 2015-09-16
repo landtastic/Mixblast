@@ -3,7 +3,7 @@
   <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="user-scalable=yes,width=640"/>
-  <meta name="description" content="Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
+  <meta name="description" content="Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
   <link rel="shortcut icon" href="favicon.ico?r=8" id="favicon"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
   <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
@@ -25,13 +25,14 @@
 		  	  <div id="mixbuilder-bar">
 		  	  <div id="songNum"><input class="topSongs-num" value="20"></div><div class="btn-group btn-input">
 				<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-					<span data-bind="label"> top songs by</span>&nbsp;<span class="caret"></span>
+					<span data-bind="label"> song quickmix</span>&nbsp;<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li id="drop-topSongs"><a href="javascript:void();"> top songs by</a></li>
 					<li id="drop-similarSongs"><a href="javascript:void();"> songs similar to</a></li>
+					<li id="drop-quickMix"><a href="javascript:void();"> song quickmix</a></li>
                  </ul>
-               </div><input id="topSongs-artist" placeholder="Artist"><input id="similarSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-song" placeholder="Song Title" style="display:none;"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+               </div><input id="topSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-song" placeholder="Song Title" style="display:none;"><input id="similarSongs-artistOnly" placeholder="Artist (Create mix based on artist, 100 song limit)"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
               </div>
 				<div id="queryarea" class="ui-widget">
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List"> 
