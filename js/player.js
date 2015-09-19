@@ -386,6 +386,7 @@ var pastBlasts = {
 
 
 $(document).ready(function() {
+
 	//hide pastBlasts if user clicks background
    //$("#body-container, #query, .gradient-background, #foot-wrap").click(function(e) {
    	$("body").click(function(e) {
@@ -455,6 +456,9 @@ $(document).ready(function() {
 		last_similarArtist = $('#similarSongs-artistOnly').val();
 		localStorage.setItem('last_similarArtist_quickMix', last_similarArtist);
 	});
+
+	$("#similarSongs-artistOnly").focus();
+	$("#similarSongs-artistOnly").select();
 
 	$("#search-button").click(function(){
 		multiSearch();

@@ -270,6 +270,7 @@ $("#topSongs-artist, #topSongs-num, #similarSongs-artist, #similarSongs-song, #s
 $("#topSongs-artist, #topSongs-num, #similarSongs-artist, #similarSongs-song, #similarSongs-artistOnly").click(function (e){
 	$(this).select();this.setSelectionRange(0, 9999);
 });
+
 $("#mixbuilder-search-button").click(function(){
  	if (search.dropVal == 'drop-topSongs') {
 		mixBuilder($("#topSongs-artist").val(),'');
