@@ -20,10 +20,10 @@
 	<div id="body-container">
 	<span class="gradient-background"></span>
 	  <div id="body-column">
-		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo8.png" data-toggle="tooltip" data-placement="right" title="&quot;You'll Have a Blast&quot;"></a></div>
+		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo9.png" data-toggle="tooltip" data-placement="right" title="&quot;You'll Have a Blast&quot;"></a></div>
 		  <div id="text-container">
 		  	  <div id="mixbuilder-bar">
-		  	  <div id="songNum"><input class="topSongs-num" value="20"></div><div class="btn-group btn-input">
+		  	  <div id="songNum"><input id="topSongs-num" value="20"></div><div class="btn-group btn-input">
 				<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
 					<span data-bind="label"> Song QuickMix</span>&nbsp;<span class="caret"></span>
 				</button>
@@ -32,7 +32,7 @@
 					<li id="drop-similarSongs"><a href="javascript:void();"> Songs Similar To</a></li>
 					<li id="drop-quickMix"><a href="javascript:void();"> Song QuickMix</a></li>
                  </ul>
-               </div><input id="topSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-song" placeholder="Song Title" style="display:none;"><input id="similarSongs-artistOnly" placeholder="Artist (Create mix based on artist, 100 song limit)"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+               </div><input id="topSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-song" placeholder="Song Title" style="display:none;"><input id="similarSongs-artistOnly" placeholder="Artist (100 song limit, create mix based on artist)" autocomplete="off"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
               </div>
 				<div id="queryarea" class="ui-widget">
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List"> 

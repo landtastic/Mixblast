@@ -425,10 +425,10 @@ $(document).ready(function() {
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
-	if ($.trim(songnum_text) === '') songnum_text = 100;
-	$("#topSongs-artist").val(songnum_text);
-	$("#topSongs-artist").blur(function() {
-		how_many_songs = $('#topSongs-artist').val();
+	if ($.trim(songnum_text) === '') songnum_text = 20;
+	$("#topSongs-num").val(songnum_text);
+	$("#topSongs-num").blur(function() {
+		how_many_songs = $('#topSongs-num').val();
 		localStorage.setItem('how_many_songs', how_many_songs);
 	});
 	var artist_text = localStorage.getItem('artist');
@@ -449,6 +449,12 @@ $(document).ready(function() {
 		last_similarSong = $('#similarSongs-song').val();
 		localStorage.setItem('last_similarSong', last_similarSong);
 	});
+	var last_similarArtist_quickMix = localStorage.getItem('last_similarArtist_quickMix');
+	$("#similarSongs-artistOnly").val(last_similarArtist_quickMix);
+	$("#similarSongs-artistOnly").blur(function() {
+		last_similarArtist = $('#similarSongs-artistOnly').val();
+		localStorage.setItem('last_similarArtist_quickMix', last_similarArtist);
+	});
 
 	$("#search-button").click(function(){
 		multiSearch();
@@ -464,9 +470,10 @@ $(document).ready(function() {
 	//hide playlist url until button is clicked
 	$("#playlist-url").hide();
 
-	//$('input[name=topSongs-num]').val($('.topSongs-num').val());
-
-	$('[data-toggle="tooltip"]').tooltip();
+	//$('input[name=topSongs-num]').val($('#topSongs-num').val());
+	if(!('ontouchstart' in window)) {
+		$('[data-toggle="tooltip"]').tooltip();
+	}
 
 	//email link
 	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";

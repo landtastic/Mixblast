@@ -531,7 +531,7 @@
 		white-space: nowrap;
 		padding: 8px;
 	}
-	.topSongs-num {
+	#topSongs-num {
 		font-size:20px;
 		color: #fff;
 		background-color: rgba(0,0,0,0.1); 
@@ -542,8 +542,8 @@
 		width:37px;
 		text-align: center;
 	}
-	#drop-topSongs .topSongs-num { color: #000;}
-	#drop-similarSongs .topSongs-num { color: #000;}
+	#drop-topSongs #topSongs-num { color: #000;}
+	#drop-similarSongs #topSongs-num { color: #000;}
 	#topSongs-artist, #similarSongs-artistOnly {
 		color: #000;
 		width: 91.5%;
@@ -898,7 +898,7 @@
 		font-size: 160%!important; 
 		height: 68px;
 	}
-	.topSongs-num { 
+	#topSongs-num { 
 		font-size:31px; 
 		width: 39px;
 	}
