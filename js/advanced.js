@@ -338,7 +338,6 @@ $(function() {
 		},
 		select: function( event, ui ) {
 		  var terms = split( this.value );
-		  alert('hey');
 		  // remove the current input
 		  terms.pop();
 		  // add the selected item
@@ -349,7 +348,8 @@ $(function() {
 			var originalEvent = event;
 			while (originalEvent) {
 			if (originalEvent.keyCode == 13)
-				originalEvent.stopPropagation();
+
+				//originalEvent.stopPropagation();
 
 			if (originalEvent == event.originalEvent)
 				break;
