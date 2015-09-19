@@ -68,6 +68,7 @@ function multiSearch() {
 	//erase previous search
 	$( "#search-container" ).empty();
 	$('#errormsg').hide();
+	$('#advanced-container').hide();
 	$('#youtube-playlist-container').show();
 	$('#ytPlayer-thumb-close').show();
 	$("#shuffletext").hide();

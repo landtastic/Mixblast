@@ -769,7 +769,7 @@
 	.ui-menu-item {
 		padding:2px;
 		width:233px;
-		margin-left:-40px;
+		margin-left: 0px;
 		background-color: rgba(255,255,255,0.95);
 	}
 	li.ui-menu-item:hover {
