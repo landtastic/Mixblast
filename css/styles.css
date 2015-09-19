@@ -763,7 +763,8 @@
 		font-size:10px;
 	}
 	.ui-autocomplete {
-		position: absolute!important;
+		/*position: absolute!important;*/
+		padding-left: 0px;
 	}
 	.ui-helper-hidden-accessible { display:none; }
 	.ui-menu-item {

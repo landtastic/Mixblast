@@ -67,7 +67,6 @@ function multiSearch() {
 	$('#button-container').show();
 	//erase previous search
 	$('#search-container').empty();
-	$('#mixbuilder-bar').css("visibility", "hidden");
 	$('#errormsg').hide();
 	$('#advanced-container').hide();
 	$('#youtube-playlist-container').show();
@@ -358,11 +357,12 @@ function editSearchTerm(lineNumber) {
 		$("#shuffletext").show();
 	} else if (toggleEditText.indexOf("Close Editor") > -1) {
 		$("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
-		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast');
+		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast', function() {
+			$('#mixbuilder-bar').css("visibility", "hidden");
+  		});
 		$('#query').animate({height: queryHeight}, 'fast');
 		$("#related-container").hide();
 		$("#ytPlayer-thumb-close").hide();
-		$('#mixbuilder-bar').css("visibility", "hidden");
 		$("#blast-button-container").css("visibility", "hidden");
 		$("#shuffletext").hide();
 	}
