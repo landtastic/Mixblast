@@ -765,6 +765,8 @@
 	.ui-autocomplete {
 		/*position: absolute!important;*/
 		padding-left: 0px;
+		width:233px;
+		/*height:90%;*/
 	}
 	.ui-helper-hidden-accessible { display:none; }
 	.ui-menu-item {
