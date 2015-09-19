@@ -329,7 +329,9 @@ $("#shuffletext").click(function(){
 	$('#query').val(randomlines);
 
 });
-
+$("#query-clear").click(function(){
+	$("#query").val('');
+});
 
 $("#editplaylist").click(function(){
 	editSearchTerm(0);

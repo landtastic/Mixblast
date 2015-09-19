@@ -47,7 +47,7 @@
 		/*overflow: auto;*/
 		/*padding-bottom: 100px*/
 	}
-	#shuffletext {
+	#shuffletext,#query-clear {
 		position: absolute;
 		z-index: 300;
 		display: block;
@@ -58,6 +58,15 @@
 		vertical-align: middle;
 		cursor: pointer;
 		margin-right: 27px;
+	 }
+	 #shuffletext {
+	 	right: 50px;
+	 }
+	 #query-clear {
+	 	top: auto;
+		color: #444444;
+		font-size: 25px;
+		text-decoration: none;
 	 }
 	#player-container{
 		position: absolute;
@@ -325,9 +334,8 @@
 	}
 	#prevb, #nextb, #playpb { height:50px;margin-top:10px;}
 	#shuffb { height: 70px;}
-	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover, #mixbuilder-search-button:hover {
+	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover, #query-clear:hover, #mixbuilder-search-button:hover {
 		opacity:1.0;
-		color:white;
 		-webkit-filter: invert(100%);
 		filter:invert(100%); 
 	}
@@ -376,6 +384,9 @@
 	}
 	img#wrongsong {
 		vertical-align: bottom;
+	}
+	#wrongsong:hover {
+		color:white;
 	}
 	#edit-playlist-icon {
 		font-size:23px; 
@@ -955,7 +966,8 @@
 	}
 	#rss-dropdown { width:80px; vertical-align: middle;}
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
-	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-right: 23px;}
+	#shuffletext { height: 55px; width: 55px; vertical-align: top; margin-right: 50px;}
+	#query-clear { font-size: 55px; bottom: 110px; right: 15px; }
 	#button-container { 
 		text-align: -webkit-auto!important; 
 		text-align: auto!important;
