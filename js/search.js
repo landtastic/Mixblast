@@ -329,6 +329,7 @@ $("#shuffletext").click(function(){
 	$('#query').val(randomlines);
 
 });
+//todo: undo clear list
 $("#query-clear").click(function(){
 	$("#query").val('');
 });
