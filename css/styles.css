@@ -463,6 +463,7 @@
 	}
 	#mixbuilder-bar {
 		display: inline-block; 
+		position:relative;
 		white-space: nowrap;
 	}
 	#mixbuilder-search-button { 
@@ -773,17 +774,22 @@
 	#api-about {
 		font-size:10px;
 	}
+	#container {
+    display: block; 
+    position:relative
+} 
 	.ui-autocomplete {
-		/*position: absolute!important;*/
+		position: absolute;
 		padding-left: 0px;
-		width:233px;
+		/*width:233px;*/
+		z-index: 302;
 		/*height:90%;*/
 	}
 	.ui-helper-hidden-accessible { display:none; }
 	.ui-menu-item {
-		padding:2px;
-		width:233px;
-		margin-left: 0px;
+		padding:5px;
+		padding-left: 13px;
+		/*width:233px;*/
 		background-color: rgba(255,255,255,0.95);
 	}
 	li.ui-menu-item:hover {

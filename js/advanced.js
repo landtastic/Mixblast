@@ -337,6 +337,7 @@ $(function() {
 		  return false;
 		},
 		select: function( event, ui ) {
+			alert($this);
 		  var terms = split( this.value );
 		  // remove the current input
 		  terms.pop();
@@ -347,15 +348,13 @@ $(function() {
 		  this.value = terms.join( "\n" );
 			var originalEvent = event;
 			while (originalEvent) {
-			if (originalEvent.keyCode == 13)
+				if (originalEvent.keyCode == 13) originalEvent.stopPropagation();
 
-				//originalEvent.stopPropagation();
-
-			if (originalEvent == event.originalEvent)
-				break;
-			originalEvent = event.originalEvent;
+				if (originalEvent == event.originalEvent) break;
+				originalEvent = event.originalEvent;
 			}
 		  return false;
-		}
+		},
+		appendTo: "#mixbuilder-bar"
 	});
 });

@@ -297,7 +297,7 @@ var showRelated =  {
 					artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="showRelated.addSongs(\''+ curArtist +'\')">' + item.name + '</a>';
 					if (i < data.similarartists.artist.length-1) artistList += " ";
 				});
-				$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add <span id='similarNum'>"+ $("#topSongs-num").val() +"</span> Songs By Similar Artist:</span> "+artistList);
+				$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add <span id='similarNum'>"+ $("#topSongs-num").val() +"</span> Songs By A Similar Artist:</span> "+artistList);
 			} else {
 				$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 			}
