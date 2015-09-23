@@ -383,9 +383,9 @@ $("#closeAdvanced").click(function(){
 });
 
 function editSearchTerm(lineNumber) {
-	var mobile_width = 795, vidTop = '-72px', vidWidth = '100%', thumbTop = '0px', queryHeight = '222px';
+	var mobile_width = 795, vidTop = '-72px', vidWidth = '100%', thumbTop = '0px', queryHeight = '200px';
 	if ($(window).width() < mobile_width) { 
-		vidTop = '-100px'; vidWidth = '100%'; thumbTop = '0px'; 
+		vidTop = '-100px'; vidWidth = '100%'; thumbTop = '0px'; queryHeight = '180px';
 	}
 	var toggleEditText = $("#editplaylist").html();
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
@@ -394,18 +394,18 @@ function editSearchTerm(lineNumber) {
 		$('#query').animate({height: '345px'}, 'fast');
 		$("#related-container").show();
 		$("#ytPlayer-thumb-close").show();
-		$('#mixbuilder-bar').css("visibility", "visible");
 		$("#blast-button-container").css("visibility", "visible");
+		$('#mixbuilder-bar').css("visibility", "visible");
 		$("#shuffletext").show();
 	} else if (toggleEditText.indexOf("Close Editor") > -1) {
 		$("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
 		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast', function() {
 			$('#mixbuilder-bar').css("visibility", "hidden");
+			$("#blast-button-container").css("visibility", "hidden");
   		});
 		$('#query').animate({height: queryHeight}, 'fast');
 		$("#related-container").hide();
 		$("#ytPlayer-thumb-close").hide();
-		$("#blast-button-container").css("visibility", "hidden");
 		$("#shuffletext").hide();
 	}
 	/*
