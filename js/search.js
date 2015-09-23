@@ -148,6 +148,44 @@ function mixBuilder(artistName,trackName) {
 		showRelated.artists(artistName);
 }
 
+var loadMixText = (function () {
+	var JSONtoText = function (url, dataName) {
+		$.getJSON(url, function(data) {
+			var songlist = songlist || '';
+			if ((data.toptracks != undefined) && (data.toptracks.track != undefined)) {
+				$.each(data.toptracks.track, function(i, item) {
+					songlist += artistName + " - " + item.name + "\n";
+				});
+
+				if (search.count === undefined) {
+					$('#query').val(songlist);
+					search.count = 0;
+				} else {
+					$('#query').val($('#query').val() + songlist);
+				}
+				
+				 //$('#search-button').trigger( "click" );
+				var textarea = document.getElementById('query');
+				if (!search.isDefaultMsg) var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
+			} else {
+				$('#errormsg').show();
+				$('#errormsg').html(': ( <br><br>Error loading videos by: '+artistName+'<br><br>Check spelling?');
+			}
+		});
+	};
+	var song_num = $("#topSongs-num").val();
+
+	return  {
+		allSongsBy: function (artistName) {
+		  console.log(JSONtoText);
+		},
+		similarTrackPlaylist: function() {
+
+		}
+	};
+})();
+    
+
 function allSongsBy(artistName) {
 	var song_num = $("#topSongs-num").val();
 	$.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?", function(data) {

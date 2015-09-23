@@ -17,7 +17,7 @@
   </head>
   <body>
 	<div id="pb-menu"></div>
-	<div id="body-container">
+	<div id="body-container" class="container-fluid">
 	<span class="gradient-background"></span>
 	  <div id="body-column">
 		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo9.png" data-toggle="tooltip" data-placement="right" title="&quot;You'll Have a Blast&quot;"></a></div>
@@ -32,10 +32,10 @@
 					<li id="drop-similarSongs"><a href="javascript:void();"> Songs Similar To</a></li>
 					<li id="drop-quickMix"><a href="javascript:void();"> Song QuickMix</a></li>
                  </ul>
-               </div><input id="topSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-song" placeholder="Song Title" style="display:none;"><input id="similarSongs-artistOnly" placeholder="Artist (100 song limit, create mix based on artist)" autocomplete="off"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+               </div><input id="topSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-artist" placeholder="Artist" style="display:none;"><input id="similarSongs-song" placeholder="Song Title" style="display:none;"><input id="similarSongs-artistOnly" placeholder="Artist" autocomplete="off" title="Create mix based on artist (100 song limit)"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
               </div>
 				<div id="queryarea" class="ui-widget">
-				 	<div id="query-clear" class="glyphicon glyphicon-remove-circle" alt="Clear List" data-toggle="tooltip" title="Clear List"></div>
+				 	<div id="query-clear" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Clear List"></div>
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List"> 
 		  			<div id="player-container" style="display:none;">
 						<!--<div id="ytPlayer"></div>-->
@@ -54,13 +54,13 @@ Use the MixBuilder above, or just type a list here. (Or copy &amp; paste)
 
 Then click "Blast a Mix" to make a playlist.</textarea>
 					<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
-					<div id="blast-button-container">
-						<div id="errormsg" style="display:none;"></div>
-						<div class="advancedFloater">
-							<button class="pb-button-sm" id="pb-button" data-toggle="tooltip" title="Recent History"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button> &nbsp;  
-							<button class="infolink" data-toggle="tooltip" title="Info"></button> &nbsp; <button id="advanced" data-toggle="tooltip" data-placement="bottom">Advanced Options</button> &nbsp;&nbsp; 
+					<div id="blast-button-container" class="container-fluid">
+						<div class="row">
+							<div class="col-xs-8 nopadding">
+								<button class="pb-button-sm leftBottom" id="pb-button" data-toggle="tooltip" title="Recent History"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button> &nbsp;  
+								<button class="infolink leftBottom" data-toggle="tooltip" title="Info"></button> &nbsp; <button id="advanced" class="leftBottom" data-toggle="tooltip" data-placement="bottom">Advanced Options</button> &nbsp;&nbsp; 
 								<div id="rss-container">
-								<select id="rss-dropdown" data-toggle="tooltip" title="RSS Feeds">
+								<select id="rss-dropdown" class="leftBottom" data-toggle="tooltip" title="RSS Feeds">
 									<option value="">&#9835; Feeds</option>
 									<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
 									<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
@@ -109,11 +109,14 @@ Then click "Blast a Mix" to make a playlist.</textarea>
 									<option value="http://feeds.feedburner.com/RecentlyRatedAlbums-AlbumOfTheYear?format=xml">AOTY Recently Rated</option>
 								</select> 
 								</div>
-
+							</div>
+							<div class="col-xs-4 nopadding">
+								<button id="search-button" disabled class="leftBottom">Blast a Mix</button>
+							</div>
 						</div>
-						<button id="search-button" disabled>Blast a Mix</button>
 					</div>
 				</div>
+				<div id="errormsg" style="display:none;"></div>
 				<div id="related-container" style="display:none;"></div>
 		  	</div>
 			<div id="advanced-container" style="display:none;"><hr class="advanced-top">

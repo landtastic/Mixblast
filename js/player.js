@@ -284,11 +284,6 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 $('#pb-menu').on('click', '.pb-delete', function(event) {
 	pastBlasts.delete(this.id);
 	event.stopPropagation();
-	/*
-	$(this).parent().css("background:red!important;");
-	console.log($(this).parent().html());
-	console.log(this);
-	*/
 });
 
 var pastBlasts = {
