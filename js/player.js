@@ -421,7 +421,7 @@ $(document).ready(function() {
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
-	if (isNaN($.trim(songnum_text))) songnum_text = 20;
+	if (isNaN($.trim(songnum_text)) || $.trim(songnum_text == '')) songnum_text = 20;
 	$("#topSongs-num").val(songnum_text);
 	$("#topSongs-num").blur(function() {
 		how_many_songs = $('#topSongs-num').val();

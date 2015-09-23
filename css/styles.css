@@ -646,6 +646,11 @@
 	#infoear {
 		height:90px;
 	}
+	#blast-button-container {
+		padding-right: 47px;
+		height: 67px;
+		vertical-align: bottom;
+	}
 	#search-button,#playlist-button {
 		color: #000;
 		height: 52px;
