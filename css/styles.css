@@ -531,6 +531,7 @@
 	}
 	#topSongs-num {
 		font-size:20px;
+		font-size-adjust: 0.5;
 		color: #fff;
 		background-color: rgba(0,0,0,0.1); 
 		border:0px;
