@@ -1,5 +1,6 @@
 	html {
-  		height: 100%;
+  		display:block;
+  		height:100%;
   		box-sizing: border-box;
 	}
 	*,	*:before,	*:after {
@@ -224,6 +225,9 @@
 	  border-top: 1px dotted rgba(0, 0, 0, 0.5);
 	  clear: both;
 	}
+	button#advanced .glyphicon {
+		font-size:smaller;
+	}
 	.advanced-top{
 	  margin-top:0px;
 	  padding-top:0px;
@@ -237,7 +241,8 @@
 	#logo {
 		max-width:100%;
 		display: block; 
-		margin-bottom:10px;
+		margin-bottom:30px;
+		margin-top:20%;
 	}
 	/*
 	#logo:before {
@@ -448,14 +453,15 @@
 		/*background-color: rgb(159, 150, 160);*/
 	}
 	#mixbuilder-bar {
-		display: inline-block; 
+		display: inline-block;
 		position:relative;
+		margin-bottom: 22px;
 		white-space: nowrap;
 	}
-	#mixbuilder-search-button { 
+	#mixbuilder-search-button {
 		background: url(../img/add-icon.svg) no-repeat;
 		background-size: 39%;
-		background-position: 50% 50%; 
+		background-position: 50% 50%;
 		background-color: rgb(255, 255, 255);
 		width: 51px;
 		height: 44px;
@@ -463,7 +469,8 @@
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		cursor: pointer;
-		margin-bottom: 22px;
+		margin-left: -51px;
+		display: none;
 	}
 	div.btn-group.btn-input, #songNum {
 		color: #fff;
@@ -545,8 +552,8 @@
 	#drop-similarSongs #topSongs-num { color: #000;}
 	#topSongs-artist, #similarSongs-artistOnly {
 		color: #000;
-		width: 91.5%;
-		border-radius: 0px 0px 0px 0px;
+		width: 114.2%;
+		border-radius: 0px 5px 5px 0px;
 		background-color: rgba(255,255,255,0.7);
 		font-size: 18px;
 		height: 44px;
@@ -566,15 +573,17 @@
 		border: 0px;
 		padding-left: 13px;
 		padding-right: 5px;
-		border-radius: 0px 0px 0px 0px;
+		border-radius: 0px 5px 5px 0px;
 	}
 	#similarSongs-artist {
 		width: 29.1%;
+		border-radius: 0px 0px 0px 0px;
 	}
 	#similarSongs-song {
-		width: 34%;
+		width: 46%;
 		border-left: 1px solid #888888;
 		border-width: thin;
+		border-radius: 0px 5px 5px 0px;
 	}
 	#related-container {
 		font-size: 15px;
@@ -611,6 +620,7 @@
 		cursor: pointer;
 	}
 	.infolink, .pb-button-sm {	
+		position:relative;
 		width:24px;
 		/*padding-left:4px;
 		padding-right:5px;
@@ -627,10 +637,21 @@
 		display: inline-block;
 		margin-left: -3px;
 	}
+	/* extend clickable area for 3d buttons */
+	.infolink:after, .pb-button-sm:after, #advanced:after, #rss-dropdown:after, #search-button:after {
+		content:'';
+		position:absolute;
+		top:-11px; bottom:-11px;
+		left:-11px; right:-11px;
+	}
+
 	#infodiv {
 		padding:40px;
 		margin-top:-47px;
-		height: 1000px;
+		/* height: 1000px; */
+		/* width: 100%; */
+		/* height: 200%; */
+		/* min-height:100%; */
 	}
 	#infoear {
 		height:90px;
@@ -639,7 +660,7 @@
 		padding-top: 5px;
 		padding-left: 25px;
 		padding-right: 20px;
-		height: 111px;
+		height: 88px;
 		vertical-align: bottom;
 	}
 	#search-button,#playlist-button {
@@ -709,7 +730,7 @@
 		display: inline-block;
 		border-radius: 5px;
 		color: #000;
-		font-size: 120%;
+		font-size: 110%;
 		background-color: rgba(255,255,255,0.3);
 		padding:10px;
 	}
@@ -861,11 +882,9 @@
 	#logo {
 		min-width: 200px;
 		clear: both;
-		padding-bottom: 20px;
-		margin-top: 19px;
 	}
 	#pb-menu {padding-top: 70px; top:-19px;}
-	#pb-text, #infodiv { 
+	#pb-text, #infodiv {
 		font-size: 22px;
 	}
 	.pb-module { font-size: 25px; }
@@ -896,13 +915,17 @@
 	}
 	textarea#query:focus { font-size: 180%!important; }
 	#shuffletext, #query-clear {
-		bottom: 130px;
+		bottom: 150px;
 		height: 50px;
 		width: 50px;
 		font-size: 50px;
 		margin-right: 40px;
 	}
 	#shuffletext { margin-right: 80px;}
+	.spacer {
+		height: 100px;
+	}
+	#blast-button-container { height:126px; }
 	#search-button, #playlist-button {
 		font-size: 160%;
 		height: 80px;
@@ -951,7 +974,7 @@
 		width: 8.33333333%!important;
 	}
 	.col-xs-3 {
-		width: 25%!important;
+		width: 30%!important;
 	}
 	#advanced, .infolink, #rss-dropdown, #pb-button {
 		display: inline-block;
@@ -967,7 +990,7 @@
     	margin-top: -5px;
 	}
 	#advanced { 
-		width: 134px;
+		width: 164px;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: clip;
@@ -990,7 +1013,7 @@
 		height: 30px;
 	}
 	#rss-container {
-		width: 20.5%!important;
+		width: 15.5%!important;
 	}
 	#rss-dropdown { width:80px; vertical-align: middle;}
 	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
@@ -1045,7 +1068,7 @@
 		width:100%;
 	}
 	#foot {
-		position: inherit;
+		/*position: inherit;*/
 		width: 100%;
 	} 
   	#emailme {

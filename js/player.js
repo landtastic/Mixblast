@@ -41,6 +41,8 @@ function onPlayerError(event){
 	 }
 }
 function onPlayerStateChange(event) {
+	console.log(event.data);
+	if ((event.data == 3) && (search.playcount <=0)) console.log('first vid done.');
 	if (event.data != 1) {
 		$("#playpb").attr("src","img/media_play.png");
 	} else {
@@ -401,8 +403,10 @@ $(document).ready(function() {
 	$("#query").focus(function() {
 		if (this.value == this.defaultValue) {
 			this.value = "";
+			$("#query").css("color","#999");
 			search.isDefaultMsg = true;
 		} else {
+			$("#query").css("color","#000");
 			search.isDefaultMsg = false;
 		}
 	});
@@ -412,16 +416,21 @@ $(document).ready(function() {
 			mixfile = $('#query').val();
 	 		localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 		//console.log(mixfile);
+	 		$("#query").css("color","#000");
 	 		search.isDefaultMsg = false;
 	 	}
 		if (this.value == "") {
 			this.value = this.defaultValue;
+			$("#query").css("color","#999");
 			search.isDefaultMsg = true;
 		}
 	});
+	$("#query").click(function() {
+		$("#query").css("color","#000");
+	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
-	if (isNaN($.trim(songnum_text)) || $.trim(songnum_text == '')) songnum_text = 20;
+	if (isNaN($.trim(songnum_text))) songnum_text = 40; if (songnum_text == '') songnum_text = 40;
 	$("#topSongs-num").val(songnum_text);
 	$("#topSongs-num").blur(function() {
 		how_many_songs = $('#topSongs-num').val();

@@ -71,7 +71,11 @@ function multiSearch() {
 	$('#advanced-container').hide();
 	$('#youtube-playlist-container').show();
 	$('#ytPlayer-thumb-close').show();
-	$('#shuffletext').hide();
+	$("#mixbuilder-search-button").show();
+	//$('#shuffletext').hide();
+	$('html, body').animate({
+        scrollTop: $("#text-container").offset().top
+    }, 500);
 	//$("#closebutton-thumb").html("<img src='"+ search.topvThumbArray[0] +"' id='thumb'>"); 
 	if (search.topvIdArray) {
 		search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
@@ -236,7 +240,16 @@ function similarTrackPlaylist(artistName,trackName) {
 			$('#errormsg').show();
 			$('#errormsg').html(': ( <br><br>Error loading similar songs. <br><br>Check spelling?'); 
 		}
-	});	
+	})
+	.done(function() {
+		console.log( "second success" );
+	})
+	.fail(function() {
+		console.log( "error" );
+	})
+	.always(function() {
+		console.log( "complete" );
+	});
 }
 function similarArtistPlaylist(artistName) {
 	var song_num = $("#topSongs-num").val();
@@ -397,8 +410,11 @@ function editSearchTerm(lineNumber) {
 		$("#blast-button-container").css("visibility", "visible");
 		$('#mixbuilder-bar').css("visibility", "visible");
 		$("#shuffletext").show();
+		$("#query-clear").show();
 	} else if (toggleEditText.indexOf("Close Editor") > -1) {
 		$("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
+		$("#query").show();
+		$("#logo").animate({marginTop: "2%",'marginBottom': '10px'}, "fast");
 		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast', function() {
 			$('#mixbuilder-bar').css("visibility", "hidden");
 			$("#blast-button-container").css("visibility", "hidden");
