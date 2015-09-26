@@ -41,8 +41,8 @@ function onPlayerError(event){
 	 }
 }
 function onPlayerStateChange(event) {
-	console.log(event.data);
-	if ((event.data == 3) && (search.playcount <=0)) console.log('first vid done.');
+	//console.log(event.data);
+	//if ((event.data == 1) && (search.playcount == 0)) console.log('first vid done.');
 	if (event.data != 1) {
 		$("#playpb").attr("src","img/media_play.png");
 	} else {

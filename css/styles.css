@@ -35,9 +35,9 @@
 		outline:0;
 	}
 	#body-container {
-		min-height:100%;		
+		min-height:100%;
 		min-width:100%;
-		/*height:100%;*/
+		height:100%;
 		margin: 0 auto;
 		/*max-width: 700px;*/
 	}
@@ -174,7 +174,7 @@
 		}
 	}
 
-	#text-container { width:100%; }
+	#text-container { position: relative;width:100%; }
 	textarea#query,input,button {
 		font-family: 'Roboto', sans-serif;
 		font-size: 18px;
@@ -269,9 +269,12 @@
 		cursor: pointer;
 		text-decoration: none;
 		font-size:35px;
-		float: right;
-		margin-top: -12px;
-		padding-right: 1px;
+		position: absolute;
+		z-index: 300;
+		display: block;
+		margin-right: 8px;
+		right: 0px;
+		top: 0px;
 	}
 	#closeAdvanced:hover { color: #fff;}
 	.swapzone {
@@ -471,6 +474,8 @@
 		cursor: pointer;
 		margin-left: -51px;
 		display: none;
+		z-index: 299;
+		position: relative;
 	}
 	div.btn-group.btn-input, #songNum {
 		color: #fff;
@@ -518,6 +523,7 @@
 		border-radius: 0px 0px 0px 0px;
 		text-align: left;
 		padding-left: 3px;
+		color: #fff;
 	}
 	#songNum {
 		border-radius: 5px 0px 0px 5px;
@@ -580,7 +586,7 @@
 		border-radius: 0px 0px 0px 0px;
 	}
 	#similarSongs-song {
-		width: 46%;
+		width: 46.1%;
 		border-left: 1px solid #888888;
 		border-width: thin;
 		border-radius: 0px 5px 5px 0px;
@@ -712,12 +718,13 @@
 	.righty { width:38%; float: right; }
 	#playlist-status { width:99.4%px; padding-top: 20px;}
 	#advanced-container {
+		position: relative;
 		margin-top: 13px;
 		display: inline-block;
 		font-size:14px;
 		font-weight:normal;
 		margin-left: 3px;
-		background-color: rgba(255,255,255,0.1); 
+		background-color: rgba(255,255,255,0.1);
 	}
 	.checkbox-label {
 		font-weight: normal;
@@ -878,6 +885,7 @@
 	}
 	#body-column{
 		width:97%;
+		min-width: 240px;
 	}
 	#logo {
 		min-width: 200px;
@@ -910,12 +918,16 @@
 	#query {
 		height: 575px;
 	}
+	#mixbuilder-bar {
+		width: 100%;
+		/* min-width: 320px; */
+	}
 	textarea#query,#playlist-title {
 		font-size: 180%!important;
 	}
 	textarea#query:focus { font-size: 180%!important; }
 	#shuffletext, #query-clear {
-		bottom: 150px;
+		bottom: 177px;
 		height: 50px;
 		width: 50px;
 		font-size: 50px;
@@ -923,7 +935,7 @@
 	}
 	#shuffletext { margin-right: 80px;}
 	.spacer {
-		height: 100px;
+		height: 73px;
 	}
 	#blast-button-container { height:126px; }
 	#search-button, #playlist-button {
@@ -958,9 +970,9 @@
 		font-size:31px; 
 		width: 39px;
 	}
-	#topSongs-artist, #similarSongs-artistOnly { width: 40%; }
-	#similarSongs-artist { width: 20%; }
-	#similarSongs-song { width: 19.7%; }
+	#topSongs-artist, #similarSongs-artistOnly { width: 49%; z-index: 40;}
+	#similarSongs-artist { width: 25.4%; }
+	#similarSongs-song { width: 23.7%; }
 	#mixbuilder-search-button {
 		padding: 0px 0px 0px 0px;
 		width:9.5%;
@@ -1076,7 +1088,15 @@
   		padding-left:10px;
   	}
 }
+@media only screen and (max-width:400px){
 
+	#mixbuilder-bar {
+		display: inherit;
+		transform: scale(0.6);
+		transform-origin: 0px 0px;
+		width: 145%;
+	}
+}
 	
 	/*========== GRADIENT BACKGROUND ==========*/
 	.gradient-background {
@@ -1092,8 +1112,7 @@
 	  -o-transition: background .3s;
 	  transition: background .3s;
 	  background-color: #ccc;
-	  /*background-color: #7fc5c9;*/
-	  /*top colour*/
+	  /*background-color: #7fc5c9;*//*top colour*/
 	  /*background-image: linear-gradient(#7fc5c9, #deabbe);
 	  background-image: -webkit-linear-gradient(top, #7fc5c9, #deabbe);
 	  background-image: -moz-linear-gradient(top, #7fc5c9, #deabbe);
