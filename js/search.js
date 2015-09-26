@@ -296,7 +296,8 @@ var showRelated =  {
 	},
 	addSongs : function(curArtist) {
 		$('#topSongs-artist').val(curArtist);
-		allSongsBy(curArtist,null,false);
+		//allSongsBy(curArtist,null,false);
+		mixBuilder.render($.trim(curArtist),'');
 		return false;
 	}
 };
