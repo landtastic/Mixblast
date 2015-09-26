@@ -146,16 +146,16 @@ function multiSearch() {
 
 var mixBuilder = {
 	render : function (artistName,trackName) {
-		//console.log(artistName + '|' + trackName)
+		console.log(artistName + '|' + trackName)
 		if (search.isDefaultMsg) $('#query').val('');
 		$('#errormsg').hide();
 		if (!mixBuilder.fromFirstField) $("#related-container" ).show();
 		var song_num = $("#topSongs-num").val();
-		if (search.dropVal == 'drop-similarSongs') {
+		if (search.dropVal == 'drop-topSongs') {
 			//similarTrackPlaylist($.trim(artistName),$.trim(trackName));
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName)
 			search.isDefaultMsg = false;
-		} else if (search.dropVal == 'drop-topSongs'){
+		} else if (search.dropVal == 'drop-similarSongs'){
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist="+artistName+"&track="+trackName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName)
 			search.isDefaultMsg = false;
 		} else {
