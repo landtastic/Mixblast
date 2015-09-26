@@ -199,6 +199,13 @@ function getParameterByName(name) {
 }
 
 function parseXml(data) {
+	if ($('#mixbuilder-search-button').is(':hidden')) {
+		$("#query").show();
+		$("#shuffletext").show();
+		$("#query-clear").show();
+    	$("#logo").animate({ 'marginTop': '10px', 'marginBottom': '10px'}, 1000);
+    	$("#mixbuilder-search-button").show();
+	}
 	$("#query").val("");
 	var stripNums = false;
 	var stripParen = false;

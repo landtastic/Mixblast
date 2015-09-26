@@ -86,7 +86,7 @@ function multiSearch() {
 	$("#mixbuilder-search-button").show();
 	//$('#shuffletext').hide();
 	$('html, body').animate({
-        scrollTop: $("#text-container").offset().top
+        scrollTop: $("#ytPlayer").offset().top
     }, 500);
 	//$("#closebutton-thumb").html("<img src='"+ search.topvThumbArray[0] +"' id='thumb'>"); 
 	if (search.topvIdArray) {
