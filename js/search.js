@@ -380,7 +380,6 @@ function editSearchTerm(lineNumber) {
 		vidTop = '-100px'; vidWidth = '100%'; thumbTop = '0px'; queryHeight = '180px';
 	}
 	var toggleEditText = $("#editplaylist").html();
-	console.log(toggleEditText);
 	if (toggleEditText === '') toggleEditText = "Close Editor";
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		$("#player-container").animate({top: thumbTop, right: '21px', width: '95px', height: '71px'}, 'fast');

@@ -315,7 +315,7 @@ var pastBlasts = {
 		} else {
 			pastBlasts.needsUpdate = false;
 		}
-		return pastBlasts.allBlasts;
+		return pastBlasts.allBlasts.sort().reverse();
 	},
 	display : function() {
 		if (pastBlasts.needsUpdate) {
@@ -324,7 +324,7 @@ var pastBlasts = {
 				var date = new Date();
 				blasts = [date.toJSON()+'\n No History Yet. \n Playlists are auto-saved when you Blast a Mix.'];
 			} else {
-				if (blasts) blasts.sort().reverse();
+				//if (blasts) blasts.sort().reverse();
 			}
 			$('#pb-menu').html('<div id="pb-button"><img class="pb-button-big" src="img/past-blasts-icon.svg"> <span id="pb-text"></span></div>');
 			for (var i=0, max=blasts.length; i<max; i++) {
@@ -365,12 +365,13 @@ var pastBlasts = {
 		} else {
 			//blasts = JSON.parse(blasts);
 		}
-		var lastBlast = blasts[blasts.length-1];
-		console.log(lastBlast);
-		var date = new Date();
-		blasts.push(date.toJSON() + '\n' + pl_text + '\n');
-		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
-		pastBlasts.needsUpdate = true;
+		var lastBlast = blasts[0].split("\n").slice(1).join("\n");
+		if ($.trim(lastBlast) != $.trim(pl_text)) {
+			var date = new Date();
+			blasts.push(date.toJSON() + '\n' + pl_text + '\n');
+			localStorage.setItem("pastBlasts", JSON.stringify(blasts));
+			pastBlasts.needsUpdate = true;
+		}
 	},
 	delete : function(date_id) {
 		var blasts = pastBlasts.list();
@@ -481,7 +482,7 @@ $(document).ready(function() {
 		$("#shufflebutton").addClass("disabled");
 	 	mixfile = $('#query').val();
 	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
-	 	console.log(mixfile);
+	 	//console.log(mixfile);
 	});
 	$("#playlist-button").click(function(){
 		createPlaylist();
