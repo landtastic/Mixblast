@@ -42,7 +42,16 @@ function onPlayerError(event){
 }
 function onPlayerStateChange(event) {
 	//console.log(event.data);
-	//if ((event.data == 1) && (search.playcount == 0)) console.log('first vid done.');
+	/*
+	if ((event.data == 1) && (search.playcount == 0)) {
+		setTimeout(function(){ 
+			$('html, body').animate({
+				scrollTop: $("#ytPlayer").offset().top
+			}, 500);
+		 },5000);
+		console.log('first vid done.')
+	}
+	*/
 	if (event.data != 1) {
 		$("#playpb").attr("src","img/media_play.png");
 	} else {
@@ -262,6 +271,8 @@ $('#pb-button').click(function(e){
 //);
 
 $('#pb-menu').on('click', '.pb-module', function(event) {
+	search.isDefaultMsg = false;
+	$("#query").show(); $("#text-container").show(); $('#player-container').hide(); $("#mixbuilder-search-button").show();
 	var blasts = pastBlasts.list();
 	for (var i=0; i < blasts.length; i++) {
 	  if (/\S/.test(blasts[i])) {
@@ -281,7 +292,6 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 		}
 	  }
 	}
-	$("#text-container").show(); $('#player-container').hide();
 });
 $('#pb-menu').on('click', '.pb-delete', function(event) {
 	pastBlasts.delete(this.id);
@@ -355,6 +365,8 @@ var pastBlasts = {
 		} else {
 			//blasts = JSON.parse(blasts);
 		}
+		var lastBlast = blasts[blasts.length-1];
+		console.log(lastBlast);
 		var date = new Date();
 		blasts.push(date.toJSON() + '\n' + pl_text + '\n');
 		localStorage.setItem("pastBlasts", JSON.stringify(blasts));
@@ -430,7 +442,7 @@ $(document).ready(function() {
 	});
 
 	var songnum_text = localStorage.getItem('how_many_songs');
-	if (isNaN($.trim(songnum_text))) songnum_text = 40; if (songnum_text == '') songnum_text = 40;
+	if (isNaN($.trim(songnum_text))) songnum_text = 40; if (songnum_text === null) songnum_text = 40;
 	$("#topSongs-num").val(songnum_text);
 	$("#topSongs-num").blur(function() {
 		how_many_songs = $('#topSongs-num').val();
