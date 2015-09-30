@@ -696,6 +696,11 @@
 	  	box-shadow: 0px 0px 0px #D32F2F;
 	  	
 	}
+	.leftBottom-lb {
+		border: solid 1px #696969;
+		box-shadow: -1px 0px 0px #696969,-0px 1px 0px #696969, -2px 1px 0px #696969,-1px 2px 0px #696969, -3px 2px 0px #696969,-2px 3px 0px #696969, -4px 3px 0px #696969,-3px 4px 0px #696969, -5px 4px 0px #696969,
+		-4px 5px 0px #696969, -6px 5px 0px #696969,-5px 6px 0px #696969, -7px 6px 0px #696969,-6px 7px 0px #696969, -8px 7px 0px #696969,-7px 8px 0px #696969, -9px 8px 0px #696969,-8px 9px 0px #696969;	
+	}
 	.spacer {
 		height: 13px;
 	}

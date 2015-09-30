@@ -174,7 +174,8 @@ var mixBuilder = {
 	getJSON : function(apiURL,artistName,trackName) {
 		//var song_num = $("#topSongs-num").val();
 		$.getJSON(apiURL, function(data) {
-			if (!mixBuilder.songlist) mixBuilder.songlist = '';
+			//if (!mixBuilder.songlist) mixBuilder.songlist = '';
+			mixBuilder.songlist = '';
 			if ((data.toptracks != undefined) && (data.toptracks.track != undefined)) {
 				$.each(data.toptracks.track, function(i, item) {
 					mixBuilder.songlist += artistName + " - " + item.name + "\n";
@@ -201,9 +202,11 @@ var mixBuilder = {
 		})
 		.always(function() {
 			//overwrite text list if first search
-			if (search.count === undefined) {
+			if ((search.count === undefined)) {
 				$('#query').val(mixBuilder.songlist);
 				search.count = 0;
+			} else if (($.trim($("#query").val()) == '') || search.isDefaultMsg) {
+				$('#query').val(mixBuilder.songlist);
 			} else {
 				//add to list
 				$('#query').val($('#query').val() + mixBuilder.songlist);

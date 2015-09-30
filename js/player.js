@@ -425,18 +425,18 @@ $(document).ready(function() {
 	});
 
 	$("#query").blur(function() {
-		if (this.value != "") {
+		if (this.value == "") {
+			this.value = this.defaultValue;
+			$("#query").css("color","#999");
+			search.isDefaultMsg = true;
+		} else  {
 			mixfile = $('#query').val();
 	 		localStorage.setItem('mixfile', JSON.stringify(mixfile));
 	 		//console.log(mixfile);
 	 		$("#query").css("color","#000");
 	 		search.isDefaultMsg = false;
 	 	}
-		if (this.value == "") {
-			this.value = this.defaultValue;
-			$("#query").css("color","#999");
-			search.isDefaultMsg = true;
-		}
+
 	});
 	$("#query").click(function() {
 		$("#query").css("color","#000");
