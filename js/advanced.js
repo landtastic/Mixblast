@@ -258,6 +258,7 @@ function parseXml(data) {
 		}
 
 		if (searchTerms) {
+			console.log(searchTerms);
 			$("#query").val($("#query").val()+searchTerms+'\r');
 		}
 	});

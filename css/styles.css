@@ -94,8 +94,8 @@
 		/*top: 72px;*/
 		top: 0px;
 		right: 0px;
-		width: 95px;
-		height: 71px;
+		width: 160px;
+		height: 90px;
 		cursor:pointer;
 	}
 	#closebutton-thumb {
@@ -222,7 +222,8 @@
 		.font-effect-3d { font-weight: 900; }
 	hr {
 	  border: 0px;
-	  border-top: 1px dotted rgba(0, 0, 0, 0.5);
+	  /*border-top: 1px dotted rgba(0, 0, 0, 0.5);*/
+	  border-top: 1px solid rgba(0,0,0,.25);
 	  clear: both;
 	}
 	button#advanced .glyphicon {
@@ -292,14 +293,14 @@
 		left: 0;
 		display: inline-block;
 		text-align: left;
-		border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+		border-bottom: 1px solid rgba(0,0,0,.25);
 	}
 	.searchresult-div {
 		float: left;
 	}
 	.searchresult-title {
 			float: left;
-			width: 87%;
+			width: 86%;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			padding-top: 19px;

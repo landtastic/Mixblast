@@ -107,7 +107,9 @@ function multiSearch() {
 	if ((searchnum < 1) || search.isDefaultMsg) { 
 		$('#errormsg').show();
 		$('#errormsg').html('Put a list of songs into the textbox. <br>(Use the MixBuilder to add songs or just type a list)');
-		editSearchTerm(0); 
+		$("#query").val($("#query").prop("defaultValue")).css("color", "#999");
+		var t=setTimeout(function(){$('#editplaylist').trigger( "click" );},1000);
+		search.isDefaultMsg = true;
 		return false; 
 	}
 
@@ -142,7 +144,7 @@ function multiSearch() {
 
 var mixBuilder = {
 	render : function (artistName,trackName) {
-		console.log(artistName + '|' + trackName)
+		console.log(artistName + '|' + trackName + ':' + search.isDefaultMsg)
 		if (search.isDefaultMsg) $('#query').val('');
 		$('#errormsg').hide();
 		if (!mixBuilder.fromFirstField) $("#related-container" ).show();
@@ -323,7 +325,7 @@ var showRelated =  {
 					if (item.name) {
 						curArtist = item.name.replace(/["']/g, "\\'");
 					} else {
-						$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
+						//$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 					}
 					artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="showRelated.addSongs(\''+ curArtist +'\')">' + item.name + '</a>';
 					if (i < data.similarartists.artist.length-1) artistList += " ";
@@ -383,9 +385,8 @@ function editSearchTerm(lineNumber) {
 		vidTop = '-100px'; vidWidth = '100%'; thumbTop = '0px'; queryHeight = '180px';
 	}
 	var toggleEditText = $("#editplaylist").html();
-	if (toggleEditText === '') toggleEditText = "Close Editor";
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
-		$("#player-container").animate({top: thumbTop, right: '21px', width: '95px', height: '71px'}, 'fast');
+		$("#player-container").animate({top: thumbTop, right: '21px', width: '160px', height: '90px'}, 'fast');
 		$('#query').animate({height: '345px'}, 'fast');
 		$("#related-container").show();
 		$("#ytPlayer-thumb-close").show();
@@ -394,7 +395,7 @@ function editSearchTerm(lineNumber) {
 		$("#shuffletext").show();
 		$("#query-clear").show();
 		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
-	} else if (toggleEditText.indexOf("Close Editor") > -1) {
+	} else {
 		$("#query").show();
 		$("#logo").animate({marginTop: "2%",'marginBottom': '10px'}, "fast");
 		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast', function() {

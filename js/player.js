@@ -362,10 +362,12 @@ var pastBlasts = {
 		var blasts = pastBlasts.list();
 		if (!blasts) {
 			blasts = [];
+			var lastBlast = blasts[0].split("\n").slice(1).join("\n");
 		} else {
+			var lastBlast = '';
 			//blasts = JSON.parse(blasts);
 		}
-		var lastBlast = blasts[0].split("\n").slice(1).join("\n");
+		
 		if ($.trim(lastBlast) != $.trim(pl_text)) {
 			var date = new Date();
 			blasts.push(date.toJSON() + '\n' + pl_text + '\n');
