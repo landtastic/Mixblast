@@ -183,6 +183,7 @@ var mixBuilder = {
 					mixBuilder.songlist += artistName + " - " + item.name + "\n";
 				});
 			} else if (data.similartracks != undefined) {
+				mixBuilder.songlist = artistName + " - " + trackName + "\n";
 				$.each(data.similartracks.track, function(i, item) {
 					mixBuilder.songlist += item.artist.name + " - " + item.name + "\n";
 				});
