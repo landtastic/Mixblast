@@ -305,20 +305,8 @@ $("#mixbuilder-search-button").click(function(){
 var showRelated =  {
 	artists : function(artistName) {
 		var addString;
-		/*
-		if (search.dropVal == 'drop-topSongs') {
-			//add top songs by 
-			$("addString").html(" Top Songs By A Similar Artist: ");
-			//+ $("#topSongs-num").val() +
-		} else if (search.dropVal == 'drop-similarSongs'){
-			$("addString").html(" Songs Similar To (This doesn't work right now, change the dropdown above)");
-		} else {
-			//add quick mix
-			$("addString").html(" Song QuickMix Based On Related Artist: ");
-		}
-*/
 		addString = " Songs By A Related Artist:";
-		$.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=40&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
+		$.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=60&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
 			var curArtist;
 			var artistList = '';
 			if (data.similarartists) {
@@ -336,6 +324,7 @@ var showRelated =  {
 				$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 			}
 		});
+		$("#related-more").show();
 	},
 	addSongs : function(curArtist) {
 		$('#topSongs-artist').val(curArtist);
@@ -344,6 +333,18 @@ var showRelated =  {
 		return false;
 	}
 };
+$("#related-more").click(function() {
+	var open_width = 340; var closed_width = 94;
+	if ($(window).width() < 795) { 
+		var open_width = 1000; var closed_width = 174;
+	}
+	var relHeight = $("#related-container").height();
+    var toggleHeight = relHeight == open_width ? closed_width : open_width;
+    console.log(relHeight + 'ddd' + toggleHeight);
+    $("#related-container").animate({ height: toggleHeight }, 'fast', function() {
+    	if ($("#related-more").text() == 'More...') $("#related-more").text('Less...'); else $("#related-more").text('More...');
+	});
+});
 
 $('#topSongs-num').keyup(function () {
   $('#similarNum').text($(this).val());
@@ -381,15 +382,16 @@ $("#closeAdvanced").click(function(){
 });
 
 function editSearchTerm(lineNumber) {
-	var mobile_width = 795, vidTop = '-72px', vidWidth = '100%', thumbTop = '0px', queryHeight = '200px';
+	var mobile_width = 795, vidTop = '-72px', vidWidth = '100%', thumbTop = '0px', queryHeight = '200px', queryHeight_init = '345px';
 	if ($(window).width() < mobile_width) { 
-		vidTop = '-100px'; vidWidth = '100%'; thumbTop = '0px'; queryHeight = '180px';
+		vidTop = '-100px'; vidWidth = '100%'; thumbTop = '0px'; queryHeight = '180px', queryHeight_init = '575px';
 	}
 	var toggleEditText = $("#editplaylist").html();
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		$("#player-container").animate({top: thumbTop, right: '21px', width: '160px', height: '90px'}, 'fast');
-		$('#query').animate({height: '345px'}, 'fast');
-		$("#related-container").show();
+		$('#query').animate({height: queryHeight_init}, 'fast', function() {
+			$("#related-container").show(); $("#related-more").show();
+		});
 		$("#ytPlayer-thumb-close").show();
 		$("#blast-button-container").css("visibility", "visible");
 		$('#mixbuilder-bar').css("visibility", "visible");
@@ -397,6 +399,7 @@ function editSearchTerm(lineNumber) {
 		$("#query-clear").show();
 		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Editor"));
 	} else {
+		$("#related-container").hide(); $("#related-more").hide();
 		$("#query").show();
 		$("#logo").animate({marginTop: "2%",'marginBottom': '10px'}, "fast");
 		$('#player-container').animate({top: vidTop, right: '0px', width: vidWidth, height: '364px'}, 'fast', function() {
@@ -404,7 +407,6 @@ function editSearchTerm(lineNumber) {
 			$("#blast-button-container").css("visibility", "hidden");
   		});
 		$('#query').animate({height: queryHeight}, 'fast');
-		$("#related-container").hide();
 		$("#ytPlayer-thumb-close").hide();
 		$("#shuffletext").hide();
 		$("#editplaylist").html(toggleEditText.replace("Close Editor","Edit Playlist"));
