@@ -1,0 +1,16 @@
+var blastItem = [];
+localStorage["blastItem"] = JSON.stringify(blastItem);
+var storedBlasts = JSON.parse(localStorage["blastItem"]);
+
+
+blastItem.push();
+
+ 	//autosave
+//	var autosave = localStorage.getItem('mixfile');
+//	var mixtext = JSON.parse(autosave);
+	var pbLen = blastItem.length;
+	$("#query").val(blastItem[pbLen]);
+	$("#query").focus(function() {
+		$(this).animate({height:'345px',width:'575px'},200);
+	});
+

@@ -106,7 +106,7 @@ function multiSearch() {
 	var searchnum = search.listArray.length;
 	if ((searchnum < 1) || search.isDefaultMsg) { 
 		$('#errormsg').show();
-		$('#errormsg').html('Put a list of songs into the textbox. <br>(Use the MixBuilder to add songs or just type a list)');
+		$('#errormsg-txt').html('Error. <br>Put a list of songs into the textbox. <br>(Use the MixBuilder to add songs or just type a list)');
 		$("#query").val($("#query").prop("defaultValue")).css("color", "#999");
 		var t=setTimeout(function(){$('#editplaylist').trigger( "click" );},1000);
 		search.isDefaultMsg = true;
@@ -156,6 +156,9 @@ var mixBuilder = {
 		} else if (search.dropVal == 'drop-similarSongs'){
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist="+artistName+"&track="+trackName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName)
 			search.isDefaultMsg = false;
+		} else if (search.dropVal == 'drop-albums'){
+			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist="+artistName+"&track="+trackName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName)
+			search.isDefaultMsg = false;
 		} else {
 			mixBuilder.getJSON("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+artistName+"&type=artist-radio&results="+ song_num,artistName,trackName);
 			search.isDefaultMsg = false;
@@ -168,6 +171,8 @@ var mixBuilder = {
 		if (search.dropVal == 'drop-topSongs') {
 			mixBuilder.render($.trim($("#topSongs-artist").val()),'');
 		} else if (search.dropVal == 'drop-similarSongs') {
+			mixBuilder.render($.trim($("#similarSongs-artist").val()),$.trim($("#similarSongs-song").val()));
+		} else if (search.dropVal == 'drop-albums') {
 			mixBuilder.render($.trim($("#similarSongs-artist").val()),$.trim($("#similarSongs-song").val()));
 		} else {
 			mixBuilder.render($.trim($("#similarSongs-artistOnly").val()),'');
@@ -193,7 +198,7 @@ var mixBuilder = {
 				});
 			} else {
 				$('#errormsg').show();
-				$('#errormsg').html(': ( <br><br>Error loading videos for: '+artistName+'<br><br>Check spelling?');
+				$('#errormsg-txt').html(': ( <br><br>Error loading videos for: '+artistName+'<br><br>Check spelling?');
 			}
 		})
 		.done(function() {
@@ -201,7 +206,7 @@ var mixBuilder = {
 		})
 		.fail(function() {
 			console.log( "error" );
-			$('#errormsg').html(': (() <br><br>Error loading videos for: '+artistName+'<br><br>Check spelling?');
+			$('#errormsg-text').html(': (() <br><br>Error loading videos for: '+artistName+'<br><br>Check spelling?');
 		})
 		.always(function() {
 			//overwrite text list if first search
@@ -246,7 +251,7 @@ function allSongsBy(artistName) {
                         if (!search.isDefaultMsg) var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
                 } else {
                         $('#errormsg').show();
-                        $('#errormsg').html(': ( <br><br>Error loading videos by: '+artistName+'<br><br>Check spelling?');
+                        $('#errormsg-txt').html(': ( <br><br>Error loading videos by: '+artistName+'<br><br>Check spelling?');
                 }
         });
 
@@ -340,7 +345,6 @@ $("#related-more").click(function() {
 	}
 	var relHeight = $("#related-container").height();
     var toggleHeight = relHeight == open_width ? closed_width : open_width;
-    console.log(relHeight + 'ddd' + toggleHeight);
     $("#related-container").animate({ height: toggleHeight }, 'fast', function() {
     	if ($("#related-more").text() == 'More...') $("#related-more").text('Less...'); else $("#related-more").text('More...');
 	});

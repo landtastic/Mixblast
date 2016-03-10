@@ -418,7 +418,7 @@ $(document).ready(function() {
 	$("#query").focus(function() {
 		if (this.value == this.defaultValue) {
 			this.value = "";
-			$("#query").css("color","#999");
+			$("#query").css("color","#333");
 			search.isDefaultMsg = true;
 		} else {
 			$("#query").css("color","#000");
@@ -429,7 +429,7 @@ $(document).ready(function() {
 	$("#query").blur(function() {
 		if (this.value == "") {
 			this.value = this.defaultValue;
-			$("#query").css("color","#999");
+			$("#query").css("color","#333");
 			search.isDefaultMsg = true;
 		} else  {
 			mixfile = $('#query').val();

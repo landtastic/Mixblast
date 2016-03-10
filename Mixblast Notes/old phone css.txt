@@ -1,0 +1,230 @@
+
+/*========== PHONES ==========*/
+
+@media only screen and (max-width:960px){
+	body {
+		margin:0px;
+		padding:0px;
+	}
+	#body-column, #foot-wrap, #foot{
+		width:97%;
+		min-width: 240px;
+	}
+	#logo {
+		min-width: 200px;
+		clear: both;
+	}
+	#pb-menu {padding-top: 70px; top:-19px;}
+	#pb-text, #infodiv {
+		font-size: 22px;
+	}
+
+div#infodiv {
+    height: 1172px;
+}
+	.pb-module { font-size: 25px; }
+	.pb-delete { font-size: 25px; }
+	.line-clamp {
+		  position: relative;
+		  height: 4.5em; 
+	}
+	#songNum {
+		height:68px;
+		padding: 15px;
+		padding-right: 5px;
+	}
+	.btn.btn-default.dropdown-toggle.form-control {
+		font-size: 31px;
+		height: 68px;
+		width: 250px;
+		/*margin-top: -10px;*/
+	}
+	.dropdown-menu {
+		font-size: 32px;
+	}
+	#query {
+		height: 575px;
+	}
+	#mixbuilder-bar {
+		width: 100%;
+		/* min-width: 320px; */
+	}
+	textarea#query,#playlist-title {
+		font-size: 180%!important;
+	}
+	textarea#query:focus { font-size: 180%!important; }
+	#shuffletext, #query-clear {
+		bottom: 177px;
+		height: 50px;
+		width: 50px;
+		font-size: 50px;
+		margin-right: 40px;
+	}
+	#shuffletext { margin-right: 80px;}
+	.spacer {
+		height: 73px;
+	}
+	#blast-button-container { height:126px; }
+	#search-button, #playlist-button {
+		font-size: 160%;
+		height: 80px;
+	}
+	#ytPlayer{
+		/*top: 200px;*/
+	}
+	#ytPlayer-thumb-close {
+		/*top: 200px; right: 21px; width: 95px; height: 71px;*/
+	}
+	/*#search-button { margin-top:27px; }*/
+	#topSongs-container { 
+		font-size: 33px;
+		width: 53%;
+		height: 68px;
+		/* line-height: 0px; */
+		padding: 13px;
+		padding-left: 13px;
+		min-width: 271px;
+	}
+	#topSongs-artist, #mixbuilder-search-button{ 
+		font-size: 160%!important; 
+		height: 68px;
+	}
+	#similarSongs-artist, #similarSongs-song, #similarSongs-artistOnly {
+		font-size: 160%!important; 
+		height: 68px;
+	}
+	#topSongs-num { 
+		font-size:31px; 
+		width: 39px;
+	}
+	#topSongs-artist, #similarSongs-artistOnly { width: 49%; z-index: 40;}
+	#similarSongs-artist { width: 25.4%; }
+	#similarSongs-song { width: 23.7%; }
+	#mixbuilder-search-button {
+		padding: 0px 0px 0px 0px;
+		width:9.5%;
+	}
+	.ui-menu-item {
+		font-size: 180%!important; 
+		padding:7px;
+		width: 300px;
+	}
+	.col-xs-1 {
+		width: 8.33333333%!important;
+	}
+	.col-xs-3 {
+		width: 30%!important;
+	}
+	#advanced, .infolink, #rss-dropdown, #pb-button {
+		display: inline-block;
+		font-size: 150%!important; 
+		font-weight: normal;
+		height: 40px;
+	}
+	.infolink, .pb-button-sm {	
+		width:36px;
+	}
+	#pb-icon{	 
+		height: 30px;
+    	margin-top: -5px;
+	}
+	#advanced { 
+		width: 164px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: clip;
+	}
+	#advanced-container {
+		font-size: 145%;
+	}
+	#closeAdvanced {
+		/*margin-top: -150px;*/
+		padding-right: 5px;
+	}
+	.advanced-tips { display: block; }
+	input[type='checkbox'] { height: 18px; width:18px; vertical-align: initial;}
+	#addartist, #find, #replace, #frbutton {
+		font-size: 23px;
+		padding: 1px;
+	}
+	#frbutton{
+		width: 68px;
+		height: 30px;
+	}
+	#rss-container {
+		width: 15.5%!important;
+	}
+	#rss-dropdown { width:80px; vertical-align: middle;}
+	#rss-button { display:none; height: 35px; width: 35px; vertical-align: middle; }
+
+
+	#button-container { 
+		text-align: -webkit-auto!important; 
+		text-align: auto!important;
+		-ms-text-justify: auto!important;
+		text-justify: auto!important;
+	}
+	#prevb, #nextb, #playpb { height:75px; width:75px; }
+	#shuffb { height:60px; width:60px; }
+	a#editplaylist, a#wrongsong { font-size: 118%; }
+	div.playerbutton-littlebuttons { width: 240px; line-height: 300%; margin-top: -99px;}
+	.playerbutton {
+		padding-right:8px;
+	}
+	#related-container {
+		font-size: 150%; margin-top:22px; width:100%; 
+		height: 195px;
+		-webkit-overflow-scrolling: touch;
+	}
+	.similar-artistButton { 
+		line-height: 69px;
+		padding: 12px;
+	}
+	.artistbull { padding:0px; font-size:50%; }
+	.subtext {font-size: 22px;}
+	.subsubtext {font-size: 18px;}
+	.searchresult { font-size: 200%; }
+	.searchresult-title {
+		width: 84%;
+		padding-top: 23px;
+		padding-left: 38px;
+	}
+	#edit-playlist-icon { font-size: 30px; }
+	.refreshb {  
+  		padding: 0px;
+  		width: 40px;
+  		height: 40px;
+	}
+	#refreshc {  
+  		padding: 0px;
+  		width: 30px;
+  		height: 30px;
+  		margin-right: 3px;
+	}
+	#thumb {
+		width: 80px;
+		height: 56px;
+		margin-top: 15px;
+  		margin-bottom: 15px; 
+  	}
+	#foot-wrap {
+		width:100%;
+	}
+	#foot {
+		/*position: inherit;*/
+		width: 100%;
+	} 
+  	#emailme {
+  		font-size: 35px;
+  		padding-left:10px;
+  	}
+}
+@media only screen and (max-width:400px){
+/*hack for very small screens*/
+	#mixbuilder-bar {
+		display: inherit;
+		transform: scale(0.6);
+		transform-origin: 0px 0px;
+		width: 145%;
+	}
+}

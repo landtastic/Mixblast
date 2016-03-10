@@ -1,39 +1,45 @@
 <!doctype html>
 <html>
   <head>
-  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-  <meta name="viewport" content="user-scalable=yes,width=640"/>
-  <meta name="description" content="Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
-  <link rel="shortcut icon" href="favicon.ico?r=8" id="favicon"/>
-  <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-  <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Mixblast">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-	<title>Mixblast Playlist Maker - Lists To Youtube Playlists, Instantly</title>
+   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="description" content="Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
+    <link rel="shortcut icon" href="favicon.ico?r=8" id="favicon"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Mixblast">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+	<title>Playlist Maker - Mixblast - Text Lists To Youtube Playlists Without Ads</title>
   </head>
   <body>
 	<div id="pb-menu"></div>
 	<div id="body-container" class="container-fluid nopadding">
 	<span class="gradient-background"></span>
-	  <div id="body-column">
-		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo9.png" data-toggle="tooltip" data-placement="right" title="&quot;You'll Have a Blast&quot;"></a></div>
+	  <div id="body-column" class="col-xs-12 nopadding">
+		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo.png" data-toggle="tooltip" data-placement="right" title="&quot;You'll Have a Blast&quot;"></a></div>
 		  <div id="text-container">
-		  	  <div id="mixbuilder-bar">
-		  	  <div id="songNum"><input id="topSongs-num" value="40"></div><div class="btn-group btn-input">
-				<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-					<span data-bind="label"> Song QuickMix</span>&nbsp;<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li id="drop-topSongs"><a href="javascript:void();"> Top Songs By</a></li>
-					<li id="drop-similarSongs"><a href="javascript:void();"> Songs Similar To</a></li>
-					<li id="drop-quickMix"><a href="javascript:void();"> Song QuickMix</a></li>
-                 </ul>
-               </div><input id="topSongs-artist" placeholder="Artist" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-artist" placeholder="Artist" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-artistOnly" placeholder="Artist" autocomplete="off" autocorrect="off" title="Create mix based on artist (100 song limit)"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
-              </div>
+				<div id="mixbuilder-bar" class="row nopadding nomargin">
+					<div class="col-xs-3 nopadding">
+						<div id="songNum"><input id="topSongs-num" value="40"></div><div class="btn-group btn-input">
+						<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+							<span data-bind="label"> Song QuickMix</span>&nbsp;<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li id="drop-albums"><a href="javascript:void();"> Albums By</a></li>
+							<li id="drop-topSongs"><a href="javascript:void();"> Top Songs By</a></li>
+							<li id="drop-similarSongs"><a href="javascript:void();"> Songs Similar To</a></li>
+							<li id="drop-quickMix"><a href="javascript:void();"> Song QuickMix</a></li>
+		                 </ul>
+		                </div>
+					</div>
+					<div class="col-xs-9 nopadding">
+						<input id="topSongs-artist" placeholder="Artist" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-artist" placeholder="Artist" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-artistOnly" placeholder="Artist (100 song limit)" autocomplete="off" autocorrect="off" title="Create mix based on artist (100 song limit)"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+					</div>
+				</div>
 				<div id="queryarea" class="ui-widget">
 				 	<div id="query-clear" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Clear List" style="display:none;"></div>
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List" style="display:none;"> 
@@ -43,81 +49,89 @@
 						<span id="ytPlayer-thumb-close" data-toggle="tooltip" title="Go Back to Video"></span>
 					</div>
 					<textarea id="query" rows="13" cols="60" style="display:none">
-Search Youtube for a list of songs.											
+Put a list of songs here. Example:
 
-Example:
-Artist - Song Title
-Artist - Song Title
-Artist - Song Title
-
-Use the MixBuilder above, copy &amp; paste a tracklist, or just type a list here 
-(with autocomplete). 
+Led Zeppelin - Out on the Tiles
+Too Short - Blow the Whistle 
+November Rain Guns N' Roses
+etc.
 
 Then click "Blast a Mix" to make a playlist. </textarea>
 					<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
 					<div id="blast-button-container" class="container-fluid nopadding">
 						<div class="row nopadding">
-								<div class="col-xs-1 nopadding" style="width:6%;"><button class="pb-button-sm leftBottom leftBottom-lb" id="pb-button" data-toggle="tooltip" title="Recent History"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button></div>
-								<div class="col-xs-1 nopadding" style="width:6%;"><button class="infolink leftBottom leftBottom-lb" data-toggle="tooltip" title="Info"></button></div>
-								<div class="col-xs-3 nopadding" style="width:23.5%"><button id="advanced" class="leftBottom leftBottom-lb" data-toggle="tooltip" data-placement="bottom"><span class="glyphicon glyphicon-align-left"></span> Advanced Options</button></div>
-								<div id="rss-container" class="col-xs-3 nopadding"  style="width:31.4%;">
-									<select id="rss-dropdown" class="leftBottom leftBottom-lb" data-toggle="tooltip" title="RSS Feeds">
-										<option value="">&#9835; Feeds</option>
-										<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
-										<option value="http://allhiphop.com/feed/">All Hip Hop</option>
-										<option value="http://feeds.feedburner.com/hiphopearly">Hip Hop Early</option>
-										<option value="http://feeds.feedburner.com/realhotnewhiphop?format=xml">Hot New Hip Hop</option>
-										<option value="http://rapradar.com/feed/">Rap Radar</option>
-										<option value="http://theboombox.com/category/songs-1/feed/">The Boombox</option>
-										<option value="http://feeds.feedburner.com/nah_right?format=xml">Nah Right</option>
-										<option value="http://feeds.feedburner.com/SouthernSweetTea?format=xml">A Girl And Her Hip Hop</option>
-										<option value="http://www.worldstarhiphop.com/videos/rss.php">World Star Hip Hop</option>
-										<option value="http://www.xxlmag.com/feed/">XXL Mag</option>
-										<option value="http://digitaldripped.com/rss">Digital Dripped</option>
-										<option value="http://www.newjamz.net/rss/home">New Jamz.net</option>
-										<!--<option value="http://www.ihiphopmusic.com/feed">iHipHopMusic</option>-->
-										<option value="http://feeds.feedburner.com/ughhblog">Underground Hip Hop Blog</option>
-										<!--<option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>-->
-										<!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
-										<option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
-										<option value="http://cantstophiphop.com/feed/">Can't Stop Hip Hop</option>
-										<option value="http://trapsntrunks.com/feed/">Traps 'N Trunks</option>
-										<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=20/explicit=true/xml">iTunes Alternative Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=3/explicit=true/xml">iTunes Comedy Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=17/explicit=true/xml">iTunes Dance Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=7/explicit=true/xml">iTunes Electronic Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=50/explicit=true/xml">iTunes Fitness and Workout Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=11/explicit=true/xml">iTunes Jazz Top 100</option>
-										<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/explicit=true/rss.xml">iTunes New Releases Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=14/explicit=true/xml">iTunes Pop Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=15/explicit=true/xml">iTunes R&amp;B/Soul Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=24/explicit=true/xml">iTunes Reggae Top 100</option>
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
-										<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
-										<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
-										<option value="http://www.stereogum.com/category/mp3s/feed/">Stereogum</option>
-										<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
-										<option value="http://www.popmatters.com/feeds/fd_listen">Pop Matters</option>
-										<option value="http://video.vulture.com/feed/magnify.rss/WHB24B38378F8L2F">The Vulture</option> 
-										<!--<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>-->
-										<option value="http://drownedinsound.com/feed">Drowned in Sound</option>
-										<option value="http://consequenceofsound.net/category/check-out/feed/">Consequence of Sound</option>
-										<option value="http://www.metacritic.com/rss/music">Metacritic</option>
-										<option value="http://feeds.feedburner.com/AllLinks-AlbumOfTheYear">Album Of The Year.org</option>
-										<option value="http://feeds.feedburner.com/RecentlyRatedAlbums-AlbumOfTheYear?format=xml">AOTY Recently Rated</option>
-									</select> 
+							<div class="col-xs-6 nopadding">
+								<div class="row nopadding">
+									<div class="col-xs-1"><button class="pb-button-sm leftBottom leftBottom-lb" id="pb-button" data-toggle="tooltip" title="Recent History"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button></div>
+									<div class="col-xs-1"><button class="infolink leftBottom leftBottom-lb" data-toggle="tooltip" title="Info"></button></div>
+									<div class="col-xs-4"><button id="advanced" class="leftBottom leftBottom-lb" data-toggle="tooltip" data-placement="bottom"><span class="glyphicon glyphicon-align-left"></span> Advanced Options</button></div>
+									<div class="col-xs-4">
+										<div id="rss-container">
+											<select id="rss-dropdown" class="leftBottom leftBottom-lb" data-toggle="tooltip" title="RSS Feeds">
+											<option value="">&#9835; Feeds</option>
+											<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
+											<option value="http://allhiphop.com/feed/">All Hip Hop</option>
+											<option value="http://feeds.feedburner.com/hiphopearly">Hip Hop Early</option>
+											<option value="http://feeds.feedburner.com/realhotnewhiphop?format=xml">Hot New Hip Hop</option>
+											<option value="http://rapradar.com/feed/">Rap Radar</option>
+											<option value="http://theboombox.com/category/songs-1/feed/">The Boombox</option>
+											<option value="http://feeds.feedburner.com/nah_right?format=xml">Nah Right</option>
+											<option value="http://feeds.feedburner.com/SouthernSweetTea?format=xml">A Girl And Her Hip Hop</option>
+											<option value="http://www.worldstarhiphop.com/videos/rss.php">World Star Hip Hop</option>
+											<option value="http://www.xxlmag.com/feed/">XXL Mag</option>
+											<option value="http://digitaldripped.com/rss">Digital Dripped</option>
+											<option value="http://www.newjamz.net/rss/home">New Jamz.net</option>
+											<!--<option value="http://www.ihiphopmusic.com/feed">iHipHopMusic</option>-->
+											<option value="http://feeds.feedburner.com/ughhblog">Underground Hip Hop Blog</option>
+											<!--<option value="http://www.cocaineblunts.com/blunts/?feed=rss2">Cocaine Blunts</option>-->
+											<!--<option value="http://tumblinerb.com/rss#_=_">Tumblrin' Erb</option>-->
+											<option value="http://gowherehiphop.com/feed/">Gowhere Hip Hop</option>
+											<option value="http://cantstophiphop.com/feed/">Can't Stop Hip Hop</option>
+											<option value="http://trapsntrunks.com/feed/">Traps 'N Trunks</option>
+											<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/genre=18/explicit=true/rss.xml">iTunes Hip-Hop/Rap New Releases</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=20/explicit=true/xml">iTunes Alternative Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=3/explicit=true/xml">iTunes Comedy Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=17/explicit=true/xml">iTunes Dance Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=7/explicit=true/xml">iTunes Electronic Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=50/explicit=true/xml">iTunes Fitness and Workout Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=11/explicit=true/xml">iTunes Jazz Top 100</option>
+											<option value="https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=100/explicit=true/rss.xml">iTunes New Releases Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=14/explicit=true/xml">iTunes Pop Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=15/explicit=true/xml">iTunes R&amp;B/Soul Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=24/explicit=true/xml">iTunes Reggae Top 100</option>
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=21/explicit=true/xml">iTunes Rock Top 100</option>	
+											<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=16/explicit=true/xml">iTunes Soundtrack Top 100</option>
+											<option value="http://pitchfork.com/rss/reviews/best/tracks/">Pitchfork Best Tracks</option>
+											<option value="http://www.stereogum.com/category/mp3s/feed/">Stereogum</option>
+											<option value="http://www.tinymixtapes.com/feeds/mixtapes.xml">Tiny Mix Tapes</option>
+											<option value="http://www.popmatters.com/feeds/fd_listen">Pop Matters</option>
+											<option value="http://video.vulture.com/feed/magnify.rss/WHB24B38378F8L2F">The Vulture</option> 
+											<!--<option value="http://www.dustedmagazine.com/index.xml">Dusted Magazine</option>-->
+											<option value="http://drownedinsound.com/feed">Drowned in Sound</option>
+											<option value="http://consequenceofsound.net/category/check-out/feed/">Consequence of Sound</option>
+											<option value="http://www.metacritic.com/rss/music">Metacritic</option>
+											<option value="http://feeds.feedburner.com/AllLinks-AlbumOfTheYear">Album Of The Year.org</option>
+											<option value="http://feeds.feedburner.com/RecentlyRatedAlbums-AlbumOfTheYear?format=xml">AOTY Recently Rated</option>
+											</select> 
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="col-xs-2 nopadding">
+							<div class="col-xs-3 nopadding">
 								<div class="spacer"> </div>
+							</div>
+							<div class="col-xs-3 nopadding">
 								<button id="search-button" disabled class="leftBottom">Blast a Mix</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div id="errormsg" style="display:none;"></div>
+				<div id="errormsg" class="alert alert-danger fade in" style="display:none;">
+				    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+				    <div id="errormsg-txt"></div>
+				</div>
 		  </div>
 		  	<div id="button-container" style="display:none;">
 				  	<div class="playerbutton"><a href="javascript:void(0);" id="prevbutton"><img src="img/media_previous.png" id="prevb" alt="Prev" ></a> </div>
@@ -129,7 +143,7 @@ Then click "Blast a Mix" to make a playlist. </textarea>
 				  	</div>
 			  	<div class="stretch"></div>
 		  	</div>
-		  	<div id="related-container" style="display:none;"></div><div id='related-more' class='similar-artistButton' style="display:none;">More...</div>
+		  	<div id="related-container" style="display:none;"></div><div id='related-more' class='similar-artistButton' style="display:none;">...</div>
 			<div id="advanced-container" style="display:none;"><hr class="advanced-top">
 				<span class="advanced-tips-title"><b>Advanced Text Options</b><br>Paste a tracklist into the textfield above, separated by new lines. Each line should be as simple as possible, e.g. <i>Artist - Song Title</i></span><div id="closeAdvanced"><a>&#215;</a></div><hr>
 				&nbsp;<input id="addartist"> Add artist name to each line &nbsp;<span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
@@ -158,41 +172,38 @@ Then click "Blast a Mix" to make a playlist. </textarea>
 				  </span>
 			   </div>
 	  </div>
-	</div>
-	<div id="foot-wrap">
-	<div id="foot">
-		<br>
-		<hr>
-		<br>
-		<span id='emailme'></span> 
-		<!--<br><br>
-		<span id='api-about'>Uses the Last.fm and Youtube APIs</span>-->
-		<br>
-		<br>
-		<!--<script src="waterbug.js"></script>-->
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-		<script src="https://www.youtube.com/iframe_api"></script>
-		<script src="js/auth.js"></script>
-		<script src="js/search.js"></script>
-		<script src="js/player.js"></script>
-		<script src="js/advanced.js"></script>
-		<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-		<script src="js/playlist_updates.js"></script>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script src="js/gradbg.js"></script>
-		<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	<div id="foot-wrap" class="container-fluid nopadding">
+			<br>
+			<hr>
+			<br>
+			<span id='emailme'></span> 
+			<!--<br><br>
+			<span id='api-about'>Uses the Last.fm and Youtube APIs</span>-->
+			<br>
+			<br>
+			<!--<script src="waterbug.js"></script>-->
+	    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+			<script src="https://www.youtube.com/iframe_api"></script>
+			<script src="js/auth.js"></script>
+			<script src="js/search.js"></script>
+			<script src="js/player.js"></script>
+			<script src="js/advanced.js"></script>
+			<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+			<script src="js/playlist_updates.js"></script>
+	    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+			<script src="js/gradbg.js"></script>
+			<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-45908619-1', 'auto');
-		ga('send', 'pageview');
-		setTimeout("ga('send','event','Profitable Engagement','time on page more than 20 seconds')",20000);
-		</script>
+			ga('create', 'UA-45908619-1', 'auto');
+			ga('send', 'pageview');
+			setTimeout("ga('send','event','Profitable Engagement','time on page more than 20 seconds')",20000);
+			</script>
 	</div>
 	</div>
-	<span id="secret-err-msg-logger"></span>
   </body>
 </html>

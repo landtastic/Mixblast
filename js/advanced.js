@@ -15,7 +15,7 @@ $("#advanced").click(function(){
 	$("#query2").val($("#query").val());
 	$("#related-container").hide();
 	$('html, body').animate({
-        scrollTop: $("#queryarea").offset().top
+        scrollTop: $("#mixbuilder-bar").offset().top
     }, 500);
     $("#logo").animate({ 'marginTop': '10px', 'marginBottom': '10px'}, 1000);
     $("#mixbuilder-search-button").show();
