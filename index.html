@@ -3,7 +3,7 @@
   <head>
    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width"/>
-    <meta name="description" content="Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
+    <meta name="description" content="Free music playlist maker. Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
     <link rel="shortcut icon" href="favicon.ico?r=8" id="favicon"/>
     <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
     <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
@@ -17,37 +17,41 @@
   </head>
   <body>
 	<div id="pb-menu"></div>
+	<div id="info-menu"><div id="infodiv"><img src="android-chrome-192x192.png" id="infoear"><br><br>
+		Create a playlist with the best playlist maker there is! Mixblast! Where is every song ever recorded*? Youtube! <br>(*Except by Prince)<br><br>Mixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.<br><br>Copy and paste a plain text list, load an RSS feed, or use the MixBuilder at the top to fill the list with songs, then mix them together with the text shuffle button, and Blast a Mix. <br><br>Mixblast will search each line of text for the top video. If a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. <br><br>Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next, ~ = Open/Close Text List Editor<br><br>iPhone instructions: open in Safari, tap "Add to Home Screen", launch Mixblast from Home screen. <br><br>Mixblast uses the Youtube, Last.fm, and Echo Nest APIs. <br><br>Welp, see ya later.<br><br></div>
+	</div>
 	<div id="body-container" class="container-fluid nopadding">
 	<span class="gradient-background"></span>
 	  <div id="body-column" class="col-xs-12 nopadding">
-		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo.png" data-toggle="tooltip" data-placement="right" title="&quot;You'll Have a Blast&quot;"></a></div>
+		<div id="logo-wrapper"><a href="index.html"><img id="logo" src="img/mixblast-logo.png" data-toggle="tooltip" data-placement="left" title="&quot;You'll Have a Blast&quot;"></a></div>
 		  <div id="text-container">
 				<div id="mixbuilder-bar" class="row nopadding nomargin">
-					<div class="col-xs-3 nopadding">
-						<div id="songNum"><input id="topSongs-num" value="40"></div><div class="btn-group btn-input">
+					<div class="col-md-3 nopadding">
+						<div id="songNum"><input id="topSongs-num" value="40" type="number" pattern="[0-9]*" inputmode="numeric"></div><div class="btn-group btn-input">
 						<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-							<span data-bind="label"> Song QuickMix</span>&nbsp;<span class="caret"></span>
+							<span data-bind="label"> Artist QuickMix </span>&nbsp;<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li id="drop-albums"><a href="javascript:void();"> Albums By</a></li>
-							<li id="drop-topSongs"><a href="javascript:void();"> Top Songs By</a></li>
-							<li id="drop-similarSongs"><a href="javascript:void();"> Songs Similar To</a></li>
-							<li id="drop-quickMix"><a href="javascript:void();"> Song QuickMix</a></li>
+							<li id="drop-topSongs"><a href="javascript:void();"> Top Songs By </a></li>
+							<li id="drop-similarSongs"><a href="javascript:void();"> Songs Similar To </a></li>
+							<li id="drop-topAlbums"><a href="javascript:void();"> Top Albums By </a></li>
+							<li id="drop-album"><a href="javascript:void();"> Album Tracklist </a></li>
+							<li id="drop-quickMix"><a href="javascript:void();"> Artist QuickMix </a></li>
 		                 </ul>
 		                </div>
 					</div>
-					<div class="col-xs-9 nopadding">
-						<input id="topSongs-artist" placeholder="Artist" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-artist" placeholder="Artist" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="similarSongs-artistOnly" placeholder="Artist (100 song limit)" autocomplete="off" autocorrect="off" title="Create mix based on artist (100 song limit)"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+					<div  class="col-md-9 nopadding">
+						<input id="mixbuilder-artist" placeholder="Artist" autocomplete="off" autocorrect="off"><input id="mixbuilder-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="mixbuilder-album" placeholder="Album Name" autocomplete="off" autocorrect="off" style="display:none;"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
 					</div>
+				</div>
+				<div id="player-container" style="display:none;">
+					<!--<div id="ytPlayer"></div>-->
+					<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>
+					<span id="ytPlayer-thumb-close" data-toggle="tooltip" title="Go Back to Video"></span>
 				</div>
 				<div id="queryarea" class="ui-widget">
 				 	<div id="query-clear" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Clear List" style="display:none;"></div>
 		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List" style="display:none;"> 
-		  			<div id="player-container" style="display:none;">
-						<!--<div id="ytPlayer"></div>-->
-						<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>
-						<span id="ytPlayer-thumb-close" data-toggle="tooltip" title="Go Back to Video"></span>
-					</div>
 					<textarea id="query" rows="13" cols="60" style="display:none">
 Put a list of songs here. Example:
 
@@ -60,12 +64,12 @@ Then click "Blast a Mix" to make a playlist. </textarea>
 					<textarea id="query2" style="display:none;width:590px;height:50px;" ></textarea>
 					<div id="blast-button-container" class="container-fluid nopadding">
 						<div class="row nopadding">
-							<div class="col-xs-6 nopadding">
+							<div class="col-md-6 nopadding">
 								<div class="row nopadding">
 									<div class="col-xs-1"><button class="pb-button-sm leftBottom leftBottom-lb" id="pb-button" data-toggle="tooltip" title="Recent History"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button></div>
-									<div class="col-xs-1"><button class="infolink leftBottom leftBottom-lb" data-toggle="tooltip" title="Info"></button></div>
-									<div class="col-xs-4"><button id="advanced" class="leftBottom leftBottom-lb" data-toggle="tooltip" data-placement="bottom"><span class="glyphicon glyphicon-align-left"></span> Advanced Options</button></div>
-									<div class="col-xs-4">
+									<div class="col-md-1"><button class="infolink leftBottom leftBottom-lb" data-toggle="tooltip" title="Info"></button></div>
+									<div class="col-md-4"><button id="advanced" class="leftBottom leftBottom-lb" data-toggle="tooltip" data-placement="bottom"><span class="glyphicon glyphicon-align-left"></span> Advanced Options</button></div>
+									<div class="col-md-4">
 										<div id="rss-container">
 											<select id="rss-dropdown" class="leftBottom leftBottom-lb" data-toggle="tooltip" title="RSS Feeds">
 											<option value="">&#9835; Feeds</option>
@@ -119,26 +123,26 @@ Then click "Blast a Mix" to make a playlist. </textarea>
 									</div>
 								</div>
 							</div>
-							<div class="col-xs-3 nopadding">
+							<div class="col-md-3 nopadding">
 								<div class="spacer"> </div>
 							</div>
-							<div class="col-xs-3 nopadding">
+							<div class="col-md-3 nopadding">
 								<button id="search-button" disabled class="leftBottom">Blast a Mix</button>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div id="errormsg" class="alert alert-danger fade in" style="display:none;">
-				    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+				    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×&nbsp;</a>
 				    <div id="errormsg-txt"></div>
 				</div>
 		  </div>
 		  	<div id="button-container" style="display:none;">
 				  	<div class="playerbutton"><a href="javascript:void(0);" id="prevbutton"><img src="img/media_previous.png" id="prevb" alt="Prev" ></a> </div>
-				  	<div class="playerbutton"><a href="javascript:void(0);" id="playpause"><img src="img/media_play.png" id="playpb" alt="Play/Pause"></a> </div>
+				  	<div class="playerbutton"><a href="javascript:void(0);" id="playpause"><img src="img/media_play.svg" id="playpb" alt="Play/Pause"></a> </div>
 				  	<div class="playerbutton"><a href="javascript:void(0);" id="nextbutton"><img src="img/media_next.png" id="nextb" alt="Next"></a> </div>
 				  	<div class="playerbutton"><a href="javascript:void(0);" id="shufflebutton"><img src="img/media-shuffle.png" id="shuffb" alt="Shuffle"></a></div>
-				<div class="playerbutton-littlebuttons"><a href="javascript:void(0);" id="editplaylist">Close Editor<span id="edit-playlist-icon"> &#9776;</span></a>
+				<div class="playerbutton-littlebuttons"><a href="javascript:void(0);" id="editplaylist">Close Text Editor<span id="edit-playlist-icon"> &#9776;</span></a>
 				  		<br><a href="javascript:void(0);" id="wrongsong">Wrong Version? <img src="img/refreshb.png" id="refreshc" alt="Load another version"></a>
 				  	</div>
 			  	<div class="stretch"></div>
