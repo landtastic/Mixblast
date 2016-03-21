@@ -247,8 +247,8 @@ var mixBuilder = {
 };
 
 //legacy codefix
-function allSongsBy(artistName) {
-        var song_num = $("#topSongs-num").val();
+function allSongsBy(artistName,song_num) {
+        if (!song_num) var song_num = $("#topSongs-num").val();
         $.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?" , function( data ) {
         	if (!songlist) var songlist= '';
                 if ((data.toptracks != undefined) && (data.toptracks.track != undefined)) {
@@ -281,19 +281,19 @@ $('.dropdown-menu li').click(function( event ){
 		$('#mixbuilder-artist').show().css("width","40%");
 		$('#mixbuilder-song').show();
 		$('#mixbuilder-album').hide();
-		$("#songNum").css("visibility","visible");
+		$("#songNum").css("display","inline-block");
 	} else if (search.dropVal == 'drop-album') {
 		$('#mixbuilder-artist').show().css("width","40%");
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').show();
-		$("#songNum").css("visibility","hidden");
+		$("#songNum").css("display","none");
 	} else {
 		$('#mixbuilder-artist').show().css("width","100%");
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').hide();
-		$("#songNum").css("visibility","visible");
+		$("#songNum").css("display","inline-block");
 	}
-	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums')) $("#songNum").css("visibility","hidden");
+	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums')) $("#songNum").css("display","none");
 
 	$target.closest( '.btn-group' )
 		.find( '[data-bind="label"]' ).html( $target.html() )
@@ -344,7 +344,7 @@ var showRelated =  {
 					artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="showRelated.addSongs(\''+ curArtist +'\')">' + item.name + '</a>';
 					if (i < data.similarartists.artist.length-1) artistList += " ";
 				});
-				$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add <span id='similarNum'>"+ $("#topSongs-num").val() +"</span><span id='addString'>"+ addString +"</span></span>&nbsp;" + artistList);
+				$("#related-container").html("<br><hr class='similar-top'><span id='similarArtTitle'>Add <input id='similar-num' value='10' type='number' pattern='[0-9]*'' inputmode='numeric'></span><span id='addString'>"+ addString +"</span></span>&nbsp;" + artistList);
 			} else {
 				$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 			}
@@ -353,26 +353,21 @@ var showRelated =  {
 	},
 	addSongs : function(curArtist) {
 		$('#mixbuilder-artist').val(curArtist);
-		allSongsBy(curArtist,null,false);
+		allSongsBy(curArtist,$('#similar-num').val());
 		//mixBuilder.render($.trim(curArtist),'');
 		return false;
 	}
 };
 $("#related-more").click(function() {
-	var open_width = 340; var closed_width = 94;
-	if ($(window).width() < 795) { 
-		var open_width = 750; var closed_width = 174;
-	}
-	var relHeight = $("#related-container").height();
-    var toggleHeight = relHeight == open_width ? closed_width : open_width;
-    $("#related-container").animate({ height: toggleHeight }, 'fast', function() {
-    	if ($("#related-more").text() == '...') $("#related-more").text('Less...'); else $("#related-more").text('...');
-	});
+    	if ($("#related-more").text() == '...') {
+			$('#related-container').css({height: 'auto'});
+    		$("#related-more").text('Less...'); 
+    	} else {
+    		$('#related-container').css({height: '134px'});
+    		$("#related-more").text('...');
+    	}
 });
 
-$('#topSongs-num').keyup(function () {
-  $('#similarNum').text($(this).val());
-});
 
 $("#shuffletext").click(function(){
 	var lines = $('#query').val().split("\n");

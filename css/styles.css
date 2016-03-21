@@ -312,7 +312,7 @@
 	}
 	.searchresult-title {
 			float: left;
-			width: 86%;
+			width: 90%;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			padding-top: 19px;
@@ -541,6 +541,7 @@
 	    white-space: nowrap;
 	    */
 	    padding: 0px;
+	    padding-left: 10px;
 	}
 	.btn.btn-default.dropdown-toggle.form-control {
 		height: 44px;
@@ -566,7 +567,7 @@
 		white-space: nowrap;
 		padding: 8px;
 	}
-	#topSongs-num {
+	#topSongs-num, #similar-num {
 		font-size:20px;
 		color: #fff;
 		background-color: rgba(0,0,0,0.1); 
@@ -576,6 +577,10 @@
 		padding-right:2px;
 		width: 60px;
 		text-align: center;
+	}
+	#similar-num {
+	    font-size: 15px;
+	    width: 40px;
 	}
 	#drop-topSongs #topSongs-num { color: #000;}
 	#drop-similarSongs #topSongs-num { color: #000;}
@@ -763,7 +768,6 @@
 	.righty { width:38%; float: right; }
 	#playlist-status { width:99.4%px; padding-top: 20px;}
 	#advanced-container {
-		position: relative;
 		width:100%;
 		margin-top: 13px;
 		display: inline-block;
@@ -935,15 +939,36 @@
 		padding-right: 30px;
 	*/
 	}
-#blast-button-container > div > div.col-md-6.nopadding > div > div.col-xs-1 {
-	padding-right: 36px;
-}
+	#blast-button-container > div > div.col-md-6.nopadding > div > div.col-xs-1 {
+		padding-right: 36px;
+	}
+	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(3) {
+		margin-left:11px;
+	}
+
 @media only screen and (max-width:992px){
+	#blast-button-container {
+		padding-top: 0px;
+	}
+	#blast-button-container > div > div.col-md-6.nopadding > div {
+		height:40px;
+	}
+	#blast-button-container > div > div.col-md-6.nopadding > div > div.col-xs-1 {
+	    padding-right: 26px;
+	}
+	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(3) {
+	    margin-left: 0px;
+	}
+	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(4) {
+		margin-left: 30px;
+	}
 	#player-container{
 		top: 200px!important;
 	}
+
 	#search-button, #playlist-button {
-		float: right;
+		position: relative;
+		left: 37%;
 	}
 	#playlist-button {
     	margin-top: 70px;
@@ -957,10 +982,10 @@
 		padding-right: 8px;
 	}
 	.searchresult-div {
-		width: 20%;
+		width: 18%;
 	}
 	.searchresult-title {
-		width: 72%;
+		width: 77%;
 	}
 }
 	/*========== GRADIENT BACKGROUND ==========*/

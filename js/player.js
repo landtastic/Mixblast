@@ -401,7 +401,7 @@ var pastBlasts = {
 $(document).ready(function() {
 
 
-	$("#songNum").css("visibility","hidden");
+	$("#songNum").css("display","none");
 	//hide pastBlasts if user clicks background
    	$("body").click(function(e) {
 		pastBlasts.hide();
