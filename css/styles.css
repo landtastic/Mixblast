@@ -555,7 +555,7 @@
 		height: 44px;
 		width: 155px;
 		border-radius: 0px 0px 0px 0px;
-		text-align: left;
+		/*text-align: left;*/
 		padding-left: 3px;
 		color: #fff;
 	}

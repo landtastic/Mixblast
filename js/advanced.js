@@ -81,7 +81,7 @@ function editTextList() {
 	$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'margin-bottom': '20px', 'margin-top': '20px' }, "fast");
 	$("#query").show();
 	$("#query2").val($("#query").val());
-	$("#related-container").hide();
+	$("#related-container").hide(); $("#related-more").hide();
     $("#mixbuilder-search-button").show();
 }
 

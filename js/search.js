@@ -156,20 +156,17 @@ var mixBuilder = {
 		search.isDefaultMsg = false;
 		if (search.dropVal == 'drop-topSongs') {
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
-			console.log("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?");
 		} else if (search.dropVal == 'drop-similarSongs'){
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist="+artistName+"&track="+trackName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
-			console.log("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist="+artistName+"&track="+trackName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?");
 		} else if (search.dropVal == 'drop-topAlbums'){
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist="+artistName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ 100 +"&format=json&callback=?",artistName,trackName)
-			console.log("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist="+artistName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ 100 +"&format=json&callback=?");
 		} else if (search.dropVal == 'drop-album'){
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist="+artistName+"&album="+albumName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
-			console.log("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist="+artistName+"&album="+albumName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?")
 		} else if (search.dropVal == 'drop-quickMix'){
 			mixBuilder.getJSON("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+artistName+"&type=artist-radio&results="+100,artistName,trackName);
 		} else {
-			console.log('error: dropdown not selected');
+			console.log('dropdown not selected');
+			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=100&format=json&callback=?",artistName,trackName,albumName)
 		}
 			showRelated.artists(artistName);
 	},
