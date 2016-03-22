@@ -411,9 +411,7 @@ $(document).ready(function() {
 	$("#errormsg, #query").click(function(e) {
 		$("#errormsg").hide();
 	});
-   //dropdown default
-   //search.dropVal = 'similarArtists';
- 	//autosave
+
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
 	if ((mixtext) && (mixtext != "")) {
@@ -457,12 +455,15 @@ $(document).ready(function() {
 		how_many_songs = $('#topSongs-num').val();
 		localStorage.setItem('how_many_songs', how_many_songs);
 	});
+
 	var dropdown_selected = localStorage.getItem('dropdown-lastvalue');
-	$("#search").val(artist_text);
-	$("#mixbuilder-artist").blur(function() {
-		artist = $('#mixbuilder-artist').val();
-		localStorage.setItem('dropdown-lastvalue', artist);
-	});
+	if (dropdown_selected) {
+	 	search.dropVal = dropdown_selected;
+	 	$("#mixbuilder-dropdown > button > span:nth-child(1)").text($('#'+ dropdown_selected).text());
+	 	dropdownSwitcher();
+	} 
+	 //''$('#'+ dropdown_selected).trigger('click');
+
 	var artist_text = localStorage.getItem('artist');
 	$("#mixbuilder-artist").val(artist_text);
 	$("#mixbuilder-artist").blur(function() {

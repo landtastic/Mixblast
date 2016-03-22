@@ -83,7 +83,8 @@ function multiSearch() {
 	$('#advanced-container').hide();
 	$('#youtube-playlist-container').show();
 	$('#ytPlayer-thumb-close').show();
-	$("#mixbuilder-search-button").show();
+	$("#mixbuilder-buttons").css("visibility", "visible");
+	//$("#mixbuilder-search-button").show();
 	//$('#shuffletext').hide();
 	if (search.topvIdArray) {
 		search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
@@ -148,7 +149,10 @@ var mixBuilder = {
 		console.log(artistName + '|' + trackName + '|' + albumName + ':' + search.isDefaultMsg)
 		if (search.isDefaultMsg) $('#query').val('');
 		//$('#errormsg').hide();
-		if (!mixBuilder.fromFirstField) $("#related-container" ).show();
+		if (!mixBuilder.fromFirstField) {
+			$("#related-container" ).show();
+			$("#mixbuilder-buttons").css("visibility", "visible");
+		}
 		var song_num = $("#topSongs-num").val();
 		if (search.dropVal == 'drop-topSongs') {
 			//similarTrackPlaylist($.trim(artistName),$.trim(trackName));
@@ -277,13 +281,23 @@ function allSongsBy(artistName,song_num) {
 $('.dropdown-menu li').click(function( event ){
 	var $target = $( event.currentTarget );
 	search.dropVal = this.id;
+	dropdownSwitcher();
+	$target.closest( '.btn-group' )
+		.find( '[data-bind="label"]' ).html( $target.html() )
+			.end()
+		.children( '.dropdown-toggle' ).dropdown( 'toggle' );
+
+		return false;
+});
+
+function dropdownSwitcher() {
 	if (search.dropVal == 'drop-similarSongs') {
-		$('#mixbuilder-artist').show().css("width","40%");
+		$('#mixbuilder-artist').show().css("width","50%");
 		$('#mixbuilder-song').show();
 		$('#mixbuilder-album').hide();
 		$("#songNum").css("display","inline-block");
 	} else if (search.dropVal == 'drop-album') {
-		$('#mixbuilder-artist').show().css("width","40%");
+		$('#mixbuilder-artist').show().css("width","50%");
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').show();
 		$("#songNum").css("display","none");
@@ -295,13 +309,9 @@ $('.dropdown-menu li').click(function( event ){
 	}
 	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums')) $("#songNum").css("display","none");
 
-	$target.closest( '.btn-group' )
-		.find( '[data-bind="label"]' ).html( $target.html() )
-			.end()
-		.children( '.dropdown-toggle' ).dropdown( 'toggle' );
+	localStorage.setItem('dropdown-lastvalue', search.dropVal);
+}
 
-		return false;
-});
 $("#topSongs-num, #mixbuilder-artist, #mixbuilder-song, #mixbuilder-album").keypress(function (e) {
  var key = e.which;
  if(key == 13) {
@@ -401,36 +411,33 @@ $("#closeAdvanced").click(function(){
 });
 
 function editSearchTerm(lineNumber) {
-	/*
-	var mobile_width = 795, vidTop = '162px;', vidWidth = '100%', thumbTop = '0px', queryHeight = '219px', queryHeight_init = '345px';
-	if ($(window).width() < mobile_width) { 
-		vidTop = '162px'; vidWidth = '100%'; thumbTop = '0px'; queryHeight = '219px', queryHeight_init = '575px';
+	var thumbTop = '161px';
+	if ($(window).width() < 960) { 
+		thumbTop = '244px';
 	} 
-	*/
 	var toggleEditText = $("#editplaylist").html();
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		//thumbnail player
-		$("#player-container").animate({top: '162px', right: '17px', width: '160px', height: '90px'}, 'fast');
+		$("#player-container").animate({top: thumbTop, right: '17px', width: '160px', height: '90px'}, 'fast');
 		$('#query').animate({height: '345px'}, 'fast', function() {
 			$("#related-container").show(); $("#related-more").show();
 		});
 		$("#ytPlayer-thumb-close").show();
 		$("#blast-button-container").css("visibility", "visible");
-		$('#mixbuilder-bar').css("visibility", "visible");
-		$("#shuffletext").show();
-		$("#query-clear").show();
+		$("#mixbuilder-bar").show();
+		$("#mixbuilder-buttons").css("visibility", "visible");
 		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Text Editor"));
 	} else {
 		$("#related-container").hide(); $("#related-more").hide();
 		$("#query").show();
 		//$("#logo").animate({marginTop: "2%",'marginBottom': '10px'}, "fast");
 		$('#player-container').animate({top: '86px', right: '0px', width: '100%', height: '364px'}, 'fast', function() {
-			$('#mixbuilder-bar').css("visibility", "hidden");
+			$("#mixbuilder-bar").hide();
 			$("#blast-button-container").css("visibility", "hidden");
   		});
-		$('#query').animate({height: '219px'}, 'fast');
+		$('#query').animate({height: '282px'}, 'fast');
 		$("#ytPlayer-thumb-close").hide();
-		$("#shuffletext").hide();
+		$("#mixbuilder-buttons").css("visibility", "visible");
 		$("#editplaylist").html(toggleEditText.replace("Close Text Editor","Edit Playlist"));
 	}
 	/*

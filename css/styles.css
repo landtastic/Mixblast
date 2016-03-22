@@ -57,26 +57,6 @@
 		/* overflow: auto; */
 		padding-bottom: 100px
 	}
-	#shuffletext,#query-clear {
-		position: absolute;
-		z-index: 300;
-		display: block;
-		bottom: 115px;
-		right: 0px;
-		height: 25px;
-		width: 25px;
-		cursor: pointer;
-		margin-right: 27px;
-		}
-	 #shuffletext {
-	 	right: 50px;
-	 }
-	 #query-clear {
-	 	top: auto;
-		color: #444444;
-		font-size: 25px;
-		text-decoration: none;
-	 }
 	#player-container{
 		position: absolute;
 		z-index: 301;
@@ -238,6 +218,9 @@
 	button#advanced .glyphicon {
 		font-size:smaller;
 	}
+	.glyphicon {
+		line-height: auto;
+	}
 	.advanced-top{
 	  margin-top:0px;
 	  padding-top:0px;
@@ -249,8 +232,8 @@
 		padding:0px;
 	}
 	#logo-wrapper {
-		margin-bottom:30px;
 		margin-top:20%;
+		margin-bottom:30px;
 		float:right;
 	}
 	#logo {
@@ -477,6 +460,7 @@
 	}
 	#mixbuilder-bar {
 		width: 99.7%;
+		height: 44px;
     	margin-left: 3px;
 		display: inline-block;
 		white-space: nowrap;
@@ -484,31 +468,55 @@
 		margin-bottom: 22px;
 		background-color: rgba(0, 0, 0, 0.2);
 	}
+	#mixbuilder-buttons {
+		visibility: hidden;
+	}
 	#mixbuilder-search-button {
+		position: relative;
 		background: url(../img/add-icon.svg) no-repeat;
 		background-size: 39%;
 		background-position: 50% 50%;
 		background-color: rgb(255, 255, 255);
-		width: 51px;
+		width: 33.3%;
 		height: 44px;
 		border: none;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		cursor: pointer;
-		margin-left: -51px;
-		display: none;
 		z-index: 299;
+    	padding: 15px;
+	}
+	#query-clear,#shuffletext {
 		position: relative;
+		z-index: 300;
+		display: inline-block;
+		cursor: pointer;
+		color: #444444;
+		font-size: 25px;
+		text-decoration: none;
+		background-color: rgba(255, 255, 255, 0.4);
+		color: #8A0707;
+		height: 44px;
+		width: 33.3%;
+		font-size: 25px;
+		text-decoration: none;		
+		top: 0px;
+		text-align: center;
+		line-height: 47px;
+	}
+	#shuffletext {
+		background-color: rgba(255, 255, 255, 0.1);
 	}
 	div.btn-group.btn-input, #songNum {
 		color: #fff;
-		height: 44px;
+		height: 48px;
 		/*background-color: rgba(0,0,0,0.2);
 		 padding-top: 6px; */
 		/* padding-left: 6px; */
 		display: inline-block;
 		white-space: nowrap;
 		padding: 9px;
+		padding-right: 0px;
 	}
 	.btn-default {
 		background-color: inherit;
@@ -616,7 +624,7 @@
 		border-radius: 0px 0px 0px 0px;
 	}
 	#mixbuilder-song, #mixbuilder-album {
-		width: 60%;
+		width: 50%;
 		border-left: 1px solid #888888;
 		border-width: thin;
 		/*border-radius: 0px 5px 5px 0px;*/
@@ -768,8 +776,9 @@
 	.righty { width:38%; float: right; }
 	#playlist-status { width:99.4%px; padding-top: 20px;}
 	#advanced-container {
+		position: relative;
 		width:100%;
-		margin-top: 13px;
+		margin-top: 27px;
 		display: inline-block;
 		font-size:14px;
 		font-weight:normal;
@@ -942,13 +951,22 @@
 	#blast-button-container > div > div.col-md-6.nopadding > div > div.col-xs-1 {
 		padding-right: 36px;
 	}
-	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(3) {
-		margin-left:11px;
+	#mixbuilder-bar > div.col-md-3.nopadding {
+		text-align: center;
 	}
 
 @media only screen and (max-width:992px){
+	#mixbuilder-bar {
+		margin-bottom: 110px;
+	}
+	#mixbuilder-bar > div.col-md-3.nopadding {
+		text-align: left;
+	}
 	#blast-button-container {
 		padding-top: 0px;
+	}
+	#button-container {
+	    margin-top: 40px;
 	}
 	#blast-button-container > div > div.col-md-6.nopadding > div {
 		height:40px;
@@ -962,24 +980,38 @@
 	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(4) {
 		margin-left: 30px;
 	}
-	#player-container{
-		top: 200px!important;
+	#mixbuilder-bar > div.col-md-9.nopadding.nomargin > div > div.col-xs-9.nopadding.nomargin {
+	    margin-left: -10px;
 	}
-
-	#search-button, #playlist-button {
-		position: relative;
-		left: 37%;
+	#mixbuilder-search-button {
+    	background-size: 18%;
+	}
+	#mixbuilder-search-button, #query-clear, #shuffletext {
+		width:33.3%;
+	}
+	#mixbuilder-artist, #mixbuilder-song, #mixbuilder-album {
+		margin-top: -3px;
+	}
+	#logo-wrapper {
+		width: auto;
 	}
 	#playlist-button {
     	margin-top: 70px;
     }
 	#body-column {
 	    width: 100%;
-	    padding-left: 16px;
+	    padding-left: 15px;
+	    padding-right: 15px;
+	}
+	.advanced-tips {
+		color: #000;
+		display: block;
+		padding-left: 2px;
+		padding-top: 4px;
 	}
 	.nopadding {
 		padding: initial;
-		padding-right: 8px;
+		/*padding-right: 8px;*/
 	}
 	.searchresult-div {
 		width: 18%;

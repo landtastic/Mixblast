@@ -8,10 +8,9 @@ $(document).ready(function () {
 	prevtext_state = $("#query").val();
 });
 $("#advanced").click(function(){
+	$("#mixbuilder-buttons").css("visibility", "visible");
 	$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'margin-bottom': '20px', 'margin-top': '20px' }, "fast");
 	$("#query").show();
-	$("#shuffletext").show();
-	$("#query-clear").show();
 	$('#advanced-container').slideToggle("fast");
 	$("#query2").val($("#query").val());
 	$("#related-container").hide();
@@ -199,8 +198,6 @@ function parseXml(data) {
 	if ($('#mixbuilder-search-button').is(':hidden')) {
 		$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'marginBottom': '20px', 'marginTop': '20px' }, "fast");
 		$("#query").show();
-		$("#shuffletext").show();
-		$("#query-clear").show();
     	$("#mixbuilder-search-button").show();
 	}
 	$("#query").val("");

@@ -24,24 +24,24 @@
 	<span class="gradient-background"></span>
 	  <div id="body-column" class="col-xs-12 nopadding">
 		<div id="logo-wrapper"><a href="index.html"><img id="logo" src="img/mixblast-logo.png" data-toggle="tooltip" data-placement="left" title="&quot;You'll Have a Blast&quot;"></a></div>
-		  <div id="text-container">
+		  <div id="text-container" class="container-fluid nopadding">
 				<div id="mixbuilder-bar" class="row nopadding nomargin">
-					<div class="col-md-3 nopadding">
-						<div id="songNum"><input id="topSongs-num" value="40" type="number" pattern="[0-9]*" inputmode="numeric"></div><div class="btn-group btn-input">
+					<div class="col-md-3 nopadding nomargin">
+						<div id="songNum"><input id="topSongs-num" value="40" type="number" pattern="[0-9]*" inputmode="numeric"></div><div class="btn-group btn-input" id="mixbuilder-dropdown">
 						<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-							<span data-bind="label"> Artist QuickMix </span>&nbsp;<span class="caret"></span>
+							<span data-bind="label"> Quick Mix </span>&nbsp;<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
 							<li id="drop-topSongs"><a href="javascript:void();"> Top Songs By </a></li>
 							<li id="drop-similarSongs"><a href="javascript:void();"> Similar Songs </a></li>
 							<li id="drop-topAlbums"><a href="javascript:void();"> Top Albums By </a></li>
 							<li id="drop-album"><a href="javascript:void();"> Album Tracklist </a></li>
-							<li id="drop-quickMix"><a href="javascript:void();"> Artist QuickMix </a></li>
+							<li id="drop-quickMix"><a href="javascript:void();"> Quick Mix </a></li>
 		                 </ul>
 		                </div>
 					</div>
-					<div  class="col-md-9 nopadding">
-						<input id="mixbuilder-artist" placeholder="Artist" autocomplete="off" autocorrect="off"><input id="mixbuilder-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="mixbuilder-album" placeholder="Album Name" autocomplete="off" autocorrect="off" style="display:none;"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs">
+					<div  class="col-md-9 nopadding nomargin">
+					  <div class="row nopadding nomargin"><div class="col-md-9 nopadding nomargin"><input id="mixbuilder-artist" placeholder="Artist" autocomplete="off" autocorrect="off"><input id="mixbuilder-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="mixbuilder-album" placeholder="Album Name" autocomplete="off" autocorrect="off" style="display:none;"></div><div id="mixbuilder-buttons" class="col-md-3 nopadding nomargin"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs"><div id="query-clear"><div class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Clear List"></div></div><div id="shuffletext"><img src="img/shuffle.svg" alt="Shuffle" data-toggle="tooltip" title="Shuffle List"></div></div></div>
 					</div>
 				</div>
 				<div id="player-container" style="display:none;">
@@ -50,8 +50,6 @@
 					<span id="ytPlayer-thumb-close" data-toggle="tooltip" title="Go Back to Video"></span>
 				</div>
 				<div id="queryarea" class="ui-widget">
-				 	<div id="query-clear" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Clear List" style="display:none;"></div>
-		  			<img src="img/shuffle.svg" id="shuffletext" alt="Shuffle" data-toggle="tooltip" title="Shuffle List" style="display:none;"> 
 					<textarea id="query" rows="13" cols="60" style="display:none">
 Put a list of songs here. Example:
 
