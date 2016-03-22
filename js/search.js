@@ -148,35 +148,29 @@ var mixBuilder = {
 	render : function (artistName,trackName,albumName) {
 		console.log(artistName + '|' + trackName + '|' + albumName + ':' + search.isDefaultMsg)
 		if (search.isDefaultMsg) $('#query').val('');
-		//$('#errormsg').hide();
 		if (!mixBuilder.fromFirstField) {
 			$("#related-container" ).show();
 			$("#mixbuilder-buttons").css("visibility", "visible");
 		}
 		var song_num = $("#topSongs-num").val();
+		search.isDefaultMsg = false;
 		if (search.dropVal == 'drop-topSongs') {
-			//similarTrackPlaylist($.trim(artistName),$.trim(trackName));
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
-			search.isDefaultMsg = false;
 			console.log("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?");
 		} else if (search.dropVal == 'drop-similarSongs'){
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist="+artistName+"&track="+trackName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
 			console.log("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist="+artistName+"&track="+trackName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?");
-			search.isDefaultMsg = false;
 		} else if (search.dropVal == 'drop-topAlbums'){
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist="+artistName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ 100 +"&format=json&callback=?",artistName,trackName)
 			console.log("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist="+artistName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ 100 +"&format=json&callback=?");
-			search.isDefaultMsg = false;
 		} else if (search.dropVal == 'drop-album'){
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist="+artistName+"&album="+albumName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
 			console.log("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist="+artistName+"&album="+albumName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?")
-			search.isDefaultMsg = false;
-		} else {
+		} else if (search.dropVal == 'drop-quickMix'){
 			mixBuilder.getJSON("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+artistName+"&type=artist-radio&results="+100,artistName,trackName);
-			search.isDefaultMsg = false;
+		} else {
+			console.log('error: dropdown not selected');
 		}
-		//var needsUpdate = true;
-		//if (needsUpdate) 
 			showRelated.artists(artistName);
 	},
 	search : function () {
@@ -301,13 +295,15 @@ function dropdownSwitcher() {
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').show();
 		$("#songNum").css("display","none");
+	} else if (search.dropVal == 'drop-paste') {
+		editTextList();
 	} else {
 		$('#mixbuilder-artist').show().css("width","100%");
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').hide();
 		$("#songNum").css("display","inline-block");
 	}
-	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums')) $("#songNum").css("display","none");
+	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-paste')) $("#songNum").css("display","none");
 
 	localStorage.setItem('dropdown-lastvalue', search.dropVal);
 }

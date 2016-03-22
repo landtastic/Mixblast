@@ -457,7 +457,7 @@ $(document).ready(function() {
 	});
 
 	var dropdown_selected = localStorage.getItem('dropdown-lastvalue');
-	if (dropdown_selected) {
+	if (dropdown_selected != null) {
 	 	search.dropVal = dropdown_selected;
 	 	$("#mixbuilder-dropdown > button > span:nth-child(1)").text($('#'+ dropdown_selected).text());
 	 	dropdownSwitcher();
