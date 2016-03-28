@@ -770,7 +770,6 @@
 		width: 320px;
 		background-color: rgba(255,255,255,0.5);  
 	}
-	#playlist-url-copy { width:500px; }
 	.playlist-container { width:100%; clear:both;}
 	.lefty { width:50%; float: left;}
 	.righty { width:38%; float: right; }
@@ -865,7 +864,6 @@
 		background-color: rgba(0,0,0,0.3);
 		padding: 0px;
   		border: 0px;
-  		width: 196px;
 	}
 	#emailme {
 		font-size: 21px;
@@ -1018,6 +1016,9 @@
 	}
 	.searchresult-title {
 		width: 77%;
+	}
+	.btn.btn-default.dropdown-toggle.form-control {
+		text-align: left!important;
 	}
 }
 	/*========== GRADIENT BACKGROUND ==========*/

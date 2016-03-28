@@ -284,22 +284,29 @@ $('.dropdown-menu li').click(function( event ){
 function dropdownSwitcher() {
 	if (search.dropVal == 'drop-similarSongs') {
 		$('#mixbuilder-artist').show().css("width","50%");
-		$('#mixbuilder-song').show();
+		$('#mixbuilder-song').show().css("width","50%");
 		$('#mixbuilder-album').hide();
 		$("#songNum").css("display","inline-block");
+		if ($('#mixbuilder-buttons').css("visibility") == "hidden") $('#mixbuilder-song').css("width","83.4%");
 	} else if (search.dropVal == 'drop-album') {
 		$('#mixbuilder-artist').show().css("width","50%");
 		$('#mixbuilder-song').hide();
-		$('#mixbuilder-album').show();
+		$('#mixbuilder-album').show().css("width","50%");
 		$("#songNum").css("display","none");
+		if ($('#mixbuilder-buttons').css("visibility") == "hidden") $('#mixbuilder-album').css("width","83.4%");
 	} else if (search.dropVal == 'drop-paste') {
 		editTextList();
+		$('#mixbuilder-artist').hide();
+		$('#mixbuilder-song').hide();
+		$('#mixbuilder-album').hide();
 	} else {
 		$('#mixbuilder-artist').show().css("width","100%");
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').hide();
 		$("#songNum").css("display","inline-block");
+		if ($('#mixbuilder-buttons').css("visibility") == "hidden") $('#mixbuilder-artist').css("width","133.3%");
 	}
+
 	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-paste')) $("#songNum").css("display","none");
 
 	localStorage.setItem('dropdown-lastvalue', search.dropVal);
