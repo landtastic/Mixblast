@@ -2,10 +2,10 @@ function handleAPILoaded() {
   gapi.client.setApiKey('AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM');
   $("#playlist-button").html('Save a Playlist');
   $('#search-button').attr('disabled', false);
-  onYouTubeIframeAPIReady_removed_callback();
+  onYouTubeIframeAPIReady();
 }
 //changed the name of this function so iframe api doesn't callback
-function onYouTubeIframeAPIReady_removed_callback() {
+function onYouTubeIframeAPIReady() {
 	ytPlayer = new YT.Player('ytPlayer', { 
 		//suggestedQuality: 'medium',
 		height: '394',
@@ -147,7 +147,7 @@ function cuePlayer() {
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 		if (i < 5) {
-			onYouTubeIframeAPIReady_removed_callback();
+			onYouTubeIframeAPIReady();
 			setTimeout(function(){ cuePlayer(); },1000);
 			console.log('checking...'+i);
 			//i++;
@@ -259,8 +259,7 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 
 
 $('#pb-menu').on('click', '.pb-module', function(event) {
-	search.isDefaultMsg = false;
-	$("#query").show(); $("#text-container").show(); $('#player-container').hide(); $("#mixbuilder-search-button").show();
+	$("#query").show(); $("#text-container").show(); $('#player-container').hide(); 
 	var blasts = pastBlasts.list();
 	for (var i=0; i < blasts.length; i++) {
 	  if (/\S/.test(blasts[i])) {
@@ -415,39 +414,10 @@ $(document).ready(function() {
 	var autosave = localStorage.getItem('mixfile');
 	var mixtext = JSON.parse(autosave);
 	if ((mixtext) && (mixtext != "")) {
-		$("#query").val(mixtext); search.isDefaultMsg = false;
+		$("#query").val(mixtext); //search.isDefaultMsg = false;
 	} else {
-		search.isDefaultMsg = true;
+		//search.isDefaultMsg = true;
 	}
-
-	$("#query").focus(function() {
-			if (this.value == this.defaultValue) {
-				this.value = "";
-				$("#query").css("color","#333");
-				search.isDefaultMsg = true;
-			} else {
-				if (!search.isDefaultMsg) $("#query").css("color","#000");
-				search.isDefaultMsg = false;
-			}
-	});
-	$("#query").blur(function() {
-		if (this.value == "") {
-			this.value = this.defaultValue;
-			$("#query").css("color","#333");
-			search.isDefaultMsg = true;
-		} else  {
-			mixfile = $('#query').val();
-	 		localStorage.setItem('mixfile', JSON.stringify(mixfile));
-	 		//console.log(mixfile);
-	 		if (!search.isDefaultMsg)  $("#query").css("color","#000");
-	 		search.isDefaultMsg = false;
-	 	}
-
-	});
-	$("#query").click(function() {
-		if (!search.isDefaultMsg) $("#query").css("color","#000");
-	});
-
 	var songnum_text = localStorage.getItem('how_many_songs');
 	if (isNaN($.trim(songnum_text))) songnum_text = 40; if (songnum_text === null) songnum_text = 40;
 	$("#topSongs-num").val(songnum_text);

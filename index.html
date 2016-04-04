@@ -2,7 +2,7 @@
 <html>
   <head>
    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free music playlist maker. Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
     <link rel="shortcut icon" href="favicon.ico?r=8" id="favicon"/>
     <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Mixblast">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -20,10 +21,16 @@
 	<div id="info-menu"><div id="infodiv"><img src="android-chrome-192x192.png" id="infoear"><br><br>
 		Create a playlist with the best playlist maker there is! Mixblast! Where is every song ever recorded*? Youtube! <br>(*Except by Prince)<br><br>Mixblast searches Youtube for lots of videos all at once, and gathers them for you into a playlist. Instead of searching for just one video, you can search for a whole list of them.<br><br>Copy and paste a plain text list, load an RSS feed, or use the MixBuilder at the top to fill the list with songs, then mix them together with the text shuffle button, and Blast a Mix. <br><br>Mixblast will search each line of text for the top video. If a video is the wrong version, click the refresh icon next to it. Make sure each line of text only has the artist and song title, and no other junk. The advanced options will help you with that. <br><br>Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next, ~ = Open/Close Text List Editor<br><br>iPhone instructions: open in Safari, tap "Add to Home Screen", launch Mixblast from Home screen. <br><br>Mixblast uses the Youtube, Last.fm, and Echo Nest APIs. <br><br>Welp, see ya later.<br><br><br><br></div>
 	</div>
+				<div id="player-container" style="display:none;">
+					<div id="ytPlayer"></div>
+					<!--<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>-->
+					<span id="ytPlayer-thumb-close" data-toggle="tooltip" title="Go Back to Video"></span>
+				</div>
+
 	<div id="body-container" class="container-fluid nopadding">
 	<span class="gradient-background"></span>
 	  <div id="body-column" class="col-xs-12 nopadding">
-		<div id="logo-wrapper"><a href="index.html"><img id="logo" src="img/mixblast-logo.png" data-toggle="tooltip" data-placement="left" title="&quot;You'll Have a Blast&quot;"></a></div>
+		<div id="logo-wrapper"><a href="."><img id="logo" src="img/mixblast-logo.png" data-toggle="tooltip" data-placement="left" title="&quot;You'll Have a Blast&quot;"></a></div>
 		  <div id="text-container" class="container-fluid nopadding">
 				<div id="mixbuilder-bar" class="row nopadding nomargin">
 					<div class="col-md-3 nopadding nomargin">
@@ -45,21 +52,10 @@
 					  <div class="row nopadding nomargin"><div class="col-md-9 nopadding nomargin"><input id="mixbuilder-artist" placeholder="Artist" autocomplete="off" autocorrect="off"><input id="mixbuilder-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="mixbuilder-album" placeholder="Album Name" autocomplete="off" autocorrect="off" style="display:none;"></div><div id="mixbuilder-buttons" class="col-md-3 nopadding nomargin"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs"><div id="query-clear"><div class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Clear List"></div></div><div id="shuffletext"><img src="img/shuffle.svg" alt="Shuffle" data-toggle="tooltip" title="Shuffle List"></div></div></div>
 					</div>
 				</div>
-				<div id="player-container" style="display:none;">
-					<!--<div id="ytPlayer"></div>-->
-					<iframe id="ytPlayer" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?enablejsapi=1" frameborder="0" enablejsapi="1" allowfullscreen></iframe>
-					<span id="ytPlayer-thumb-close" data-toggle="tooltip" title="Go Back to Video"></span>
-				</div>
 				<div id="queryarea" class="ui-widget">
-					<textarea id="query" rows="13" cols="60" style="display:none">
-Put a list of songs here. Example:
+					<textarea id="query" rows="13" cols="60" style="display:none" placeholder="Put a list of songs here, separated by new lines. 
 
-Led Zeppelin - Out on the Tiles
-Too Short - Blow the Whistle 
-November Rain Guns N' Roses
-etc.
-
-Then click "Blast a Mix" to make a playlist. </textarea>
+Then click Blast a Mix."></textarea>
 					<textarea id="query2" style="display:none;height:50px;" ></textarea>
 					<div id="blast-button-container" class="container-fluid nopadding">
 						<div class="row nopadding">
@@ -185,9 +181,9 @@ Then click "Blast a Mix" to make a playlist. </textarea>
 			<br>
 			<br>
 			<!--<script src="waterbug.js"></script>-->
+			<script src="https://www.youtube.com/iframe_api"></script>
 	    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-			<script src="https://www.youtube.com/iframe_api"></script>
 			<script src="js/auth.js"></script>
 			<script src="js/search.js"></script>
 			<script src="js/player.js"></script>

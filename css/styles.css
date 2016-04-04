@@ -41,27 +41,19 @@
 		margin: 0 auto; */
 	}
 	.container-fluid {
-	  margin-right: auto;
-	  margin-left: auto;
+	  /* margin-right: auto;
+	  margin-left: auto; */
 	  max-width: 950px;
 	}
 	#body-column {
 		width:100%;
-		/*
-		width: 960px;
-		margin: 0 auto;
-		min-height: 100%;
-		padding-left: 30px;
-		padding-right: 30px;
-		*/
-		/* overflow: auto; */
 		padding-bottom: 100px
 	}
 	#player-container{
 		position: absolute;
 		z-index: 301;
 		display:block;
-		top: 162px;
+		top: 0px;
 		/*right: 23px;*/
 		width: 95px;
 		height: 71px;
@@ -176,7 +168,7 @@
 		line-height: 149%;
 		width: 100%;
 		height: 345px;
-		color: #999;
+		color: #000;
 		text-align: left;
 		resize:both; 
 		background-color: rgba(255,255,255,0.7);
@@ -232,9 +224,8 @@
 		padding:0px;
 	}
 	#logo-wrapper {
-		margin-top:20%;
+		margin-top:15%;
 		margin-bottom:30px;
-		float:right;
 	}
 	#logo {
 		max-width:100%;
@@ -469,12 +460,12 @@
 		background-color: rgba(0, 0, 0, 0.2);
 	}
 	#mixbuilder-buttons {
-		visibility: hidden;
+		display: none;
 	}
 	#mixbuilder-search-button {
 		position: relative;
 		background: url(../img/add-icon.svg) no-repeat;
-		background-size: 33%;
+		background-size: 19px;
 		background-position: 50% 50%;
 		background-color: rgb(255, 255, 255);
 		width: 33.3%;
@@ -714,10 +705,6 @@
 	#blast-button-container {
 		padding-top: 20px;
 		margin-left: 22px;
-		/*
-		padding-left: 25px;
-		padding-right: 12px;
-		*/
 		height: 88px;
 		vertical-align: bottom;
 	}
@@ -946,16 +933,13 @@
 		padding-right: 30px;
 	*/
 	}
-	#blast-button-container > div > div.col-md-6.nopadding > div > div.col-xs-1 {
-		padding-right: 36px;
-	}
 	#mixbuilder-bar > div.col-md-3.nopadding {
 		text-align: center;
 	}
 
 @media only screen and (max-width:992px){
 	#mixbuilder-bar {
-		margin-bottom: 110px;
+		margin-bottom: 89px;
 	}
 	#mixbuilder-bar > div.col-md-3.nopadding {
 		text-align: left;
@@ -969,9 +953,6 @@
 	#blast-button-container > div > div.col-md-6.nopadding > div {
 		height:40px;
 	}
-	#blast-button-container > div > div.col-md-6.nopadding > div > div.col-xs-1 {
-	    padding-right: 26px;
-	}
 	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(3) {
 	    margin-left: 0px;
 	}
@@ -980,9 +961,6 @@
 	}
 	#mixbuilder-bar > div.col-md-9.nopadding.nomargin > div > div.col-xs-9.nopadding.nomargin {
 	    margin-left: -10px;
-	}
-	#mixbuilder-search-button {
-    	background-size: 18%;
 	}
 	#mixbuilder-search-button, #query-clear, #shuffletext {
 		width:33.3%;
@@ -998,8 +976,8 @@
     }
 	#body-column {
 	    width: 100%;
-	    padding-left: 15px;
-	    padding-right: 15px;
+	    padding-left: 0px;
+	    padding-right: 2px;
 	}
 	.advanced-tips {
 		color: #000;

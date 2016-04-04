@@ -55,11 +55,14 @@ var search = function(query,counter) {
 
 
 function multiSearch() {
-
+//alert(mixBuilder.fromFirstField);
+//alert(($('#mixbuilder-buttons').css("visibility") == "hidden"));
+//alert($('#query').is(':hidden'));
+//alert(rssfeed);
 	//first time search/search from mixbuilder if textarea blank
-	if (($('#mixbuilder-search-button').is(':hidden')) || (search.isDefaultMsg && (rssfeed===''))) {
+	if (($('#mixbuilder-buttons').is(':hidden')) && ($('#query').is(':hidden')) && (rssfeed==='')) {
 		$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'margin-bottom': '20px', 'margin-top': '20px' }, "fast");
-		$("#mixbuilder-search-button").show();
+		$("#mixbuilder-buttons").show();
 		$("#query").show().val('');
 		mixBuilder.fromFirstField = true;
 		mixBuilder.search();
@@ -80,12 +83,11 @@ function multiSearch() {
 	//erase previous search
 	$('#search-container').empty();
 	//$('#errormsg').hide();
+	$('#blast-button-container').hide();
 	$('#advanced-container').hide();
 	$('#youtube-playlist-container').show();
 	$('#ytPlayer-thumb-close').show();
-	$("#mixbuilder-buttons").css("visibility", "visible");
-	//$("#mixbuilder-search-button").show();
-	//$('#shuffletext').hide();
+	$("#mixbuilder-buttons").show();
 	if (search.topvIdArray) {
 		search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
 		search.listArray.length = 0;
@@ -96,6 +98,7 @@ function multiSearch() {
 
 	//split texarea into lines
 	var lines = $('#query').val().split(/\n/);
+	console.log(lines);
 	//only get non-whitespace lines, push into listArray
 	for (var i=0; i < lines.length; i++) {
 	  if (/\S/.test(lines[i])) {
@@ -105,11 +108,10 @@ function multiSearch() {
 	
 	var x = 0;
 	var searchnum = search.listArray.length;
-	if ((searchnum < 1) || search.isDefaultMsg) { 
+	if ((searchnum < 1)) { 
 		$('#errormsg-txt').html('Error. <br>Put a list of songs into the textbox. <br>(Use the MixBuilder to add songs or just type a list)');
-		$("#query").val($("#query").prop("defaultValue")).css("color", "#999");
+		//$("#query").val($("#query").prop("defaultValue")).css("color", "#999");
 		var t=setTimeout(function(){$('#editplaylist').trigger( "click" );},1000);
-		search.isDefaultMsg = true;
 		$('#errormsg').show();
 		return false; 
 	}
@@ -147,13 +149,12 @@ function multiSearch() {
 var mixBuilder = {
 	render : function (artistName,trackName,albumName) {
 		console.log(artistName + '|' + trackName + '|' + albumName + ':' + search.isDefaultMsg)
-		if (search.isDefaultMsg) $('#query').val('');
+		//if (search.isDefaultMsg) $('#query').val('');
 		if (!mixBuilder.fromFirstField) {
 			$("#related-container" ).show();
-			$("#mixbuilder-buttons").css("visibility", "visible");
+			$("#mixbuilder-buttons").show();
 		}
 		var song_num = $("#topSongs-num").val();
-		search.isDefaultMsg = false;
 		if (search.dropVal == 'drop-topSongs') {
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
 		} else if (search.dropVal == 'drop-similarSongs'){
@@ -166,7 +167,7 @@ var mixBuilder = {
 			mixBuilder.getJSON("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+artistName+"&type=artist-radio&results="+100,artistName,trackName);
 		} else {
 			console.log('dropdown not selected');
-			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=100&format=json&callback=?",artistName,trackName,albumName)
+			//mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=100&format=json&callback=?",artistName,trackName,albumName)
 		}
 			showRelated.artists(artistName);
 	},
@@ -225,20 +226,19 @@ var mixBuilder = {
 			if ((search.count === undefined)) {
 				$('#query').val(mixBuilder.songlist);
 				search.count = 0;
-			} else if (($.trim($("#query").val()) == '') || search.isDefaultMsg) {
+			} else if (($.trim($("#query").val()) == '')) {
 				$('#query').val(mixBuilder.songlist);
 			} else {
 				//add to list
 				$('#query').val($('#query').val() + mixBuilder.songlist);
 				var textarea = document.getElementById('query');
-				if (!search.isDefaultMsg) var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
+				var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
 			}
 			 //$('#search-button').trigger( "click" );
 			console.log('hey ' + mixBuilder.fromFirstField);
 			if (mixBuilder.fromFirstField) multiSearch();
 		});
-	},
-	fromFirstField : true
+	}
 };
 
 //legacy codefix
@@ -260,7 +260,7 @@ function allSongsBy(artistName,song_num) {
 
                          //$('#search-button').trigger( "click" );
                         var textarea = document.getElementById('query');
-                        if (!search.isDefaultMsg) var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
+                        var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
                 } else {
                         $('#errormsg').show();
                         $('#errormsg-txt').html(': ( <br><br>Error loading videos by: '+artistName+'<br><br>Check spelling?');
@@ -287,13 +287,13 @@ function dropdownSwitcher() {
 		$('#mixbuilder-song').show().css("width","50%");
 		$('#mixbuilder-album').hide();
 		$("#songNum").css("display","inline-block");
-		if ($('#mixbuilder-buttons').css("visibility") == "hidden") $('#mixbuilder-song').css("width","83.4%");
+		if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-song').css("width","83.4%");
 	} else if (search.dropVal == 'drop-album') {
 		$('#mixbuilder-artist').show().css("width","50%");
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').show().css("width","50%");
 		$("#songNum").css("display","none");
-		if ($('#mixbuilder-buttons').css("visibility") == "hidden") $('#mixbuilder-album').css("width","83.4%");
+		if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-album').css("width","83.4%");
 	} else if (search.dropVal == 'drop-paste') {
 		editTextList();
 		$('#mixbuilder-artist').hide();
@@ -304,7 +304,7 @@ function dropdownSwitcher() {
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').hide();
 		$("#songNum").css("display","inline-block");
-		if ($('#mixbuilder-buttons').css("visibility") == "hidden") $('#mixbuilder-artist').css("width","133.3%");
+		if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-artist').css("width","133.3%");
 	}
 
 	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-paste')) $("#songNum").css("display","none");
@@ -397,7 +397,6 @@ $("#shuffletext").click(function(){
 //todo: undo clear list
 $("#query-clear").click(function(){
 	$("#query").val('');
-	search.isDefaultMsg = true;
 });
 
 $("#editplaylist").click(function(){
@@ -411,33 +410,31 @@ $("#closeAdvanced").click(function(){
 });
 
 function editSearchTerm(lineNumber) {
-	var thumbTop = '161px';
-	if ($(window).width() < 960) { 
-		thumbTop = '244px';
-	} 
 	var toggleEditText = $("#editplaylist").html();
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		//thumbnail player
-		$("#player-container").animate({top: thumbTop, right: '17px', width: '160px', height: '90px'}, 'fast');
+		$("#player-container").css({top: '0px', right: '0px', width: '160px', height: '90px'});
 		$('#query').animate({height: '345px'}, 'fast', function() {
 			$("#related-container").show(); $("#related-more").show();
 		});
 		$("#ytPlayer-thumb-close").show();
-		$("#blast-button-container").css("visibility", "visible");
+		$("#blast-button-container").show();
 		$("#mixbuilder-bar").show();
-		$("#mixbuilder-buttons").css("visibility", "visible");
+		$("#mixbuilder-buttons").show();
 		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Text Editor"));
 	} else {
 		$("#related-container").hide(); $("#related-more").hide();
 		$("#query").show();
 		//$("#logo").animate({marginTop: "2%",'marginBottom': '10px'}, "fast");
-		$('#player-container').animate({top: '86px', right: '0px', width: '100%', height: '364px'}, 'fast', function() {
+		$('#player-container').css({top: '86px', right: '0px', width: '100%', height: '364px'}, function() {
 			$("#mixbuilder-bar").hide();
-			$("#blast-button-container").css("visibility", "hidden");
+			$("#blast-button-container").hide();
   		});
-		$('#query').animate({height: '282px'}, 'fast');
+  		var qheight = '282px';
+  		if ($(document).width() < 992) qheight = '224px';
+		$('#query').animate({height: qheight}, 'fast');
 		$("#ytPlayer-thumb-close").hide();
-		$("#mixbuilder-buttons").css("visibility", "visible");
+		$("#mixbuilder-buttons").show();
 		$("#editplaylist").html(toggleEditText.replace("Close Text Editor","Edit Playlist"));
 	}
 	/*
