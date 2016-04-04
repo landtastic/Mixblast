@@ -77,7 +77,7 @@ $("#query").bind("paste", function(){
 });
 
 function editTextList() {
-	$("#mixbuilder-buttons").css("visibility", "visible");
+	$("#mixbuilder-buttons").show();
 	$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'margin-bottom': '20px', 'margin-top': '20px' }, "fast");
 	$("#query").show();
 	$("#query2").val($("#query").val());

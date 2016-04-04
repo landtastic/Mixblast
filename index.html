@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free music playlist maker. Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
     <link rel="shortcut icon" href="favicon.ico?r=8" id="favicon"/>
@@ -10,7 +10,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Mixblast">
-
+	<script src="https://www.youtube.com/iframe_api"></script>
+	<script src="js/auth.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -181,10 +182,8 @@ Then click Blast a Mix."></textarea>
 			<br>
 			<br>
 			<!--<script src="waterbug.js"></script>-->
-			<script src="https://www.youtube.com/iframe_api"></script>
 	    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-			<script src="js/auth.js"></script>
 			<script src="js/search.js"></script>
 			<script src="js/player.js"></script>
 			<script src="js/advanced.js"></script>
