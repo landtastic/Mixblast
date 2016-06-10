@@ -47,7 +47,7 @@
 	}
 	#body-column {
 		width:100%;
-		padding-bottom: 100px
+		padding-bottom: 20px
 	}
 	#player-container{
 		
@@ -335,18 +335,21 @@
 	}
 	#refreshc {
 		vertical-align: text-bottom;
-		margin: 5px 2px 0px 0px;
+		margin: 15px 2px 0px 0px;
 		width:26px;
 		height:26px;
 	}
 	#prevb, #nextb, #shuffb { 
-		height:40px; 
-		margin-top: 60%;
+	height: 40px;
+    /* margin-top: 35%; */
+    /* margin-bottom: 70%; */
+    position: relative;
+    bottom: 30px;
 	}
 	#playpb {
 	    height: 100px;
     }
-	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover, #query-clear:hover, #mixbuilder-search-button:hover {
+	#prevbutton:hover, #playpause:hover, #nextbutton:hover, #shufflebutton:hover, #wrongsong:hover, #rss-button:hover, #shuffletext:hover, #query-clear:hover, #mixbuilder-search-button:hover, #editplaylist:hover {
 		opacity:1.0;
 		-webkit-filter: invert(100%);
 		filter:invert(100%); 
@@ -359,18 +362,9 @@
 		filter:invert(0%)!important; 
 	}
 	#button-container { 
-		display: inline-block;
-		/*width: 82%;*/
-		float:right;
-		font-size:19px;
-		margin-top:10px;
-		margin-left: auto; 
-		margin-right: auto;
-		vertical-align: top;
+		width: 99.5%;
   	}
   	.playerbutton {
-		vertical-align: top;
-		text-align: top;
 		display: inline-block;
 		*display: inline;
 		zoom: 1;
@@ -381,6 +375,11 @@
  		float: right;
  		text-align: right;
  		width: 200px;
+ 	}
+ 	.advanced-littlebuttons {
+	    max-width: 220px;
+	    margin-right: 36px;
+	    margin-top: 30px;
  	}
   	.stretch {
 		width: 100%;
@@ -401,7 +400,7 @@
 	img#wrongsong {
 		vertical-align: bottom;
 	}
-	#wrongsong:hover {
+	#editplaylist,#wrongsong:hover {
 		color:white;
 	}
 	#edit-playlist-icon {
@@ -951,6 +950,7 @@
 		position: absolute;
 		width: 100%;
 		bottom: 0px;
+		left:0; right:0;
 	/*	
 		max-width: 960px;
 		height: 100px;
@@ -992,6 +992,9 @@
 	#search-button {
 		position: initial;
 	    width: 97%;
+	}
+	.advanced-littlebuttons {
+	    max-width: 100%;
 	}
 	#mixbuilder-bar > div.col-md-9.nopadding.nomargin > div > div.col-xs-9.nopadding.nomargin {
 	    margin-left: -10px;
@@ -1035,13 +1038,16 @@
 	#queryarea {
 		    margin-top: 7px;
 	}
+	#playerbutton {
+		margin-right: 30px;
+	}
 }
 
 
 
 	/*========== GRADIENT BACKGROUND ==========*/
 	.gradient-background {
-    -webkit-filter: grayscale(100%);
+    /*-webkit-filter: grayscale(100%);*/
     filter: grayscale(100%);
 
 
