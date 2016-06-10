@@ -359,6 +359,7 @@ $(function() {
 			var originalEvent = event;
 			while (originalEvent) {
 				if (originalEvent.keyCode == 13) originalEvent.stopPropagation();
+				//alert(originalEvent);
 
 				if (originalEvent == event.originalEvent) break;
 				originalEvent = event.originalEvent;

@@ -4,9 +4,10 @@ function handleAPILoaded() {
   $('#search-button').attr('disabled', false);
   onYouTubeIframeAPIReady();
 }
-//changed the name of this function so iframe api doesn't callback
+
 function onYouTubeIframeAPIReady() {
-	ytPlayer = new YT.Player('ytPlayer', { 
+	player = null;
+	player = new YT.Player('player', { 
 		//suggestedQuality: 'medium',
 		height: '394',
 		width: '700',
@@ -24,9 +25,10 @@ function onYouTubeIframeAPIReady() {
 			color: 'white',
 			showinfo: 1,
 			playsinline: 1
-		}
-	});
+		}	});
+	//console.log(player.loadVideoById);
 }
+
 function onPlayerReady() {
 	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg" id="play-arrow-icon">');
   	//if rss url in querystring, automate click
@@ -46,7 +48,7 @@ function onPlayerStateChange(event) {
 	if ((event.data == 1) && (search.playcount == 0)) {
 		setTimeout(function(){ 
 			$('html, body').animate({
-				scrollTop: $("#ytPlayer").offset().top
+				scrollTop: $("#player").offset().top
 			}, 500);
 		 },5000);
 		console.log('first vid done.')
@@ -81,7 +83,7 @@ function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
 	}
 	if (swapcount === undefined) swapcount = 0;
 	return "<div class='searchresult-div'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'>"+ notFoundString +"<a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
-		"</a></div><div id='searchresult-refresh'><img src='img/refreshb.png' data-toggle='tooltip' title='Version Swap \n("+ search.listArray[c] +")' class='refreshb' id='"+c+"'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
+		"</a></div><div id='searchresult-refresh'><img src='img/refresh-icon.svg' data-toggle='tooltip' title='Version Swap \n("+ search.listArray[c] +")' class='refreshb' id='"+c+"'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
 }
 
 $("#prevbutton").click(function(){
@@ -93,11 +95,11 @@ $("#playpause").click(function(){
 });
 
 function playPause() {
-	if (ytPlayer.getPlayerState() != 1) {
-		 ytPlayer.playVideo();
+	if (player.getPlayerState() != 1) {
+		 player.playVideo();
 		 $("#playpb").attr("src","img/media_pause.svg");
 	} else {
-		ytPlayer.pauseVideo();
+		player.pauseVideo();
 		$("#playpb").attr("src","img/media_play.svg");
 	}
 }
@@ -125,21 +127,45 @@ function nextVideo(next) {
 }
 
 function loadVid(vidId) {
-	ytPlayer.loadVideoById(vidId);
-	//ytPlayer.loadVideoById(vidId, 0, "medium");
-	//$("#ytPlayer").attr("src", "http://www.youtube.com/embed/" + vidId);
-	//ytPlayer.playVideo();
-	//ytPlayer.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
-	if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
-	$("#favicon").attr("href", search.topvThumbArray[search.vidcount]);
+	var i = add();
+	if (player.loadVideoById) {
+		player.loadVideoById(vidId);
+		//player.loadVideoById(vidId, 0, "medium");
+		//$("#player").attr("src", "http://www.youtube.com/embed/" + vidId);
+		//player.playVideo();
+		//player.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
+		if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
+		$("#favicon").attr("href", search.topvThumbArray[search.vidcount]);
+	} else {
+	//try to reload player.loadVideoById 5x if it's not present
+		if (i < 5) {
+
+			/*
+			var tag = document.createElement('script');
+
+			tag.src = "https://www.youtube.com/iframe_api";
+			var firstScriptTag = document.getElementsByTagName('script')[0];
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			
+			onYouTubeIframeAPIReady();
+			setTimeout(function(){ player.loadVideoById(vidId) },1000);
+			console.log('checking loadVideoById...'+i);
+			//i++;
+			*/
+		}
+		
+		//console.log(player);
+		//console.log(player.loadVideoById);
+	}
 }
 
 function cuePlayer() {
 	var i = add(); //(in advanced.js)
-	//check if the ytPlayer object is loaded
-	if (ytPlayer.cueVideoById) {
-		ytPlayer.cueVideoById(search.topvIdArray[0]);
+	//check if the player object is loaded
+	if (player.cueVideoById) {
+		player.cueVideoById(search.topvIdArray[0]);
 	} else {
+		/*
 		//check for it 5x if it isn't
 		var tag = document.createElement('script');
 		tag.src = "https://www.youtube.com/iframe_api";
@@ -152,6 +178,9 @@ function cuePlayer() {
 			console.log('checking...'+i);
 			//i++;
 		}
+		*/
+		console.log(player);
+		console.log(player.cueVideoById);
 	}
 }
 //shuffle after search
@@ -399,8 +428,6 @@ var pastBlasts = {
 
 $(document).ready(function() {
 
-
-	$("#songNum").css("display","none");
 	//hide pastBlasts if user clicks background
    	$("body").click(function(e) {
 		pastBlasts.hide();

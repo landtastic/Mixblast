@@ -7,11 +7,11 @@
 <title></title>
 <desc></desc>
 <g id="Page-1">
-	<g id="Icons-AV" transform="translate(-168.000000, -85.000000)">
-		<g id="play-circle-outline" transform="translate(168.000000, 85.000000)">
-			<polygon fill="#FFFFFF" points="8,5.5 8,14.5 14,10 			"/>
+	<g id="Icons-AV" transform="translate(-42.000000, -85.000000)">
+		<g id="pause-circle-outline" transform="translate(42.000000, 85.000000)">
+			<path id="Shape" fill="#FFFFFF" d="M7,14h2V6H7V14L7,14z M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0L10,0z
+				 M10,18c-4.4,0-8-3.6-8-8c0-4.4,3.6-8,8-8c4.4,0,8,3.6,8,8C18,14.4,14.4,18,10,18L10,18z M11,14h2V6h-2V14L11,14z"/>
 		</g>
 	</g>
 </g>
-<circle fill="none" stroke="#FFFFFF" stroke-width="0.25" stroke-miterlimit="10" cx="10" cy="10.083" r="9.354"/>
 </svg>

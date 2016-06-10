@@ -18,7 +18,8 @@ var search = function(query,counter) {
 	$.each(searchObj.items, function(i,x) {
 		var vId = x.id.videoId;
 		var vTitle = x.snippet.title;
-		var vThumb = x.snippet.thumbnails.default.url;
+		//console.log(x.snippet);
+		if (x.snippet.thumbnails.default.url !=undefined) var vThumb = x.snippet.thumbnails.default.url;
 		if (vId===undefined) {
 			vId="Not Found"; vTitle="Not Found. Try version refresh button: "; vThumb="img/notfound.png"; 
 		}
@@ -85,7 +86,7 @@ function multiSearch() {
 	//$('#errormsg').hide();
 	$('#advanced-container').hide();
 	$('#youtube-playlist-container').show();
-	$('#ytPlayer-thumb-close').show();
+	$('#player-thumb-close').show();
 	$("#mixbuilder-buttons").show();
 	if (search.topvIdArray) {
 		search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
@@ -108,7 +109,7 @@ function multiSearch() {
 	var x = 0;
 	var searchnum = search.listArray.length;
 	if ((searchnum < 1)) { 
-		$('#errormsg-txt').html('Error. <br>Put a list of songs into the textbox. <br>(Use the MixBuilder to add songs or just type a list)');
+		$('#errormsg-txt').html('Error. <br>No songs. Put a list of songs into the textbox.');
 		//$("#query").val($("#query").prop("defaultValue")).css("color", "#999");
 		var t=setTimeout(function(){$('#editplaylist').trigger( "click" );},1000);
 		$('#errormsg').show();
@@ -136,7 +137,7 @@ function multiSearch() {
 			$("#shufflebutton").removeClass("disabled");
 
 			search.done = true;
-			//ytPlayer.cuePlaylist(search.topvIdArray);
+			//player.cuePlaylist(search.topvIdArray);
 			/////todo: start with vidObjArray[vidcount].vid[0]
 
 			clearTimeout(timerId);
@@ -166,7 +167,7 @@ var mixBuilder = {
 			mixBuilder.getJSON("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+artistName+"&type=artist-radio&results="+100,artistName,trackName);
 		} else {
 			console.log('dropdown not selected');
-			//mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=100&format=json&callback=?",artistName,trackName,albumName)
+			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=100&format=json&callback=?",artistName,trackName,albumName)
 		}
 			showRelated.artists(artistName);
 	},
@@ -401,7 +402,7 @@ $("#query-clear").click(function(){
 $("#editplaylist").click(function(){
 	editSearchTerm(0);
 });
-$("#ytPlayer-thumb-close").click(function(){
+$("#player-thumb-close").click(function(){
 	editSearchTerm(0);
 });
 $("#closeAdvanced").click(function(){
@@ -418,7 +419,7 @@ function editSearchTerm(lineNumber) {
 		$('#query').animate({height: '345px'}, 'fast', function() {
 			$("#related-container").show(); $("#related-more").show();
 		});
-		$("#ytPlayer-thumb-close").show();
+		$("#player-thumb-close").show();
 		$("#mixbuilder-bar").show();
 		$("#mixbuilder-buttons").show();
 		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Text Editor"));
@@ -430,7 +431,7 @@ function editSearchTerm(lineNumber) {
 			$("#mixbuilder-bar").hide();
   		});
 		$('#query').animate({height: qHeightClosed}, 'fast');
-		$("#ytPlayer-thumb-close").hide();
+		$("#player-thumb-close").hide();
 		$("#mixbuilder-buttons").show();
 		$("#editplaylist").html(toggleEditText.replace("Close Text Editor","Edit Playlist"));
 	}

@@ -50,25 +50,25 @@
 		padding-bottom: 100px
 	}
 	#player-container{
+		
 		position: absolute;
 		z-index: 301;
-		display:block;
 		top: 0px;
+		/*left: -200%;*/
 		/*right: 23px;*/
 		width: 95px;
 		height: 71px;
 		/*
 		position: relative;
-		display: none;
 		overflow: inherit!important;
 		*/
 	}
-	#ytPlayer {
+	#player {
 		position: relative;
 		height:100%;
 		width:100%;
 	}
-	#ytPlayer-thumb-close {
+	#player-thumb-close {
 		position: absolute;
 		z-index: 301;
 		display:block;
@@ -176,6 +176,16 @@
 		background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%, rgba(255,255,255,0) 100%);*/
 		border: 0px;
 		overflow: auto!important;
+		background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, #ccc 30px, #ccc 31px, rgba(255,255,255,0) 31px);
+		background-image: -moz-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, #ccc 30px, #ccc 31px, rgba(255,255,255,0) 31px);
+		background-image: -ms-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, #ccc 30px, #ccc 31px, rgba(255,255,255,0) 31px);
+		background-image: -o-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, #ccc 30px, #ccc 31px, rgba(255,255,255,0) 31px);
+		background-image: linear-gradient(rgba(255,255,255,0), rgba(255, 255, 255, 0) 30px, #ccc 30px, #ccc 31px, rgba(255,255,255,0) 31px);
+		background-size: 100% 31px;
+		line-height: 31px;
+		padding: 8px!important;
+		padding-left: 16px;
+		background-attachment: local;
 	}
 	input[type='checkbox'] {
 		vertical-align: sub;
@@ -219,6 +229,10 @@
 	  margin-bottom:0px;
 	  padding-bottom:5px;
 	}
+	#advanced-text-options-icon {
+		height:18px;
+		width:18px;
+	}
 	.similar-top {
 		margin:0px;
 		padding:0px;
@@ -241,7 +255,7 @@
 		margin: 0 6px 0 0;
 	}
 	
-	#ytPlayer {
+	#player {
 	  	max-width: 100%;
 	  	display: block;
 	  	margin: 0 auto;
@@ -318,10 +332,10 @@
 		filter:alpha(opacity=100); 
 	}
 	#refreshc {
-		vertical-align: text-bottom;
+		vertical-align: middle;
 		margin: 5px 2px 0px 0px;
-		width:25px;
-		height:25px;
+		width:26px;
+		height:26px;
 	}
 	#prevb, #nextb, #shuffb { 
 		height:40px; 
@@ -379,6 +393,9 @@
 		margin-right: -6px;
 		text-align: bottom;
 	}
+	#editplaylist {
+		margin-right: -10px;
+	}
 	img#wrongsong {
 		vertical-align: bottom;
 	}
@@ -386,7 +403,9 @@
 		color:white;
 	}
 	#edit-playlist-icon {
-		font-size:23px; 
+		height: 26px;
+		width: 26px;
+		vertical-align: bottom;
 	}
 	.subtext {
 		font-weight:normal; 
@@ -596,7 +615,8 @@
 		padding-right: 5px;
 		padding-top: 0px;
 		border: 0px;
-		width: 100%;
+		border-radius: 0px 0px 0px 0px;
+		width: 133.3333%;
 	}
 	#mixbuilder-artist, #mixbuilder-song, #mixbuilder-album {
 		color: #000;
@@ -609,10 +629,6 @@
 		padding-left: 13px;
 		padding-right: 5px;
 		/*border-radius: 0px 5px 5px 0px;*/
-	}
-	#mixbuilder-artist {
-		width: 100%;
-		border-radius: 0px 0px 0px 0px;
 	}
 	#mixbuilder-song, #mixbuilder-album {
 		width: 50%;
@@ -657,7 +673,8 @@
 		display: inline-block;
 	}
 	#rss-dropdown{
-		width:100px;
+		height:22px;
+		width:69px;
 	}
 	#rss-button{
 		vertical-align: middle;
@@ -745,8 +762,8 @@
 		height: 13px;
 	}
 	#play-arrow-icon {
-		height: 17px;
-		width: 17px;
+		height: 15px;
+		width: 15px;
 		-webkit-filter: drop-shadow(0 1px 0 rgba(255,255,255, .8));
 		filter: drop-shadow(0 1px 0 rgba(255,255,255, .8)); 
 	}
@@ -839,11 +856,14 @@
 		text-align: left;
 		background-color: rgba(234,19,19,0.8);
 		padding: 10px;
-		width: 52%;
+		width: 99%;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
 		height: auto;
 		position: absolute;
-		top: 44%;
-		left: 24%;
+		top: -3px;
+		max-width: 950px;
 		z-index: 691;
 	}
 	#not-found {
@@ -936,6 +956,9 @@
 	#mixbuilder-bar > div.col-md-3.nopadding {
 		text-align: center;
 	}
+	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(3) {
+		width: 11.666667%;
+	}
 
 @media only screen and (max-width:992px){
 	#mixbuilder-bar {
@@ -958,6 +981,9 @@
 	}
 	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(4) {
 		margin-left: 30px;
+	}
+	#search-button {
+		width: 96%;
 	}
 	#mixbuilder-bar > div.col-md-9.nopadding.nomargin > div > div.col-xs-9.nopadding.nomargin {
 	    margin-left: -10px;
@@ -1001,6 +1027,10 @@
 }
 	/*========== GRADIENT BACKGROUND ==========*/
 	.gradient-background {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+
+
 	  position: fixed;
 	  top:0;
 	  left: 0;

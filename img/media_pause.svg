@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="480.179px" height="640px" viewBox="112.911 180 480.179 640" enable-background="new 112.911 180 480.179 640"
-	 xml:space="preserve">
-<path fill="#FFFFFF" d="M112.911,820V180h159.821v640H112.911z M432.552,820V180H593.09v640H432.552z"/>
+<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px"
+	 viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+<title></title>
+<desc></desc>
+<g id="Page-1">
+	<g id="Icons-AV" transform="translate(-42.000000, -85.000000)">
+		<g id="pause-circle-outline" transform="translate(42.000000, 85.000000)">
+			<rect x="7" y="6" fill="#FFFFFF" width="2" height="8"/>
+			<rect x="11" y="6" fill="#FFFFFF" width="2" height="8"/>
+		</g>
+	</g>
+</g>
+<circle fill="none" stroke="#FFFFFF" stroke-width="0.25" stroke-miterlimit="10" cx="10" cy="10.083" r="9.354"/>
 </svg>
