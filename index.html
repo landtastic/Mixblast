@@ -50,7 +50,7 @@ Mixblast does two things:<br>
 							<li id="drop-topAlbums"><a href="javascript:void();"> Top Albums By </a></li>
 							<li id="drop-album"><a href="javascript:void();"> Add Album </a></li>
 							<li id="drop-quickMix"><a href="javascript:void();"> Related Artist Mix </a></li>
-							<li id="drop-paste"><a href="javascript:void();"> Paste Text List </a></li>
+							<!--<li id="drop-paste"><a href="javascript:void();"> Paste Text List </a></li>-->
 		                 </ul>
 		                </div>
 					</div>
@@ -59,7 +59,7 @@ Mixblast does two things:<br>
 					</div>
 				</div>
 				<div id="queryarea" class="ui-widget">
-					<textarea id="query" rows="13" cols="60" style="display:none" placeholder="Put a list of songs here, separated by new lines. 
+					<textarea id="query" rows="13" cols="60" placeholder="Put a list of songs here, separated by new lines. 
 
 You can type them, or use the search above to add songs.
 
@@ -67,7 +67,10 @@ Then click Blast a Mix."></textarea>
 					<textarea id="query2" style="display:none;height:50px;" ></textarea>
 					<div id="blast-button-container" class="container-fluid nopadding">
 						<div class="row nopadding">
-							<div class="col-md-6 col-md-6-push nopadding">
+							<div class="col-md-6-push nopadding">
+								<button id="search-button" class="leftBottom">Blast a Mix <img src="img/youtube-api-loading.gif" id="play-arrow-icon"></button>
+							</div>
+							<div class="col-md-6-pull nopadding">
 								<div class="row nopadding">
 									<div class="col-xs-1"><button class="pb-button-sm leftBottom leftBottom-lb" id="pb-button" data-toggle="tooltip" title="Recent History"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button></div>
 									<div class="col-xs-1"><button class="infolink leftBottom leftBottom-lb" data-toggle="tooltip" title="Info"></button></div>
@@ -124,12 +127,9 @@ Then click Blast a Mix."></textarea>
 											</select> 
 										</div>
 									</div>
-									<div class="col-xs-6"></div>
 								</div>
 							</div>
-							<div class="col-md-6 col-md-6-pull nopadding">
-								<button id="search-button" class="leftBottom">Blast a Mix <img src="img/youtube-api-loading.gif" id="play-arrow-icon"></button>
-							</div>
+
 						</div>
 					</div>
 				</div>

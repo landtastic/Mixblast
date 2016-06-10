@@ -195,11 +195,13 @@ function getParameterByName(name) {
 }
 
 function parseXml(data) {
+	/*
 	if ($('#mixbuilder-search-button').is(':hidden')) {
 		$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'marginBottom': '20px', 'marginTop': '20px' }, "fast");
 		$("#query").show();
     	$("#mixbuilder-search-button").show();
 	}
+	*/
 	$("#query").val("");
 	var stripNums = false;
 	var stripParen = false;

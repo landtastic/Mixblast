@@ -238,8 +238,10 @@
 		padding:0px;
 	}
 	#logo-wrapper {
-		margin-top:15%;
-		margin-bottom:30px;
+		width:50%;
+		height:50%;
+		margin-bottom:20px;
+		margin-top:20px;
 	}
 	#logo {
 		max-width:100%;
@@ -332,7 +334,7 @@
 		filter:alpha(opacity=100); 
 	}
 	#refreshc {
-		vertical-align: middle;
+		vertical-align: text-bottom;
 		margin: 5px 2px 0px 0px;
 		width:26px;
 		height:26px;
@@ -479,7 +481,7 @@
 		background-color: rgba(0, 0, 0, 0.2);
 	}
 	#mixbuilder-buttons {
-		display: none;
+
 	}
 	#mixbuilder-search-button {
 		position: relative;
@@ -734,6 +736,10 @@
 		font-weight: bold;
 		border-radius: 5px 5px 5px 5px;
 	}
+	#search-button {
+		position: relative;
+		left: 74%;
+	}
 	.leftBottom {
 		transition: margin-top 0.1s ease, margin-left 0.1s ease, box-shadow 0.1s ease;
 		background: #0DD262;
@@ -962,7 +968,7 @@
 
 @media only screen and (max-width:992px){
 	#mixbuilder-bar {
-		margin-bottom: 89px;
+		margin-bottom: 56px;
 	}
 	#mixbuilder-bar > div.col-md-3.nopadding {
 		text-align: left;
@@ -975,6 +981,7 @@
 	}
 	#blast-button-container > div > div.col-md-6.nopadding > div {
 		height:40px;
+		margin-top: 45px;
 	}
 	#blast-button-container > div > div.col-md-6.nopadding > div > div:nth-child(3) {
 	    margin-left: 0px;
@@ -983,7 +990,8 @@
 		margin-left: 30px;
 	}
 	#search-button {
-		width: 96%;
+		position: initial;
+	    width: 97%;
 	}
 	#mixbuilder-bar > div.col-md-9.nopadding.nomargin > div > div.col-xs-9.nopadding.nomargin {
 	    margin-left: -10px;
@@ -1024,7 +1032,13 @@
 	.btn.btn-default.dropdown-toggle.form-control {
 		text-align: left!important;
 	}
+	#queryarea {
+		    margin-top: 7px;
+	}
 }
+
+
+
 	/*========== GRADIENT BACKGROUND ==========*/
 	.gradient-background {
     -webkit-filter: grayscale(100%);
