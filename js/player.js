@@ -147,17 +147,13 @@ function loadVid(vidId) {
 	var i = add();
 	if (player.loadVideoById) {
 		player.loadVideoById(vidId);
-		//player.loadVideoById(vidId, 0, "medium");
-		//$("#player").attr("src", "http://www.youtube.com/embed/" + vidId);
-		//player.playVideo();
-		//player.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
 		if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
 		$("#favicon").attr("href", search.topvThumbArray[search.vidcount]);
 	} else {
+		$('#errormsg-txt').html('Whoops. Youtube API error, try refreshing page with ctrl + shift + r');
 	//try to reload player.loadVideoById 5x if it's not present
+		/*
 		if (i < 5) {
-
-			/*
 			var tag = document.createElement('script');
 
 			tag.src = "https://www.youtube.com/iframe_api";
@@ -168,8 +164,8 @@ function loadVid(vidId) {
 			setTimeout(function(){ player.loadVideoById(vidId) },1000);
 			console.log('checking loadVideoById...'+i);
 			//i++;
-			*/
 		}
+		*/
 		
 		//console.log(player);
 		//console.log(player.loadVideoById);
