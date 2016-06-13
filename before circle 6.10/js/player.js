@@ -2,44 +2,11 @@ function handleAPILoaded() {
   gapi.client.setApiKey('AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM');
   $("#playlist-button").html('Save a Playlist');
   $('#search-button').attr('disabled', false);
-  onYouTubeIframeAPIReady_renamed();
+  onYouTubeIframeAPIReady();
 }
-
-function onPlayerReady() {
-	$("#prevbutton").click(function(){
-	nextVideo(false); //back
-	});
-	$("#playpause").click(function(){
-		playPause();
-	});
-	$("#nextbutton").click(function(){
-		nextVideo(true);
-	});
-	//shuffle after search
-	$("#shufflebutton").click(function(){
-
-		if ($('#shufflebutton').hasClass('disabled')) {
-			//e.preventDefault();
-			return false;
-		} else {
-			shuffleIt();
-		}
-	});
-	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg" id="play-arrow-icon">');
-  	//if rss url in querystring, automate click
-  	////if (getParameterByName('rss')) $('#search-button').trigger( "click" );
-}
- // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-var player;
-//for some reason, renaming onYouTubeIframeAPIReady fixes incomplete player object bug
-function onYouTubeIframeAPIReady_renamed() {
-	player = new YT.Player('player', { 
+//changed the name of this function so iframe api doesn't callback
+function onYouTubeIframeAPIReady() {
+	ytPlayer = new YT.Player('ytPlayer', { 
 		//suggestedQuality: 'medium',
 		height: '394',
 		width: '700',
@@ -57,17 +24,20 @@ function onYouTubeIframeAPIReady_renamed() {
 			color: 'white',
 			showinfo: 1,
 			playsinline: 1
-		}	});
-	//console.log(player.loadVideoById);
+		}
+	});
+}
+function onPlayerReady() {
+	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg" id="play-arrow-icon">');
+  	//if rss url in querystring, automate click
+  	////if (getParameterByName('rss')) $('#search-button').trigger( "click" );
 }
 function onPlayerError(event){
-	$('#errormsg-txt').html('Whoops. Error: '+event.data+' (Unknown error, try refreshing page with ctrl + shift + r');
+	 console.log('Whoops. Error: '+event.data);
 	 if (event.data == 150) {
 	 	wrongSong();
-		$('#errormsg-txt').hide();
 	 } else {
 		nextVideo(true);
-		$('#errormsg-txt').hide();
 	 }
 }
 function onPlayerStateChange(event) {
@@ -76,7 +46,7 @@ function onPlayerStateChange(event) {
 	if ((event.data == 1) && (search.playcount == 0)) {
 		setTimeout(function(){ 
 			$('html, body').animate({
-				scrollTop: $("#player").offset().top
+				scrollTop: $("#ytPlayer").offset().top
 			}, 500);
 		 },5000);
 		console.log('first vid done.')
@@ -111,19 +81,30 @@ function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
 	}
 	if (swapcount === undefined) swapcount = 0;
 	return "<div class='searchresult-div'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'>"+ notFoundString +"<a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
-		"</a></div><div id='searchresult-refresh'><img src='img/refresh-icon.svg' data-toggle='tooltip' title='Version Swap \n("+ search.listArray[c] +")' class='refreshb' id='"+c+"'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
+		"</a></div><div id='searchresult-refresh'><img src='img/refreshb.png' data-toggle='tooltip' title='Version Swap \n("+ search.listArray[c] +")' class='refreshb' id='"+c+"'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
 }
 
+$("#prevbutton").click(function(){
+	nextVideo(false); //back
+});
+
+$("#playpause").click(function(){
+	playPause();
+});
 
 function playPause() {
-	if (player.getPlayerState() != 1) {
-		 player.playVideo();
+	if (ytPlayer.getPlayerState() != 1) {
+		 ytPlayer.playVideo();
 		 $("#playpb").attr("src","img/media_pause.svg");
 	} else {
-		player.pauseVideo();
+		ytPlayer.pauseVideo();
 		$("#playpb").attr("src","img/media_play.svg");
 	}
 }
+
+$("#nextbutton").click(function(){
+	nextVideo(true);
+});
 
 function nextVideo(next) {
 	var totalvids = search.topvIdArray.length;
@@ -144,45 +125,37 @@ function nextVideo(next) {
 }
 
 function loadVid(vidId) {
-	var i = add();
-	if (player.loadVideoById) {
-		player.loadVideoById(vidId);
-		//player.loadVideoById(vidId, 0, "medium");
-		//$("#player").attr("src", "http://www.youtube.com/embed/" + vidId);
-		//player.playVideo();
-		//player.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
-		if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
-		$("#favicon").attr("href", search.topvThumbArray[search.vidcount]);
+	var i = add(); //(in advanced.js)
+	if (ytPlayer.loadVideoById) {
+		ytPlayer.loadVideoById(vidId);
 	} else {
-	//try to reload player.loadVideoById 5x if it's not present
+		//check for it 5x if it isn't
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 		if (i < 5) {
-
-			/*
-			var tag = document.createElement('script');
-
-			tag.src = "https://www.youtube.com/iframe_api";
-			var firstScriptTag = document.getElementsByTagName('script')[0];
-			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-			
 			onYouTubeIframeAPIReady();
-			setTimeout(function(){ player.loadVideoById(vidId) },1000);
-			console.log('checking loadVideoById...'+i);
+			setTimeout(function(){ loadVid(vidId); },1000);
+			console.log('checking...'+i);
 			//i++;
-			*/
 		}
-		
-		//console.log(player);
-		//console.log(player.loadVideoById);
 	}
+	//ytPlayer.loadVideoById(vidId, 0, "medium");
+	//$("#ytPlayer").attr("src", "http://www.youtube.com/embed/" + vidId);
+	//ytPlayer.playVideo();
+	//ytPlayer.loadVideoByUrl('http://www.youtube.com/v/'+ vidId +'?version=3');
+	if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';
+	$("#favicon").attr("href", search.topvThumbArray[search.vidcount]);
 }
 
 function cuePlayer() {
 	var i = add(); //(in advanced.js)
-	//check if the player object is loaded
-	if (player.cueVideoById) {
-		player.cueVideoById(search.topvIdArray[0]);
+	//check if the ytPlayer object is loaded
+	if (ytPlayer.cueVideoById) {
+		ytPlayer.cueVideoById(search.topvIdArray[0]);
 	} else {
-		/*
 		//check for it 5x if it isn't
 		var tag = document.createElement('script');
 		tag.src = "https://www.youtube.com/iframe_api";
@@ -195,11 +168,18 @@ function cuePlayer() {
 			console.log('checking...'+i);
 			//i++;
 		}
-		*/
-		console.log(player);
-		console.log(player.cueVideoById);
 	}
 }
+//shuffle after search
+$("#shufflebutton").click(function(){
+
+	if ($('#shufflebutton').hasClass('disabled')) {
+		//e.preventDefault();
+		return false;
+	} else {
+		shuffleIt();
+	}
+});
 function shuffleIt() {
 	$("#search-container").empty();
 	if (search.count>1) search.vidcount = 0;
@@ -435,6 +415,8 @@ var pastBlasts = {
 
 $(document).ready(function() {
 
+
+	$("#songNum").css("display","none");
 	//hide pastBlasts if user clicks background
    	$("body").click(function(e) {
 		pastBlasts.hide();

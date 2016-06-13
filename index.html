@@ -1,10 +1,9 @@
 <!doctype html>
 <html>
   <head>
-  	<script src="//www.youtube.com/iframe_api"></script>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free music playlist maker. Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
+    <meta name="description" content="Free streaming music player and playlist maker. Instead of searching Youtube for one video, search for a whole list! Instant playlists without logging in, without intrusive ads. Play the top songs of any artist, and related artists too. Converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.">
     <link rel="shortcut icon" href="favicon.ico?r=8" id="favicon"/>
     <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
     <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
@@ -19,13 +18,15 @@
   <body>
 	<div id="pb-menu"></div>
 	<div id="info-menu"><div id="infodiv"><img src="android-chrome-192x192.png" id="infoear"><br><br>
-Mixblast does two things:<br>
-1. Creates playlists from text lists of songs (eg. copy + paste a text list from a music message board)<br>
-2. Makes mixes!<br><br>Mixes are saved automatically under recent history (small clock icon). <br><br>You can also save your mix to a Youtube playlist.<br><br>Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next, ~ = Open/Close Text List Editor<br><br>iPhone instructions (currently not working): open in Safari, tap "Add to Home Screen", launch Mixblast from Home screen. <br><br>Mixblast uses the Youtube, Last.fm, and Echo Nest APIs. <br><br>Welp, see ya later.<br><br><br><br></div>
+<h1>Mixblast is an experimental, text-based, streaming music player.</h1> It does two things:<br>
+<h2>1. Turns a text list of songs and into a Youtube playlist (eg. copy + paste a text list from a music message board, blast a mix)</h2>
+<h2> Makes mixes! Try out the top search bar to add songs related to stuff you like.</h2><br>Mixes are saved automatically under recent history (small clock icon). <br><br>You can also save your mix to a Youtube playlist after the playlist is done loading.<br><br>Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next, ~ = Open/Close Text List Editor<br><br>iPhone instructions (currently not working): open in Safari, tap "Add to Home Screen", launch Mixblast from Home screen. <br><br>Mixblast uses the Youtube, Last.fm, and Echo Nest APIs. <br><br>Welp, see ya later.<br><br><br><br></div>
 	</div>
 	<div id="player-container" style="display:none;">
 		<div id="player"></div>
 		<!--<iframe id="player" frameborder="0" allowfullscreen="1" title="YouTube video player" width="700" height="394" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?modestbranding=1&amp;enablejsapi=1&amp;iv_load_policy=3&amp;theme=dark&amp;color=white&amp;showinfo=1&amp;playsinline=1&amp;widget_referrer=http%3A%2F%2Flocalhost%3A8080%2Fmixblast%2F&amp;origin=http%3A%2F%2Flocalhost%3A8080"></iframe>-->
+
+
 		<!--<iframe id="player" src="//www.youtube-nocookie.com/embed/fgBLu387UM8?modestbranding=1&enablejsapi=1&iv_load_policy=3&theme=dark&color=white&showinfo=1&playsinline=1&origin=http%3A%2F%2Fmixbla.st" frameborder="0" enablejsapi="1" allowfullscreen></iframe>-->
 		<span id="player-thumb-close" data-toggle="tooltip" data-placement="left" title="Go Back to Video"></span>
 	</div>

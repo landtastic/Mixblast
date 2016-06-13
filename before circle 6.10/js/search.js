@@ -18,8 +18,7 @@ var search = function(query,counter) {
 	$.each(searchObj.items, function(i,x) {
 		var vId = x.id.videoId;
 		var vTitle = x.snippet.title;
-		//console.log(x.snippet);
-		if (x.snippet.thumbnails.default.url !=undefined) var vThumb = x.snippet.thumbnails.default.url;
+		var vThumb = x.snippet.thumbnails.default.url;
 		if (vId===undefined) {
 			vId="Not Found"; vTitle="Not Found. Try version refresh button: "; vThumb="img/notfound.png"; 
 		}
@@ -61,7 +60,6 @@ function multiSearch() {
 //alert($('#query').is(':hidden'));
 //alert(rssfeed);
 	//first time search/search from mixbuilder if textarea blank
-	/*
 	if (($('#mixbuilder-buttons').is(':hidden')) && ($('#query').is(':hidden')) && (rssfeed==='')) {
 		$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'margin-bottom': '20px', 'margin-top': '20px' }, "fast");
 		$("#mixbuilder-buttons").show();
@@ -71,8 +69,7 @@ function multiSearch() {
 		$("#query").hide();
 		return;
 	}
-	*/
-	//mixBuilder.fromFirstField = false;
+	mixBuilder.fromFirstField = false;
 	//toggle edit playlist
 	editSearchTerm(0);
 	search.vidObjArray = {}; //, search.prev_vidObjArray = {};
@@ -85,10 +82,10 @@ function multiSearch() {
 	$('#button-container').show();
 	//erase previous search
 	$('#search-container').empty();
-	$('#errormsg').hide();
+	//$('#errormsg').hide();
 	$('#advanced-container').hide();
 	$('#youtube-playlist-container').show();
-	$('#player-thumb-close').show();
+	$('#ytPlayer-thumb-close').show();
 	$("#mixbuilder-buttons").show();
 	if (search.topvIdArray) {
 		search.topvIdArray.length = 0; search.topvTitleArray.length = 0; search.topvThumbArray.length = 0;
@@ -100,7 +97,7 @@ function multiSearch() {
 
 	//split texarea into lines
 	var lines = $('#query').val().split(/\n/);
-	//console.log(lines);
+	console.log(lines);
 	//only get non-whitespace lines, push into listArray
 	for (var i=0; i < lines.length; i++) {
 	  if (/\S/.test(lines[i])) {
@@ -111,7 +108,7 @@ function multiSearch() {
 	var x = 0;
 	var searchnum = search.listArray.length;
 	if ((searchnum < 1)) { 
-		$('#errormsg-txt').html('Error. <br>No songs. Put a list of songs into the textbox.');
+		$('#errormsg-txt').html('Error. <br>Put a list of songs into the textbox. <br>(Use the MixBuilder to add songs or just type a list)');
 		//$("#query").val($("#query").prop("defaultValue")).css("color", "#999");
 		var t=setTimeout(function(){$('#editplaylist').trigger( "click" );},1000);
 		$('#errormsg').show();
@@ -139,7 +136,7 @@ function multiSearch() {
 			$("#shufflebutton").removeClass("disabled");
 
 			search.done = true;
-			//player.cuePlaylist(search.topvIdArray);
+			//ytPlayer.cuePlaylist(search.topvIdArray);
 			/////todo: start with vidObjArray[vidcount].vid[0]
 
 			clearTimeout(timerId);
@@ -150,7 +147,12 @@ function multiSearch() {
 
 var mixBuilder = {
 	render : function (artistName,trackName,albumName) {
-
+		console.log(artistName + '|' + trackName + '|' + albumName + ':' + search.isDefaultMsg)
+		//if (search.isDefaultMsg) $('#query').val('');
+		if (!mixBuilder.fromFirstField) {
+			$("#related-container" ).show();
+			$("#mixbuilder-buttons").show();
+		}
 		var song_num = $("#topSongs-num").val();
 		if (search.dropVal == 'drop-topSongs') {
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
@@ -164,9 +166,9 @@ var mixBuilder = {
 			mixBuilder.getJSON("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+artistName+"&type=artist-radio&results="+100,artistName,trackName);
 		} else {
 			console.log('dropdown not selected');
-			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=100&format=json&callback=?",artistName,trackName,albumName)
+			//mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=100&format=json&callback=?",artistName,trackName,albumName)
 		}
-		showRelated.artists(artistName);
+			showRelated.artists(artistName);
 	},
 	search : function () {
 		if (search.dropVal == 'drop-similarSongs') {
@@ -176,7 +178,6 @@ var mixBuilder = {
 		} else {
 			mixBuilder.render($.trim($("#mixbuilder-artist").val()),'','');
 		}
-		//showRelated.artists($.trim($("#mixbuilder-artist").val()));
 	},
 	getJSON : function(apiURL,artistName,trackName,albumName) {
 		//var song_num = $("#topSongs-num").val();
@@ -212,12 +213,12 @@ var mixBuilder = {
 			}
 		})
 		.done(function() {
-			//console.log( "second success" );
+			console.log( "second success" );
 		})
 		.fail(function() {
 			console.log( "error" );
 			$('#errormsg').show();
-			$('#errormsg-text').html(apiURL+' : (() <br><br>Error loading videos for: '+artistName+'<br><br>Check spelling?');
+			$('#errormsg-text').html(': (() <br><br>Error loading videos for: '+artistName+'<br><br>Check spelling?');
 		})
 		.always(function() {
 			//overwrite text list if first search
@@ -233,9 +234,8 @@ var mixBuilder = {
 				var t=setTimeout(function(){textarea.scrollTop = textarea.scrollHeight;},1000);
 			}
 			 //$('#search-button').trigger( "click" );
-			//console.log('hey ' + mixBuilder.fromFirstField);
-			//if (mixBuilder.fromFirstField) multiSearch();
-			//alert($.trim($("#mixbuilder-artist").val()));
+			console.log('hey ' + mixBuilder.fromFirstField);
+			if (mixBuilder.fromFirstField) multiSearch();
 		});
 	}
 };
@@ -315,11 +315,11 @@ $("#topSongs-num, #mixbuilder-artist, #mixbuilder-song, #mixbuilder-album").keyp
  var key = e.which;
  if(key == 13) {
 
- 	//if (mixBuilder.fromFirstField == true) {
- 	//	multiSearch();
- 	//} else {
+ 	if (mixBuilder.fromFirstField == true) {
+ 		multiSearch();
+ 	} else {
  		mixBuilder.search();
- 	//}
+ 	}
 
 	$("#ui-id-1").hide();
 	//return false;  
@@ -338,7 +338,6 @@ $("#mixbuilder-search-button").click(function(){
 
 var showRelated =  {
 	artists : function(artistName) {
-		$("#related-container" ).show();
 		var addString;
 		addString = " Songs By A Related Artist:";
 		$.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=60&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&format=json", function(data) {
@@ -349,7 +348,6 @@ var showRelated =  {
 					if (item.name) {
 						curArtist = item.name.replace(/["']/g, "\\'");
 					} else {
-						console.log('related artist error');
 						//$("#related-container").html("<br><hr class='similar-top'>Error loading related artists: "+artistName); 
 					}
 					artistList += '<a class="similar-artistButton" href="javascript:void(0);" onclick="showRelated.addSongs(\''+ curArtist +'\')">' + item.name + '</a>';
@@ -403,7 +401,7 @@ $("#query-clear").click(function(){
 $("#editplaylist").click(function(){
 	editSearchTerm(0);
 });
-$("#player-thumb-close").click(function(){
+$("#ytPlayer-thumb-close").click(function(){
 	editSearchTerm(0);
 });
 $("#closeAdvanced").click(function(){
@@ -412,7 +410,7 @@ $("#closeAdvanced").click(function(){
 
 function editSearchTerm(lineNumber) {
 	var toggleEditText = $("#editplaylist").html();
-	var qHeightClosed = '146px'; var qHeightOpen = '282px';
+	var qHeightClosed = '200px'; var qHeightOpen = '282px';
 	if ($(document).width() < 992) qHeightClosed = '104px'; var qHeightOpen = '345px';
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		//thumbnail player
@@ -420,7 +418,7 @@ function editSearchTerm(lineNumber) {
 		$('#query').animate({height: '345px'}, 'fast', function() {
 			$("#related-container").show(); $("#related-more").show();
 		});
-		$("#player-thumb-close").show();
+		$("#ytPlayer-thumb-close").show();
 		$("#mixbuilder-bar").show();
 		$("#mixbuilder-buttons").show();
 		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Text Editor"));
@@ -432,7 +430,7 @@ function editSearchTerm(lineNumber) {
 			$("#mixbuilder-bar").hide();
   		});
 		$('#query').animate({height: qHeightClosed}, 'fast');
-		$("#player-thumb-close").hide();
+		$("#ytPlayer-thumb-close").hide();
 		$("#mixbuilder-buttons").show();
 		$("#editplaylist").html(toggleEditText.replace("Close Text Editor","Edit Playlist"));
 	}
