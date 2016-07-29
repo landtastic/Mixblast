@@ -9,6 +9,7 @@
 	body {
 		font-family: 'Roboto', sans-serif;
 		font-size: 18px;
+		letter-spacing: 1px;
 		text-rendering: optimizeLegibility;
 		color: #fff;
 		margin:0;
@@ -26,7 +27,7 @@
 	    vertical-align: inherit;
 	}
 	hr { margin-top: 5px; margin-bottom: 5px;}
-	input,button,select {     
+	input,button,select {
 		/*border-radius: 5px 5px 5px 5px;*/
 		background-color: rgba(255,255,255,0.7); 
 		border: 0px;
@@ -159,6 +160,7 @@
 	textarea#query,input,button {
 		font-family: 'Roboto', sans-serif;
 		font-size: 18px;
+		letter-spacing: 1px;
 		/*border: 1px solid #fff;
 		border-radius: 5px;*/
 		padding:10px;
@@ -187,6 +189,11 @@
 		padding-left: 16px;
 		background-attachment: local;
 	}
+	#query::-webkit-input-placeholder,input::-webkit-input-placeholder {
+	   color: #555;
+	}
+	#query:-moz-placeholder,input:-moz-placeholder { color:#555; } #query::-moz-placeholder,input::-moz-placeholder { color:#555; } #query:-ms-input-placeholder,input:-ms-input-placeholder { color:#555; }
+
 	input[type='checkbox'] {
 		vertical-align: sub;
 	}
@@ -519,7 +526,7 @@
 		line-height: 47px;
 	}
 	#shuffletext {
-		background-color: rgba(255, 255, 255, 0.1);
+		background-color: rgba(255, 255, 255, 0.233);
 	}
 	div.btn-group.btn-input, #songNum {
 		color: #fff;
@@ -536,8 +543,10 @@
 		background-color: inherit;
 		color: inherit;
 		font: inherit;
-		font-size: 20px;
 
+	}
+	#mixbuilder-dropdown > button > span:nth-child(1) {
+		font-size: 18px!important;
 	}
 	.btn-default:hover, .btn-default:active, .btn-default:focus, .open>.dropdown-toggle.btn-default, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover, .open>.dropdown-toggle.btn-default:active {
 		color: #ccc!important;
@@ -1016,6 +1025,9 @@
 	#playlist-button {
     	margin-top: 70px;
     }
+	.playerbutton {
+		margin-right: 30px;
+    }
 	#body-column {
 	    width: 100%;
 	    padding-left: 0px;
@@ -1052,8 +1064,8 @@
 
 	/*========== GRADIENT BACKGROUND ==========*/
 	.gradient-background {
-    /*-webkit-filter: grayscale(100%);*/
-    filter: grayscale(100%);
+    /*-webkit-filter: grayscale(100%);
+    filter: grayscale(100%);*/
 
 
 	  position: fixed;
@@ -1073,4 +1085,17 @@
 	  background-image: -webkit-linear-gradient(top, #7fc5c9, #deabbe);
 	  background-image: -moz-linear-gradient(top, #7fc5c9, #deabbe);
 	  background-image: -o-linear-gradient(top, #7fc5c9, #deabbe); */
+
+	  		/* IE10+ */
+		background-image: -ms-linear-gradient(top left, #041d26 0%, #6f7586 100%) !important;
+		/* Mozilla Firefox */
+		background-image: -moz-linear-gradient(top left, #041d26 0%, #6f7586 100%) !important;
+		/* Opera */
+		background-image: -o-linear-gradient(top left, #041d26 0%, #6f7586 100%) !important;
+		/* Webkit (Safari/Chrome 10) */
+		background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #041d26), color-stop(100, #6f7586)) !important;
+		/* Webkit (Chrome 11+) */
+		background-image: -webkit-linear-gradient(top left, #041d26 0%, #6f7586 100%) !important;
+		/* W3C Markup */
+		background-image: linear-gradient(to bottom right, #041d26 0%, #6f7586 100%) !important;
 	}

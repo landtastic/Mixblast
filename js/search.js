@@ -120,7 +120,7 @@ function multiSearch() {
 
 	//$("#query").animate({height:'200px'},200);
 	//$("#logo").animate({height:'0px',width:'100%',marginBottom:'20px'});
-	$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'marginBottom': '20px', 'marginTop': '20px' }, "fast");
+	//$("#logo-wrapper").animate({ 'width':'50%', 'height':'50px', 'marginBottom': '20px', 'marginTop': '20px' }, "fast");
 
 	(function setInterval_afterDone(){
 
@@ -162,6 +162,7 @@ var mixBuilder = {
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist="+artistName+"&album="+albumName+"&api_key=946a0b231980d52f90b8a31e15bccb16&limit="+ song_num +"&format=json&callback=?",artistName,trackName,albumName)
 		} else if (search.dropVal == 'drop-quickMix'){
 			mixBuilder.getJSON("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+artistName+"&type=artist-radio&results="+100,artistName,trackName);
+			console.log("http://developer.echonest.com/api/v4/playlist/static?api_key=KHXHOPL1UHQ0LU1ES&artist="+artistName+"&type=artist-radio&results="+100)
 		} else {
 			console.log('dropdown not selected');
 			mixBuilder.getJSON("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artistName+"&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=100&format=json&callback=?",artistName,trackName,albumName)

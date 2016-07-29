@@ -306,6 +306,7 @@ var delay = (function(){
   };
 })();
 
+
 /* AutoComplete */
 $(function() {
 	function split( val ) {
@@ -314,6 +315,10 @@ $(function() {
 	function extractLast( term ) {
 	  return split( term ).pop();
 	}
+    function getLineNumber() {
+    	var textarea = document.getElementById('query');
+		console.log(textarea.value.substr(0, textarea.selectionStart).split("\n").length);
+    }
 	$("#mixbuilder-artist, #mixbuilder-song, #mixbuilder-album, #query").autocomplete({
 		source: function(request, response){
 			var apiKey = 'AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM';
@@ -330,6 +335,7 @@ $(function() {
 					}));
 				}
 			});
+			getLineNumber();
 		},
 		search: function() {
 		  // custom minLength
