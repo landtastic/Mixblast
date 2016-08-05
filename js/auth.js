@@ -1,8 +1,12 @@
 //"use strict";
-/*dev !!!!!!!!!comment out if uploading live*/
-var OAUTH2_CLIENT_ID = '1069965346841-omq120306nl685roud6bvdut0dnka460.apps.googleusercontent.com';
+
+/*dev*/
+if (document.location.hostname == 'localhost') {
+  var OAUTH2_CLIENT_ID = '1069965346841-omq120306nl685roud6bvdut0dnka460.apps.googleusercontent.com';
+} else {
 /*live*/
-//var OAUTH2_CLIENT_ID = '1069965346841-uggqc6vqcna4j32gfncdbaaq39elcc02.apps.googleusercontent.com';
+  var OAUTH2_CLIENT_ID = '1069965346841-uggqc6vqcna4j32gfncdbaaq39elcc02.apps.googleusercontent.com';
+}
 var OAUTH2_SCOPES = [
   'https://www.googleapis.com/auth/youtube'  
 ];
@@ -69,3 +73,7 @@ function loadAPIClientInterfaces() {
 
 }
 
+//@prepros-append search.js
+//@prepros-append player.js
+//@prepros-append advanced.js
+//@prepros-append playlist_updates.js

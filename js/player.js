@@ -394,12 +394,12 @@ var pastBlasts = {
 		var blasts = pastBlasts.list();
 		if (!blasts) {
 			blasts = [];
-			var lastBlast = blasts[0].split("\n").slice(1).join("\n");
-		} else {
 			var lastBlast = '';
+		} else {
+			var lastBlast = blasts[0].split("\n").slice(1).join("\n");
 			//blasts = JSON.parse(blasts);
 		}
-		
+		//don't add duplicate if same blast is blasted twice
 		if ($.trim(lastBlast) != $.trim(pl_text)) {
 			var date = new Date();
 			blasts.push(date.toJSON() + '\n' + pl_text + '\n');
@@ -517,6 +517,16 @@ $(document).ready(function() {
 	if(!('ontouchstart' in window)) {
 		$('[data-toggle="tooltip"]').tooltip();
 	}
+
+	$( "#search-container" ).sortable({
+    	placeholder: "ui-state-highlight",
+    	update: function( event, ui ) {
+        	var sorted = $( "#search-container" ).sortable( "serialize", { key: "sort" } );
+        	console.log(sorted);
+        	//$.post( "form/order.php",{ 'choices[]': sorted});
+        }
+    });
+	$( "#search-container" ).disableSelection();
 
 	//email link
 	var antiSpamString = "mixblaster"+"."+"webmaster"+"@"+"gma"+"il"+"."+"c"+"om";

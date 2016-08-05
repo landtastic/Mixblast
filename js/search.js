@@ -413,8 +413,8 @@ $("#closeAdvanced").click(function(){
 
 function editSearchTerm(lineNumber) {
 	var toggleEditText = $("#editplaylist").html();
-	var qHeightClosed = '146px'; var qHeightOpen = '282px';
-	if ($(document).width() < 992) qHeightClosed = '104px'; var qHeightOpen = '345px';
+	var qHeightClosed = '200px'; var qHeightOpen = '282px'; var vTop = '85px';
+	if ($(document).width() < 992) { qHeightClosed = '104px'; var qHeightOpen = '345px'; var vTop = '127px'; }
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		//thumbnail player
 		$("#player-container").css({top: '0px', right: '0px', width: '160px', height: '90px'});
@@ -424,18 +424,18 @@ function editSearchTerm(lineNumber) {
 		$("#player-thumb-close").show();
 		$("#mixbuilder-bar").show();
 		$("#mixbuilder-buttons").show();
-		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Text Editor"));
+		$("#editplaylist").html(toggleEditText.replace("Edit Playlist","Close Playlist Editor"));
 	} else {
 		$("#related-container").hide(); $("#related-more").hide();
 		$("#query").show();
 		//$("#logo").animate({marginTop: "2%",'marginBottom': '10px'}, "fast");
-		$('#player-container').css({top: '86px', right: '0px', width: '100%', height: '364px'}, function() {
+		$('#player-container').css({top: vTop, right: '0px', width: '100%', height: '364px'}, function() {
 			$("#mixbuilder-bar").hide();
   		});
 		$('#query').animate({height: qHeightClosed}, 'fast');
 		$("#player-thumb-close").hide();
 		$("#mixbuilder-buttons").show();
-		$("#editplaylist").html(toggleEditText.replace("Close Text Editor","Edit Playlist"));
+		$("#editplaylist").html(toggleEditText.replace("Close Playlist Editor","Edit Playlist"));
 	}
 	/*
 	var input = $("#query");
