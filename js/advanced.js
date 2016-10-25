@@ -25,6 +25,7 @@ $(".infolink").click( function (e){
 });
 $("#rss-dropdown").change(function() {
 	loadRSS($(this).val());
+	editSearchTerm(0);
 });
 $("#rss-button").click(function() {
 	loadRSS($('#rss-dropdown').find(":selected").val());

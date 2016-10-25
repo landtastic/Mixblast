@@ -196,7 +196,7 @@ var mixBuilder = {
 			} else if (data.topalbums != undefined) {
 				mixBuilder.songlist = '';
 				$.each(data.topalbums.album, function(i, item) {
-					mixBuilder.songlist += artistName + " - " + item.name + " - full album" + "\n";
+					mixBuilder.songlist += artistName + " - " + item.name + " - full" + "\n";
 				});
 			} else if (data.album != undefined) {
 				mixBuilder.songlist = '';
@@ -413,11 +413,11 @@ $("#closeAdvanced").click(function(){
 
 function editSearchTerm(lineNumber) {
 	var toggleEditText = $("#editplaylist").html();
-	var qHeightClosed = '200px'; var qHeightOpen = '282px'; var vTop = '85px';
-	if ($(document).width() < 992) { qHeightClosed = '104px'; var qHeightOpen = '345px'; var vTop = '127px'; }
+	var qHeightClosed = '225px'; var qHeightOpen = '282px'; var vTop = '85px';
+	if ($(document).width() < 992) { qHeightClosed = '124px'; var qHeightOpen = '345px'; var vTop = '127px'; }
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		//thumbnail player
-		$("#player-container").css({top: '0px', right: '0px', width: '160px', height: '90px'});
+		$("#player-container").css({top: '0px', right: '0px', width: '160px', height: '87px'});
 		$('#query').animate({height: '345px'}, 'fast', function() {
 			$("#related-container").show(); $("#related-more").show();
 		});
