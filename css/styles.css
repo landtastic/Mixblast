@@ -336,12 +336,10 @@
 	}
 	*/
 	#btn-wrapper {
-		margin: 0 auto;
-		height: 40px;
 		width: 250px;
-		margin-right: 30px;
-		margin-bottom: 20px;
-		margin-top: 20px;
+	    float: right;
+	    margin-right: 20px;
+	    margin-top: 20px;
 	}
 	#queryarea {
 		position:relative;
@@ -1086,11 +1084,19 @@
 	#pb-menu, #info-menu { 
 		width: 300px;
 	}
+	#pb-text {
+		font-size: 22px;
+		vertical-align: 14px;
+	}
 	#songNum {
 		margin-left: 10px;
 	}
-	#mixbuilder-bar {
-
+	#btn-wrapper {
+		width: 100%;
+		height: 40px;
+		margin-bottom: 20px;
+		padding-left: 30px;
+		padding-right: 60px;
 	}
 	#mixbuilder-bar > div.col-md-3.nopadding {
 		text-align: left;
@@ -1133,7 +1139,7 @@
 		margin-left:-1px;
 		margin-top: 20px;
 	}
-	#btn-wrapper { width: 80%; }
+
 	#playlist-button {
     	margin-top: 70px;
     }

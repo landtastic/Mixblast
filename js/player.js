@@ -392,12 +392,12 @@ var pastBlasts = {
 	},
 	add : function(pl_text) {
 		var blasts = pastBlasts.list();
-		if (!blasts) {
-			blasts = [];
-			var lastBlast = '';
-		} else {
+		if (blasts.length > 0) {
 			var lastBlast = blasts[0].split("\n").slice(1).join("\n");
 			//blasts = JSON.parse(blasts);
+		} else {
+			blasts = [];
+			var lastBlast = '';
 		}
 		//don't add duplicate if same blast is blasted twice
 		if ($.trim(lastBlast) != $.trim(pl_text)) {

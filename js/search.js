@@ -306,11 +306,14 @@ function dropdownSwitcher() {
 		$("#songNum").css("display","inline-block");
 		//if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-artist').css("width","133.3%");
 	}
-
-	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-paste')) {
-		$("#songNum").val('');//$("#songNum").css("display","none");
+console.log(search.dropVal);
+	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-album')) {
+		//$("#topSongs-num").val('');
+		$("#songNum").hide();
+		if ($(document).width() < 992) $("#mixbuilder-dropdown").css('margin-left','0px')
 	} else {
-		$("#songNum").val(localStorage.getItem('dropdown-lastvalue'));
+		$("#songNum").show();
+		if ($(document).width() < 992) $("#mixbuilder-dropdown").css('margin-left','60px')
 	}
 	localStorage.setItem('dropdown-lastvalue', search.dropVal);
 }
