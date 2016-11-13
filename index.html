@@ -17,7 +17,7 @@
   </head>
   <body>
 	<div id="pb-menu"></div>
-	<div id="info-menu"><div id="infodiv"><img src="android-chrome-192x192.png" id="infoear"><br><br>
+	<div id="info-menu"><div id="infodiv"><!--<img src="android-chrome-192x192.png" id="infoear"><br><br>-->
 <h1>Mixblast is an experimental, text-based, streaming music player.</h1> It does two things:<br>
 <h2>1. It turns a list of songs into a playlist (copy + paste a text list of songs, blast a mix)</h2>
 <h2>2. It makes mixes! Try out the top search bar to add songs of artists you like. You can add related artists after you search.</h2><br>Mixes are saved automatically under recent history (small clock icon). <br><br>You can also save your mix to a Youtube playlist after the playlist is done loading.<br><br>Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next, ~ = Open/Close Text List Editor<br><br>iPhone instructions (currently not working): open in Safari, tap "Add to Home Screen", launch Mixblast from Home screen. <br><br>Mixblast uses the Youtube, Last.fm, and Echo Nest APIs. <br><br>Welp, see ya later.<br><br><br><br></div>
@@ -43,7 +43,7 @@
 							    </div>
 							    <div class="col-xs-3">
 									<select id="rss-dropdown" class="leftBottom leftBottom-lb" data-toggle="tooltip" data-placement="bottom" title="RSS Feeds">
-									<option value=""><img id="rss-icon" src="img/rss-icon.svg">RSS</option>
+									<option value=""><img id="rss-icon" src="img/rss-icon.svg">Feeds</option>
 									<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
 									<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml">iTunes Top 100 Songs</option>
 									<option value="https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml">iTunes Hip-Hop/Rap Top 100</option>
@@ -97,8 +97,11 @@
 		</div>
 
 			<div id="mixbuilder-bar" class="row">
+				<div class="col-xs-1">
+					<div id="songNum"><input id="topSongs-num" value="40" type="number" pattern="[0-9]*" inputmode="numeric"></div>
+				</div>
 				<div class="col-md-3">
-					<div id="songNum"><input id="topSongs-num" value="40" type="number" pattern="[0-9]*" inputmode="numeric"></div><div class="btn-group btn-input" id="mixbuilder-dropdown">
+					<div class="btn-group btn-input" id="mixbuilder-dropdown">
 					<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
 						<span data-bind="label"> Top Songs By </span>&nbsp;<span class="caret"></span>
 					</button>
@@ -112,12 +115,12 @@
 	                 </ul>
 	                </div>
 				</div>
-				<div  class="col-md-9">
+				<div  class="col-md-8">
 				  <div class="row"><div class="col-md-9" id="mixbuilder-textfield"><input id="mixbuilder-artist" placeholder="Artist" autocomplete="off" autocorrect="off"><input id="mixbuilder-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="mixbuilder-album" placeholder="Album Name" autocomplete="off" autocorrect="off" style="display:none;"></div><div id="mixbuilder-buttons" class="col-md-3"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs"><div id="query-clear" data-toggle="tooltip" title="Clear List"><div class="glyphicon glyphicon-remove-circle"></div></div><div id="shuffletext" data-toggle="tooltip" title="Shuffle List"><img src="img/shuffle.svg" alt="Shuffle List"></div></div></div>
 				</div>
 			</div>
 			<div id="advanced-container" style="display:none;">
-				<span class="advanced-tips-title"><b>Advanced Text Options</b><br>Each line should be as simple as possible, e.g. <i>Artist - Song Title</i></span><div id="closeAdvanced"><a>&#215;</a></div><hr>
+				<span class="advanced-tips-title"><b>Advanced Text Options</b><br>Use these tools to clean up copy-and-pasted lists. <br>Each line should be as simple as possible, e.g. <i>Artist - Song Title</i></span><div id="closeAdvanced"><a>&#215;</a></div><hr>
 				&nbsp;<input id="addartist"> Add artist name to each line &nbsp;<span class="advanced-tips">(Use this if you paste an album tracklist without artist name)</span><hr>
 				&nbsp;Replace <input id="find"> with <input id="replace"> &nbsp;<input id="frbutton" type="button" value=" GO "> &nbsp;<span class="advanced-tips">Tip: to remove a word, replace it with nothing</span><hr>
 				<label class="checkbox-label">&nbsp;<input type="checkbox" id="removenums"> Remove numbers from list &nbsp;<span class="advanced-tips">(Numbered lists aren't good for searching)</span></label><hr>
@@ -185,7 +188,7 @@ Then click Blast a Mix."></textarea>
 				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="DATVLCK78KXPG">
-					<input id="donate-button" type="image" src="img/donate-button.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" data-toggle="tooltip" data-placement="top" title="I'm broke, please help">
+					<input id="donate-button" type="image" src="img/donate-button.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" data-toggle="tooltip" data-placement="top" title="Help keep the mixes blastin'">
 					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 				</form>
 			</div>

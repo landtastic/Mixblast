@@ -38,18 +38,20 @@
 		background-image: linear-gradient(to bottom right, #041d26 0%, #6f7586 100%) !important;
 		background-attachment: fixed;
 	}
-body::-webkit-scrollbar {
-    width: 1em;
-}
- 
-body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
+	/*
+	body::-webkit-scrollbar {
+	    width: 1em;
+	}
+	 
+	body::-webkit-scrollbar-track {
+	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	}
+	 
+	body::-webkit-scrollbar-thumb {
+	  background-color: darkgrey;
+	  outline: 1px solid slategrey;
+	}
+	*/
 	a {
 		color: #fff;
 	}
@@ -127,7 +129,13 @@ body::-webkit-scrollbar-thumb {
 		height: 18px;
 		margin-left: -8px;
 	}
-	#pb-text { font-size: 16px; color: #fff; vertical-align: 18px; background-color: rgba(0, 0, 0, 0.3);}
+	#pb-text { 
+		font-size: 30px;
+		color: #fff;
+		vertical-align: 11px;
+		margin-left: 7px;
+		background-color: rgba(0, 0, 0, 0.3);
+ 	}
 	#pb-date { font-weight:bold; font-size:14px; }
 	#pb-menu, #info-menu {
 		top: 0px;
@@ -200,31 +208,49 @@ body::-webkit-scrollbar-thumb {
 		line-height: 149%;
 		width: 100%;
 		height: 345px;
-		color: #000;
+		color: #ccc;
 		text-align: left;
 		resize:both; 
+		/*
 		-webkit-filter: invert(100%);
     	filter: invert(100%);
+    	*/
 		background-color: rgba(255,255,255,0.0);
 		/*background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%,rgba(255,255,255,0) 100%);
 		background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 10%,rgba(255,255,255,0.5) 90%, rgba(255,255,255,0) 100%);*/
 		border: 0px;
 		overflow: auto!important;
-		background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, #898888 30px, #898888 31px, rgba(255,255,255,0) 31px);
-		background-image: -moz-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, #898888 30px, #898888 31px, rgba(255,255,255,0) 31px);
-		background-image: -ms-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, #898888 30px, #898888 31px, rgba(255,255,255,0) 31px);
-		background-image: -o-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, #898888 30px, #898888 31px, rgba(255,255,255,0) 31px);
-		background-image: linear-gradient(rgba(255,255,255,0), rgba(255, 255, 255, 0) 30px, #898888 30px, #898888 31px, rgba(255,255,255,0) 31px);
+		background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, rgba(0,0,0,.25) 30px, rgba(0,0,0,.25) 31px, rgba(255,255,255,0) 31px);
+		background-image: -moz-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, rgba(0,0,0,.25) 30px, rgba(0,0,0,.25) 31px, rgba(255,255,255,0) 31px);
+		background-image: -ms-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, rgba(0,0,0,.25) 30px, rgba(0,0,0,.25) 31px, rgba(255,255,255,0) 31px);
+		background-image: -o-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 30px, rgba(0,0,0,.25) 30px, rgba(0,0,0,.25) 31px, rgba(255,255,255,0) 31px);
+		background-image: linear-gradient(rgba(255,255,255,0), rgba(255, 255, 255, 0) 30px, rgba(0,0,0,.25) 30px, rgba(0,0,0,.25) 31px, rgba(255,255,255,0) 31px);
 		background-size: 100% 31px;
 		line-height: 31px;
 		padding: 8px!important;
 		padding-left: 16px;
 		background-attachment: local;
+		resize: none;
+	}
+	#query::-webkit-scrollbar {
+		width: 12px;  /* for vertical scrollbars */
+		height: 12px; /* for horizontal scrollbars */
+	}
+
+	#query::-webkit-scrollbar-track {
+		background: rgba(0, 0, 0, 0.1);
+	}
+
+	#query::-webkit-scrollbar-thumb {
+		background: rgba(0, 0, 0, 0.5);
+	}
+	#query::-webkit-resizer {
+		background: #1d2329;
 	}
 	#query::-webkit-input-placeholder,input::-webkit-input-placeholder {
-	   color: #555;
+	   color: #ccc;
 	}
-	#query:-moz-placeholder,input:-moz-placeholder { color:#555; } #query::-moz-placeholder,input::-moz-placeholder { color:#555; } #query:-ms-input-placeholder,input:-ms-input-placeholder { color:#555; }
+	#query:-moz-placeholder,input:-moz-placeholder { color:#ccc; } #query::-moz-placeholder,input::-moz-placeholder { color:#ccc; } #query:-ms-input-placeholder,input:-ms-input-placeholder { color:#ccc; }
 	#query::-webkit-scrollbar-track {
 	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	}
@@ -266,6 +292,8 @@ body::-webkit-scrollbar-thumb {
 	}
 	.glyphicon {
 		line-height: auto;
+		font-size: 20px;
+		top: 0px;
 	}
 	.advanced-top{
 	  margin-top:0px;
@@ -520,13 +548,14 @@ body::-webkit-scrollbar-thumb {
 	#mixbuilder-bar {
 		width: 99.7%;
 		height: 44px;
-    	margin-left: 3px;
+    	/*margin-left: 3px;*/
+    	margin-bottom: 20px;
 		display: inline-block;
 		white-space: nowrap;
 		position:relative;
-		background-color: rgba(0, 0, 0, 0.2);
+		/*background-color: rgba(0, 0, 0, 0.2);*/
 	}
-	#mixbuilder-buttons, #mixbuilder-textfield {
+	#mixbuilder-buttons {
 			padding: 0;
 	}
 	#mixbuilder-search-button {
@@ -544,16 +573,38 @@ body::-webkit-scrollbar-thumb {
 		z-index: 299;
     	padding: 15px;
 	}
+	#mixbuilder-search-button, #query-clear, #shuffletext, #mixbuilder-dropdown {
+		margin-right: 10px;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+		-webkit-transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+		-ms-transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+		transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+		-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+		background-color: transparent;
+		border-radius: 8px;
+		border: 0;
+		box-shadow: inset 0 0 0 1px #cccccc;
+		color: #fff !important;
+		cursor: pointer;
+		display: inline-block;
+		font-size: inherit;
+		text-align: center;
+		text-decoration: none;
+	}
 	#query-clear,#shuffletext {
 		position: relative;
 		z-index: 300;
 		display: inline-block;
 		cursor: pointer;
-		color: #444444;
+		/*color: #444444;*/
 		font-size: 25px;
 		text-decoration: none;
-		background-color: rgba(255, 255, 255, 0.4);
-		color: #8A0707;
+		/*background-color: rgba(255, 255, 255, 0.4);
+		color: #8A0707;*/
 		height: 44px;
 		width: 33.3%;
 		font-size: 25px;
@@ -563,7 +614,7 @@ body::-webkit-scrollbar-thumb {
 		line-height: 47px;
 	}
 	#shuffletext {
-		background-color: rgba(255, 255, 255, 0.233);
+		/*background-color: rgba(255, 255, 255, 0.233);*/
 	}
 	div.btn-group.btn-input, #songNum {
 		color: #fff;
@@ -572,8 +623,8 @@ body::-webkit-scrollbar-thumb {
 		/* padding-left: 6px; */
 		display: inline-block;
 		white-space: nowrap;
-		padding: 9px;
-		padding-right: 0px;
+		/*padding: 9px;
+		padding-right: 0px;*/
 	}
 	.btn-default {
 		/*background-color: inherit;*/
@@ -582,9 +633,12 @@ body::-webkit-scrollbar-thumb {
 		font: inherit;
 
 	}
+	#mixbuilder-dropdown {
+		width: 186px;
+	}
 	#mixbuilder-dropdown > button > span:nth-child(1) {
 		font-size: 18px!important;
-		margin-left: -36px;
+		/*margin-left: -36px;*/
 	}
 	.btn-default:hover, .btn-default:active, .btn-default:focus, .open>.dropdown-toggle.btn-default, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover, .open>.dropdown-toggle.btn-default:active {
 		color: #ccc!important;
@@ -620,7 +674,7 @@ body::-webkit-scrollbar-thumb {
 		padding-left: 3px;
 		color: #fff;
 	}
-	#songNum {;
+	#songNum {
 		/*border-radius: 5px 0px 0px 5px;
 		margin-left: 4px!important;*/
 	}
@@ -651,15 +705,18 @@ body::-webkit-scrollbar-thumb {
 	    font-size: 15px;
 	    width: 40px;
 	}
+	#topSongs-num {
+		font-size:22px;
+		height: 44px;
+	}
 	#drop-topSongs #topSongs-num { color: #000;}
 	#drop-similarSongs #topSongs-num { color: #000;}
 	#mixbuilder-artist {
 		white-space: nowrap;
 		color: #000;
 		/*width: 114.2%;
-		border-radius: 0px 5px 5px 0px;*/
-		background-color: rgba(255,255,255,0.6);
-		font-size: 18px;
+		border-radius: 0px 5px 5px 0px;
+		background-color: rgba(255,255,255,0.6);*/
 		height: 44px;
 		padding: 0px;
 		padding-left: 13px;
@@ -667,26 +724,33 @@ body::-webkit-scrollbar-thumb {
 		padding-top: 0px;
 		border: 0px;
 		border-radius: 0px 0px 0px 0px;
-		width: 133.3333%;
+		/*width: 133.3333%;*/
 	}
 	#mixbuilder-artist, #mixbuilder-song, #mixbuilder-album {
 		color: #000;
 		display: inline-block;
-		font-size: 18px;
+		font-size: 22px;
 		height: 44px;
 		padding: 0px;
 		padding-top: 0px;
 		border: 0px;
 		padding-left: 13px;
 		padding-right: 5px;
-		background-color: rgba(255,255,255,.5);
-		/*border-radius: 0px 5px 5px 0px;*/
+		/*background-color: rgba(255,255,255,.5);
+		border-radius: 0px 5px 5px 0px;*/
+		background: transparent;
+		border-bottom: 1px solid #ccc;
+		color: #fff;
+		padding-left: 0;
+	}
+	#mixbuilder-artist:focus, #mixbuilder-song:focus, #mixbuilder-album:focus {
+		border-bottom: 1px solid #fff;
 	}
 	#mixbuilder-song, #mixbuilder-album {
-		width: 50%;
-		border-left: 1px solid #888888;
+		/*border-left: 1px solid #888888;*/
 		border-width: thin;
 		/*border-radius: 0px 5px 5px 0px;*/
+		margin-left: 20px;
 	}
 	#related-container {
 		font-size: 15px;
@@ -726,7 +790,7 @@ body::-webkit-scrollbar-thumb {
 	}
 	#rss-dropdown{
 		height:22px;
-		width:69px;
+		width:79px;
 	}
 	#rss-button{
 		vertical-align: middle;
@@ -741,8 +805,7 @@ body::-webkit-scrollbar-thumb {
 		padding-right:5px;
 		cursor:help;*/
 	}
-	.infolink::before
-	{
+	.infolink::before {
 		content: '?';
 		font-size: 90%;
 		font-family: sans-serif;
@@ -1023,14 +1086,23 @@ body::-webkit-scrollbar-thumb {
 	#pb-menu, #info-menu { 
 		width: 300px;
 	}
+	#songNum {
+		margin-left: 10px;
+	}
 	#mixbuilder-bar {
-		margin-bottom: 56px;
+
 	}
 	#mixbuilder-bar > div.col-md-3.nopadding {
 		text-align: left;
 	}
+	#mixbuilder-dropdown {
+		margin-left: 60px;
+	}
 	#mixbuilder-dropdown > button > span:nth-child(1) {
 		margin-left: initial;
+	}
+	#mixbuilder-buttons {
+		padding: 30px;
 	}
 	#button-container {
 	    margin-top: 40px;
@@ -1045,10 +1117,12 @@ body::-webkit-scrollbar-thumb {
 	    margin-left: -10px;
 	}
 	#mixbuilder-search-button, #query-clear, #shuffletext {
-		width:33.31%;
+		/*width:33.31%;*/
 	}
 	#mixbuilder-artist, #mixbuilder-song, #mixbuilder-album {
-		margin-top: -3px;
+		margin: 14px;
+		margin-bottom: 0px;
+		font-size: 17px;
 	}
 	#logo-wrapper {
 		width: auto;
@@ -1057,6 +1131,7 @@ body::-webkit-scrollbar-thumb {
 	#query {
 		width: 100.8%;
 		margin-left:-1px;
+		margin-top: 20px;
 	}
 	#btn-wrapper { width: 80%; }
 	#playlist-button {

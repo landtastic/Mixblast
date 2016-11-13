@@ -283,32 +283,35 @@ $('.dropdown-menu li').click(function( event ){
 
 function dropdownSwitcher() {
 	if (search.dropVal == 'drop-similarSongs') {
-		$('#mixbuilder-artist').show().css("width","50%");
-		$('#mixbuilder-song').show().css("width","50%");
+		$('#mixbuilder-artist').show().css("width","45%");
+		$('#mixbuilder-song').show().css("width","45%");
 		$('#mixbuilder-album').hide();
 		$("#songNum").css("display","inline-block");
-		if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-song').css("width","83.4%");
+		//if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-song').css("width","83.4%");
 	} else if (search.dropVal == 'drop-album') {
-		$('#mixbuilder-artist').show().css("width","50%");
+		$('#mixbuilder-artist').show().css("width","45%");
 		$('#mixbuilder-song').hide();
-		$('#mixbuilder-album').show().css("width","50%");
-		$("#songNum").css("display","none");
-		if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-album').css("width","83.4%");
+		$('#mixbuilder-album').show().css("width","45%");
+		//$("#songNum").css("display","none");
+		//if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-album').css("width","83.4%");
 	} else if (search.dropVal == 'drop-paste') {
 		editTextList();
 		$('#mixbuilder-artist').hide();
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').hide();
 	} else {
-		$('#mixbuilder-artist').show().css("width","100%");
+		$('#mixbuilder-artist').show().css("width","95%");
 		$('#mixbuilder-song').hide();
 		$('#mixbuilder-album').hide();
 		$("#songNum").css("display","inline-block");
-		if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-artist').css("width","133.3%");
+		//if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-artist').css("width","133.3%");
 	}
 
-	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-paste')) $("#songNum").css("display","none");
-
+	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-paste')) {
+		$("#songNum").val('');//$("#songNum").css("display","none");
+	} else {
+		$("#songNum").val(localStorage.getItem('dropdown-lastvalue'));
+	}
 	localStorage.setItem('dropdown-lastvalue', search.dropVal);
 }
 
@@ -413,7 +416,7 @@ $("#closeAdvanced").click(function(){
 
 function editSearchTerm(lineNumber) {
 	var toggleEditText = $("#editplaylist").html();
-	var qHeightClosed = '225px'; var qHeightOpen = '282px'; var vTop = '85px';
+	var qHeightClosed = '205px'; var qHeightOpen = '282px'; var vTop = '85px';
 	if ($(document).width() < 992) { qHeightClosed = '124px'; var qHeightOpen = '345px'; var vTop = '127px'; }
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		//thumbnail player
