@@ -1,8 +1,0 @@
-style="opacity: 1; display: inline-block; background-image: linear-gradient(rgb(18, 97, 137), rgb(172, 208, 119));"
-
-
-element.style {
-    opacity: 1;
-    display: inline-block;
-    background-image: linear-gradient(rgb(18, 97, 137), rgb(172, 208, 119));
-}

@@ -1,4 +1,0 @@
-mixblast todo: track goes to top when clicked, make text light grey, "blasts from the past", complete discography (albums in accordian), album tracklist, blasts from the past: make full list on mouseover, widen grid, "..." on list, (delete), move on image
-mixblast - can't touch this, blast a mix, you'll have a blast, become the dragon
-
-add 100 song limit tooltip for echonest dropdown
