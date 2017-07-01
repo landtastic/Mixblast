@@ -11,7 +11,7 @@ var search = function(query,counter) {
   
   request.execute(function(response) {
 	var searchObj = response.result;
-	//these arrays will hold the top 20 results of each one in the loop
+	//these arrays will hold the top 20 results of each search in the loop
 	var vIdArr=[], vTitleArr=[], vThumbArr=[];
 	if (!searchObj) { console.log('bad search: '+c); }
 
@@ -100,11 +100,15 @@ function multiSearch() {
 
 	//split texarea into lines
 	var lines = $('#query').val().split(/\n/);
+	var thisSearch = lines[i];
 	//console.log(lines);
 	//only get non-whitespace lines, push into listArray
 	for (var i=0; i < lines.length; i++) {
-	  if (/\S/.test(lines[i])) {
-		search.listArray.push($.trim(lines[i]));
+	  if (/\S/.test(thisSearch)) {
+		if (thisSearch.match(/watch\?v=([a-zA-Z0-9\-_]+)/)) {
+			thisSearch = stripYoutubeUrls(videoId);
+		}
+		search.listArray.push($.trim(thisSearch));
 	  }
 	}
 	
@@ -125,7 +129,10 @@ function multiSearch() {
 	(function setInterval_afterDone(){
 
 		/* do search function */
-		if (search.listArray[x]) { search(search.listArray[x],x); }// else { console.log('error: ILB'); return false;}
+		if (search.listArray[x]) { 
+			search(search.listArray[x],x); 
+		}
+		// else { console.log('error: ILB'); return false;}
 		
 		x++;
 		
@@ -443,6 +450,15 @@ function editSearchTerm(lineNumber) {
 	input.scrollTop(lineNumber * lineHeight);
 	window.scrollTo(0, 0);
 	*/
+}
+
+function stripYoutubeUrls(videoId) {
+	var videoId;
+	var ampersandPosition = videoId.indexOf('&');
+	if(ampersandPosition != -1) {
+	  videoId = videoId.substring(0, ampersandPosition);
+	}
+	return videoId;
 }
 
 $(document).keydown(function(e) {

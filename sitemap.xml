@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url><loc>http://mixbla.st/</loc><lastmod>2016-11-12T20:49:26+00:00</lastmod><changefreq>daily</changefreq><priority>1.00</priority></url>
+<url><loc>http://mixbla.st/?rss=http://www.billboard.com/rss/charts/hot-100</loc><lastmod>2016-11-12T20:49:26+00:00</lastmod><changefreq>daily</changefreq><priority>0.5</priority></url>
+<url><loc>http://mixbla.st/?rss=https://itunes.apple.com/us/rss/topsongs/limit=100/explicit=true/xml</loc><lastmod>2016-11-12T20:49:26+00:00</lastmod><changefreq>daily</changefreq><priority>0.5</priority></url>
+<url><loc>http://mixbla.st/?rss=https://itunes.apple.com/us/rss/topsongs/limit=100/genre=18/explicit=true/xml</loc><lastmod>2016-11-12T20:49:26+00:00</lastmod><changefreq>daily</changefreq><priority>0.5</priority></url>
+<url><loc>http://mixbla.st/?rss=http://feeds.feedburner.com/hiphopearly</loc><lastmod>2016-11-12T20:49:26+00:00</lastmod><changefreq>daily</changefreq><priority>0.5</priority></url>
+</urlset>
+ 

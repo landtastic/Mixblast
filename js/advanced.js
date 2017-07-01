@@ -201,11 +201,13 @@ function parseXml(data) {
     	$("#mixbuilder-search-button").show();
 	}
 	*/
+	console.log(data);
+	console.log(data.items);
 	$("#query").val("");
 	var stripNums = false;
 	var stripParen = false;
 	var searchTerms;
-	$.each(data.responseData.feed.entries, function (i, e) {
+	$.each(data.items, function (i, e) {
 		if (rssfeed.indexOf('digitaldripped') >= 0) {
 			searchTerms = e.link.substr(e.link.lastIndexOf("/") + 1);
 			searchTerms = searchTerms.replace(/[-]/g," ");
@@ -267,7 +269,8 @@ function loadRSS(rssfeedurl) {
 
 	$.ajax({
 		type: 'GET',
-		url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&output=json&q='+rssfeed,
+		//url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&output=json&q='+rssfeed,
+		url: 'https://api.rss2json.com/v1/api.json?api_key=3lb8vdspv0hz80hzm1dnaziucnyg3jstk6nsirof&count=200&rss_url='+rssfeed,
 		crossDomain: true,
 		dataType: 'jsonp',
 		success: parseXml

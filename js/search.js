@@ -103,8 +103,14 @@ function multiSearch() {
 	//console.log(lines);
 	//only get non-whitespace lines, push into listArray
 	for (var i=0; i < lines.length; i++) {
-	  if (/\S/.test(lines[i])) {
-		search.listArray.push($.trim(lines[i]));
+	  var thisSearch = lines[i];
+	  console.log(thisSearch);
+	  if (/\S/.test(thisSearch)) {
+		if (thisSearch.match(/watch\?v=([a-zA-Z0-9\-_]+)/)) {
+			thisSearch = stripYoutubeUrls(thisSearch);
+			console.log('youtube found. ' + thisSearch)
+		}
+		search.listArray.push($.trim(thisSearch));
 	  }
 	}
 	
@@ -306,7 +312,7 @@ function dropdownSwitcher() {
 		$("#songNum").css("display","inline-block");
 		//if (($('#mixbuilder-buttons').is(':hidden')) && ($(document).width() >= 992)) $('#mixbuilder-artist').css("width","133.3%");
 	}
-console.log(search.dropVal);
+
 	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-album')) {
 		//$("#topSongs-num").val('');
 		$("#songNum").hide();
@@ -420,7 +426,7 @@ $("#closeAdvanced").click(function(){
 function editSearchTerm(lineNumber) {
 	var toggleEditText = $("#editplaylist").html();
 	var qHeightClosed = '205px'; var qHeightOpen = '282px'; var vTop = '85px';
-	if ($(document).width() < 992) { qHeightClosed = '124px'; var qHeightOpen = '345px'; var vTop = '127px'; }
+	if ($(document).width() < 992) { qHeightClosed = '40px'; var qHeightOpen = '345px'; var vTop = '110px'; }
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		//thumbnail player
 		$("#player-container").css({top: '0px', right: '0px', width: '160px', height: '87px'});
@@ -449,6 +455,11 @@ function editSearchTerm(lineNumber) {
 	input.scrollTop(lineNumber * lineHeight);
 	window.scrollTo(0, 0);
 	*/
+}
+
+function stripYoutubeUrls(url) {
+  url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+  return (url[2] !== undefined) ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
 }
 
 $(document).keydown(function(e) {
