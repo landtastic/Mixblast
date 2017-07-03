@@ -9,8 +9,8 @@
 <g id="Page-1">
 	<g id="Icons-AV" transform="translate(-129.000000, -131.000000)">
 		<g id="skip-previous" transform="translate(129.500000, 131.000000)">
-			<rect id="Rectangle-path" fill="#FFFFFF" width="2" height="12"/>
-			<path id="Shape" fill="#FFFFFF" d="M3.5,6l8.5,6V0L3.5,6z"/>
+			<rect id="Rectangle-path" fill="#CCCCCC" width="2" height="12"/>
+			<path id="Shape" fill="#CCCCCC" d="M3.5,6l8.5,6V0L3.5,6z"/>
 		</g>
 	</g>
 </g>

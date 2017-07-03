@@ -9,9 +9,9 @@
 <g id="Page-1">
 	<g id="Icons-AV" transform="translate(-168.000000, -85.000000)">
 		<g id="play-circle-outline" transform="translate(168.000000, 85.000000)">
-			<polygon fill="#FFFFFF" points="8,5.5 8,14.5 14,10 			"/>
+			<polygon fill="#CCCCCC" points="8,5.5 8,14.5 14,10 			"/>
 		</g>
 	</g>
 </g>
-<circle fill="none" stroke="#FFFFFF" stroke-width="0.25" stroke-miterlimit="10" cx="10" cy="10.083" r="9.354"/>
+<circle fill="none" stroke="#CCCCCC" stroke-width="0.25" stroke-miterlimit="10" cx="10" cy="10.083" r="9.354"/>
 </svg>

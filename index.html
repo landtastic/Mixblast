@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-	<title>Mixblast - Make a Youtube Playlist From a List</title>
+	<title>Mixblast - Simple Streaming, Text Lists to Playlists</title>
   </head>
   <body>
 	<div id="pb-menu"></div>
 	<div id="info-menu"><div id="infodiv"><!--<img src="android-chrome-192x192.png" id="infoear"><br><br>-->
-<h1>Mixblast is an experimental, text-based, streaming music player.</h1> It does two things:<br>
-<h2>1. It turns a list of songs into a playlist (copy + paste a text list of songs, blast a mix)</h2>
-<h2>2. It makes mixes! Try out the top search bar to add songs of artists you like. You can add related artists after you search.</h2><br>Mixes are saved automatically under recent history (small clock icon). <br><br>You can also save your mix to a Youtube playlist after the playlist is done loading.<br><br>Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next, ~ = Open/Close Text List Editor<br><br>iPhone instructions (currently not working): open in Safari, tap "Add to Home Screen", launch Mixblast from Home screen. <br><br>Mixblast uses the Youtube, Last.fm, and Echo Nest APIs. <br><br>Welp, see ya later.<br><br><br><br></div>
+<h1>Mixblast is a minamalist, text-based, streaming music player.</h1> 
+<h2>It turns a list of songs into a playlist (copy + paste a text list of songs, blast a mix)</h2>
+<h2>It also makes mixes. Try out the top search bar to add songs of artists you like. You can add related artists after you search.</h2><br>Mixes are saved automatically under recent history (small clock icon). <br><br>You can also save your mix to a Youtube playlist after the playlist is done loading.<br><br>Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next, ~ = Open/Close Text List Editor<br><br>iPhone instructions (currently not working): open in Safari, tap "Add to Home Screen", launch Mixblast from Home screen. <br><br>Mixblast uses the Youtube, Last.fm, and Echo Nest APIs. <br><br>Welp, see ya later.<br><br><br><br></div>
 	</div>
 	<div id="errormsg" class="alert alert-danger fade in" style="display:none;">
 	    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×&nbsp;</a>
@@ -28,19 +28,19 @@
 	</div>
 	<div id="body-container" class="container-fluid">
 		<div class="row">
-			<div id="logo-wrapper" class="col-md-6"><a href="."><img id="logo" src="img/mixblast-logo.png" data-toggle="tooltip" data-placement="bottom" title="&quot;You'll Have a Blast&quot;"></a></div>
-			<div class="col-md-6">
-							  <div class="row" id="btn-wrapper">
-							    <div class="col-xs-2">
+			<div id="logo-wrapper" class="col-xs-6"><a href="."><img id="logo" src="img/mixblast-logo.png" data-toggle="tooltip" data-placement="bottom" title="&quot;You'll Have a Blast&quot;"></a></div>
+			<div class="col-xs-6">
+							  <div id="btn-wrapper">
+							    <div>
 							      <button class="pb-button-sm leftBottom leftBottom-lb" id="pb-button" data-toggle="tooltip" data-placement="bottom" title="Recent History"><img id="pb-icon" src="img/past-blasts-icon-bl.svg"></button>
 							    </div>
-							    <div class="col-xs-2">
+							    <div>
 									<button class="infolink leftBottom leftBottom-lb" data-toggle="tooltip" data-placement="bottom" title="Info"></button>
 							    </div>
-							    <div class="col-xs-3">
+							    <div>
 									<button id="advanced" class="leftBottom leftBottom-lb" data-toggle="tooltip" data-placement="bottom" title="Advanced Text Options"><img id="advanced-text-options-icon" src="img/advanced-text-options.svg"></button>
 							    </div>
-							    <div class="col-xs-3">
+							    <div>
 									<select id="rss-dropdown" class="leftBottom leftBottom-lb" data-toggle="tooltip" data-placement="bottom" title="RSS Feeds">
 									<option value=""><img id="rss-icon" src="img/rss-icon.svg">Feeds</option>
 									<option value="http://www.billboard.com/rss/charts/hot-100">Billboard Hot 100</option>
@@ -95,26 +95,26 @@
 		</div>
 
 			<div id="mixbuilder-bar" class="row">
-				<div class="col-xs-1">
-					<div id="songNum"><input id="topSongs-num" value="40" type="number" pattern="\d*" inputmode="numeric"/></div>
-				</div>
 				<div class="col-md-3">
-					<div class="btn-group btn-input" id="mixbuilder-dropdown">
-					<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-						<span data-bind="label"> Top Songs By </span>&nbsp;<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li id="drop-topSongs"><a href="javascript:void();"> Top Songs By </a></li>
-						<li id="drop-similarSongs"><a href="javascript:void();"> Similar Songs </a></li>
-						<li id="drop-topAlbums"><a href="javascript:void();"> Top Albums By </a></li>
-						<li id="drop-album"><a href="javascript:void();"> Add Album </a></li>
-						<!--<li id="drop-quickMix"><a href="javascript:void();"> Related Artist Mix </a></li>-->
-						<!--<li id="drop-paste"><a href="javascript:void();"> Paste Text List </a></li>-->
-	                 </ul>
-	                </div>
+					<div class="dropdown-border">
+						<div id="songNum"><input id="topSongs-num" value="40" type="number" pattern="\d*" inputmode="numeric"/></div>
+						<div class="btn-group btn-input" id="mixbuilder-dropdown">
+							<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+								<span data-bind="label"> Top Songs By </span>&nbsp;<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li id="drop-topSongs"><a href="javascript:void();"> Top Songs By </a></li>
+								<li id="drop-similarSongs"><a href="javascript:void();"> Similar Songs </a></li>
+								<li id="drop-topAlbums"><a href="javascript:void();"> Top Albums By </a></li>
+								<li id="drop-album"><a href="javascript:void();"> Add Album </a></li>
+								<!--<li id="drop-quickMix"><a href="javascript:void();"> Related Artist Mix </a></li>-->
+								<!--<li id="drop-paste"><a href="javascript:void();"> Paste Text List </a></li>-->
+			                 </ul>
+		                </div>
+		            </div>
 				</div>
-				<div  class="col-md-8">
-				  <div class="row"><div class="col-md-9" id="mixbuilder-textfield"><input id="mixbuilder-artist" placeholder="Artist" autocomplete="off" autocorrect="off"><input id="mixbuilder-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="mixbuilder-album" placeholder="Album Name" autocomplete="off" autocorrect="off" style="display:none;"></div><div id="mixbuilder-buttons" class="col-md-3"><input id="mixbuilder-search-button" type="button" value="  " data-toggle="tooltip" title="Add Songs"><div id="query-clear" data-toggle="tooltip" title="Clear List"><div class="glyphicon glyphicon-remove-circle"></div></div><div id="shuffletext" data-toggle="tooltip" title="Shuffle List"><img src="img/shuffle.svg" alt="Shuffle List"></div></div></div>
+				<div  class="col-md-9">
+				  <div class="row"><div class="col-md-9" id="mixbuilder-textfield"><input id="mixbuilder-artist" placeholder="Artist" autocomplete="off" autocorrect="off"><input id="mixbuilder-song" placeholder="Song Title" style="display:none;" autocomplete="off" autocorrect="off"><input id="mixbuilder-album" placeholder="Album Name" autocomplete="off" autocorrect="off" style="display:none;"></div><div id="mixbuilder-buttons" class="col-md-3"><div id="mixbuilder-search-button" data-toggle="tooltip" title="Add Songs"><img src="img/add-icon.svg" alt="Add Songs to List"></div><div id="query-clear" data-toggle="tooltip" title="Clear List"><img src="img/delete.svg" alt="Clear List"></div><div id="shuffletext" data-toggle="tooltip" title="Shuffle List"><img src="img/shuffle.svg" alt="Shuffle List"></div></div></div>
 				</div>
 			</div>
 			<div id="advanced-container" style="display:none;">
@@ -133,11 +133,7 @@
 				<span id="player-thumb-close" data-toggle="tooltip" data-placement="left" title="Go Back to Video"></span>
 			</div>
 			<div id="queryarea" class="ui-widget">
-				<textarea id="query" rows="13" cols="60" placeholder="Put a list of songs here, separated by new lines. 
-
-You can type them, or use the search above to add songs.
-
-Then click Blast a Mix."></textarea>
+				<textarea id="query" rows="13" cols="60" placeholder=""></textarea>
 				<textarea id="query2" style="display:none;height:50px;" ></textarea>
 				<div id="blast-button-container">
 					<button id="search-button" class="leftBottom">Blast a Mix <img src="img/youtube-api-loading.gif" id="play-arrow-icon"></button>

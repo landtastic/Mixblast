@@ -315,11 +315,11 @@ function dropdownSwitcher() {
 
 	if ((search.dropVal == 'drop-quickMix') || (search.dropVal == 'drop-topAlbums') || (search.dropVal == 'drop-album')) {
 		//$("#topSongs-num").val('');
-		$("#songNum").hide();
-		if ($(document).width() < 992) $("#mixbuilder-dropdown").css('margin-left','0px')
+		$("#songNum").css('visibility','hidden');
+		//if ($(document).width() < 992) $("#mixbuilder-dropdown").css('margin-left','0px')
 	} else {
-		$("#songNum").show();
-		if ($(document).width() < 992) $("#mixbuilder-dropdown").css('margin-left','60px')
+		$("#songNum").css('visibility','visible');
+		//if ($(document).width() < 992) $("#mixbuilder-dropdown").css('margin-left','60px')
 	}
 	localStorage.setItem('dropdown-lastvalue', search.dropVal);
 }
@@ -425,8 +425,8 @@ $("#closeAdvanced").click(function(){
 
 function editSearchTerm(lineNumber) {
 	var toggleEditText = $("#editplaylist").html();
-	var qHeightClosed = '205px'; var qHeightOpen = '282px'; var vTop = '85px';
-	if ($(document).width() < 992) { qHeightClosed = '40px'; var qHeightOpen = '345px'; var vTop = '110px'; }
+	var qHeightClosed = '205px'; var qHeightOpen = '282px'; var vTop = '90px';
+	if ($(document).width() < 992) { qHeightClosed = '40px'; var qHeightOpen = '345px'; var vTop = '94px'; }
 	if (toggleEditText.indexOf("Edit Playlist") > -1) {
 		//thumbnail player
 		$("#player-container").css({top: '0px', right: '0px', width: '160px', height: '87px'});

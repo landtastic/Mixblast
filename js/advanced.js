@@ -202,6 +202,7 @@ function parseXml(data) {
 	}
 	*/
 	console.log(data);
+	if(data.status == 'error') { $('#errormsg').show(); $('#errormsg-txt').html('Feed Error: '+ data.message); }
 	console.log(data.items);
 	$("#query").val("");
 	var stripNums = false;
