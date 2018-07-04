@@ -1,11 +1,21 @@
-Mixblast 
+Standoffish Music Video Player 
 ========
-Text Lists To Playlists, Right In Your Browser
+http://standoffish.com
 
-http://mixbla.st
+# This is a minamalist music video player.
 
-Change a plain text list into a playlist instantly without logging in. Also converts iTunes Playlist to Youtube Playlist. Accepts txt files and iTunes m3u, XML/RSS feeds, batch searches Youtube.
+It uses the Youtube, Last.fm, and Echo Nest APIs.  
 
- "You'll Have a Blast!"
- 
- (This is not currently open source)
+It tries its best but doesn't always get everything right.  
+
+Playlists are saved automatically under Recent Playlists.  
+
+You can also save your mix to a Youtube playlist.
+
+Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next, ~ = Open/Close Text List Editor  
+
+iPhone users: works best in Dolphin browser. To play in background: lock phone, swipe up, click play in lock screen controls.  
+
+Welp, see ya later.
+
+(This is not currently open source)
