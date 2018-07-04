@@ -52,7 +52,6 @@ var search = function(query,counter) {
 				}
 			});
   });
-  return true;
 };
 
 
@@ -74,6 +73,7 @@ function multiSearch() {
 	$('#backToTop').show();
 		$("#mixbuilder-buttons").show();
 	$("#mixbuilder-bar").hide();
+	$('footer').css('position','initial');
 	mixfile = $('#query').val();
 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
 

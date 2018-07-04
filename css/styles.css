@@ -1,16 +1,19 @@
-html {
-	height: 100%;
-	position: relative;
-  	min-height: 100%;
-	box-sizing: border-box;
+* {
+ box-sizing: border-box;
 }
-*,	*:before,	*:after {
-  box-sizing: inherit;
+*:before,
+*:after {
+ box-sizing: border-box;
+}
+html,
+body {
+ height: 100%;
+ position: relative;
+}
+html {
+  overflow-x: hidden;
 }
 body {
-	min-height:100%;
-	position: relative;
-	padding: 0 0 100px; /* bottom = footer height */
 	margin:0;
 	font-family: 'Roboto', sans-serif;
 	font-size: 18px;
@@ -19,6 +22,11 @@ body {
 	color: #f4f4f4;
 	line-height: initial;
 	background-color: #333;
+	min-height: 100vh; /* will cover the 100% of viewport */
+  overflow-x: hidden;
+  display: block;
+  position: relative;
+  /* padding-bottom: 100px;  height of footer */
 }
 a {
 	color: #f4f4f4;
@@ -32,13 +40,10 @@ input,button,select {
 	border: 0px;
 }
 header {
-	background-color: #b7b6b6;
+	background-color: #7d7d7d;
 }
 textarea#query:focus,input:focus,button:focus,select:focus {
 	outline:0;
-}
-#body-container {
-	min-height: 100%;
 }
 .container-fluid {
 	max-width: 1200px;
@@ -63,7 +68,6 @@ textarea#query:focus,input:focus,button:focus,select:focus {
 	position: fixed;
 	z-index: 778;
 	display:block;
-	/*top: 72px;*/
 	bottom: 0px;
 	right: 0px;
 	height: 202.5px;
@@ -263,6 +267,9 @@ hr {
 }
 #logo-wrapper a {
 	color: #111;
+}
+#logo-wrapper span {
+	font-family: 'Berkshire Swash', cursive;
 }
 #logo {
 	max-width:100%;
@@ -572,6 +579,9 @@ div.btn-group.btn-input, #songNum {
 		text-align: center;
 		margin-bottom: 20px;
 		white-space: nowrap;
+}
+.text-align-right {
+	text-align: right;
 }
 .btn-default:hover, .btn-default:active, .btn-default:focus, .open>.dropdown-toggle.btn-default, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover, .open>.dropdown-toggle.btn-default:active {
 	color: #ccc!important;
@@ -968,16 +978,22 @@ li.ui-state-focus {
 	font-size: 420px;
 	color: #403f3f;
 	text-align: center;
+	cursor: default;
+	-webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 footer {
-	position: absolute;
 	padding: 36px 0px;
 	left: 0;
 	bottom: 0;
 	height: 100px;
 	width: 100%;
 	background-color: #2b2b2b;
+	position: absolute;
+	bottom: 0;
 }
 
 
@@ -988,17 +1004,30 @@ footer {
 	header {
 			padding-bottom: 20px;
 	}
+	footer {
+		position: initial;
+	}
 	.searchresult-title {
 			max-width: 70%;
 	}
 }
 
 @media only screen and (max-width:375px){
-    #query {
-        height:234px;
-    }
+  #query {
+      height:234px;
+  }
 	#pb-menu, #info-menu {
 		width: 100%;
+	}
+	#button-container {
+		zoom: 0.67;
+	}
+	#btn-wrapper {
+	    float: none;
+	    margin: 0px -15px;
+	}
+	#btn-wrapper div button {
+		font-size: 15px;
 	}
 }
 

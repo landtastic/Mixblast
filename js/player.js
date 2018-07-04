@@ -136,6 +136,7 @@ function nextVideo(next) {
 
 function loadVid(vidId) {
 	var i = add();
+  console.log(player.loadVideoById);
 	if (player.loadVideoById) {
 		player.loadVideoById(vidId);
 		if (search.topvTitleArray[search.vidcount]) document.title = search.topvTitleArray[search.vidcount] +' - Mixblast';

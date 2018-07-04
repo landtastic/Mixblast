@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-title" content="Mixblast">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 	<title>Standoffish Music Video Player (Formerly Mixblast)</title>
   </head>
@@ -29,7 +30,7 @@ You can also save your mix to a <a href="#youtube-playlist-container"><u>Youtube
   <header>
     <div class="container">
       <div class="row">
-  			<div id="logo-wrapper" class="col-sm-5"><a href=".">&#9836; stand of fish music player</a></div>
+  			<div id="logo-wrapper" class="col-sm-5"><a href="."><span>Standoffish</span> music player</a></div>
   			<div class="col-sm-7">
                 <div id="btn-wrapper">
                   <div>
@@ -48,7 +49,7 @@ You can also save your mix to a <a href="#youtube-playlist-container"><u>Youtube
   </header>
 	<div id="body-container" class="container-fluid">
 			<div id="mixbuilder-bar" class="row">
-				<div class="col-sm-4 col-md-3">
+				<div class="col-sm-4 col-md-3 text-align-right">
 					<div class="dropdown-border">
 						<div id="songNum"><input id="topSongs-num" value="40" type="number" pattern="\d*" inputmode="numeric"/></div>
 						<div class="btn-group btn-input" id="mixbuilder-dropdown">
@@ -57,7 +58,7 @@ You can also save your mix to a <a href="#youtube-playlist-container"><u>Youtube
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li id="drop-topSongs"><a href="javascript:void();"> Top Songs By </a></li>
-								<li id="drop-similarSongs"><a href="javascript:void();"> Songs Similar to </a></li>
+								<li id="drop-similarSongs"><a href="javascript:void();"> Similar Songs </a></li>
                                 <li id="drop-album"><a href="javascript:void();"> Play Album </a></li>
 								<li id="drop-topAlbums"><a href="javascript:void();"> All Albums By </a></li>
 								<!--<li id="drop-quickMix"><a href="javascript:void();"> Related Artist Mix </a></li>-->
@@ -81,9 +82,9 @@ You can also save your mix to a <a href="#youtube-playlist-container"><u>Youtube
             <div id="query-clear" data-toggle="tooltip" title="Clear List" style="display:none;">
               <img src="img/delete.svg" alt="Clear List">
             </div>
-            <div id="shuffletext" data-toggle="tooltip" title="Shuffle List" style="display:none;">
+            <!-- <div id="shuffletext" data-toggle="tooltip" title="Shuffle List" style="display:none;">
               <img src="img/shuffle.svg" alt="Shuffle List">
-            </div>
+            </div> -->
             <div id="advancedtext" data-toggle="tooltip" title="Advanced Text Options" style="display:none;">
             <img id="advanced-text-options-icon" src="img/advanced-text-options.svg">
             </div>
