@@ -2,12 +2,12 @@
 $(document).ready(function () {
 	rssfeed = getParameterByName('rss');
 	if (rssfeed) loadRSS(rssfeed);
-	
+
 	//load hidden query 2 textarea for manipulating text
 	$("#query2").val($("#query").val());
 	prevtext_state = $("#query").val();
 });
-$("#advanced").click(function(){
+$("#advancedtext").click(function(){
 	$('#advanced-container').slideToggle("fast");
 	editTextList();
 });
@@ -33,7 +33,7 @@ $('#addartist').focusout(function() {
 	$("#query2").val($("#query").val());
 });
 
-var newartist = $("#addartist");   
+var newartist = $("#addartist");
 $('#addartist').keyup(function() {
 	addArtist();
 });
@@ -63,7 +63,7 @@ $("#magic").click(function(){
 $("#query").bind("paste", function(){
 	var elem = $(this);
 	setTimeout(function() {
-		var text = elem.val(); 
+		var text = elem.val();
 		//populate query2
 		$("#query2").val(text);
 		prevtext_state = text;
@@ -78,14 +78,15 @@ $("#query").bind("paste", function(){
 
 function editTextList() {
 	$("#mixbuilder-buttons").show();
-	$("#query").show();
+	$("#queryarea").show();
 	$("#query2").val($("#query").val());
+	$("#editplaylist").show();
 	$("#related-container").hide(); $("#related-more").hide();
     $("#mixbuilder-search-button").show();
 }
 
 function addArtist() {
-	var query2 = $("#query2"); 
+	var query2 = $("#query2");
 	var arrayOfLines = query2.val().split("\n");
 	//var newquery = '';
 	var newquery_arr = [];
@@ -107,11 +108,11 @@ function removeNumbas() {
 	var query = $("#query").val();
 	if ($('input#removenums').is(':checked')) {
 		prevtext_state = query;
-		var lines = query.split(/\n/); 
+		var lines = query.split(/\n/);
 		query = "";
 		for (var i=0; i < lines.length; i++) {
 		  if (/\S/.test(lines[i])) {
-			query += lines[i].replace(/^\d+\s*[-\\.)#]?\s+/, "") + "\n"; 
+			query += lines[i].replace(/^\d+\s*[-\\.)#]?\s+/, "") + "\n";
 		  }
 		}
 		$("#query").val(query);
@@ -141,7 +142,7 @@ function removeParentheticals() {
 function magicSongExtractor() {
 	/*
 	var query = $("#query").val();
-	var re = /^(?:.*\\)?(.*) +\- +(.*)\..*g; 
+	var re = /^(?:.*\\)?(.*) +\- +(.*)\..*g;
 	query = query.replace(re, "");
 	$("#query").val(query);
 	*/
@@ -152,7 +153,7 @@ function magicSongExtractor() {
 function readMultipleFiles(evt) {
 	//retrieve all the files from the FileList object
 	var files = evt.target.files;
-	
+
 	if (files) {
 		for (var i = 0, f; f = files[i]; i++) {
 			var r = new FileReader();
@@ -216,7 +217,7 @@ function parseXml(data) {
 		} else if (rssfeed.indexOf('hotnewhiphop') >= 0) {
 			if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { searchTerms = e.title; searchTerms = searchTerms.replace('Video',''); } else { searchTerms=''; }
 		} else if (rssfeed.indexOf('rapradar') >= 0) {
-			searchTerms = e.title; searchTerms = e.title.replace(/New Video: |New Music: |New LP: |New Mixtape: /g,''); 
+			searchTerms = e.title; searchTerms = e.title.replace(/New Video: |New Music: |New LP: |New Mixtape: /g,'');
 		} else if (rssfeed.indexOf('allhiphop') >= 0) {
 			if (e.title.indexOf('“') >= 0) { searchTerms = e.title; searchTerms = e.title.replace(/“|”|\[VIDEO\] |PREMIERE: |FRESH HEAT |HEATER OF THE DAY: /g,''); } else { searchTerms=''; }
 		} else if (rssfeed.indexOf('nah_right') >= 0) {
@@ -224,7 +225,7 @@ function parseXml(data) {
 		} else if (rssfeed.indexOf('SouthernSweetTea') >= 0) {
 			searchTerms = e.title.replace(/Video: |Audio: |Mixtape: |EP: /g,''); searchTerms = $.trim(searchTerms);
 		} else if (rssfeed.indexOf('worldstar') >= 0) {
-			if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) { 
+			if ((e.title.indexOf('- ') >= 0) || (e.title.indexOf('Video') >= 0)) {
 				searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
 				searchTerms = searchTerms.replace('Video',''); stripParen = true;}
 			else { searchTerms=''; }
@@ -232,7 +233,7 @@ function parseXml(data) {
 				searchTerms = e.title.replace(/“|”/g,'');
 				stripParen = true;
 		} else if (rssfeed.indexOf('AlbumOfTheYear') >= 0) {
-				searchTerms = e.title; searchTerms = e.title.replace(/New Track: |Video: |Video: |Listen: |First Listen: /g,''); searchTerms = $("<textarea/>").html(searchTerms).text(); 
+				searchTerms = e.title; searchTerms = e.title.replace(/New Track: |Video: |Video: |Listen: |First Listen: /g,''); searchTerms = $("<textarea/>").html(searchTerms).text();
 		} else if (rssfeed.indexOf('metacritic') >= 0) {
 				searchTerms = e.title; searchTerms = $("<textarea/>").html(searchTerms).text();
 		} else if (rssfeed.indexOf('tinymixtapes') >= 0) {
@@ -286,7 +287,7 @@ function loadRSS(rssfeedurl) {
 function findReplace() {
 	var find = $("#find").val();
 	find = new RegExp(find, "gi");
-	var replace = $("#replace").val();   
+	var replace = $("#replace").val();
 	var arrayOfLines = $("#query2").val().split("\n");
 	var newquery_arr = [];
 	$.each(arrayOfLines, function(i, item) {
@@ -329,7 +330,7 @@ $(function() {
 			$.ajax({
 				url: "http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q="+query+"&key="+apiKey+"&format=5&alt=json&callback=?",
 				dataType: 'jsonp',
-				success: function(data, textStatus, request) { 
+				success: function(data, textStatus, request) {
 				   response( $.map( data[1], function(item) {
 						return {
 							label: item[0],

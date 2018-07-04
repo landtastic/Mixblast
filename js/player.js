@@ -1,7 +1,7 @@
 function handleAPILoaded() {
   gapi.client.setApiKey('AIzaSyDlcHPnr5gJr1_pBSvVSRtFudfpIUppfjM');
   $("#playlist-button").html('Save a Playlist');
-  $('#search-button').attr('disabled', false);
+  $('#mixbuilder-search-button').attr('disabled', false);
   onYouTubeIframeAPIReady_renamed();
 }
 
@@ -17,13 +17,7 @@ function onPlayerReady() {
 	});
 	//shuffle after search
 	$("#shufflebutton").click(function(){
-
-		if ($('#shufflebutton').hasClass('disabled')) {
-			//e.preventDefault();
-			return false;
-		} else {
-			shuffleIt();
-		}
+    shuffleIt();
 	});
 	$("#search-button").html('Blast a Mix <img src="img/play-arrow.svg" id="play-arrow-icon">');
   	//if rss url in querystring, automate click
@@ -39,7 +33,7 @@ function onPlayerReady() {
 var player;
 //for some reason, renaming onYouTubeIframeAPIReady fixes incomplete player object bug
 function onYouTubeIframeAPIReady_renamed() {
-	player = new YT.Player('player', { 
+	player = new YT.Player('player', {
 		//suggestedQuality: 'medium',
 		height: '394',
 		width: '700',
@@ -74,7 +68,7 @@ function onPlayerStateChange(event) {
 	//console.log(event.data);
 	/*
 	if ((event.data == 1) && (search.playcount == 0)) {
-		setTimeout(function(){ 
+		setTimeout(function(){
 			$('html, body').animate({
 				scrollTop: $("#player").offset().top
 			}, 500);
@@ -99,9 +93,6 @@ function onPlayerStateChange(event) {
 	}
 }
 
-function renderPlaylist(c,vThumb,vId,vTitle) {
-	$("#search-container").append("<div class='searchresult'>"+createPlaylistItem(c,vThumb,vId,vTitle)+"</div>");
-}
 function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
 	var vclick = "loadVid(\""+vId+"\"); search.vidcount="+c+";";
 	var notFoundString = '';
@@ -110,8 +101,8 @@ function createPlaylistItem(c,vThumb,vId,vTitle,swapcount) {
 		notFoundString = "<input id='not-found' value='"+ search.listArray[c] +"'> ";
 	}
 	if (swapcount === undefined) swapcount = 0;
-	return "<div class='searchresult-div'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'>"+ notFoundString +"<a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle + 
-		"</a></div><div id='searchresult-refresh'><img src='img/refresh-icon.svg' data-toggle='tooltip' title='Version Swap \n("+ search.listArray[c] +")' class='refreshb' id='"+c+"'><input id='swapcount' type='hidden' value="+ swapcount +"></div>";
+	$('.searchresult.'+c).html("<div class='searchresult-div'><img id='thumb' src='"+ vThumb +"'></div> <div class='searchresult-title'>"+ notFoundString +"<a id='link' onclick='"+ vclick + "' title='"+ vTitle +"'>" + vTitle +
+		"</a></div><div id='searchresult-refresh'><img src='img/refresh-icon.svg' data-toggle='tooltip' title='Version Swap \n("+ search.listArray[c] +")' class='refreshb' id='"+c+"'><input id='swapcount' type='hidden' value="+ swapcount +"></div>");
 }
 
 
@@ -131,14 +122,14 @@ function nextVideo(next) {
 		search.vidcount++; search.playcount++;
 		if (search.vidcount >= totalvids) search.vidcount = 0;
 		$('#search-container').append($('#search-container div.searchresult:first'));
-	} else { 
+	} else {
 		search.vidcount--; search.playcount--;
 		if ((search.vidcount < 0) || (search.vidcount=='undefined')) search.vidcount = totalvids-1;
 		$('#search-container').prepend($('#search-container div.searchresult:last'));
 	}
 	//reset global swap count
 	swapper = 1;
-	
+
 	var thevideoid = search.topvIdArray[search.vidcount];
 	if (thevideoid) loadVid(thevideoid);
 }
@@ -159,14 +150,14 @@ function loadVid(vidId) {
 			tag.src = "https://www.youtube.com/iframe_api";
 			var firstScriptTag = document.getElementsByTagName('script')[0];
 			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-			
+
 			onYouTubeIframeAPIReady();
 			setTimeout(function(){ player.loadVideoById(vidId) },1000);
 			console.log('checking loadVideoById...'+i);
 			//i++;
 		}
 		*/
-		
+
 		//console.log(player);
 		//console.log(player.loadVideoById);
 	}
@@ -221,28 +212,29 @@ function shuffleIt() {
 		if (search.prev_vidObjArray[randumb_num]) {
 			shId=search.prev_vidObjArray[randumb_num].vid[0];
 			shTitle=search.prev_vidObjArray[randumb_num].title[0];
-			shThumb=search.prev_vidObjArray[randumb_num].thumb[0]; 
+			shThumb=search.prev_vidObjArray[randumb_num].thumb[0];
 		} else {
-			shId="Not Found"; shTitle="Not Found."; shThumb="img/notfound.png"; 
+			shId="Not Found"; shTitle="Not Found."; shThumb="img/notfound.png";
 		}
 		//push new top arrays
 		search.topvIdArray.push(shId);
 		search.topvTitleArray.push(shTitle);
 		search.topvThumbArray.push(shThumb);
 
-		renderPlaylist(c,shThumb,shId,shTitle);
+    $("#search-container").append("<div class='searchresult "+c+"'></div>");
+		createPlaylistItem(c,shThumb,shId,shTitle);
 
-		for (var xx = 0; xx < search.prev_vidObjArray[0].vid.length; xx++) { 
+		for (var xx = 0; xx < search.prev_vidObjArray[0].vid.length; xx++) {
 			search.vidObjArray[c] = {
 			vid: search.prev_vidObjArray[randumb_num].vid,
-			title: search.prev_vidObjArray[randumb_num].title, 
+			title: search.prev_vidObjArray[randumb_num].title,
 			thumb: search.prev_vidObjArray[randumb_num].thumb
 			};
 		}
 	}
 }
 
-function shuffle(o){ 
+function shuffle(o){
 	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 	return o;
 }
@@ -259,11 +251,11 @@ function wrongSong() {
 }
 
 //song refresh button
-$('#search-container').on('click contextmenu', '.refreshb', function(event) {
+$('#search-container').on('click', '.refreshb', function(event) {
 
 	var thisid = this.id;
 	var swapcount = $(this).nextAll('#swapcount').val();
-	if( event.button == 2 ) { 
+	if( event.button == 2 ) {
 	  swapcount--;
 	  event.preventDefault();
 	} else {
@@ -280,7 +272,7 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 	var top5thumb = search.vidObjArray[thisid].thumb[swapcount];
 	var top5title = search.vidObjArray[thisid].title[swapcount];
 
-	$(this).parent().parent().html(createPlaylistItem(thisid,top5thumb,top5id,top5title,swapcount));
+	createPlaylistItem(thisid,top5thumb,top5id,top5title,swapcount);
 	//replace current vId in global search.topvIdArray
 	var index = search.topvIdArray.indexOf(search.topvIdArray[thisid]);
 	if (index !== -1) {
@@ -291,7 +283,7 @@ $('#search-container').on('click contextmenu', '.refreshb', function(event) {
 
 
 $('#pb-menu').on('click', '.pb-module', function(event) {
-	$("#query").show(); $("#text-container").show(); $('#player-container').hide(); 
+	// $("#query").show(); $("#text-container").show(); $('#player-container').hide();
 	var blasts = pastBlasts.list();
 	for (var i=0; i < blasts.length; i++) {
 	  if (/\S/.test(blasts[i])) {
@@ -306,6 +298,7 @@ $('#pb-menu').on('click', '.pb-module', function(event) {
 					//console.log(thisBlastArr);
 					thisBlast = thisBlastArr.join('\n');
 					$("#query").val(thisBlast);
+          multiSearch();
 				}
 			}
 		}
@@ -370,7 +363,7 @@ var pastBlasts = {
 						thisDate = new Date(arr[0] + '/' + arr[1] + '/' + arr[2] + ' ' + arr[3] + ':' + arr[4] + ':' + arr[5] + ' UTC');
 						var options = {weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
 						var dateString = thisDate.toLocaleTimeString("en-us", options);
-						blastArr[ii] = '<span id="pb-date">' + dateString + '</span>'; 
+						blastArr[ii] = '<span id="pb-date">' + dateString + '</span>';
 					}
 					if (blastArr[ii]) {
 						thisBlast += blastArr[ii] + '<br>';
@@ -380,7 +373,7 @@ var pastBlasts = {
 			}
 		}
 		$('#pb-menu').show();
-		$('#pb-text').html('Recent History');
+		$('#pb-text').html('Recent Playlists');
 		$('#pb-menu').animate({left: '0px'}, 'fast');
 		$('#info-menu').animate({left: '-400px'}, 'fast');
 	},
@@ -461,7 +454,7 @@ $(document).ready(function() {
 	 	search.dropVal = dropdown_selected;
 	 	$("#mixbuilder-dropdown > button > span:nth-child(1)").text($('#'+ dropdown_selected).text());
 	 	dropdownSwitcher();
-	} 
+	}
 	 //''$('#'+ dropdown_selected).trigger('click');
 
 	var artist_text = localStorage.getItem('artist');
@@ -501,10 +494,6 @@ $(document).ready(function() {
 
 	$("#search-button").click(function(){
 		multiSearch();
-		$("#shufflebutton").addClass("disabled");
-	 	mixfile = $('#query').val();
-	 	localStorage.setItem('mixfile', JSON.stringify(mixfile));
-	 	//console.log(mixfile);
 	});
 	$("#playlist-button").click(function(){
 		createPlaylist();
