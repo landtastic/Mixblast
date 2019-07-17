@@ -17,5 +17,3 @@ Keyboard Shortcuts: Spacebar = Play/Pause, Left Arrow = Back, Right Arrow = Next
 iPhone users: works best in Dolphin browser. To play in background: lock phone, swipe up, click play in lock screen controls.  
 
 Welp, see ya later.
-
-(This is not currently open source)
