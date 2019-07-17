@@ -2,7 +2,7 @@ Standoffish Music Video Player
 ========
 http://standoffish.com
 
-# This is a minamalist music video player.
+# This is a minamal music video player.
 
 It uses the Youtube, Last.fm, and Echo Nest APIs.  
 
